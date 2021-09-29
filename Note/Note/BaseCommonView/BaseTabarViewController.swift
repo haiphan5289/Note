@@ -30,41 +30,41 @@ class BaseTabbarViewController: UITabBarController {
     }
     
     func setupVar() {
-//        setupTabbar()
+        //        setupTabbar()
         
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        let height: CGFloat = tabBar.frame.height + Constant.shared.getHeightSafeArea(type: .bottom)
-//        var tabFrame            = tabBar.frame
-//        tabFrame.size.height    = height
-//        tabFrame.origin.y       = view.frame.size.height - height
-//        self.customTabbar.frame            = tabFrame
+        //        let height: CGFloat = tabBar.frame.height + Constant.shared.getHeightSafeArea(type: .bottom)
+        //        var tabFrame            = tabBar.frame
+        //        tabFrame.size.height    = height
+        //        tabFrame.origin.y       = view.frame.size.height - height
+        //        self.customTabbar.frame            = tabFrame
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//        guard let listTabbar = self.tabBar.items else {
-//            return
-//        }
-//        
-//        listTabbar.enumerated().forEach { (tabbar) in
-//            if let type = TypeTabbar(rawValue: tabbar.offset) {
-//                if tabbar.element == item {
-//                    tabbar.element.image = type.imageActive
-//                } else {
-//                    tabbar.element.image = type.image
-//                }
-//            }
-//        }
+        //        guard let listTabbar = self.tabBar.items else {
+        //            return
+        //        }
+        //
+        //        listTabbar.enumerated().forEach { (tabbar) in
+        //            if let type = TypeTabbar(rawValue: tabbar.offset) {
+        //                if tabbar.element == item {
+        //                    tabbar.element.image = type.imageActive
+        //                } else {
+        //                    tabbar.element.image = type.image
+        //                }
+        //            }
+        //        }
         
     }
     
     func setupUI() {
-//        self.tabBar.isTranslucent = false
-//        UITabBar.appearance().tintColor = Asset.color1.color
+        //        self.tabBar.isTranslucent = false
+        //        UITabBar.appearance().tintColor = Asset.color1.color
         UITabBar.appearance().barTintColor = TABBAR_COLOR
-//        self.view.backgroundColor = Asset.colorApp.color
+        //        self.view.backgroundColor = Asset.colorApp.color
         let frame = self.tabBar.frame
         self.tabBar.isHidden = true
         self.customTabbar = CustomTabbar(frame: frame)
@@ -72,36 +72,32 @@ class BaseTabbarViewController: UITabBarController {
         self.customTabbar.backgroundColor = .clear
     }
     
-//    func setupTabbar() {
-//        let homeVC = HomeVC.createVC()
-//        self.viewControllers = [homeVC]
-//
-//        TypeTabbar.allCases.forEach { (type) in
-//            if let vc = self.viewControllers?[type.rawValue] {
-//                vc.tabBarItem.title = type.text
-//            }
-//        }
-//    }
+    //    func setupTabbar() {
+    //        let homeVC = HomeVC.createVC()
+    //        self.viewControllers = [homeVC]
+    //
+    //        TypeTabbar.allCases.forEach { (type) in
+    //            if let vc = self.viewControllers?[type.rawValue] {
+    //                vc.tabBarItem.title = type.text
+    //            }
+    //        }
+    //    }
     
     func loadTabBar() {
         // Tạo và load custom tab bar
         let tabbarItems: [CustomTabbar.TabItem] = [.home, .menu]
-        
-        setupCustomTabMenu(tabbarItems, completion: { viewControllers in
-            self.viewControllers = viewControllers
-        })
+        setupCustomTabMenu(tabbarItems)
+        viewControllers = tabbarItems.map{ $0.viewController }
         
         selectedIndex = 0
     }
-
-    func setupCustomTabMenu(_ menuItems: [CustomTabbar.TabItem], completion: @escaping ([UIViewController]) -> Void) {
+    
+    func setupCustomTabMenu(_ menuItems: [CustomTabbar.TabItem]) {
         // Handle custom tab bar và các attach touch event listener
         let frame = tabBar.frame
-        var controllers = [UIViewController]()
         
         // Thêm các view controller tương ứng
         menuItems.forEach({
-            controllers.append($0.viewController)
             
             // Khởi tạo custom tab bar
             let customTabbar = CustomTabbarView(menuItem: $0, frame: frame)
@@ -132,10 +128,8 @@ class BaseTabbarViewController: UITabBarController {
                 wSelf.changeTab(tab: index)
             }
         })
-        
-        completion(controllers)
     }
-
+    
     func changeTab(tab: Int) {
         self.selectedIndex = tab
         self.customTabbar.subviews.forEach { v in

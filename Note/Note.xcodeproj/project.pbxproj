@@ -135,6 +135,8 @@
 		936A9D472704A643006F9F25 /* MenuVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936A9D442704A643006F9F25 /* MenuVC.xib */; };
 		936A9D482704A643006F9F25 /* MenuVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9D452704A643006F9F25 /* MenuVM.swift */; };
 		936A9D492704A643006F9F25 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9D462704A643006F9F25 /* MenuVC.swift */; };
+		936A9D4C2704A7DF006F9F25 /* AddNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9D4B2704A7DF006F9F25 /* AddNote.swift */; };
+		936A9D4E2704A7F0006F9F25 /* AddNote.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936A9D4D2704A7F0006F9F25 /* AddNote.xib */; };
 		9F17E688D6E5DC8617F4A480 /* Pods_Note.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452D3D813B7458C82BE42484 /* Pods_Note.framework */; };
 /* End PBXBuildFile section */
 
@@ -272,6 +274,8 @@
 		936A9D442704A643006F9F25 /* MenuVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuVC.xib; sourceTree = "<group>"; };
 		936A9D452704A643006F9F25 /* MenuVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVM.swift; sourceTree = "<group>"; };
 		936A9D462704A643006F9F25 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
+		936A9D4B2704A7DF006F9F25 /* AddNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNote.swift; sourceTree = "<group>"; };
+		936A9D4D2704A7F0006F9F25 /* AddNote.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNote.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,6 +405,7 @@
 		936A9C552704A178006F9F25 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				936A9D4A2704A7BD006F9F25 /* AddNote */,
 				936A9C562704A178006F9F25 /* ShowValueSlider */,
 				936A9C582704A178006F9F25 /* ABVideoRangeSlider */,
 				936A9C612704A178006F9F25 /* ImportOptions */,
@@ -697,6 +702,15 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		936A9D4A2704A7BD006F9F25 /* AddNote */ = {
+			isa = PBXGroup;
+			children = (
+				936A9D4B2704A7DF006F9F25 /* AddNote.swift */,
+				936A9D4D2704A7F0006F9F25 /* AddNote.xib */,
+			);
+			path = AddNote;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -767,6 +781,7 @@
 				936A9CF42704A179006F9F25 /* ExportFile.xib in Resources */,
 				936A9CED2704A179006F9F25 /* MoreVC.xib in Resources */,
 				936A9CDF2704A179006F9F25 /* ImportOptionsVC.xib in Resources */,
+				936A9D4E2704A7F0006F9F25 /* AddNote.xib in Resources */,
 				936A9CEF2704A179006F9F25 /* EmptyView.xib in Resources */,
 				936A9D472704A643006F9F25 /* MenuVC.xib in Resources */,
 				936A9CD92704A179006F9F25 /* BorderLine.png in Resources */,
@@ -832,6 +847,7 @@
 				936A9D2E2704A179006F9F25 /* String+Extension.swift in Sources */,
 				936A9D132704A179006F9F25 /* UIApplicationExtensions.swift in Sources */,
 				936A9CE82704A179006F9F25 /* ABThumbnailsManager.swift in Sources */,
+				936A9D4C2704A7DF006F9F25 /* AddNote.swift in Sources */,
 				936A9D112704A179006F9F25 /* UISwitchExtensions.swift in Sources */,
 				936A9D0A2704A179006F9F25 /* UIImageExtensions.swift in Sources */,
 				936A9D482704A643006F9F25 /* MenuVM.swift in Sources */,
