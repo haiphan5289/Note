@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,10 @@
 		936A9C2C27049F1E006F9F25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 936A9C2A27049F1E006F9F25 /* Main.storyboard */; };
 		936A9C2E27049F1F006F9F25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 936A9C2D27049F1F006F9F25 /* Assets.xcassets */; };
 		936A9C3127049F1F006F9F25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 936A9C2F27049F1F006F9F25 /* LaunchScreen.storyboard */; };
+		936A9C392704A09C006F9F25 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 936A9C382704A09C006F9F25 /* swiftgen.yml */; };
+		936A9C3C2704A0DA006F9F25 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 936A9C3B2704A0DA006F9F25 /* Localizable.strings */; };
+		936A9C402704A123006F9F25 /* Strings-Gen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C3E2704A123006F9F25 /* Strings-Gen.swift */; };
+		936A9C412704A123006F9F25 /* Assets-Gen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C3F2704A123006F9F25 /* Assets-Gen.swift */; };
 		9F17E688D6E5DC8617F4A480 /* Pods_Note.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452D3D813B7458C82BE42484 /* Pods_Note.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +32,10 @@
 		936A9C2D27049F1F006F9F25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		936A9C3027049F1F006F9F25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		936A9C3227049F1F006F9F25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		936A9C382704A09C006F9F25 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		936A9C3B2704A0DA006F9F25 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		936A9C3E2704A123006F9F25 /* Strings-Gen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings-Gen.swift"; sourceTree = "<group>"; };
+		936A9C3F2704A123006F9F25 /* Assets-Gen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assets-Gen.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +56,6 @@
 				2EB8F250E75CD10144EDE246 /* Pods-Note.debug.xcconfig */,
 				059EE04E82E2AD2737DB12F0 /* Pods-Note.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -63,6 +70,7 @@
 		936A9C1827049F1E006F9F25 = {
 			isa = PBXGroup;
 			children = (
+				936A9C382704A09C006F9F25 /* swiftgen.yml */,
 				936A9C2327049F1E006F9F25 /* Note */,
 				936A9C2227049F1E006F9F25 /* Products */,
 				3AD4C16FA162229F4BA79B82 /* Pods */,
@@ -81,6 +89,8 @@
 		936A9C2327049F1E006F9F25 /* Note */ = {
 			isa = PBXGroup;
 			children = (
+				936A9C3D2704A0E8006F9F25 /* SwiftGen */,
+				936A9C3A2704A0BC006F9F25 /* Localizable */,
 				936A9C2427049F1E006F9F25 /* AppDelegate.swift */,
 				936A9C2627049F1E006F9F25 /* SceneDelegate.swift */,
 				936A9C2827049F1E006F9F25 /* ViewController.swift */,
@@ -90,6 +100,23 @@
 				936A9C3227049F1F006F9F25 /* Info.plist */,
 			);
 			path = Note;
+			sourceTree = "<group>";
+		};
+		936A9C3A2704A0BC006F9F25 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				936A9C3B2704A0DA006F9F25 /* Localizable.strings */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
+		936A9C3D2704A0E8006F9F25 /* SwiftGen */ = {
+			isa = PBXGroup;
+			children = (
+				936A9C3F2704A123006F9F25 /* Assets-Gen.swift */,
+				936A9C3E2704A123006F9F25 /* Strings-Gen.swift */,
+			);
+			path = SwiftGen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,9 +178,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				936A9C3C2704A0DA006F9F25 /* Localizable.strings in Resources */,
 				936A9C3127049F1F006F9F25 /* LaunchScreen.storyboard in Resources */,
 				936A9C2E27049F1F006F9F25 /* Assets.xcassets in Resources */,
 				936A9C2C27049F1E006F9F25 /* Main.storyboard in Resources */,
+				936A9C392704A09C006F9F25 /* swiftgen.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,7 +236,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				936A9C2927049F1E006F9F25 /* ViewController.swift in Sources */,
+				936A9C402704A123006F9F25 /* Strings-Gen.swift in Sources */,
 				936A9C2527049F1E006F9F25 /* AppDelegate.swift in Sources */,
+				936A9C412704A123006F9F25 /* Assets-Gen.swift in Sources */,
 				936A9C2727049F1E006F9F25 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
