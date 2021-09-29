@@ -137,6 +137,7 @@
 		936A9D492704A643006F9F25 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9D462704A643006F9F25 /* MenuVC.swift */; };
 		936A9D4C2704A7DF006F9F25 /* AddNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9D4B2704A7DF006F9F25 /* AddNote.swift */; };
 		936A9D4E2704A7F0006F9F25 /* AddNote.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936A9D4D2704A7F0006F9F25 /* AddNote.xib */; };
+		936A9D502704B6D4006F9F25 /* NoteManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9D4F2704B6D4006F9F25 /* NoteManage.swift */; };
 		9F17E688D6E5DC8617F4A480 /* Pods_Note.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452D3D813B7458C82BE42484 /* Pods_Note.framework */; };
 /* End PBXBuildFile section */
 
@@ -276,6 +277,7 @@
 		936A9D462704A643006F9F25 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		936A9D4B2704A7DF006F9F25 /* AddNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNote.swift; sourceTree = "<group>"; };
 		936A9D4D2704A7F0006F9F25 /* AddNote.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNote.xib; sourceTree = "<group>"; };
+		936A9D4F2704B6D4006F9F25 /* NoteManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteManage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				936A9C482704A162006F9F25 /* SettingDefaultFont.swift */,
+				936A9D4F2704B6D4006F9F25 /* NoteManage.swift */,
 			);
 			path = Manage;
 			sourceTree = "<group>";
@@ -891,6 +894,7 @@
 				936A9D252704A179006F9F25 /* ViewControllerExtension.swift in Sources */,
 				936A9D052704A179006F9F25 /* ColorExtensions.swift in Sources */,
 				936A9D002704A179006F9F25 /* UITextViewExtensions.swift in Sources */,
+				936A9D502704B6D4006F9F25 /* NoteManage.swift in Sources */,
 				936A9C2727049F1E006F9F25 /* SceneDelegate.swift in Sources */,
 				936A9CFE2704A179006F9F25 /* UICollectionViewExtensions.swift in Sources */,
 				936A9CE72704A179006F9F25 /* ABProgressIndicator.swift in Sources */,

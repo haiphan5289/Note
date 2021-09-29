@@ -11,6 +11,8 @@ import UIKit
 final class Constant {
     static var shared = Constant()
     let bigRadiusTabbar: CGFloat = 30
+    let distanceCellHome: CGFloat = 10
+    let distanceAreaSide: CGFloat = 16
     
     private init() {}
 
