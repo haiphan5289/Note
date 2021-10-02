@@ -140,6 +140,7 @@
 		936A9D4E2704A7F0006F9F25 /* AddNote.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936A9D4D2704A7F0006F9F25 /* AddNote.xib */; };
 		936A9D502704B6D4006F9F25 /* NoteManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9D4F2704B6D4006F9F25 /* NoteManage.swift */; };
 		93AA98F9270811DA00939D3A /* PathDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA98F8270811DA00939D3A /* PathDraw.swift */; };
+		93AA98FD270846E400939D3A /* SoundNote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93AA98FC270846E400939D3A /* SoundNote.mp3 */; };
 		9F17E688D6E5DC8617F4A480 /* Pods_Note.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452D3D813B7458C82BE42484 /* Pods_Note.framework */; };
 /* End PBXBuildFile section */
 
@@ -282,6 +283,7 @@
 		936A9D4D2704A7F0006F9F25 /* AddNote.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNote.xib; sourceTree = "<group>"; };
 		936A9D4F2704B6D4006F9F25 /* NoteManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteManage.swift; sourceTree = "<group>"; };
 		93AA98F8270811DA00939D3A /* PathDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathDraw.swift; sourceTree = "<group>"; };
+		93AA98FC270846E400939D3A /* SoundNote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SoundNote.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -740,8 +742,17 @@
 		93AA98FA2708452500939D3A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				93AA98FB2708453E00939D3A /* SoundNote */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		93AA98FB2708453E00939D3A /* SoundNote */ = {
+			isa = PBXGroup;
+			children = (
+				93AA98FC270846E400939D3A /* SoundNote.mp3 */,
+			);
+			path = SoundNote;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -814,6 +825,7 @@
 				936A9CF42704A179006F9F25 /* ExportFile.xib in Resources */,
 				936A9CED2704A179006F9F25 /* MoreVC.xib in Resources */,
 				936A9CDF2704A179006F9F25 /* ImportOptionsVC.xib in Resources */,
+				93AA98FD270846E400939D3A /* SoundNote.mp3 in Resources */,
 				936A9D4E2704A7F0006F9F25 /* AddNote.xib in Resources */,
 				936A9CEF2704A179006F9F25 /* EmptyView.xib in Resources */,
 				936A9D472704A643006F9F25 /* MenuVC.xib in Resources */,

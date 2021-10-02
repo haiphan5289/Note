@@ -13,7 +13,7 @@ final class ConstantCommon {
     let bigRadiusTabbar: CGFloat = 30
     let distanceCellHome: CGFloat = 10
     let distanceAreaSide: CGFloat = 16
-    let timeAnimation: Double = 0.3
+    let timeAnimation: Double = 0.5
     
     private init() {}
 

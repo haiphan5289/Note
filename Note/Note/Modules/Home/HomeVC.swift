@@ -10,6 +10,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Photos
 
 class HomeVC: UIViewController {
     
@@ -25,6 +26,7 @@ class HomeVC: UIViewController {
     private var viewModel: HomeVM = HomeVM()
     private let vAddNote: AddNote = AddNote.loadXib()
     private let vDropDown: DropdownView = DropdownView(frame: .zero)
+    private var audio: AVAudioPlayer = AVAudioPlayer()
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -60,24 +62,45 @@ extension HomeVC {
     private func setupRX() {
         // Add here the setup for the RX
     }
+    
+    private func playAudio() {
+        do {
+            guard let url = Bundle.main.url(forResource: "SoundNote", withExtension: ".mp3") else {
+                return
+            }
+            self.audio = try AVAudioPlayer(contentsOf: url)
+            self.audio.prepareToPlay()
+            self.audio.volume = 2.0
+            self.audio.currentTime = 5
+            self.audio.play()
+        } catch {
+            print(" Erro play Audio \(error.localizedDescription) ")
+        }
+    }
 }
 extension HomeVC: AddNoteDelegate {
     func actionAddNote(status: AddNote.StatusAddNote) {
         switch status {
         case .open:
+            self.playAudio()
             self.vDropDown.isHidden = false
             var f = self.vDropDown.frame
             UIView.animate(withDuration: ConstantCommon.shared.timeAnimation) {
                 f.origin.y -= self.vDropDown.getHeightDropdown()
                 self.vDropDown.frame = f
+            } completion: { _ in
+                self.audio.stop()
             }
+
         default:
+            self.playAudio()
             var f = self.vDropDown.frame
             UIView.animate(withDuration: ConstantCommon.shared.timeAnimation) {
                 f.origin.y += self.vDropDown.getHeightDropdown()
                 self.vDropDown.frame = f
             } completion: { _ in
                 self.vDropDown.isHidden = true
+                self.audio.stop()
             }
 
         }
