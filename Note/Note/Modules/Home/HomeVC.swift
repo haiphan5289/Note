@@ -48,15 +48,15 @@ extension HomeVC {
                 make.bottom.equalToSuperview().inset(height - Constant.distanceFromTopTabbar)
                 make.height.equalTo(Constant.heightAddNoteView)
             }
+            
+            let f: CGRect = CGRect(x: (self.view.frame.width / 2) - ((self.view.frame.width - Constant.totalBesidesArea) / 2),
+                                   y: self.view.frame.height - Constant.heightAddNoteView - height,
+                                   width: self.view.frame.width - Constant.totalBesidesArea,
+                                   height: vDropDown.getHeightDropdown())
+            vDropDown.frame = f
+            vDropDown.isHidden = true
+            self.view.addSubview(vDropDown)
         }
-        
-        let f: CGRect = CGRect(x: (self.view.frame.width / 2) - ((self.view.frame.width - Constant.totalBesidesArea) / 2),
-                               y: self.view.frame.height - Constant.heightAddNoteView - ConstantCommon.shared.getHeightSafeArea(type: .bottom) - Constant.contraintBottomDropDownView,
-                               width: self.view.frame.width - Constant.totalBesidesArea,
-                               height: vDropDown.getHeightDropdown())
-        vDropDown.frame = f
-        vDropDown.isHidden = true
-        self.view.addSubview(vDropDown)
     }
     
     private func setupRX() {
