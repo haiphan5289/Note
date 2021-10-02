@@ -51,9 +51,8 @@ class CustomTabbarView: UIView {
         self.title.textAlignment = .center
         self.addSubview(self.title)
         self.title.snp.makeConstraints { (make) in
-            make.top.equalTo(self.img.snp.bottom).inset(-3)
+            make.top.equalTo(self.img.snp.bottom).inset(-5)
             make.centerX.equalTo(self.img)
-            make.bottom.equalToSuperview().inset(5)
         }
         
         if menuItem == CustomTabbar.TabItem.home {

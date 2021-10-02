@@ -20,7 +20,7 @@ class CustomTabbar: UITabBar {
             case .home:
                 return HomeVC.createVC()
             case .menu:
-                return MenuVC.createVC()
+                return HomeVC.createVC()
             }
         }
         
@@ -69,7 +69,7 @@ class CustomTabbar: UITabBar {
     }
 
     func createPath() -> CGPath {
-        let bigRadius: CGFloat = Constant.shared.bigRadiusTabbar
+        let bigRadius: CGFloat = ConstantCommon.shared.bigRadiusTabbar
         let path = UIBezierPath()
         let centerWidth = self.frame.width / 2
         path.move(to: CGPoint(x: 0, y: 0))

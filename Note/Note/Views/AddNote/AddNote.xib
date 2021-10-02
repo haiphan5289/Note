@@ -24,7 +24,7 @@
                         <constraint firstAttribute="height" constant="50" id="Oa1-Dc-UEi"/>
                     </constraints>
                     <color key="tintColor" systemColor="labelColor"/>
-                    <state key="normal" image="ic_Add"/>
+                    <state key="normal" image="ic_upAddNote"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <real key="value" value="25"/>
@@ -39,11 +39,14 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="9qt-9z-jc6" secondAttribute="bottom" id="Gb9-q1-hZZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btAddNote" destination="9qt-9z-jc6" id="QOr-rk-xio"/>
+            </connections>
             <point key="canvasLocation" x="139" y="117"/>
         </view>
     </objects>
     <resources>
-        <image name="ic_Add" width="24" height="24"/>
+        <image name="ic_upAddNote" width="24" height="24"/>
         <namedColor name="ColorApp">
             <color red="0.57400000095367432" green="0.56599998474121094" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

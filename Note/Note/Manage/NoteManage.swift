@@ -14,6 +14,6 @@ final class NoteManage {
     private init() {}
     
     func getWidthCell(width: CGFloat) -> CGFloat {
-        return (width - (Constant.shared.distanceAreaSide * 2) - (Constant.shared.distanceAreaSide * 2)) / 3
+        return (width - (ConstantCommon.shared.distanceAreaSide * 2) - (ConstantCommon.shared.distanceAreaSide * 2)) / 3
     }
 }

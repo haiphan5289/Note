@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		934C8A5E27074206008BCE0A /* DropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C8A5D27074206008BCE0A /* DropdownView.swift */; };
 		936A9C2527049F1E006F9F25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C2427049F1E006F9F25 /* AppDelegate.swift */; };
 		936A9C2727049F1E006F9F25 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C2627049F1E006F9F25 /* SceneDelegate.swift */; };
 		936A9C2927049F1E006F9F25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C2827049F1E006F9F25 /* ViewController.swift */; };
@@ -138,6 +139,7 @@
 		936A9D4C2704A7DF006F9F25 /* AddNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9D4B2704A7DF006F9F25 /* AddNote.swift */; };
 		936A9D4E2704A7F0006F9F25 /* AddNote.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936A9D4D2704A7F0006F9F25 /* AddNote.xib */; };
 		936A9D502704B6D4006F9F25 /* NoteManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9D4F2704B6D4006F9F25 /* NoteManage.swift */; };
+		93AA98F9270811DA00939D3A /* PathDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA98F8270811DA00939D3A /* PathDraw.swift */; };
 		9F17E688D6E5DC8617F4A480 /* Pods_Note.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452D3D813B7458C82BE42484 /* Pods_Note.framework */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +147,7 @@
 		059EE04E82E2AD2737DB12F0 /* Pods-Note.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Note.release.xcconfig"; path = "Target Support Files/Pods-Note/Pods-Note.release.xcconfig"; sourceTree = "<group>"; };
 		2EB8F250E75CD10144EDE246 /* Pods-Note.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Note.debug.xcconfig"; path = "Target Support Files/Pods-Note/Pods-Note.debug.xcconfig"; sourceTree = "<group>"; };
 		452D3D813B7458C82BE42484 /* Pods_Note.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Note.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		934C8A5D27074206008BCE0A /* DropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownView.swift; sourceTree = "<group>"; };
 		936A9C2127049F1E006F9F25 /* Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Note.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		936A9C2427049F1E006F9F25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		936A9C2627049F1E006F9F25 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -278,6 +281,7 @@
 		936A9D4B2704A7DF006F9F25 /* AddNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNote.swift; sourceTree = "<group>"; };
 		936A9D4D2704A7F0006F9F25 /* AddNote.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNote.xib; sourceTree = "<group>"; };
 		936A9D4F2704B6D4006F9F25 /* NoteManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteManage.swift; sourceTree = "<group>"; };
+		93AA98F8270811DA00939D3A /* PathDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathDraw.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +313,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		934C8A5C27073F33008BCE0A /* Dropdown */ = {
+			isa = PBXGroup;
+			children = (
+				934C8A5D27074206008BCE0A /* DropdownView.swift */,
+			);
+			path = Dropdown;
+			sourceTree = "<group>";
+		};
 		936A9C1827049F1E006F9F25 = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +343,7 @@
 		936A9C2327049F1E006F9F25 /* Note */ = {
 			isa = PBXGroup;
 			children = (
+				93AA98FA2708452500939D3A /* Resources */,
 				936A9C3D2704A0E8006F9F25 /* SwiftGen */,
 				936A9C3A2704A0BC006F9F25 /* Localizable */,
 				936A9C422704A14D006F9F25 /* Constant */,
@@ -408,6 +421,8 @@
 		936A9C552704A178006F9F25 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				93AA98F7270811C600939D3A /* PathDraw */,
+				934C8A5C27073F33008BCE0A /* Dropdown */,
 				936A9D4A2704A7BD006F9F25 /* AddNote */,
 				936A9C562704A178006F9F25 /* ShowValueSlider */,
 				936A9C582704A178006F9F25 /* ABVideoRangeSlider */,
@@ -714,6 +729,21 @@
 			path = AddNote;
 			sourceTree = "<group>";
 		};
+		93AA98F7270811C600939D3A /* PathDraw */ = {
+			isa = PBXGroup;
+			children = (
+				93AA98F8270811DA00939D3A /* PathDraw.swift */,
+			);
+			path = PathDraw;
+			sourceTree = "<group>";
+		};
+		93AA98FA2708452500939D3A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -920,6 +950,7 @@
 				936A9CD32704A179006F9F25 /* PopBaseViewController.swift in Sources */,
 				936A9D152704A179006F9F25 /* UIRefreshControlExtensions.swift in Sources */,
 				936A9D1A2704A179006F9F25 /* Constants.swift in Sources */,
+				934C8A5E27074206008BCE0A /* DropdownView.swift in Sources */,
 				936A9CF62704A179006F9F25 /* UISearchBarExtensions.swift in Sources */,
 				936A9CF22704A179006F9F25 /* CircularSlider.swift in Sources */,
 				936A9D322704A179006F9F25 /* Font+Extension.swift in Sources */,
@@ -935,6 +966,7 @@
 				936A9D272704A179006F9F25 /* UIButton+Extension.swift in Sources */,
 				936A9CEE2704A179006F9F25 /* MoreVC.swift in Sources */,
 				936A9CD52704A179006F9F25 /* BaseTabarViewController.swift in Sources */,
+				93AA98F9270811DA00939D3A /* PathDraw.swift in Sources */,
 				936A9CE92704A179006F9F25 /* ABVideoRangeSlider.swift in Sources */,
 				936A9D292704A179006F9F25 /* CustomButton.swift in Sources */,
 				936A9D1D2704A179006F9F25 /* UIApplication+Extension.swift in Sources */,

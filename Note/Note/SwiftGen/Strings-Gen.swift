@@ -11,6 +11,19 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
 
+  internal enum Dropdown {
+    /// CheckList
+    internal static let checkList = L10n.tr("Localizable", "Dropdown.CheckList")
+    /// Draw
+    internal static let draw = L10n.tr("Localizable", "Dropdown.Draw")
+    /// Photos
+    internal static let photos = L10n.tr("Localizable", "Dropdown.Photos")
+    /// Text
+    internal static let text = L10n.tr("Localizable", "Dropdown.Text")
+    /// Videos
+    internal static let videos = L10n.tr("Localizable", "Dropdown.Videos")
+  }
+
   internal enum Tabbar {
     /// Home
     internal static let home = L10n.tr("Localizable", "Tabbar.Home")
