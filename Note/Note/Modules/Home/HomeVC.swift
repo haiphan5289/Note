@@ -107,3 +107,10 @@ extension HomeVC: AddNoteDelegate {
         
     }
 }
+extension HomeVC: DropDownDelegate {
+    func actionCreate(type: DropdownView.TypeView) {
+        
+    }
+    
+    
+}

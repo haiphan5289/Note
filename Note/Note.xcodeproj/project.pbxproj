@@ -22,12 +22,9 @@
 		936A9C462704A14D006F9F25 /* GetHeightSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C442704A14D006F9F25 /* GetHeightSafeArea.swift */; };
 		936A9C492704A162006F9F25 /* SettingDefaultFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C482704A162006F9F25 /* SettingDefaultFont.swift */; };
 		936A9CCE2704A179006F9F25 /* BaseNavigationLargeTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C4B2704A177006F9F25 /* BaseNavigationLargeTitle.swift */; };
-		936A9CCF2704A179006F9F25 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C4C2704A177006F9F25 /* BaseTableViewCell.swift */; };
 		936A9CD02704A179006F9F25 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C4D2704A177006F9F25 /* BaseNavigationViewController.swift */; };
-		936A9CD12704A179006F9F25 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C4E2704A177006F9F25 /* BaseCollectionViewCell.swift */; };
 		936A9CD22704A179006F9F25 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C4F2704A177006F9F25 /* Message.swift */; };
 		936A9CD32704A179006F9F25 /* PopBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C502704A177006F9F25 /* PopBaseViewController.swift */; };
-		936A9CD42704A179006F9F25 /* HelperAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C512704A177006F9F25 /* HelperAlert.swift */; };
 		936A9CD52704A179006F9F25 /* BaseTabarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C522704A177006F9F25 /* BaseTabarViewController.swift */; };
 		936A9CD62704A179006F9F25 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C532704A177006F9F25 /* Utils.swift */; };
 		936A9CD72704A179006F9F25 /* Prefix-Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C542704A177006F9F25 /* Prefix-Header.swift */; };
@@ -141,6 +138,12 @@
 		936A9D502704B6D4006F9F25 /* NoteManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9D4F2704B6D4006F9F25 /* NoteManage.swift */; };
 		93AA98F9270811DA00939D3A /* PathDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA98F8270811DA00939D3A /* PathDraw.swift */; };
 		93AA98FD270846E400939D3A /* SoundNote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93AA98FC270846E400939D3A /* SoundNote.mp3 */; };
+		93AA98FF2708503D00939D3A /* BaseNavigationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA98FE2708503D00939D3A /* BaseNavigationHeader.swift */; };
+		93AA9902270850D400939D3A /* NavigationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA9901270850D400939D3A /* NavigationItemView.swift */; };
+		93AA9904270850DE00939D3A /* NavigationItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA9903270850DE00939D3A /* NavigationItemView.xib */; };
+		93AA990F2708539D00939D3A /* TextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA990C2708539D00939D3A /* TextVC.xib */; };
+		93AA99102708539D00939D3A /* TextVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA990D2708539D00939D3A /* TextVM.swift */; };
+		93AA99112708539D00939D3A /* TextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA990E2708539D00939D3A /* TextVC.swift */; };
 		9F17E688D6E5DC8617F4A480 /* Pods_Note.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452D3D813B7458C82BE42484 /* Pods_Note.framework */; };
 /* End PBXBuildFile section */
 
@@ -165,12 +168,9 @@
 		936A9C442704A14D006F9F25 /* GetHeightSafeArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetHeightSafeArea.swift; sourceTree = "<group>"; };
 		936A9C482704A162006F9F25 /* SettingDefaultFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDefaultFont.swift; sourceTree = "<group>"; };
 		936A9C4B2704A177006F9F25 /* BaseNavigationLargeTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationLargeTitle.swift; sourceTree = "<group>"; };
-		936A9C4C2704A177006F9F25 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		936A9C4D2704A177006F9F25 /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
-		936A9C4E2704A177006F9F25 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		936A9C4F2704A177006F9F25 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		936A9C502704A177006F9F25 /* PopBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopBaseViewController.swift; sourceTree = "<group>"; };
-		936A9C512704A177006F9F25 /* HelperAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperAlert.swift; sourceTree = "<group>"; };
 		936A9C522704A177006F9F25 /* BaseTabarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabarViewController.swift; sourceTree = "<group>"; };
 		936A9C532704A177006F9F25 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		936A9C542704A177006F9F25 /* Prefix-Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Prefix-Header.swift"; sourceTree = "<group>"; };
@@ -284,6 +284,12 @@
 		936A9D4F2704B6D4006F9F25 /* NoteManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteManage.swift; sourceTree = "<group>"; };
 		93AA98F8270811DA00939D3A /* PathDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathDraw.swift; sourceTree = "<group>"; };
 		93AA98FC270846E400939D3A /* SoundNote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SoundNote.mp3; sourceTree = "<group>"; };
+		93AA98FE2708503D00939D3A /* BaseNavigationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationHeader.swift; sourceTree = "<group>"; };
+		93AA9901270850D400939D3A /* NavigationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItemView.swift; sourceTree = "<group>"; };
+		93AA9903270850DE00939D3A /* NavigationItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationItemView.xib; sourceTree = "<group>"; };
+		93AA990C2708539D00939D3A /* TextVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextVC.xib; sourceTree = "<group>"; };
+		93AA990D2708539D00939D3A /* TextVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextVM.swift; sourceTree = "<group>"; };
+		93AA990E2708539D00939D3A /* TextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -407,15 +413,13 @@
 			isa = PBXGroup;
 			children = (
 				936A9C4B2704A177006F9F25 /* BaseNavigationLargeTitle.swift */,
-				936A9C4C2704A177006F9F25 /* BaseTableViewCell.swift */,
 				936A9C4D2704A177006F9F25 /* BaseNavigationViewController.swift */,
-				936A9C4E2704A177006F9F25 /* BaseCollectionViewCell.swift */,
 				936A9C4F2704A177006F9F25 /* Message.swift */,
 				936A9C502704A177006F9F25 /* PopBaseViewController.swift */,
-				936A9C512704A177006F9F25 /* HelperAlert.swift */,
 				936A9C522704A177006F9F25 /* BaseTabarViewController.swift */,
 				936A9C532704A177006F9F25 /* Utils.swift */,
 				936A9C542704A177006F9F25 /* Prefix-Header.swift */,
+				93AA98FE2708503D00939D3A /* BaseNavigationHeader.swift */,
 			);
 			path = BaseCommonView;
 			sourceTree = "<group>";
@@ -423,6 +427,7 @@
 		936A9C552704A178006F9F25 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				93AA9900270850BA00939D3A /* NavigationItem */,
 				93AA98F7270811C600939D3A /* PathDraw */,
 				934C8A5C27073F33008BCE0A /* Dropdown */,
 				936A9D4A2704A7BD006F9F25 /* AddNote */,
@@ -697,6 +702,7 @@
 			isa = PBXGroup;
 			children = (
 				936A9D432704A634006F9F25 /* Menu */,
+				93AA99052708535D00939D3A /* Text */,
 				936A9D3C2704A4D1006F9F25 /* Home */,
 			);
 			path = Modules;
@@ -753,6 +759,25 @@
 				93AA98FC270846E400939D3A /* SoundNote.mp3 */,
 			);
 			path = SoundNote;
+			sourceTree = "<group>";
+		};
+		93AA9900270850BA00939D3A /* NavigationItem */ = {
+			isa = PBXGroup;
+			children = (
+				93AA9901270850D400939D3A /* NavigationItemView.swift */,
+				93AA9903270850DE00939D3A /* NavigationItemView.xib */,
+			);
+			path = NavigationItem;
+			sourceTree = "<group>";
+		};
+		93AA99052708535D00939D3A /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				93AA990C2708539D00939D3A /* TextVC.xib */,
+				93AA990D2708539D00939D3A /* TextVM.swift */,
+				93AA990E2708539D00939D3A /* TextVC.swift */,
+			);
+			path = Text;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -815,6 +840,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				936A9CDA2704A179006F9F25 /* StartIndicator.png in Resources */,
+				93AA9904270850DE00939D3A /* NavigationItemView.xib in Resources */,
 				936A9C3C2704A0DA006F9F25 /* Localizable.strings in Resources */,
 				936A9C3127049F1F006F9F25 /* LaunchScreen.storyboard in Resources */,
 				936A9C2E27049F1F006F9F25 /* Assets.xcassets in Resources */,
@@ -823,6 +849,7 @@
 				936A9C392704A09C006F9F25 /* swiftgen.yml in Resources */,
 				936A9CDC2704A179006F9F25 /* ProgressIndicator.png in Resources */,
 				936A9CF42704A179006F9F25 /* ExportFile.xib in Resources */,
+				93AA990F2708539D00939D3A /* TextVC.xib in Resources */,
 				936A9CED2704A179006F9F25 /* MoreVC.xib in Resources */,
 				936A9CDF2704A179006F9F25 /* ImportOptionsVC.xib in Resources */,
 				93AA98FD270846E400939D3A /* SoundNote.mp3 in Resources */,
@@ -886,7 +913,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				936A9D222704A179006F9F25 /* UIWindow+Extension.swift in Sources */,
-				936A9CD42704A179006F9F25 /* HelperAlert.swift in Sources */,
 				936A9D082704A179006F9F25 /* UISliderExtensions.swift in Sources */,
 				936A9D412704A61B006F9F25 /* HomeVM.swift in Sources */,
 				936A9D2E2704A179006F9F25 /* String+Extension.swift in Sources */,
@@ -927,13 +953,13 @@
 				936A9CF12704A179006F9F25 /* String+HTML.swift in Sources */,
 				936A9CCE2704A179006F9F25 /* BaseNavigationLargeTitle.swift in Sources */,
 				936A9CFF2704A179006F9F25 /* UIImage+Extensions.swift in Sources */,
-				936A9CD12704A179006F9F25 /* BaseCollectionViewCell.swift in Sources */,
 				936A9D1C2704A179006F9F25 /* RangeTimeSlider.swift in Sources */,
 				936A9CFA2704A179006F9F25 /* UILayoutPriorityExtensions.swift in Sources */,
 				936A9C412704A123006F9F25 /* Assets-Gen.swift in Sources */,
 				936A9CF82704A179006F9F25 /* UIEdgeInsetsExtensions.swift in Sources */,
 				936A9CF72704A179006F9F25 /* UITableViewExtensions.swift in Sources */,
 				936A9D252704A179006F9F25 /* ViewControllerExtension.swift in Sources */,
+				93AA9902270850D400939D3A /* NavigationItemView.swift in Sources */,
 				936A9D052704A179006F9F25 /* ColorExtensions.swift in Sources */,
 				936A9D002704A179006F9F25 /* UITextViewExtensions.swift in Sources */,
 				936A9D502704B6D4006F9F25 /* NoteManage.swift in Sources */,
@@ -944,6 +970,7 @@
 				936A9CE42704A179006F9F25 /* CustomTabbar.swift in Sources */,
 				936A9D2B2704A179006F9F25 /* Drive+Extension.swift in Sources */,
 				936A9D1F2704A179006F9F25 /* RowDetailGeneric.swift in Sources */,
+				93AA98FF2708503D00939D3A /* BaseNavigationHeader.swift in Sources */,
 				936A9CE52704A179006F9F25 /* ABBorder.swift in Sources */,
 				936A9D062704A179006F9F25 /* UINavigationBarExtensions.swift in Sources */,
 				936A9D072704A179006F9F25 /* UIActivityExtensions.swift in Sources */,
@@ -958,6 +985,7 @@
 				936A9CE02704A179006F9F25 /* ImportOptionsVC.swift in Sources */,
 				936A9C492704A162006F9F25 /* SettingDefaultFont.swift in Sources */,
 				936A9D102704A179006F9F25 /* UILabelExtensions.swift in Sources */,
+				93AA99112708539D00939D3A /* TextVC.swift in Sources */,
 				936A9D022704A179006F9F25 /* UIStoryboardExtensions.swift in Sources */,
 				936A9CD32704A179006F9F25 /* PopBaseViewController.swift in Sources */,
 				936A9D152704A179006F9F25 /* UIRefreshControlExtensions.swift in Sources */,
@@ -984,13 +1012,13 @@
 				936A9D1D2704A179006F9F25 /* UIApplication+Extension.swift in Sources */,
 				936A9C452704A14D006F9F25 /* Constant.swift in Sources */,
 				936A9D392704A179006F9F25 /* ProductViewModel.swift in Sources */,
+				93AA99102708539D00939D3A /* TextVM.swift in Sources */,
 				936A9CE22704A179006F9F25 /* CircularSliderHelper.swift in Sources */,
 				936A9D172704A179006F9F25 /* UIFontExtensions.swift in Sources */,
 				936A9D0F2704A179006F9F25 /* UIWindowExtensions.swift in Sources */,
 				936A9D162704A179006F9F25 /* UIAlertControllerExtensions.swift in Sources */,
 				936A9D0B2704A179006F9F25 /* UINavigationControllerExtensions.swift in Sources */,
 				936A9D0D2704A179006F9F25 /* UIGestureRecognizerExtensions.swift in Sources */,
-				936A9CCF2704A179006F9F25 /* BaseTableViewCell.swift in Sources */,
 				936A9D362704A179006F9F25 /* CodableExtension.swift in Sources */,
 				936A9D042704A179006F9F25 /* UISegmentedControlExtensions.swift in Sources */,
 				936A9D3A2704A179006F9F25 /* DateExtension.swift in Sources */,

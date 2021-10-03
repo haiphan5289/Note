@@ -45,9 +45,18 @@ final class PathDraw {
         let radius: CGFloat = 20 //change it if you want
         //let distancefromDropDownViewToBottom
         // This variable alaways have to be great than radius
-        path.addLine(to: CGPoint(x: 0, y: 0))
+        //draw little circle
+        path.addArc(withCenter: CGPoint(x: radius , y: radius),
+                    radius: radius,
+                    startAngle: Constant.cornerNinehour,
+                    endAngle: Constant.cornerTwelvehour, clockwise: true)
        
-        path.addLine(to: CGPoint(x: frame.width, y: 0))
+        //path.addLine(to: CGPoint(x: frame.width, y: 0))
+        //draw little circle
+        path.addArc(withCenter: CGPoint(x: frame.width - radius , y: radius),
+                    radius: radius,
+                    startAngle: Constant.cornerTwelvehour,
+                    endAngle: Constant.cornerThreehour, clockwise: true)
         path.addLine(to: CGPoint(x: frame.width, y: frame.height - radius - distancefromDropDownViewToBottom))
         
         //draw little circle

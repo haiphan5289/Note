@@ -8,6 +8,10 @@
 import UIKit
 import RxSwift
 
+protocol DropDownDelegate {
+    func actionCreate(type: DropdownView.TypeView)
+}
+
 class DropdownView: UIView {
     
     struct Constant {
@@ -44,6 +48,8 @@ class DropdownView: UIView {
         }
     }
     
+    var delegate: DropDownDelegate?
+    
     private let scrollView: UIScrollView = UIScrollView()
     private let stackView: UIStackView = UIStackView()
     private var shapeLayer: CALayer?
@@ -67,10 +73,6 @@ class DropdownView: UIView {
 extension DropdownView {
     
     private func setupUI() {
-        self.backgroundColor = .clear.withAlphaComponent(0.1)
-        self.clipsToBounds = true
-        self.cornerRadius = Constant.radius
-        
         scrollView.backgroundColor = .clear
         self.addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
@@ -128,6 +130,13 @@ extension DropdownView {
                 make.centerY.equalTo(lbTitle)
                 make.right.equalTo(lbTitle.snp.left).inset(-10)
             }
+            
+            let tap: UITapGestureRecognizer = UITapGestureRecognizer()
+            v.addGestureRecognizer(tap)
+            tap.rx.event.bind { [weak self] _ in
+                guard let wSelf = self else { return }
+                print("pp")
+            }.disposed(by: disposeBag)
             
             self.stackView.addArrangedSubview(v)
         }
