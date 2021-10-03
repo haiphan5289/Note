@@ -11,14 +11,21 @@ import RxSwift
 
 class BaseNavigationHeader: UIViewController {
     
+    struct Constant {
+        static let heightViewStyle: CGFloat = 50
+    }
+    
+    private let configStyle: ConfigStyle = ConfigStyle.loadXib()
     let eventHeightKeyboard: PublishSubject<CGFloat> = PublishSubject.init()
     let navigationItemView: NavigationItemView = NavigationItemView.loadXib()
     
+    let eventStatusKeyboard: PublishSubject<ConfigStyle.StatusKeyboard> = PublishSubject.init()
     var vContainer: UIView!
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configUI()
         self.configRX()
     }
     
@@ -49,6 +56,12 @@ class BaseNavigationHeader: UIViewController {
         vContainer.removeFromSuperview()
     }
     
+    private func configUI() {
+        self.view.addSubview(self.configStyle)
+        self.setupConfigStyleWithoutKeyboard()
+        self.configStyle.delegate = self
+    }
+    
     private func configRX() {
         let show = NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification).map { KeyboardInfo($0) }
         let hide = NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification).map { KeyboardInfo($0) }
@@ -66,7 +79,27 @@ class BaseNavigationHeader: UIViewController {
         let d = i.duration
         
         UIView.animate(withDuration: d) {
-            self.eventHeightKeyboard.onNext(h)
+            ( h > 0 ) ? self.setupConfigStyleWHaveKeyboard(height: h) : self.setupConfigStyleWithoutKeyboard()
         }
+    }
+    
+    private func setupConfigStyleWithoutKeyboard() {
+        self.configStyle.snp.remakeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(Constant.heightViewStyle + ConstantCommon.shared.getHeightSafeArea(type: .bottom))
+        }
+    }
+    
+    private func setupConfigStyleWHaveKeyboard(height: CGFloat) {
+        self.configStyle.snp.remakeConstraints { make in
+            make.left.right.equalToSuperview()
+            make.height.equalTo(Constant.heightViewStyle)
+            make.bottom.equalToSuperview().inset(height)
+        }
+    }
+}
+extension BaseNavigationHeader: ConfigStyleDelegate {
+    func updateStatusKeyboard(status: ConfigStyle.StatusKeyboard) {
+        self.eventStatusKeyboard.onNext(status)
     }
 }

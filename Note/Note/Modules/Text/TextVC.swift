@@ -13,13 +13,11 @@ import RxSwift
 
 class TextVC: BaseNavigationHeader {
     
-    struct Constant {
-        static let heightViewStyle: CGFloat = 50
-    }
+
     
     // Add here outlets
     @IBOutlet weak var textView: UITextView!
-    private let configStyle: ConfigStyle = ConfigStyle.loadXib()
+    
     // Add here your view model
     private var viewModel: TextVM = TextVM()
 //    private var heightConstraint: Constraint? = nil
@@ -37,8 +35,6 @@ extension TextVC {
     private func setupUI() {
         // Add here the setup for the UI
         textView.centerVertically()
-        
-        self.view.addSubview(self.configStyle)
     }
     
     private func setupRX() {
@@ -56,25 +52,14 @@ extension TextVC {
             wSelf.textView.centerVertically()
         }.disposed(by: disposeBag)
         
-        self.eventHeightKeyboard.asObservable().startWith(0).bind { [weak self] h in
+        self.eventStatusKeyboard.asObservable().bind { [weak self] stt in
             guard let wSelf = self else { return }
-            ( h > 0 ) ? wSelf.setupConfigStyleWHaveKeyboard(height: h) : wSelf.setupConfigStyleWithoutKeyboard()
+            if stt == .hide {
+                wSelf.textView.resignFirstResponder()
+            } else {
+                wSelf.textView.becomeFirstResponder()
+            }
         }.disposed(by: disposeBag)
     
-    }
-    
-    private func setupConfigStyleWithoutKeyboard() {
-        self.configStyle.snp.remakeConstraints { make in
-            make.left.right.bottom.equalToSuperview()
-            make.height.equalTo(Constant.heightViewStyle + ConstantCommon.shared.getHeightSafeArea(type: .bottom))
-        }
-    }
-    
-    private func setupConfigStyleWHaveKeyboard(height: CGFloat) {
-        self.configStyle.snp.remakeConstraints { make in
-            make.left.right.equalToSuperview()
-            make.height.equalTo(Constant.heightViewStyle)
-            make.bottom.equalToSuperview().inset(height)
-        }
     }
 }

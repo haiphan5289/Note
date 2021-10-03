@@ -39,8 +39,12 @@ internal enum Asset {
   internal static let icClose = ImageAsset(name: "ic_close")
   internal static let icDone = ImageAsset(name: "ic_done")
   internal static let icExport = ImageAsset(name: "ic_export")
+  internal static let icHideKeyboard = ImageAsset(name: "ic_hideKeyboard")
+  internal static let icKeyboard = ImageAsset(name: "ic_keyboard")
   internal static let icPin = ImageAsset(name: "ic_pin")
   internal static let icReminder = ImageAsset(name: "ic_reminder")
+  internal static let icSetupcolor = ImageAsset(name: "ic_setupcolor")
+  internal static let icText = ImageAsset(name: "ic_text")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

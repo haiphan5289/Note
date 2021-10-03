@@ -59,6 +59,11 @@
                 <constraint firstItem="VA9-4c-Wqa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="nYf-Nd-Th8"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="bts" destination="C7n-Ny-D1f" collectionClass="NSMutableArray" id="i5c-p8-Gof"/>
+                <outletCollection property="bts" destination="pBg-3C-S5H" collectionClass="NSMutableArray" id="jBg-5X-EC1"/>
+                <outletCollection property="bts" destination="f0c-yA-2bQ" collectionClass="NSMutableArray" id="SAJ-Ys-KeG"/>
+            </connections>
             <point key="canvasLocation" x="-23" y="83"/>
         </view>
     </objects>
