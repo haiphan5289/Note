@@ -56,18 +56,26 @@ extension ConfigStyle {
                     
                     if bt.isSelected {
                         bt.setImage(Asset.icKeyboard.image, for: .normal)
-                        wSelf.delegate?.updateStatusKeyboard(status: .hide)
                         bt.isSelected = false
+                        wSelf.delegate?.updateStatusKeyboard(status: .hide)
                     } else {
                         bt.setImage(Asset.icHideKeyboard.image, for: .normal)
-                        wSelf.delegate?.updateStatusKeyboard(status: .open)
                         bt.isSelected = true
+                        wSelf.delegate?.updateStatusKeyboard(status: .open)
                     }
-                    
-                default: break
+                case .color:
+                    wSelf.updateStatusKeyboard()
+                case .text:
+                    wSelf.updateStatusKeyboard()
                 }
             }.disposed(by: disposeBag)
             
         }
+    }
+    
+    func updateStatusKeyboard() {
+        self.bts[ActionConfig.keyboard.rawValue].setImage(Asset.icKeyboard.image, for: .normal)
+        self.bts[ActionConfig.keyboard.rawValue].isSelected = false
+        self.delegate?.updateStatusKeyboard(status: .hide)
     }
 }

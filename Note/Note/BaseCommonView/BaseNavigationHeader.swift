@@ -13,9 +13,11 @@ class BaseNavigationHeader: UIViewController {
     
     struct Constant {
         static let heightViewStyle: CGFloat = 50
+        static let heightViewText: CGFloat = 200
     }
     
     private let configStyle: ConfigStyle = ConfigStyle.loadXib()
+    private let configText: ConfigText = ConfigText.loadXib()
     let eventHeightKeyboard: PublishSubject<CGFloat> = PublishSubject.init()
     let navigationItemView: NavigationItemView = NavigationItemView.loadXib()
     
@@ -60,6 +62,12 @@ class BaseNavigationHeader: UIViewController {
         self.view.addSubview(self.configStyle)
         self.setupConfigStyleWithoutKeyboard()
         self.configStyle.delegate = self
+        
+        self.view.addSubview(self.configText)
+        self.configText.snp.makeConstraints { make in
+            make.bottom.left.right.equalToSuperview()
+            make.height.equalTo(Constant.heightViewText + ConstantCommon.shared.getHeightSafeArea(type: .bottom))
+        }
     }
     
     private func configRX() {

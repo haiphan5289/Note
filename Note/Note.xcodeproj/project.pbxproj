@@ -147,6 +147,8 @@
 		93AA99152709AA0C00939D3A /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA99142709AA0C00939D3A /* UITextViewExtension.swift */; };
 		93AA99182709B34C00939D3A /* ConfigStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA99172709B34C00939D3A /* ConfigStyle.swift */; };
 		93AA991A2709B39D00939D3A /* ConfigStyle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA99192709B39D00939D3A /* ConfigStyle.xib */; };
+		93AA991D2709D2CA00939D3A /* ConfigText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA991C2709D2CA00939D3A /* ConfigText.swift */; };
+		93AA991F2709D2E200939D3A /* ConfigText.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA991E2709D2E200939D3A /* ConfigText.xib */; };
 		9F17E688D6E5DC8617F4A480 /* Pods_Note.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452D3D813B7458C82BE42484 /* Pods_Note.framework */; };
 /* End PBXBuildFile section */
 
@@ -296,6 +298,8 @@
 		93AA99142709AA0C00939D3A /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		93AA99172709B34C00939D3A /* ConfigStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigStyle.swift; sourceTree = "<group>"; };
 		93AA99192709B39D00939D3A /* ConfigStyle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigStyle.xib; sourceTree = "<group>"; };
+		93AA991C2709D2CA00939D3A /* ConfigText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigText.swift; sourceTree = "<group>"; };
+		93AA991E2709D2E200939D3A /* ConfigText.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigText.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -433,6 +437,7 @@
 		936A9C552704A178006F9F25 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				93AA991B2709D27800939D3A /* ConfigText */,
 				93AA99162709AE3700939D3A /* ConfigStyle */,
 				93AA9900270850BA00939D3A /* NavigationItem */,
 				93AA98F7270811C600939D3A /* PathDraw */,
@@ -797,6 +802,15 @@
 			path = ConfigStyle;
 			sourceTree = "<group>";
 		};
+		93AA991B2709D27800939D3A /* ConfigText */ = {
+			isa = PBXGroup;
+			children = (
+				93AA991C2709D2CA00939D3A /* ConfigText.swift */,
+				93AA991E2709D2E200939D3A /* ConfigText.xib */,
+			);
+			path = ConfigText;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -865,6 +879,7 @@
 				936A9C2C27049F1E006F9F25 /* Main.storyboard in Resources */,
 				936A9C392704A09C006F9F25 /* swiftgen.yml in Resources */,
 				936A9CDC2704A179006F9F25 /* ProgressIndicator.png in Resources */,
+				93AA991F2709D2E200939D3A /* ConfigText.xib in Resources */,
 				936A9CF42704A179006F9F25 /* ExportFile.xib in Resources */,
 				93AA990F2708539D00939D3A /* TextVC.xib in Resources */,
 				936A9CED2704A179006F9F25 /* MoreVC.xib in Resources */,
@@ -1012,6 +1027,7 @@
 				936A9CF62704A179006F9F25 /* UISearchBarExtensions.swift in Sources */,
 				936A9CF22704A179006F9F25 /* CircularSlider.swift in Sources */,
 				936A9D322704A179006F9F25 /* Font+Extension.swift in Sources */,
+				93AA991D2709D2CA00939D3A /* ConfigText.swift in Sources */,
 				936A9D2F2704A179006F9F25 /* PropertyWapper.swift in Sources */,
 				936A9CE32704A179006F9F25 /* CustomTabbarView.swift in Sources */,
 				936A9CFB2704A179006F9F25 /* UINavigationItemExtensions.swift in Sources */,
