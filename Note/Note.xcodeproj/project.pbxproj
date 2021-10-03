@@ -144,6 +144,7 @@
 		93AA990F2708539D00939D3A /* TextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA990C2708539D00939D3A /* TextVC.xib */; };
 		93AA99102708539D00939D3A /* TextVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA990D2708539D00939D3A /* TextVM.swift */; };
 		93AA99112708539D00939D3A /* TextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA990E2708539D00939D3A /* TextVC.swift */; };
+		93AA99152709AA0C00939D3A /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA99142709AA0C00939D3A /* UITextViewExtension.swift */; };
 		9F17E688D6E5DC8617F4A480 /* Pods_Note.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452D3D813B7458C82BE42484 /* Pods_Note.framework */; };
 /* End PBXBuildFile section */
 
@@ -290,6 +291,7 @@
 		93AA990C2708539D00939D3A /* TextVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextVC.xib; sourceTree = "<group>"; };
 		93AA990D2708539D00939D3A /* TextVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextVM.swift; sourceTree = "<group>"; };
 		93AA990E2708539D00939D3A /* TextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextVC.swift; sourceTree = "<group>"; };
+		93AA99142709AA0C00939D3A /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -685,6 +687,7 @@
 				936A9CC92704A179006F9F25 /* Encode+Extension.swift */,
 				936A9CCA2704A179006F9F25 /* PushNotification */,
 				936A9CCD2704A179006F9F25 /* DateExtension.swift */,
+				93AA99142709AA0C00939D3A /* UITextViewExtension.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -1026,6 +1029,7 @@
 				936A9D182704A179006F9F25 /* UIDatePickerExtensions.swift in Sources */,
 				936A9C462704A14D006F9F25 /* GetHeightSafeArea.swift in Sources */,
 				936A9CEB2704A179006F9F25 /* ABTimeView.swift in Sources */,
+				93AA99152709AA0C00939D3A /* UITextViewExtension.swift in Sources */,
 				936A9D312704A179006F9F25 /* UIAllertVC+Extension.swift in Sources */,
 				936A9D212704A179006F9F25 /* UITapgesture+Extension.swift in Sources */,
 			);

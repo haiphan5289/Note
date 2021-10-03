@@ -55,6 +55,7 @@ extension HomeVC {
                                    height: vDropDown.getHeightDropdown())
             vDropDown.frame = f
             vDropDown.isHidden = true
+            vDropDown.delegate = self
             self.view.addSubview(vDropDown)
         }
     }
@@ -109,7 +110,12 @@ extension HomeVC: AddNoteDelegate {
 }
 extension HomeVC: DropDownDelegate {
     func actionCreate(type: DropdownView.TypeView) {
-        
+        switch type {
+        case .text:
+            let vc = TextVC.createVC()
+            self.navigationController?.pushViewController(vc, animated: true)
+        default: break
+        }
     }
     
     

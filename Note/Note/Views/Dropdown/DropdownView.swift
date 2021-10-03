@@ -135,7 +135,7 @@ extension DropdownView {
             v.addGestureRecognizer(tap)
             tap.rx.event.bind { [weak self] _ in
                 guard let wSelf = self else { return }
-                print("pp")
+                wSelf.delegate?.actionCreate(type: type)
             }.disposed(by: disposeBag)
             
             self.stackView.addArrangedSubview(v)
