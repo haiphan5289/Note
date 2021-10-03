@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 struct SettingDefaultFont {
     static let DEFAULT_NAME_FONT = "Gill Sans"
-    static let DEFAULT_NAME_BOLD = "Gill Sans Bold"
-    static let DEFAULT_NAME_SEMIBOLD = "Gill Sans SemiBold"
-    static let DEFAULT_NAME_MEDIUM = "Gill Sans SemiBold"
+    static let DEFAULT_NAME_BOLD = "GillSans-SemiBold"
+    static let DEFAULT_NAME_SEMIBOLD = "GillSans-SemiBold"
+    static let DEFAULT_NAME_MEDIUM = "GillSans-SemiBold"
 }

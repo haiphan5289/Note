@@ -10,6 +10,7 @@ import RxSwift
 
 protocol ConfigStyleDelegate {
     func updateStatusKeyboard(status: ConfigStyle.StatusKeyboard)
+    func showConfigStyleText()
 }
 
 class ConfigStyle: UIView {
@@ -67,6 +68,7 @@ extension ConfigStyle {
                     wSelf.updateStatusKeyboard()
                 case .text:
                     wSelf.updateStatusKeyboard()
+                    wSelf.delegate?.showConfigStyleText()
                 }
             }.disposed(by: disposeBag)
             

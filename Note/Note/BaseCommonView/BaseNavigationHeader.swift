@@ -68,6 +68,7 @@ class BaseNavigationHeader: UIViewController {
             make.bottom.left.right.equalToSuperview()
             make.height.equalTo(Constant.heightViewText + ConstantCommon.shared.getHeightSafeArea(type: .bottom))
         }
+        self.configText.isHidden = true
     }
     
     private func configRX() {
@@ -107,6 +108,10 @@ class BaseNavigationHeader: UIViewController {
     }
 }
 extension BaseNavigationHeader: ConfigStyleDelegate {
+    func showConfigStyleText() {
+        self.configText.isHidden = false
+    }
+    
     func updateStatusKeyboard(status: ConfigStyle.StatusKeyboard) {
         self.eventStatusKeyboard.onNext(status)
     }
