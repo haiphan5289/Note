@@ -7,15 +7,19 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class BaseNavigationHeader: UIViewController {
     
+    let eventHeightKeyboard: PublishSubject<CGFloat> = PublishSubject.init()
     let navigationItemView: NavigationItemView = NavigationItemView.loadXib()
     
     var vContainer: UIView!
     
+    private let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configRX()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,5 +47,26 @@ class BaseNavigationHeader: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         vContainer.removeFromSuperview()
+    }
+    
+    private func configRX() {
+        let show = NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification).map { KeyboardInfo($0) }
+        let hide = NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification).map { KeyboardInfo($0) }
+        
+        Observable.merge(show, hide).bind(onNext: weakify({ (keyboard, wSelf) in
+            wSelf.runAnimate(by: keyboard)
+        })).disposed(by: disposeBag)
+    }
+    
+    private func runAnimate(by keyboarInfor: KeyboardInfo?) {
+        guard let i = keyboarInfor else {
+            return
+        }
+        let h = i.height
+        let d = i.duration
+        
+        UIView.animate(withDuration: d) {
+            self.eventHeightKeyboard.onNext(h)
+        }
     }
 }

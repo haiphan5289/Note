@@ -145,6 +145,8 @@
 		93AA99102708539D00939D3A /* TextVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA990D2708539D00939D3A /* TextVM.swift */; };
 		93AA99112708539D00939D3A /* TextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA990E2708539D00939D3A /* TextVC.swift */; };
 		93AA99152709AA0C00939D3A /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA99142709AA0C00939D3A /* UITextViewExtension.swift */; };
+		93AA99182709B34C00939D3A /* ConfigStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA99172709B34C00939D3A /* ConfigStyle.swift */; };
+		93AA991A2709B39D00939D3A /* ConfigStyle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA99192709B39D00939D3A /* ConfigStyle.xib */; };
 		9F17E688D6E5DC8617F4A480 /* Pods_Note.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452D3D813B7458C82BE42484 /* Pods_Note.framework */; };
 /* End PBXBuildFile section */
 
@@ -292,6 +294,8 @@
 		93AA990D2708539D00939D3A /* TextVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextVM.swift; sourceTree = "<group>"; };
 		93AA990E2708539D00939D3A /* TextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextVC.swift; sourceTree = "<group>"; };
 		93AA99142709AA0C00939D3A /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
+		93AA99172709B34C00939D3A /* ConfigStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigStyle.swift; sourceTree = "<group>"; };
+		93AA99192709B39D00939D3A /* ConfigStyle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigStyle.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,6 +433,7 @@
 		936A9C552704A178006F9F25 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				93AA99162709AE3700939D3A /* ConfigStyle */,
 				93AA9900270850BA00939D3A /* NavigationItem */,
 				93AA98F7270811C600939D3A /* PathDraw */,
 				934C8A5C27073F33008BCE0A /* Dropdown */,
@@ -783,6 +788,15 @@
 			path = Text;
 			sourceTree = "<group>";
 		};
+		93AA99162709AE3700939D3A /* ConfigStyle */ = {
+			isa = PBXGroup;
+			children = (
+				93AA99172709B34C00939D3A /* ConfigStyle.swift */,
+				93AA99192709B39D00939D3A /* ConfigStyle.xib */,
+			);
+			path = ConfigStyle;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -855,6 +869,7 @@
 				93AA990F2708539D00939D3A /* TextVC.xib in Resources */,
 				936A9CED2704A179006F9F25 /* MoreVC.xib in Resources */,
 				936A9CDF2704A179006F9F25 /* ImportOptionsVC.xib in Resources */,
+				93AA991A2709B39D00939D3A /* ConfigStyle.xib in Resources */,
 				93AA98FD270846E400939D3A /* SoundNote.mp3 in Resources */,
 				936A9D4E2704A7F0006F9F25 /* AddNote.xib in Resources */,
 				936A9CEF2704A179006F9F25 /* EmptyView.xib in Resources */,
@@ -1032,6 +1047,7 @@
 				93AA99152709AA0C00939D3A /* UITextViewExtension.swift in Sources */,
 				936A9D312704A179006F9F25 /* UIAllertVC+Extension.swift in Sources */,
 				936A9D212704A179006F9F25 /* UITapgesture+Extension.swift in Sources */,
+				93AA99182709B34C00939D3A /* ConfigStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
