@@ -16,8 +16,8 @@ class BaseNavigationHeader: UIViewController {
         static let heightViewText: CGFloat = 150
     }
     
-    private let configStyle: ConfigStyle = ConfigStyle.loadXib()
-    private let configText: ConfigText = ConfigText.loadXib()
+    private let configStyleView: ConfigStyle = ConfigStyle.loadXib()
+    private let configTextView: ConfigText = ConfigText.loadXib()
     private let eventShowKeyboard: PublishSubject<Void> = PublishSubject.init()
     let eventHeightKeyboard: PublishSubject<CGFloat> = PublishSubject.init()
     let navigationItemView: NavigationItemView = NavigationItemView.loadXib()
@@ -60,25 +60,21 @@ class BaseNavigationHeader: UIViewController {
     }
     
     private func configUI() {
-        self.view.addSubview(self.configStyle)
-        self.configStyle.setupConfigStyleWithoutKeyboard()
-        self.configStyle.delegate = self
+        self.view.addSubview(self.configStyleView)
+        self.configStyleView.setupConfigStyleWithoutKeyboard()
+        self.configStyleView.delegate = self
         
-        self.configText.delegate = self
-        self.view.addSubview(self.configText)
-        self.configText.snp.makeConstraints { make in
-            make.bottom.left.right.equalToSuperview()
-            make.height.equalTo(Constant.heightViewText + ConstantCommon.shared.getHeightSafeArea(type: .bottom))
-        }
-        self.configText.isHidden = true
+        self.configTextView.delegate = self
+        self.configTextView.addViewToParent(view: self.view)
+        self.configTextView.isHidden = true
     }
     
     private func configRX() {
         
         self.eventShowKeyboard.asObservable().bind { [weak self] _ in
             guard let wSelf = self else { return }
-            wSelf.configStyle.updateStatusKeyboard(status: .open)
-            wSelf.configText.isHidden = true
+            wSelf.configStyleView.updateStatusKeyboard(status: .open)
+            wSelf.configTextView.isHidden = true
         }.disposed(by: disposeBag)
         
         let show = NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification).map { KeyboardInfo($0) }
@@ -97,7 +93,7 @@ class BaseNavigationHeader: UIViewController {
         let d = i.duration
         
         UIView.animate(withDuration: d) {
-            (h > 0) ? self.configStyle.setupConfigStyleWHaveKeyboard(height: h) : self.configStyle.setupConfigStyleWithoutKeyboard()
+            (h > 0) ? self.configStyleView.setupConfigStyleWHaveKeyboard(height: h) : self.configStyleView.setupConfigStyleWithoutKeyboard()
             if h > 0 {
                 self.eventShowKeyboard.onNext(())
             }
@@ -107,7 +103,7 @@ class BaseNavigationHeader: UIViewController {
 }
 extension BaseNavigationHeader: ConfigStyleDelegate {
     func showConfigStyleText() {
-        self.configText.isHidden = false
+        self.configTextView.isHidden = false
     }
     
     func updateStatusKeyboard(status: ConfigStyle.StatusKeyboard) {
@@ -116,13 +112,13 @@ extension BaseNavigationHeader: ConfigStyleDelegate {
 }
 extension BaseNavigationHeader: ConfigTextDelegate {
     func dismiss() {
-        self.configText.isHidden = true
-        self.configStyle.updateStatusKeyboard(status: .open, updateStatus: true)
+        self.configTextView.isHidden = true
+        self.configStyleView.updateStatusKeyboard(status: .open, updateStatus: true)
     }
     
     func save() {
-        self.configText.isHidden = true
-        self.configStyle.updateStatusKeyboard(status: .open)
+        self.configTextView.isHidden = true
+        self.configStyleView.updateStatusKeyboard(status: .open, updateStatus: true)
     }
     
     func showConfigText() {

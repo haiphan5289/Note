@@ -64,5 +64,13 @@ extension ConfigText {
         }
         
     }
+    
+    func addViewToParent(view: UIView) {
+        view.addSubview(self)
+        self.snp.makeConstraints { make in
+            make.bottom.left.right.equalToSuperview()
+            make.height.equalTo(BaseNavigationHeader.Constant.heightViewText + ConstantCommon.shared.getHeightSafeArea(type: .bottom))
+        }
+    }
 
 }
