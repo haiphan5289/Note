@@ -149,6 +149,9 @@
 		93AA991A2709B39D00939D3A /* ConfigStyle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA99192709B39D00939D3A /* ConfigStyle.xib */; };
 		93AA991D2709D2CA00939D3A /* ConfigText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA991C2709D2CA00939D3A /* ConfigText.swift */; };
 		93AA991F2709D2E200939D3A /* ConfigText.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA991E2709D2E200939D3A /* ConfigText.xib */; };
+		93B6EFC4270B4ABC0035EF09 /* ListTextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B6EFC1270B4ABC0035EF09 /* ListTextVC.xib */; };
+		93B6EFC5270B4ABC0035EF09 /* ListTextVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFC2270B4ABC0035EF09 /* ListTextVM.swift */; };
+		93B6EFC6270B4ABC0035EF09 /* ListTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */; };
 		9F17E688D6E5DC8617F4A480 /* Pods_Note.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452D3D813B7458C82BE42484 /* Pods_Note.framework */; };
 /* End PBXBuildFile section */
 
@@ -300,6 +303,9 @@
 		93AA99192709B39D00939D3A /* ConfigStyle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigStyle.xib; sourceTree = "<group>"; };
 		93AA991C2709D2CA00939D3A /* ConfigText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigText.swift; sourceTree = "<group>"; };
 		93AA991E2709D2E200939D3A /* ConfigText.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigText.xib; sourceTree = "<group>"; };
+		93B6EFC1270B4ABC0035EF09 /* ListTextVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTextVC.xib; sourceTree = "<group>"; };
+		93B6EFC2270B4ABC0035EF09 /* ListTextVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTextVM.swift; sourceTree = "<group>"; };
+		93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTextVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -714,6 +720,7 @@
 		936A9D3B2704A4C9006F9F25 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				93B6EFC0270B4AA40035EF09 /* ListText */,
 				936A9D432704A634006F9F25 /* Menu */,
 				93AA99052708535D00939D3A /* Text */,
 				936A9D3C2704A4D1006F9F25 /* Home */,
@@ -811,6 +818,16 @@
 			path = ConfigText;
 			sourceTree = "<group>";
 		};
+		93B6EFC0270B4AA40035EF09 /* ListText */ = {
+			isa = PBXGroup;
+			children = (
+				93B6EFC1270B4ABC0035EF09 /* ListTextVC.xib */,
+				93B6EFC2270B4ABC0035EF09 /* ListTextVM.swift */,
+				93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */,
+			);
+			path = ListText;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -871,6 +888,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				936A9CDA2704A179006F9F25 /* StartIndicator.png in Resources */,
+				93B6EFC4270B4ABC0035EF09 /* ListTextVC.xib in Resources */,
 				93AA9904270850DE00939D3A /* NavigationItemView.xib in Resources */,
 				936A9C3C2704A0DA006F9F25 /* Localizable.strings in Resources */,
 				936A9C3127049F1F006F9F25 /* LaunchScreen.storyboard in Resources */,
@@ -1032,6 +1050,7 @@
 				936A9CE32704A179006F9F25 /* CustomTabbarView.swift in Sources */,
 				936A9CFB2704A179006F9F25 /* UINavigationItemExtensions.swift in Sources */,
 				936A9CD22704A179006F9F25 /* Message.swift in Sources */,
+				93B6EFC5270B4ABC0035EF09 /* ListTextVM.swift in Sources */,
 				936A9D2D2704A179006F9F25 /* UITextField_Extension.swift in Sources */,
 				936A9D202704A179006F9F25 /* UIFont+Extension.swift in Sources */,
 				936A9CF02704A179006F9F25 /* EmptyView.swift in Sources */,
@@ -1061,6 +1080,7 @@
 				936A9C462704A14D006F9F25 /* GetHeightSafeArea.swift in Sources */,
 				936A9CEB2704A179006F9F25 /* ABTimeView.swift in Sources */,
 				93AA99152709AA0C00939D3A /* UITextViewExtension.swift in Sources */,
+				93B6EFC6270B4ABC0035EF09 /* ListTextVC.swift in Sources */,
 				936A9D312704A179006F9F25 /* UIAllertVC+Extension.swift in Sources */,
 				936A9D212704A179006F9F25 /* UITapgesture+Extension.swift in Sources */,
 				93AA99182709B34C00939D3A /* ConfigStyle.swift in Sources */,

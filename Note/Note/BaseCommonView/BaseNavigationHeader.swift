@@ -63,6 +63,7 @@ class BaseNavigationHeader: UIViewController {
         self.setupConfigStyleWithoutKeyboard()
         self.configStyle.delegate = self
         
+        self.configText.delegate = self
         self.view.addSubview(self.configText)
         self.configText.snp.makeConstraints { make in
             make.bottom.left.right.equalToSuperview()
@@ -88,7 +89,8 @@ class BaseNavigationHeader: UIViewController {
         let d = i.duration
         
         UIView.animate(withDuration: d) {
-            ( h > 0 ) ? self.setupConfigStyleWHaveKeyboard(height: h) : self.setupConfigStyleWithoutKeyboard()
+            (h > 0) ? self.setupConfigStyleWHaveKeyboard(height: h) : self.setupConfigStyleWithoutKeyboard()
+            self.configStyle.updateStatusKeyboard(status: (h > 0) ? .open : .hide)
         }
     }
     
@@ -115,4 +117,25 @@ extension BaseNavigationHeader: ConfigStyleDelegate {
     func updateStatusKeyboard(status: ConfigStyle.StatusKeyboard) {
         self.eventStatusKeyboard.onNext(status)
     }
+}
+extension BaseNavigationHeader: ConfigTextDelegate {
+    func dismiss() {
+        self.configText.isHidden = true
+        self.configStyle.updateStatusKeyboard(status: .open)
+    }
+    
+    func save() {
+        self.configText.isHidden = true
+        self.configStyle.updateStatusKeyboard(status: .open)
+    }
+    
+    func showConfigText() {
+        
+    }
+    
+    func pickColor() {
+        
+    }
+    
+    
 }

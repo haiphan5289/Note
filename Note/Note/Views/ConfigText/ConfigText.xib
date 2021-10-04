@@ -138,12 +138,19 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q12-7U-97V">
+                                                    <rect key="frame" x="0.0" y="0.0" width="282" height="50"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstItem="aQx-2b-t6M" firstAttribute="width" secondItem="JBK-sm-Xti" secondAttribute="width" multiplier="0.851064" id="3bx-xe-GsV"/>
+                                                <constraint firstItem="Q12-7U-97V" firstAttribute="top" secondItem="JBK-sm-Xti" secondAttribute="top" id="56f-tG-beP"/>
+                                                <constraint firstAttribute="trailing" secondItem="Q12-7U-97V" secondAttribute="trailing" id="FD6-mD-f07"/>
                                                 <constraint firstItem="aQx-2b-t6M" firstAttribute="centerY" secondItem="JBK-sm-Xti" secondAttribute="centerY" id="f8b-fF-iv4"/>
+                                                <constraint firstItem="Q12-7U-97V" firstAttribute="leading" secondItem="JBK-sm-Xti" secondAttribute="leading" id="h42-Ap-hi9"/>
                                                 <constraint firstItem="aQx-2b-t6M" firstAttribute="centerX" secondItem="JBK-sm-Xti" secondAttribute="centerX" id="m61-KO-WaW"/>
+                                                <constraint firstAttribute="bottom" secondItem="Q12-7U-97V" secondAttribute="bottom" id="pbY-mP-DFb"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -171,6 +178,12 @@
                 <constraint firstItem="2xn-Bq-tER" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nWd-Fc-tgw"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="bts" destination="Cfo-09-qcR" collectionClass="NSMutableArray" id="JrS-wV-Hqg"/>
+                <outletCollection property="bts" destination="51I-F9-ZmE" collectionClass="NSMutableArray" id="6Yp-dY-3LD"/>
+                <outletCollection property="bts" destination="1np-mW-iVj" collectionClass="NSMutableArray" id="cZQ-54-SbX"/>
+                <outletCollection property="bts" destination="Q12-7U-97V" collectionClass="NSMutableArray" id="LKl-At-fdQ"/>
+            </connections>
             <point key="canvasLocation" x="-23" y="83"/>
         </view>
     </objects>

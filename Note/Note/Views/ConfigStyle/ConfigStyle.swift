@@ -65,9 +65,9 @@ extension ConfigStyle {
                         wSelf.delegate?.updateStatusKeyboard(status: .open)
                     }
                 case .color:
-                    wSelf.updateStatusKeyboard()
+                    wSelf.updateStatusKeyboard(status: .hide, updateStatus: true)
                 case .text:
-                    wSelf.updateStatusKeyboard()
+                    wSelf.updateStatusKeyboard(status: .hide, updateStatus: true)
                     wSelf.delegate?.showConfigStyleText()
                 }
             }.disposed(by: disposeBag)
@@ -75,9 +75,24 @@ extension ConfigStyle {
         }
     }
     
-    func updateStatusKeyboard() {
-        self.bts[ActionConfig.keyboard.rawValue].setImage(Asset.icKeyboard.image, for: .normal)
-        self.bts[ActionConfig.keyboard.rawValue].isSelected = false
-        self.delegate?.updateStatusKeyboard(status: .hide)
+    func updateStatusKeyboard(status: StatusKeyboard, updateStatus: Bool = false) {
+        switch status {
+        case .hide:
+            self.bts[ActionConfig.keyboard.rawValue].setImage(Asset.icKeyboard.image, for: .normal)
+            self.bts[ActionConfig.keyboard.rawValue].isSelected = false
+            
+            if updateStatus {
+                self.delegate?.updateStatusKeyboard(status: .hide)
+            }
+            
+        case .open:
+            self.bts[ActionConfig.keyboard.rawValue].setImage(Asset.icHideKeyboard.image, for: .normal)
+            self.bts[ActionConfig.keyboard.rawValue].isSelected = true
+            
+            if updateStatus {
+                self.delegate?.updateStatusKeyboard(status: .open)
+            }
+        }
+        
     }
 }

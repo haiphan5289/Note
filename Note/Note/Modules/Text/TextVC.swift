@@ -35,6 +35,7 @@ extension TextVC {
     private func setupUI() {
         // Add here the setup for the UI
         textView.centerVertically()
+        textView.becomeFirstResponder()
     }
     
     private func setupRX() {
