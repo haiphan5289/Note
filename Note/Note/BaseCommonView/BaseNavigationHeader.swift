@@ -14,10 +14,12 @@ class BaseNavigationHeader: UIViewController {
     struct Constant {
         static let heightViewStyle: CGFloat = 50
         static let heightViewText: CGFloat = 150
+        static let heightViewListFont: CGFloat = 250
     }
     
     private let configStyleView: ConfigStyle = ConfigStyle.loadXib()
     private let configTextView: ConfigText = ConfigText.loadXib()
+    private let listFontView: ListFont = ListFont.loadXib()
     private let eventShowKeyboard: PublishSubject<Void> = PublishSubject.init()
     let eventHeightKeyboard: PublishSubject<CGFloat> = PublishSubject.init()
     let navigationItemView: NavigationItemView = NavigationItemView.loadXib()
@@ -67,6 +69,10 @@ class BaseNavigationHeader: UIViewController {
         self.configTextView.delegate = self
         self.configTextView.addViewToParent(view: self.view)
         self.configTextView.isHidden = true
+        
+//        self.listFontView.delegate = self
+        self.listFontView.addViewToParent(view: self.view)
+        self.listFontView.isHidden = true
     }
     
     private func configRX() {
@@ -122,7 +128,7 @@ extension BaseNavigationHeader: ConfigTextDelegate {
     }
     
     func showConfigText() {
-        
+        self.listFontView.isHidden = false
     }
     
     func pickColor() {
