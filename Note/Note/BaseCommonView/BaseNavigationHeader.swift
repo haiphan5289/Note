@@ -61,7 +61,7 @@ class BaseNavigationHeader: UIViewController {
     
     private func configUI() {
         self.view.addSubview(self.configStyle)
-        self.setupConfigStyleWithoutKeyboard()
+        self.configStyle.setupConfigStyleWithoutKeyboard()
         self.configStyle.delegate = self
         
         self.configText.delegate = self
@@ -97,26 +97,11 @@ class BaseNavigationHeader: UIViewController {
         let d = i.duration
         
         UIView.animate(withDuration: d) {
-            (h > 0) ? self.setupConfigStyleWHaveKeyboard(height: h) : self.setupConfigStyleWithoutKeyboard()
+            (h > 0) ? self.configStyle.setupConfigStyleWHaveKeyboard(height: h) : self.configStyle.setupConfigStyleWithoutKeyboard()
             if h > 0 {
                 self.eventShowKeyboard.onNext(())
             }
             
-        }
-    }
-    
-    private func setupConfigStyleWithoutKeyboard() {
-        self.configStyle.snp.remakeConstraints { make in
-            make.left.right.bottom.equalToSuperview()
-            make.height.equalTo(Constant.heightViewStyle + ConstantCommon.shared.getHeightSafeArea(type: .bottom))
-        }
-    }
-    
-    private func setupConfigStyleWHaveKeyboard(height: CGFloat) {
-        self.configStyle.snp.remakeConstraints { make in
-            make.left.right.equalToSuperview()
-            make.height.equalTo(Constant.heightViewStyle)
-            make.bottom.equalToSuperview().inset(height)
         }
     }
 }

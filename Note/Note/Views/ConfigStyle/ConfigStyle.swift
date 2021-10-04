@@ -95,4 +95,19 @@ extension ConfigStyle {
         }
         
     }
+    
+    func setupConfigStyleWithoutKeyboard() {
+        self.snp.remakeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(BaseNavigationHeader.Constant.heightViewStyle + ConstantCommon.shared.getHeightSafeArea(type: .bottom))
+        }
+    }
+    
+    func setupConfigStyleWHaveKeyboard(height: CGFloat) {
+        self.snp.remakeConstraints { make in
+            make.left.right.equalToSuperview()
+            make.height.equalTo(BaseNavigationHeader.Constant.heightViewStyle)
+            make.bottom.equalToSuperview().inset(height)
+        }
+    }
 }
