@@ -35,6 +35,14 @@ class HomeVC: UIViewController {
         self.setupRX()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //This is reasson why call this method at here
+        //Because when load completely, Size view.frame wii get size of file Xib not real devices
+        self.addDropdownView()
+    }
+    
+    
 }
 extension HomeVC {
     
@@ -48,7 +56,11 @@ extension HomeVC {
                 make.bottom.equalToSuperview().inset(height - Constant.distanceFromTopTabbar)
                 make.height.equalTo(Constant.heightAddNoteView)
             }
-            
+        }
+    }
+    
+    private func addDropdownView() {
+        if let height = self.tabBarController?.tabBar.frame.height {
             let f: CGRect = CGRect(x: (self.view.frame.width / 2) - ((self.view.frame.width - Constant.totalBesidesArea) / 2),
                                    y: self.view.frame.height - Constant.heightAddNoteView - height,
                                    width: self.view.frame.width - Constant.totalBesidesArea,
@@ -58,6 +70,7 @@ extension HomeVC {
             vDropDown.delegate = self
             self.view.addSubview(vDropDown)
         }
+
     }
     
     private func setupRX() {
@@ -83,25 +96,33 @@ extension HomeVC: AddNoteDelegate {
     func actionAddNote(status: AddNote.StatusAddNote) {
         switch status {
         case .open:
-            self.playAudio()
+            if #available(iOS 13, *) {
+                self.playAudio()
+            }
             self.vDropDown.isHidden = false
             var f = self.vDropDown.frame
             UIView.animate(withDuration: ConstantCommon.shared.timeAnimation) {
                 f.origin.y -= self.vDropDown.getHeightDropdown()
                 self.vDropDown.frame = f
             } completion: { _ in
-                self.audio.stop()
+                if #available(iOS 13, *) {
+                    self.audio.stop()
+                }
             }
 
         default:
-            self.playAudio()
+            if #available(iOS 13, *) {
+                self.playAudio()
+            }
             var f = self.vDropDown.frame
             UIView.animate(withDuration: ConstantCommon.shared.timeAnimation) {
                 f.origin.y += self.vDropDown.getHeightDropdown()
                 self.vDropDown.frame = f
             } completion: { _ in
                 self.vDropDown.isHidden = true
-                self.audio.stop()
+                if #available(iOS 13, *) {
+                    self.audio.stop()
+                }
             }
 
         }
