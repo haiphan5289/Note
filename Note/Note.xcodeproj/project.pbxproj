@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		930E2B19270C9396003C194A /* FontCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930E2B17270C9396003C194A /* FontCell.swift */; };
+		930E2B1A270C9396003C194A /* FontCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 930E2B18270C9396003C194A /* FontCell.xib */; };
+		930E2B20270C93BE003C194A /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930E2B1E270C93BE003C194A /* FontSize.swift */; };
+		930E2B21270C93BE003C194A /* FontSize.xib in Resources */ = {isa = PBXBuildFile; fileRef = 930E2B1F270C93BE003C194A /* FontSize.xib */; };
 		934C8A5E27074206008BCE0A /* DropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C8A5D27074206008BCE0A /* DropdownView.swift */; };
 		936A9C2527049F1E006F9F25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C2427049F1E006F9F25 /* AppDelegate.swift */; };
 		936A9C2727049F1E006F9F25 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C2627049F1E006F9F25 /* SceneDelegate.swift */; };
@@ -161,6 +165,10 @@
 		059EE04E82E2AD2737DB12F0 /* Pods-Note.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Note.release.xcconfig"; path = "Target Support Files/Pods-Note/Pods-Note.release.xcconfig"; sourceTree = "<group>"; };
 		2EB8F250E75CD10144EDE246 /* Pods-Note.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Note.debug.xcconfig"; path = "Target Support Files/Pods-Note/Pods-Note.debug.xcconfig"; sourceTree = "<group>"; };
 		452D3D813B7458C82BE42484 /* Pods_Note.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Note.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		930E2B17270C9396003C194A /* FontCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCell.swift; sourceTree = "<group>"; };
+		930E2B18270C9396003C194A /* FontCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontCell.xib; sourceTree = "<group>"; };
+		930E2B1E270C93BE003C194A /* FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
+		930E2B1F270C93BE003C194A /* FontSize.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontSize.xib; sourceTree = "<group>"; };
 		934C8A5D27074206008BCE0A /* DropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownView.swift; sourceTree = "<group>"; };
 		936A9C2127049F1E006F9F25 /* Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Note.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		936A9C2427049F1E006F9F25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -339,6 +347,24 @@
 				452D3D813B7458C82BE42484 /* Pods_Note.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		930E2B16270C936D003C194A /* FontCell */ = {
+			isa = PBXGroup;
+			children = (
+				930E2B17270C9396003C194A /* FontCell.swift */,
+				930E2B18270C9396003C194A /* FontCell.xib */,
+			);
+			path = FontCell;
+			sourceTree = "<group>";
+		};
+		930E2B1D270C939F003C194A /* FontSize */ = {
+			isa = PBXGroup;
+			children = (
+				930E2B1E270C93BE003C194A /* FontSize.swift */,
+				930E2B1F270C93BE003C194A /* FontSize.xib */,
+			);
+			path = FontSize;
 			sourceTree = "<group>";
 		};
 		934C8A5C27073F33008BCE0A /* Dropdown */ = {
@@ -836,6 +862,8 @@
 		93B6EFC7270B56100035EF09 /* ListFont */ = {
 			isa = PBXGroup;
 			children = (
+				930E2B16270C936D003C194A /* FontCell */,
+				930E2B1D270C939F003C194A /* FontSize */,
 				93B6EFC8270B56300035EF09 /* ListFont.xib */,
 				93B6EFCA270B56430035EF09 /* ListFont.swift */,
 			);
@@ -919,8 +947,10 @@
 				93AA991A2709B39D00939D3A /* ConfigStyle.xib in Resources */,
 				93AA98FD270846E400939D3A /* SoundNote.mp3 in Resources */,
 				936A9D4E2704A7F0006F9F25 /* AddNote.xib in Resources */,
+				930E2B21270C93BE003C194A /* FontSize.xib in Resources */,
 				936A9CEF2704A179006F9F25 /* EmptyView.xib in Resources */,
 				936A9D472704A643006F9F25 /* MenuVC.xib in Resources */,
+				930E2B1A270C9396003C194A /* FontCell.xib in Resources */,
 				936A9CD92704A179006F9F25 /* BorderLine.png in Resources */,
 				936A9D402704A61B006F9F25 /* HomeVC.xib in Resources */,
 				936A9CDE2704A179006F9F25 /* README.md in Resources */,
@@ -1056,6 +1086,7 @@
 				936A9D022704A179006F9F25 /* UIStoryboardExtensions.swift in Sources */,
 				936A9CD32704A179006F9F25 /* PopBaseViewController.swift in Sources */,
 				936A9D152704A179006F9F25 /* UIRefreshControlExtensions.swift in Sources */,
+				930E2B19270C9396003C194A /* FontCell.swift in Sources */,
 				936A9D1A2704A179006F9F25 /* Constants.swift in Sources */,
 				934C8A5E27074206008BCE0A /* DropdownView.swift in Sources */,
 				936A9CF62704A179006F9F25 /* UISearchBarExtensions.swift in Sources */,
@@ -1092,6 +1123,7 @@
 				936A9D042704A179006F9F25 /* UISegmentedControlExtensions.swift in Sources */,
 				936A9D3A2704A179006F9F25 /* DateExtension.swift in Sources */,
 				936A9D122704A179006F9F25 /* UIButtonExtensions.swift in Sources */,
+				930E2B20270C93BE003C194A /* FontSize.swift in Sources */,
 				936A9D182704A179006F9F25 /* UIDatePickerExtensions.swift in Sources */,
 				936A9C462704A14D006F9F25 /* GetHeightSafeArea.swift in Sources */,
 				936A9CEB2704A179006F9F25 /* ABTimeView.swift in Sources */,

@@ -11,12 +11,30 @@ import RxSwift
 
 class ListFont: UIView {
     
-    @IBOutlet weak var pickerView: UIPickerView!
-    let minutes = Array(0...9)
-    let seconds = Array(0...59)
+    struct Constant {
+        static let characterMiddle: String = "-"
+        static let firstName: String = "Normal"
+    }
     
-    var recievedString: String = ""
+    enum FontType: Int, CaseIterable {
+        case listFont
+        case listSize
+        
+        func getListFont() -> [String] {
+            return UIFont.familyNames
+        }
+        
+        func getListSize(forFamilyName: String) -> [String] {
+            return UIFont.fontNames(forFamilyName: forFamilyName)
+        }
+        
+    }
     
+    @IBOutlet weak var listFontTableView: UITableView!
+    @IBOutlet weak var listSizeTableView: UITableView!
+    
+    private var listSize: BehaviorRelay<[String]> = BehaviorRelay.init(value: [])
+    private var fontFamilyNames: String = SettingDefaultFont.DEFAULT_NAME_FONT
     private let disposeBag = DisposeBag()
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,11 +51,40 @@ class ListFont: UIView {
 extension ListFont {
     
     private func setupUI() {
-        pickerView.delegate = self
+        listFontTableView.register(FontCell.self, forCellReuseIdentifier: FontCell.identifier)
+        listSizeTableView.register(FontSize.self, forCellReuseIdentifier: FontSize.identifier)
+        self.listSize.accept(FontType.listSize.getListSize(forFamilyName: self.fontFamilyNames))
     }
     
     private func setupRX() {
+        Observable.just(FontType.listFont.getListFont())
+            .bind(to: listFontTableView.rx.items(cellIdentifier: FontCell.identifier, cellType: FontCell.self)) {(row, element, cell) in
+                cell.textLabel?.text = element
+            }.disposed(by: disposeBag)
         
+        self.listSize.asObservable()
+            .bind(to: listSizeTableView.rx.items(cellIdentifier: FontSize.identifier, cellType: FontSize.self)) {(row, element, cell) in
+                if row == 0 {
+                    cell.textLabel?.text = Constant.firstName
+                } else {
+                    if let range = element.searchLocation(searchText: "-"), let cutString = element.cutString(range: range) {
+                        cell.textLabel?.text = cutString
+                    }
+                }
+                
+                
+            }.disposed(by: disposeBag)
+        
+        self.listFontTableView.rx.itemSelected.bind { [weak self] idx in
+            guard let wSelf = self else { return }
+            let name = FontType.listFont.getListFont()[idx.row]
+            wSelf.updateListSize(name: name)
+        }.disposed(by: disposeBag)
+    }
+    
+    private func updateListSize(name: String) {
+        self.fontFamilyNames = name
+        self.listSize.accept(FontType.listSize.getListSize(forFamilyName: self.fontFamilyNames))
     }
     
     func addViewToParent(view: UIView) {
@@ -45,33 +92,6 @@ extension ListFont {
         self.snp.makeConstraints { make in
             make.bottom.left.right.equalToSuperview()
             make.height.equalTo(BaseNavigationHeader.Constant.heightViewListFont + ConstantCommon.shared.getHeightSafeArea(type: .bottom))
-        }
-    }
-}
-extension ListFont: UIPickerViewDelegate {
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 2
-        
-    }
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if component == 0 {
-            return minutes.count
-        }
-        
-        else {
-            return seconds.count
-        }
-        
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        if component == 0 {
-            return String(minutes[row])
-        } else {
-            
-            return String(seconds[row])
         }
     }
 }

@@ -67,6 +67,34 @@ extension String {
            let emailTest = NSPredicate(format:"SELF MATCHES %@", PHONE_REGEX)
            return emailTest.evaluate(with: self)
        }
+    
+    func searchLocation(searchText: String) -> NSRange? {
+        do {
+            let regEx = try NSRegularExpression(pattern: searchText, options: NSRegularExpression.Options.ignoreMetacharacters)
+            
+            let matchesRanges = regEx.matches(in: self, options: [], range: NSMakeRange(0, self.count)).map { $0.range }
+            
+            return matchesRanges.first
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+    
+    func cutString(range: NSRange) -> String? {
+        guard hasRange(NSRange(location: range.location + 1, length: range.length)) else {
+            return nil
+        }
+        let start = self.index(self.startIndex, offsetBy: range.location + 1)
+        let end = self.index(self.endIndex, offsetBy: 0)
+        let range = start..<end
+        let mySubstring = self[range]
+        return String(mySubstring)
+    }
+    
+    func hasRange(_ range: NSRange) -> Bool {
+        return Range(range, in: self) != nil
+    }
 }
 
 extension NSMutableAttributedString {
