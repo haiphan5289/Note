@@ -59,6 +59,15 @@ extension AddNote {
         }.disposed(by: disposebag)
     }
     
-    func hideButtonMix() {
+    func updateStatus(status: StatusAddNote) {
+        switch status {
+        case .remove:
+            self.btAddNote.isSelected = false
+            self.btAddNote.setImage(Asset.icUpAddNote.image, for: .normal)
+        case .open:
+            self.btAddNote.isSelected = true
+            self.btAddNote.setImage(Asset.icDownAddNote.image, for: .normal)
+        }
+        self.delegate?.actionAddNote(status: status)
     }
 }

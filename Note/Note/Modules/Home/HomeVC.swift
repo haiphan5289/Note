@@ -26,6 +26,8 @@ class HomeVC: UIViewController {
     private var viewModel: HomeVM = HomeVM()
     private let vAddNote: AddNote = AddNote.loadXib()
     private let vDropDown: DropdownView = DropdownView(frame: .zero)
+    
+    private let eventStatusDropDown: PublishSubject<AddNote.StatusAddNote> = PublishSubject.init()
     private var audio: AVAudioPlayer = AVAudioPlayer()
     
     private let disposeBag = DisposeBag()
@@ -40,6 +42,11 @@ class HomeVC: UIViewController {
         //This is reasson why call this method at here
         //Because when load completely, Size view.frame wii get size of file Xib not real devices
         self.addDropdownView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.vAddNote.updateStatus(status: .remove)
     }
     
     
@@ -75,6 +82,41 @@ extension HomeVC {
     
     private func setupRX() {
         // Add here the setup for the RX
+        self.eventStatusDropDown.asObservable().bind { [weak self] status in
+            guard let wSelf = self else { return }
+            switch status {
+            case .open:
+                if #available(iOS 13, *) {
+                    wSelf.playAudio()
+                }
+                wSelf.vDropDown.isHidden = false
+                var f = wSelf.vDropDown.frame
+                UIView.animate(withDuration: ConstantCommon.shared.timeAnimation) {
+                    f.origin.y -= wSelf.vDropDown.getHeightDropdown()
+                    wSelf.vDropDown.frame = f
+                } completion: { _ in
+                    if #available(iOS 13, *) {
+                        wSelf.audio.stop()
+                    }
+                }
+
+            default:
+                if #available(iOS 13, *) {
+                    wSelf.playAudio()
+                }
+                var f = wSelf.vDropDown.frame
+                UIView.animate(withDuration: ConstantCommon.shared.timeAnimation) {
+                    f.origin.y += wSelf.vDropDown.getHeightDropdown()
+                    wSelf.vDropDown.frame = f
+                } completion: { _ in
+                    wSelf.vDropDown.isHidden = true
+                    if #available(iOS 13, *) {
+                        wSelf.audio.stop()
+                    }
+                }
+
+            }
+        }.disposed(by: disposeBag)
     }
     
     private func playAudio() {
@@ -94,39 +136,7 @@ extension HomeVC {
 }
 extension HomeVC: AddNoteDelegate {
     func actionAddNote(status: AddNote.StatusAddNote) {
-        switch status {
-        case .open:
-            if #available(iOS 13, *) {
-                self.playAudio()
-            }
-            self.vDropDown.isHidden = false
-            var f = self.vDropDown.frame
-            UIView.animate(withDuration: ConstantCommon.shared.timeAnimation) {
-                f.origin.y -= self.vDropDown.getHeightDropdown()
-                self.vDropDown.frame = f
-            } completion: { _ in
-                if #available(iOS 13, *) {
-                    self.audio.stop()
-                }
-            }
-
-        default:
-            if #available(iOS 13, *) {
-                self.playAudio()
-            }
-            var f = self.vDropDown.frame
-            UIView.animate(withDuration: ConstantCommon.shared.timeAnimation) {
-                f.origin.y += self.vDropDown.getHeightDropdown()
-                self.vDropDown.frame = f
-            } completion: { _ in
-                self.vDropDown.isHidden = true
-                if #available(iOS 13, *) {
-                    self.audio.stop()
-                }
-            }
-
-        }
-        
+        self.eventStatusDropDown.onNext(status)
     }
 }
 extension HomeVC: DropDownDelegate {
