@@ -24,6 +24,11 @@ internal enum L10n {
     internal static let videos = L10n.tr("Localizable", "Dropdown.Videos")
   }
 
+  internal enum ListFontVC {
+    /// List Font
+    internal static let title = L10n.tr("Localizable", "ListFontVC.Title")
+  }
+
   internal enum Tabbar {
     /// Home
     internal static let home = L10n.tr("Localizable", "Tabbar.Home")

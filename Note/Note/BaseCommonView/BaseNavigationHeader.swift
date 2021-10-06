@@ -148,7 +148,9 @@ extension BaseNavigationHeader: ListFontDelegate {
     }
     
     func search() {
-        
+        let vc = ListFontVC.createVC()
+        vc.selectFontIndex = self.listFontView.getSelectIndexFont()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     

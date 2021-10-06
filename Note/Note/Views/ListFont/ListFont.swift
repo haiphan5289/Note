@@ -176,6 +176,10 @@ extension ListFont {
         
     }
     
+    func getSelectIndexFont() -> Int {
+        return self.selectIndexFont
+    }
+    
     private func updateListSize(name: String) {
         self.fontFamilyNames = name
         self.listSize.accept(FontType.listSize.getListSize(forFamilyName: self.fontFamilyNames))

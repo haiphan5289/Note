@@ -158,6 +158,10 @@
 		93B6EFC6270B4ABC0035EF09 /* ListTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */; };
 		93B6EFC9270B56300035EF09 /* ListFont.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B6EFC8270B56300035EF09 /* ListFont.xib */; };
 		93B6EFCB270B56430035EF09 /* ListFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFCA270B56430035EF09 /* ListFont.swift */; };
+		93D1B091270DE58D008FCD4B /* ListFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93D1B08E270DE58D008FCD4B /* ListFontVC.xib */; };
+		93D1B092270DE58D008FCD4B /* ListFontVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1B08F270DE58D008FCD4B /* ListFontVM.swift */; };
+		93D1B093270DE58D008FCD4B /* ListFontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1B090270DE58D008FCD4B /* ListFontVC.swift */; };
+		93D1B097270DE5DE008FCD4B /* BaseNavigationSimpleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1B096270DE5DE008FCD4B /* BaseNavigationSimpleVC.swift */; };
 		9F17E688D6E5DC8617F4A480 /* Pods_Note.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452D3D813B7458C82BE42484 /* Pods_Note.framework */; };
 /* End PBXBuildFile section */
 
@@ -318,6 +322,10 @@
 		93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTextVC.swift; sourceTree = "<group>"; };
 		93B6EFC8270B56300035EF09 /* ListFont.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListFont.xib; sourceTree = "<group>"; };
 		93B6EFCA270B56430035EF09 /* ListFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFont.swift; sourceTree = "<group>"; };
+		93D1B08E270DE58D008FCD4B /* ListFontVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListFontVC.xib; sourceTree = "<group>"; };
+		93D1B08F270DE58D008FCD4B /* ListFontVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFontVM.swift; sourceTree = "<group>"; };
+		93D1B090270DE58D008FCD4B /* ListFontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFontVC.swift; sourceTree = "<group>"; };
+		93D1B096270DE5DE008FCD4B /* BaseNavigationSimpleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationSimpleVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,6 +474,7 @@
 				936A9C532704A177006F9F25 /* Utils.swift */,
 				936A9C542704A177006F9F25 /* Prefix-Header.swift */,
 				93AA98FE2708503D00939D3A /* BaseNavigationHeader.swift */,
+				93D1B096270DE5DE008FCD4B /* BaseNavigationSimpleVC.swift */,
 			);
 			path = BaseCommonView;
 			sourceTree = "<group>";
@@ -751,6 +760,7 @@
 		936A9D3B2704A4C9006F9F25 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				93D1B08D270DE56B008FCD4B /* ListFont */,
 				93B6EFC0270B4AA40035EF09 /* ListText */,
 				936A9D432704A634006F9F25 /* Menu */,
 				93AA99052708535D00939D3A /* Text */,
@@ -870,6 +880,16 @@
 			path = ListFont;
 			sourceTree = "<group>";
 		};
+		93D1B08D270DE56B008FCD4B /* ListFont */ = {
+			isa = PBXGroup;
+			children = (
+				93D1B08E270DE58D008FCD4B /* ListFontVC.xib */,
+				93D1B08F270DE58D008FCD4B /* ListFontVM.swift */,
+				93D1B090270DE58D008FCD4B /* ListFontVC.swift */,
+			);
+			path = ListFont;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -948,6 +968,7 @@
 				93AA991A2709B39D00939D3A /* ConfigStyle.xib in Resources */,
 				93AA98FD270846E400939D3A /* SoundNote.mp3 in Resources */,
 				936A9D4E2704A7F0006F9F25 /* AddNote.xib in Resources */,
+				93D1B091270DE58D008FCD4B /* ListFontVC.xib in Resources */,
 				936A9CEF2704A179006F9F25 /* EmptyView.xib in Resources */,
 				936A9D472704A643006F9F25 /* MenuVC.xib in Resources */,
 				936A9CD92704A179006F9F25 /* BorderLine.png in Resources */,
@@ -1013,6 +1034,7 @@
 				936A9D412704A61B006F9F25 /* HomeVM.swift in Sources */,
 				936A9D2E2704A179006F9F25 /* String+Extension.swift in Sources */,
 				936A9D132704A179006F9F25 /* UIApplicationExtensions.swift in Sources */,
+				93D1B092270DE58D008FCD4B /* ListFontVM.swift in Sources */,
 				936A9CE82704A179006F9F25 /* ABThumbnailsManager.swift in Sources */,
 				936A9D4C2704A7DF006F9F25 /* AddNote.swift in Sources */,
 				936A9D112704A179006F9F25 /* UISwitchExtensions.swift in Sources */,
@@ -1051,9 +1073,11 @@
 				936A9CCE2704A179006F9F25 /* BaseNavigationLargeTitle.swift in Sources */,
 				936A9CFF2704A179006F9F25 /* UIImage+Extensions.swift in Sources */,
 				936A9D1C2704A179006F9F25 /* RangeTimeSlider.swift in Sources */,
+				93D1B097270DE5DE008FCD4B /* BaseNavigationSimpleVC.swift in Sources */,
 				936A9CFA2704A179006F9F25 /* UILayoutPriorityExtensions.swift in Sources */,
 				936A9C412704A123006F9F25 /* Assets-Gen.swift in Sources */,
 				936A9CF82704A179006F9F25 /* UIEdgeInsetsExtensions.swift in Sources */,
+				93D1B093270DE58D008FCD4B /* ListFontVC.swift in Sources */,
 				936A9CF72704A179006F9F25 /* UITableViewExtensions.swift in Sources */,
 				936A9D252704A179006F9F25 /* ViewControllerExtension.swift in Sources */,
 				93AA9902270850D400939D3A /* NavigationItemView.swift in Sources */,
