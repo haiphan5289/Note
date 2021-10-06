@@ -137,7 +137,6 @@ extension BaseNavigationHeader: ConfigTextDelegate {
     
     
 }
-
 extension BaseNavigationHeader: ListFontDelegate {
     func dismissListFont() {
         self.listFontView.hide()
@@ -150,8 +149,14 @@ extension BaseNavigationHeader: ListFontDelegate {
     func search() {
         let vc = ListFontVC.createVC()
         vc.selectFontIndex = self.listFontView.getSelectIndexFont()
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
+}
+extension BaseNavigationHeader: ListFontVCDelegae {
+    func selectFont(index: Int) {
+        self.listFontView.scrollToIndex(index: index)
+    }
 }

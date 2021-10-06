@@ -176,6 +176,15 @@ extension ListFont {
         
     }
     
+    func scrollToIndex(index: Int) {
+        self.selectIndexFont = index
+        self.listFontTableView.scrollToIndex(index: index)
+        self.listFontTableView.reloadData()
+        
+        let name = FontType.listFont.getListFont()[index]
+        self.updateListSize(name: name)
+    }
+    
     func getSelectIndexFont() -> Int {
         return self.selectIndexFont
     }
