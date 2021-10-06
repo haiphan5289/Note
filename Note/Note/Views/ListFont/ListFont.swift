@@ -9,6 +9,24 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+protocol ListFontDelegate {
+    func dismissListFont()
+    func done()
+    func search()
+}
+
+enum StatusList {
+    case zero, other
+    
+    static func getStatus(count: Int) -> Self {
+        if count == 0 {
+            return zero
+        }
+        
+        return other
+    }
+}
+
 class ListFont: UIView {
     
     struct Constant {
@@ -30,10 +48,19 @@ class ListFont: UIView {
         
     }
     
+    enum Action: Int, CaseIterable {
+        case close, done, search, minus, plus
+    }
+    
+    var delegate: ListFontDelegate?
+    
     @IBOutlet weak var listFontTableView: UITableView!
     @IBOutlet weak var listSizeTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet var bts: [UIButton]!
     
     private var listSize: BehaviorRelay<[String]> = BehaviorRelay.init(value: [])
+    private var listFont: BehaviorRelay<[String]> = BehaviorRelay.init(value: [])
     private var selectIndexFont: Int = 0
     private var selectIndexSize: Int = 0
     private var fontFamilyNames: String = SettingDefaultFont.DEFAULT_NAME_FONT
@@ -62,11 +89,12 @@ extension ListFont {
         listFontTableView.register(FontCell.nib, forCellReuseIdentifier: FontCell.identifier)
         listSizeTableView.register(FontSize.nib, forCellReuseIdentifier: FontSize.identifier)
         self.listSize.accept(FontType.listSize.getListSize(forFamilyName: self.fontFamilyNames))
+        self.listFont.accept(FontType.listFont.getListFont())
         
     }
     
     private func setupRX() {
-        Observable.just(FontType.listFont.getListFont())
+        self.listFont.asObservable()
             .bind(to: listFontTableView.rx.items(cellIdentifier: FontCell.identifier, cellType: FontCell.self)) {(row, element, cell) in
                 cell.lbName.text = element
                 
@@ -105,10 +133,13 @@ extension ListFont {
         
         self.listFontTableView.rx.itemSelected.bind { [weak self] idx in
             guard let wSelf = self else { return }
-            wSelf.selectIndexFont = idx.row
-            let name = FontType.listFont.getListFont()[idx.row]
-            wSelf.updateListSize(name: name)
-            wSelf.listFontTableView.reloadData()
+            if wSelf.selectIndexFont != idx.row {
+                wSelf.selectIndexFont = idx.row
+                wSelf.selectIndexSize = 0
+                let name = FontType.listFont.getListFont()[idx.row]
+                wSelf.updateListSize(name: name)
+                wSelf.listFontTableView.reloadData()
+            }
         }.disposed(by: disposeBag)
         
         self.listSizeTableView.rx.itemSelected.bind { [weak self] idx in
@@ -116,6 +147,32 @@ extension ListFont {
             wSelf.selectIndexSize = idx.row
             wSelf.listSizeTableView.reloadData()
         }.disposed(by: disposeBag)
+        
+        self.searchBar.rx.text.orEmpty.asObservable().bind { [weak self] text in
+            guard let wSelf = self else { return }
+            switch StatusList.getStatus(count: text.count) {
+            case .zero:
+                wSelf.listFont.accept(FontType.listFont.getListFont())
+            case .other:
+                let list = FontType.listFont.getListFont().filter { $0.uppercased().contains(text.uppercased()) }
+                wSelf.listFont.accept(list)
+            }
+        }.disposed(by: disposeBag)
+        
+        Action.allCases.forEach { [weak self] type in
+            guard let wSelf = self else { return }
+            let bt = wSelf.bts[type.rawValue]
+            
+            bt.rx.tap.bind { [weak self] _ in
+                guard let wSelf = self else { return }
+                switch type {
+                case .close: wSelf.delegate?.dismissListFont()
+                case .done: wSelf.delegate?.done()
+                case .search: wSelf.delegate?.search()
+                case .minus, .plus: break
+                }
+            }.disposed(by: disposeBag)
+        }
         
     }
     
@@ -130,6 +187,10 @@ extension ListFont {
             make.bottom.left.right.equalToSuperview()
             make.height.equalTo(BaseNavigationHeader.Constant.heightViewListFont)
         }
+    }
+    
+    func hide() {
+        self.isHidden = true
     }
 }
 extension ListFont: UITableViewDelegate {

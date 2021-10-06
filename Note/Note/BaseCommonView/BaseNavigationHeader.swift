@@ -70,7 +70,7 @@ class BaseNavigationHeader: UIViewController {
         self.configTextView.addViewToParent(view: self.view)
         self.configTextView.isHidden = true
         
-//        self.listFontView.delegate = self
+        self.listFontView.delegate = self
         self.listFontView.addViewToParent(view: self.view)
         self.listFontView.isHidden = true
     }
@@ -132,6 +132,22 @@ extension BaseNavigationHeader: ConfigTextDelegate {
     }
     
     func pickColor() {
+        
+    }
+    
+    
+}
+
+extension BaseNavigationHeader: ListFontDelegate {
+    func dismissListFont() {
+        self.listFontView.hide()
+    }
+    
+    func done() {
+        
+    }
+    
+    func search() {
         
     }
     
