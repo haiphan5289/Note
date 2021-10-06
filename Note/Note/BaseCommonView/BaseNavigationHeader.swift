@@ -14,7 +14,7 @@ class BaseNavigationHeader: UIViewController {
     struct Constant {
         static let heightViewStyle: CGFloat = 50
         static let heightViewText: CGFloat = 150
-        static let heightViewListFont: CGFloat = 250
+        static let heightViewListFont: CGFloat = 400
     }
     
     private let configStyleView: ConfigStyle = ConfigStyle.loadXib()

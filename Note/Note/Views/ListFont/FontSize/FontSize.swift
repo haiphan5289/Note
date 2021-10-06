@@ -9,9 +9,12 @@ import UIKit
 
 class FontSize: UITableViewCell {
 
+    @IBOutlet weak var img: UIImageView!
+    @IBOutlet weak var lbName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        selectionStyle = . none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
