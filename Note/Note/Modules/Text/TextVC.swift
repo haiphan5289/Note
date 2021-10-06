@@ -40,6 +40,13 @@ extension TextVC {
     
     private func setupRX() {
         // Add here the setup for the RX
+        
+        self.eventFont.asObservable().bind { [weak self] font in
+            guard let wSelf = self else { return }
+            wSelf.textView.font = font
+            wSelf.textView.centerVertically()
+        }.disposed(by: disposeBag)
+        
         self.navigationItemView.actionItem = { [weak self] type in
             guard let wSelf = self else { return }
             switch type {

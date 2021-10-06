@@ -13,6 +13,7 @@ protocol ListFontDelegate {
     func dismissListFont()
     func done()
     func search()
+    func updateFontStyle(font: UIFont)
 }
 
 enum StatusList {
@@ -139,6 +140,7 @@ extension ListFont {
                 let name = FontType.listFont.getListFont()[idx.row]
                 wSelf.updateListSize(name: name)
                 wSelf.listFontTableView.reloadData()
+                wSelf.selectFont()
             }
         }.disposed(by: disposeBag)
         
@@ -146,6 +148,7 @@ extension ListFont {
             guard let wSelf = self else { return }
             wSelf.selectIndexSize = idx.row
             wSelf.listSizeTableView.reloadData()
+            wSelf.selectFont()
         }.disposed(by: disposeBag)
         
         self.searchBar.rx.text.orEmpty.asObservable().bind { [weak self] text in
@@ -173,6 +176,16 @@ extension ListFont {
                 }
             }.disposed(by: disposeBag)
         }
+        
+    }
+    
+    func selectFont() {
+        let font = FontType.listFont.getListFont()[self.selectIndexFont]
+        if let index = FontType.listSize.getListSize(forFamilyName: font).hasIndex(index: self.selectIndexSize) {
+            let style = FontType.listSize.getListSize(forFamilyName: font)[index]
+            self.delegate?.updateFontStyle(font: UIFont(name: style, size: 24) ?? .systemFont(ofSize: 24))
+        }
+        
         
     }
     

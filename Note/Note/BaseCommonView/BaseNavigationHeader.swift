@@ -21,6 +21,7 @@ class BaseNavigationHeader: UIViewController {
     private let configTextView: ConfigText = ConfigText.loadXib()
     private let listFontView: ListFont = ListFont.loadXib()
     private let eventShowKeyboard: PublishSubject<Void> = PublishSubject.init()
+    let eventFont: PublishSubject<UIFont> = PublishSubject.init()
     let eventHeightKeyboard: PublishSubject<CGFloat> = PublishSubject.init()
     let navigationItemView: NavigationItemView = NavigationItemView.loadXib()
     
@@ -138,6 +139,10 @@ extension BaseNavigationHeader: ConfigTextDelegate {
     
 }
 extension BaseNavigationHeader: ListFontDelegate {
+    func updateFontStyle(font: UIFont) {
+        self.eventFont.onNext(font)
+    }
+    
     func dismissListFont() {
         self.listFontView.hide()
     }
