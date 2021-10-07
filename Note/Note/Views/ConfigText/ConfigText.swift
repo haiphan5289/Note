@@ -43,7 +43,6 @@ extension ConfigText {
     private func setupUI() {
         lbFontSize.adjustsFontSizeToFitWidth = true
         lbFontSize.minimumScaleFactor = 0.2
-        //ádas đá ád
     }
     
     private func setupRX() {
