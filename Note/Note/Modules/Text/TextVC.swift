@@ -52,7 +52,10 @@ extension TextVC {
     private func setupRX() {
         // Add here the setup for the RX
         
-        self.eventFont.asObservable().bind { [weak self] status in
+        //This is reason that use delay because Text will jump to top
+        self.eventFont.asObservable()
+            .delay(.milliseconds(200), scheduler: MainScheduler.asyncInstance)
+            .bind { [weak self] status in
             guard let wSelf = self else { return }
             switch status {
             case .update(let font): wSelf.textView.font = font
