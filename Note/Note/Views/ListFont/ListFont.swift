@@ -94,6 +94,7 @@ class ListFont: UIView {
     override func removeFromSuperview() {
         superview?.removeFromSuperview()
     }
+    
 }
 extension ListFont {
     
@@ -267,6 +268,10 @@ extension ListFont {
     
     func hide() {
         self.isHidden = true
+    }
+    
+    func showView() {
+        self.isHidden = false
     }
 }
 extension ListFont: UITableViewDelegate {

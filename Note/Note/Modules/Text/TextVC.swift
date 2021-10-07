@@ -13,7 +13,12 @@ import RxSwift
 
 class TextVC: BaseNavigationHeader {
     
-
+    struct Constant {
+        static let heightTextView: CGFloat = 300
+        static let widthTextView: CGFloat = 0.9
+        static let topContraintTextView: CGFloat = 10
+        static let botContraintTextView: CGFloat = 10
+    }
     
     // Add here outlets
     @IBOutlet weak var textView: UITextView!
@@ -27,6 +32,11 @@ class TextVC: BaseNavigationHeader {
         super.viewDidLoad()
         self.setupUI()
         self.setupRX()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.textView.centerVertically()
     }
     
 }
@@ -79,7 +89,54 @@ extension TextVC {
             } else {
                 wSelf.textView.becomeFirstResponder()
             }
+            wSelf.textView.centerVertically()
+        }.disposed(by: disposeBag)
+        
+        self.eventHeightKeyboard.asObservable().bind { [weak self] h in
+            guard let wSelf = self else { return }
+            if h <= 0 {
+                wSelf.textViewHideKeyboard()
+            } else {
+                wSelf.textViewShowKeyboard(height: h)
+            }
+        }.disposed(by: disposeBag)
+        
+        self.eventShowListFontView.asObservable().bind { [weak self] hide in
+            guard let wSelf = self else { return }
+            
+            if hide {
+                wSelf.textViewHideKeyboard()
+            } else {
+                wSelf.textViewShowListFont()
+            }
+            
         }.disposed(by: disposeBag)
     
+    }
+    
+    private func textViewHideKeyboard() {
+        self.textView.snp.remakeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(Constant.widthTextView)
+            make.height.equalTo(Constant.heightTextView)
+        }
+    }
+    
+    private func textViewShowKeyboard(height: CGFloat) {
+        self.textView.snp.remakeConstraints { make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide).inset(Constant.topContraintTextView)
+            make.width.equalToSuperview().multipliedBy(Constant.widthTextView)
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(height + BaseNavigationHeader.Constant.heightViewStyle + Constant.botContraintTextView)
+        }
+    }
+    
+    private func textViewShowListFont() {
+        self.textView.snp.remakeConstraints { make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide).inset(Constant.topContraintTextView)
+            make.width.equalToSuperview().multipliedBy(Constant.widthTextView)
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(BaseNavigationHeader.Constant.heightViewListFont + Constant.botContraintTextView)
+        }
     }
 }

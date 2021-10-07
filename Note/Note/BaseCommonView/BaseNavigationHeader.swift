@@ -24,7 +24,7 @@ class BaseNavigationHeader: UIViewController {
     private let configStyleView: ConfigStyle = ConfigStyle.loadXib()
     private let configTextView: ConfigText = ConfigText.loadXib()
     private let listFontView: ListFont = ListFont.loadXib()
-    private let eventShowKeyboard: PublishSubject<Void> = PublishSubject.init()
+    let eventShowListFontView: PublishSubject<Bool> = PublishSubject.init()
     let eventFont: PublishSubject<StatusFont> = PublishSubject.init()
     let eventHeightKeyboard: PublishSubject<CGFloat> = PublishSubject.init()
     let navigationItemView: NavigationItemView = NavigationItemView.loadXib()
@@ -73,7 +73,7 @@ class BaseNavigationHeader: UIViewController {
         
         self.configTextView.delegate = self
         self.configTextView.addViewToParent(view: self.view)
-        self.configTextView.isHidden = true
+        self.configTextView.hideView()
         
         self.listFontView.delegate = self
         self.listFontView.addViewToParent(view: self.view)
@@ -82,10 +82,14 @@ class BaseNavigationHeader: UIViewController {
     
     private func configRX() {
         
-        self.eventShowKeyboard.asObservable().bind { [weak self] _ in
+        self.eventHeightKeyboard.asObservable().bind { [weak self] h in
             guard let wSelf = self else { return }
-            wSelf.configStyleView.updateStatusKeyboard(status: .open)
-            wSelf.configTextView.isHidden = true
+            if h > 0 {
+                wSelf.configStyleView.updateStatusKeyboard(status: .open)
+                wSelf.configTextView.hideView()
+                wSelf.listFontView.hide()
+                wSelf.eventFont.onNext(.cancel)
+            }
         }.disposed(by: disposeBag)
         
         let show = NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification).map { KeyboardInfo($0) }
@@ -105,16 +109,13 @@ class BaseNavigationHeader: UIViewController {
         
         UIView.animate(withDuration: d) {
             (h > 0) ? self.configStyleView.setupConfigStyleWHaveKeyboard(height: h) : self.configStyleView.setupConfigStyleWithoutKeyboard()
-            if h > 0 {
-                self.eventShowKeyboard.onNext(())
-            }
-            
+            self.eventHeightKeyboard.onNext(h)
         }
     }
 }
 extension BaseNavigationHeader: ConfigStyleDelegate {
     func showConfigStyleText() {
-        self.configTextView.isHidden = false
+        self.configTextView.showView()
     }
     
     func updateStatusKeyboard(status: ConfigStyle.StatusKeyboard) {
@@ -123,18 +124,19 @@ extension BaseNavigationHeader: ConfigStyleDelegate {
 }
 extension BaseNavigationHeader: ConfigTextDelegate {
     func dismiss() {
-        self.configTextView.isHidden = true
+        self.configTextView.hideView()
         self.configStyleView.updateStatusKeyboard(status: .open, updateStatus: true)
     }
     
     func save() {
-        self.configTextView.isHidden = true
+        self.configTextView.hideView()
         self.configStyleView.updateStatusKeyboard(status: .open, updateStatus: true)
     }
     
     func showConfigText() {
-        self.listFontView.isHidden = false
+        self.listFontView.showView()
         self.listFontView.scrollWhenOpen()
+        self.eventShowListFontView.onNext(self.listFontView.isHidden)
     }
     
     func pickColor() {
@@ -151,11 +153,13 @@ extension BaseNavigationHeader: ListFontDelegate {
     func dismissListFont() {
         self.listFontView.hide()
         self.eventFont.onNext(.cancel)
+        self.eventShowListFontView.onNext(self.listFontView.isHidden)
     }
     
     func done(font: UIFont) {
         self.listFontView.hide()
         self.eventFont.onNext(.done(font))
+        self.eventShowListFontView.onNext(self.listFontView.isHidden)
     }
     
     func search() {

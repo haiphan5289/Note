@@ -21,12 +21,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gnn-9Z-Qwe">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gnn-9Z-Qwe">
                     <rect key="frame" x="20.5" y="303" width="373" height="300"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="300" id="Wlt-1q-M18"/>
-                    </constraints>
                     <color key="textColor" name="ColorApp"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -39,11 +37,6 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="AppBg"/>
-            <constraints>
-                <constraint firstItem="gnn-9Z-Qwe" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.9" id="Dz3-x9-DkM"/>
-                <constraint firstItem="gnn-9Z-Qwe" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="m4w-Dh-Ugq"/>
-                <constraint firstItem="gnn-9Z-Qwe" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="zhQ-tr-9p3"/>
-            </constraints>
             <point key="canvasLocation" x="139" y="141"/>
         </view>
     </objects>

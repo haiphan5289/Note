@@ -72,5 +72,13 @@ extension ConfigText {
             make.height.equalTo(BaseNavigationHeader.Constant.heightViewText + ConstantCommon.shared.getHeightSafeArea(type: .bottom))
         }
     }
+    
+    func hideView() {
+        self.isHidden = true
+    }
+    
+    func showView() {
+        self.isHidden = false
+    }
 
 }
