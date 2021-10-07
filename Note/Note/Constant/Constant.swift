@@ -14,6 +14,7 @@ final class ConstantCommon {
     let distanceCellHome: CGFloat = 10
     let distanceAreaSide: CGFloat = 16
     let timeAnimation: Double = 0.5
+    let sizeDefault: CGFloat = 18
     let fontDefault: UIFont = UIFont(name: SettingDefaultFont.DEFAULT_NAME_FONT, size: 18) ?? .systemFont(ofSize: 18)
     
     private init() {}

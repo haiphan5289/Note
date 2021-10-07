@@ -20,7 +20,7 @@ class TextVC: BaseNavigationHeader {
     
     // Add here your view model
     private var viewModel: TextVM = TextVM()
-//    private var heightConstraint: Constraint? = nil
+    private var previousFont: UIFont?
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -36,14 +36,26 @@ extension TextVC {
         // Add here the setup for the UI
         textView.centerVertically()
         textView.becomeFirstResponder()
+        previousFont = textView.font
     }
     
     private func setupRX() {
         // Add here the setup for the RX
         
-        self.eventFont.asObservable().bind { [weak self] font in
+        self.eventFont.asObservable().bind { [weak self] status in
             guard let wSelf = self else { return }
-            wSelf.textView.font = font
+            switch status {
+            case .update(let font): wSelf.textView.font = font
+            case .cancel:
+                if let f = wSelf.previousFont {
+                    wSelf.textView.font = f
+                }
+            case .done(let font):
+                wSelf.textView.font = font
+                wSelf.previousFont = font
+                
+            }
+            
             wSelf.textView.centerVertically()
         }.disposed(by: disposeBag)
         

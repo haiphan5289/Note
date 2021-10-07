@@ -11,7 +11,7 @@ import RxSwift
 
 protocol ListFontDelegate {
     func dismissListFont()
-    func done()
+    func done(font: UIFont)
     func search()
     func updateFontStyle(font: UIFont)
 }
@@ -50,6 +50,15 @@ class ListFont: UIView {
             return UIFont.fontNames(forFamilyName: forFamilyName)
         }
         
+        func getIndexFontDefault() -> Int? {
+            let fontName = ConstantCommon.shared.fontDefault.familyName
+            if let index = UIFont.familyNames.firstIndex(where: { $0 == fontName }) {
+                return index
+            }
+            return nil
+        }
+        
+        
     }
     
     enum Action: Int, CaseIterable {
@@ -66,9 +75,12 @@ class ListFont: UIView {
     
     private var listSize: BehaviorRelay<[String]> = BehaviorRelay.init(value: [])
     private var listFont: BehaviorRelay<[String]> = BehaviorRelay.init(value: [])
-    private var selectIndexFont: Int = 0
+    private var selectIndexFont: Int = FontType.listFont.getIndexFontDefault() ?? 0
     private var selectIndexSize: Int = 0
-    private var sizeFont = Constant.defaultSize
+    private var selectIndexFontPrevious: Int = 0
+    private var selectIndexSizePrevious: Int = 0
+    private var currentFont: UIFont?
+    private var sizeFont = ConstantCommon.shared.sizeDefault
     private var fontFamilyNames: String = SettingDefaultFont.DEFAULT_NAME_FONT
     private let disposeBag = DisposeBag()
     override func awakeFromNib() {
@@ -96,7 +108,13 @@ extension ListFont {
         listSizeTableView.register(FontSize.nib, forCellReuseIdentifier: FontSize.identifier)
         self.listSize.accept(FontType.listSize.getListSize(forFamilyName: self.fontFamilyNames))
         self.listFont.accept(FontType.listFont.getListFont())
+        listFontTableView.scrollToIndex(index: self.selectIndexFont)
         
+        
+        self.lbSize.text = "\(self.sizeFont)"
+        
+        self.selectIndexFontPrevious = self.selectIndexFont
+        self.selectIndexSizePrevious = self.selectIndexSize
     }
     
     private func setupRX() {
@@ -174,8 +192,16 @@ extension ListFont {
             bt.rx.tap.bind { [weak self] _ in
                 guard let wSelf = self else { return }
                 switch type {
-                case .close: wSelf.delegate?.dismissListFont()
-                case .done: wSelf.delegate?.done()
+                case .close:
+                    wSelf.delegate?.dismissListFont()
+                    wSelf.selectIndexFont = wSelf.selectIndexFontPrevious
+                    wSelf.selectIndexSize = wSelf.selectIndexSizePrevious
+                case .done:
+                    if let f = wSelf.currentFont {
+                        wSelf.delegate?.done(font: f)
+                        wSelf.selectIndexFontPrevious = wSelf.selectIndexFont
+                        wSelf.selectIndexSizePrevious = wSelf.selectIndexSize
+                    }
                 case .search: wSelf.delegate?.search()
                 case .minus:
                     wSelf.sizeFont -= 1
@@ -200,10 +226,15 @@ extension ListFont {
         let font = FontType.listFont.getListFont()[self.selectIndexFont]
         if let index = FontType.listSize.getListSize(forFamilyName: font).hasIndex(index: self.selectIndexSize) {
             let style = FontType.listSize.getListSize(forFamilyName: font)[index]
-            self.delegate?.updateFontStyle(font: UIFont(name: style, size: self.sizeFont) ?? .systemFont(ofSize: self.sizeFont))
+            self.currentFont = UIFont(name: style, size: self.sizeFont)
+            self.delegate?.updateFontStyle(font: self.currentFont ?? .systemFont(ofSize: self.sizeFont))
         }
-        
-        
+    }
+    
+    func scrollWhenOpen() {
+        self.listFontTableView.scrollToIndex(index: self.selectIndexFont)
+        let name = FontType.listFont.getListFont()[self.selectIndexFont]
+        self.updateListSize(name: name)
     }
     
     func scrollToIndex(index: Int) {
@@ -211,8 +242,10 @@ extension ListFont {
         self.listFontTableView.scrollToIndex(index: index)
         self.listFontTableView.reloadData()
         
+        self.selectIndexSize = 0
         let name = FontType.listFont.getListFont()[index]
         self.updateListSize(name: name)
+        self.selectFont()
     }
     
     func getSelectIndexFont() -> Int {

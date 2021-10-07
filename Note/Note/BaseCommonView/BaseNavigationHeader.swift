@@ -17,11 +17,15 @@ class BaseNavigationHeader: UIViewController {
         static let heightViewListFont: CGFloat = 400
     }
     
+    enum StatusFont {
+        case cancel, update(UIFont), done(UIFont)
+    }
+    
     private let configStyleView: ConfigStyle = ConfigStyle.loadXib()
     private let configTextView: ConfigText = ConfigText.loadXib()
     private let listFontView: ListFont = ListFont.loadXib()
     private let eventShowKeyboard: PublishSubject<Void> = PublishSubject.init()
-    let eventFont: PublishSubject<UIFont> = PublishSubject.init()
+    let eventFont: PublishSubject<StatusFont> = PublishSubject.init()
     let eventHeightKeyboard: PublishSubject<CGFloat> = PublishSubject.init()
     let navigationItemView: NavigationItemView = NavigationItemView.loadXib()
     
@@ -130,6 +134,7 @@ extension BaseNavigationHeader: ConfigTextDelegate {
     
     func showConfigText() {
         self.listFontView.isHidden = false
+        self.listFontView.scrollWhenOpen()
     }
     
     func pickColor() {
@@ -140,15 +145,17 @@ extension BaseNavigationHeader: ConfigTextDelegate {
 }
 extension BaseNavigationHeader: ListFontDelegate {
     func updateFontStyle(font: UIFont) {
-        self.eventFont.onNext(font)
+        self.eventFont.onNext(.update(font))
     }
     
     func dismissListFont() {
         self.listFontView.hide()
+        self.eventFont.onNext(.cancel)
     }
     
-    func done() {
-        
+    func done(font: UIFont) {
+        self.listFontView.hide()
+        self.eventFont.onNext(.done(font))
     }
     
     func search() {
