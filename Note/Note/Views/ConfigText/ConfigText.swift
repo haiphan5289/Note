@@ -22,6 +22,7 @@ class ConfigText: UIView {
     }
     
     @IBOutlet var bts: [UIButton]!
+    @IBOutlet weak var lbFontSize: UILabel!
     
     var delegate: ConfigTextDelegate?
     private let disposeBag = DisposeBag()
@@ -40,7 +41,8 @@ class ConfigText: UIView {
 extension ConfigText {
     
     private func setupUI() {
-        
+        lbFontSize.adjustsFontSizeToFitWidth = true
+        lbFontSize.minimumScaleFactor = 0.2
     }
     
     private func setupRX() {
@@ -79,6 +81,10 @@ extension ConfigText {
     
     func showView() {
         self.isHidden = false
+    }
+    
+    func showTextFont(font: UIFont) {
+        self.lbFontSize.text = "\(font.familyName) - \(font.pointSize)"
     }
 
 }

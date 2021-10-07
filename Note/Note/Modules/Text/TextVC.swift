@@ -47,6 +47,7 @@ extension TextVC {
         textView.centerVertically()
         textView.becomeFirstResponder()
         previousFont = textView.font
+        self.eventUpdateFontStyleView.accept(textView.font ?? ConstantCommon.shared.fontDefault)
     }
     
     private func setupRX() {
@@ -66,9 +67,9 @@ extension TextVC {
             case .done(let font):
                 wSelf.textView.font = font
                 wSelf.previousFont = font
+                wSelf.eventUpdateFontStyleView.accept(font)
                 
             }
-            
             wSelf.textView.centerVertically()
         }.disposed(by: disposeBag)
         

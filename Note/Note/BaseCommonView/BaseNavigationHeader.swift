@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import RxSwift
+import RxCocoa
 
 class BaseNavigationHeader: UIViewController {
     
@@ -24,6 +25,8 @@ class BaseNavigationHeader: UIViewController {
     private let configStyleView: ConfigStyle = ConfigStyle.loadXib()
     private let configTextView: ConfigText = ConfigText.loadXib()
     private let listFontView: ListFont = ListFont.loadXib()
+
+    let eventUpdateFontStyleView: BehaviorRelay<UIFont> = BehaviorRelay.init(value: ConstantCommon.shared.fontDefault)
     let eventShowListFontView: PublishSubject<Bool> = PublishSubject.init()
     let eventFont: PublishSubject<StatusFont> = PublishSubject.init()
     let eventHeightKeyboard: PublishSubject<CGFloat> = PublishSubject.init()
@@ -90,6 +93,11 @@ class BaseNavigationHeader: UIViewController {
                 wSelf.listFontView.hide()
                 wSelf.eventFont.onNext(.cancel)
             }
+        }.disposed(by: disposeBag)
+        
+        self.eventUpdateFontStyleView.asObservable().bind { [weak self] font in
+            guard let wSelf = self else { return }
+            wSelf.configTextView.showTextFont(font: font)
         }.disposed(by: disposeBag)
         
         let show = NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification).map { KeyboardInfo($0) }
