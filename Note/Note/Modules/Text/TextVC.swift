@@ -26,6 +26,7 @@ class TextVC: BaseNavigationHeader {
     // Add here your view model
     private var viewModel: TextVM = TextVM()
     private var previousFont: UIFont?
+    private var previousColor: UIColor = Asset.colorApp.color
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -72,7 +73,7 @@ extension TextVC {
             wSelf.textView.centerVertically()
         }.disposed(by: disposeBag)
         
-        self.eventPickColor.asObservable().bind { [weak self] color in
+        self.$eventPickColor.asObservable().bind { [weak self] color in
             guard let wSelf = self else { return }
             wSelf.textView.textColor = color
         }.disposed(by: disposeBag)

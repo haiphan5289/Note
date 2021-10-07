@@ -31,7 +31,8 @@ class BaseNavigationHeader: UIViewController {
     let eventFont: PublishSubject<StatusFont> = PublishSubject.init()
     let eventHeightKeyboard: PublishSubject<CGFloat> = PublishSubject.init()
     let navigationItemView: NavigationItemView = NavigationItemView.loadXib()
-    let eventPickColor: PublishSubject<UIColor> = PublishSubject.init()
+//    let eventPickColor: PublishSubject<UIColor> = PublishSubject.init()
+    @Published var eventPickColor: UIColor
     
     let eventStatusKeyboard: PublishSubject<ConfigStyle.StatusKeyboard> = PublishSubject.init()
     var vContainer: UIView!
@@ -133,7 +134,7 @@ extension BaseNavigationHeader: ConfigStyleDelegate {
 }
 extension BaseNavigationHeader: ConfigTextDelegate {
     func pickColor(color: UIColor) {
-        self.eventPickColor.onNext(color)
+        self.$eventPickColor.onNext(color)
     }
     
     func dismiss() {
