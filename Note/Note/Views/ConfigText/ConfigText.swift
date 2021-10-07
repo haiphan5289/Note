@@ -64,6 +64,7 @@ extension ConfigText {
                     wSelf.delegate?.showConfigText()
                 }
             }.disposed(by: disposeBag)
+            //adasdasdasdasd
         }
         
     }
