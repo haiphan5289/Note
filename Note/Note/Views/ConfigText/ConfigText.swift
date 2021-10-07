@@ -68,7 +68,7 @@ extension ConfigText {
         }
         
     }
-    
+    //koko
     func addViewToParent(view: UIView) {
         view.addSubview(self)
         self.snp.makeConstraints { make in
