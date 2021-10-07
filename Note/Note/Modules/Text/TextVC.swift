@@ -68,9 +68,13 @@ extension TextVC {
                 wSelf.textView.font = font
                 wSelf.previousFont = font
                 wSelf.eventUpdateFontStyleView.accept(font)
-                
             }
             wSelf.textView.centerVertically()
+        }.disposed(by: disposeBag)
+        
+        self.eventPickColor.asObservable().bind { [weak self] color in
+            guard let wSelf = self else { return }
+            wSelf.textView.textColor = color
         }.disposed(by: disposeBag)
         
         self.navigationItemView.actionItem = { [weak self] type in

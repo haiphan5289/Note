@@ -42,7 +42,6 @@ class ConfigStyle: UIView {
 extension ConfigStyle {
     
     private func setupUI() {
-        
     }
     
     private func setupRX() {
@@ -74,6 +73,8 @@ extension ConfigStyle {
             
         }
     }
+    
+   
     
     func updateStatusKeyboard(status: StatusKeyboard, updateStatus: Bool = false) {
         switch status {

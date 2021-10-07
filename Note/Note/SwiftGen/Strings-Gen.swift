@@ -29,6 +29,11 @@ internal enum L10n {
     internal static let title = L10n.tr("Localizable", "ListFontVC.Title")
   }
 
+  internal enum StyleView {
+    /// Text Color
+    internal static let pickColor = L10n.tr("Localizable", "StyleView.PickColor")
+  }
+
   internal enum Tabbar {
     /// Home
     internal static let home = L10n.tr("Localizable", "Tabbar.Home")

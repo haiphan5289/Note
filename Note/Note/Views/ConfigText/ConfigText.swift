@@ -12,18 +12,24 @@ protocol ConfigTextDelegate {
     func dismiss()
     func save()
     func showConfigText()
-    func pickColor()
+    func pickColor(color: UIColor)
 }
 
 class ConfigText: UIView {
     
+    struct Constant {
+        static let sizeColorWell: CGFloat = 30
+    }
+    
     enum Action: Int, CaseIterable {
-        case close, save, pickColor, setText
+        case close, save, setText
     }
     
     @IBOutlet var bts: [UIButton]!
     @IBOutlet weak var lbFontSize: UILabel!
+    @IBOutlet weak var viewPickColor: UIView!
     
+    private let colorWell: UIColorWell = UIColorWell(frame: .zero)
     var delegate: ConfigTextDelegate?
     private let disposeBag = DisposeBag()
     override func awakeFromNib() {
@@ -43,6 +49,8 @@ extension ConfigText {
     private func setupUI() {
         lbFontSize.adjustsFontSizeToFitWidth = true
         lbFontSize.minimumScaleFactor = 0.2
+        
+        self.setupPickColor()
     }
     
     private func setupRX() {
@@ -57,17 +65,31 @@ extension ConfigText {
                     wSelf.delegate?.dismiss()
                 case .save:
                     wSelf.delegate?.save()
-                case .pickColor:
-                    wSelf.delegate?.pickColor()
                 case .setText:
                     wSelf.delegate?.showConfigText()
                 }
             }.disposed(by: disposeBag)
-            //adasdasdasdasd
         }
         
+        self.colorWell.rx.controlEvent(.valueChanged).bind { [weak self] _ in
+            guard let wSelf = self, let color = wSelf.colorWell.selectedColor else { return }
+            wSelf.delegate?.pickColor(color: color)
+        }.disposed(by: disposeBag)
+        
     }
-    //koko
+    
+    private func setupPickColor() {
+        colorWell.supportsAlpha = true
+        colorWell.selectedColor = Asset.colorApp.color
+        colorWell.title = L10n.StyleView.pickColor
+        colorWell.center = self.viewPickColor.center
+        self.viewPickColor.addSubview(colorWell)
+        colorWell.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.height.equalTo(Constant.sizeColorWell)
+        }
+    }
+    
     func addViewToParent(view: UIView) {
         view.addSubview(self)
         self.snp.makeConstraints { make in

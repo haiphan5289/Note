@@ -73,10 +73,10 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1np-mW-iVj">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyG-tF-cdB">
                                             <rect key="frame" x="100" y="0.0" width="282" height="50"/>
-                                            <state key="normal" image="ic_pickColor"/>
-                                        </button>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
                                     </subviews>
                                 </stackView>
                             </subviews>
@@ -181,9 +181,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="lbFontSize" destination="Jx7-4p-J3F" id="Kp3-DV-cik"/>
+                <outlet property="viewPickColor" destination="jyG-tF-cdB" id="6W2-Uq-C47"/>
                 <outletCollection property="bts" destination="Cfo-09-qcR" collectionClass="NSMutableArray" id="JrS-wV-Hqg"/>
                 <outletCollection property="bts" destination="51I-F9-ZmE" collectionClass="NSMutableArray" id="6Yp-dY-3LD"/>
-                <outletCollection property="bts" destination="1np-mW-iVj" collectionClass="NSMutableArray" id="cZQ-54-SbX"/>
                 <outletCollection property="bts" destination="Q12-7U-97V" collectionClass="NSMutableArray" id="LKl-At-fdQ"/>
             </connections>
             <point key="canvasLocation" x="-23" y="83"/>
@@ -193,7 +193,6 @@
         <image name="ic_close" width="24" height="24"/>
         <image name="ic_done" width="24" height="24"/>
         <image name="ic_downAddNote" width="24" height="24"/>
-        <image name="ic_pickColor" width="24" height="24"/>
         <namedColor name="ColorApp">
             <color red="0.57400000095367432" green="0.56599998474121094" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

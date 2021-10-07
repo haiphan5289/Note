@@ -64,6 +64,7 @@ extension HomeVC {
                 make.height.equalTo(Constant.heightAddNoteView)
             }
         }
+                
     }
     
     private func addDropdownView() {
