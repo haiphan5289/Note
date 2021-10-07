@@ -211,6 +211,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="lbSize" destination="QbC-Td-gXR" id="YLs-uy-AGt"/>
                 <outlet property="listFontTableView" destination="V8k-s8-tcu" id="RLj-ml-2Cn"/>
                 <outlet property="listSizeTableView" destination="B6y-qF-4e9" id="Unc-1B-dbw"/>
                 <outlet property="searchBar" destination="A7B-aT-6Y9" id="tS9-ra-bcv"/>
@@ -219,6 +220,8 @@
                 <outletCollection property="bts" destination="4ci-Ss-V5x" collectionClass="NSMutableArray" id="omb-Z6-YJQ"/>
                 <outletCollection property="bts" destination="XWc-Vl-tq6" collectionClass="NSMutableArray" id="Hry-uj-tIu"/>
                 <outletCollection property="bts" destination="8Sr-Ib-tBz" collectionClass="NSMutableArray" id="fxM-qV-KRz"/>
+                <outletCollection property="bts" destination="XWc-Vl-tq6" collectionClass="NSMutableArray" id="CBL-0m-TQ8"/>
+                <outletCollection property="bts" destination="8Sr-Ib-tBz" collectionClass="NSMutableArray" id="fTo-2K-9Gh"/>
             </connections>
             <point key="canvasLocation" x="-23.188405797101453" y="82.366071428571431"/>
         </view>

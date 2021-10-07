@@ -33,6 +33,9 @@ class ListFont: UIView {
     struct Constant {
         static let characterMiddle: String = "-"
         static let firstName: String = "Normal"
+        static let defaultSize: CGFloat = 14
+        static let minimumSize: CGFloat = 7
+        static let maximumSize: CGFloat = 28
     }
     
     enum FontType: Int, CaseIterable {
@@ -59,11 +62,13 @@ class ListFont: UIView {
     @IBOutlet weak var listSizeTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var bts: [UIButton]!
+    @IBOutlet weak var lbSize: UILabel!
     
     private var listSize: BehaviorRelay<[String]> = BehaviorRelay.init(value: [])
     private var listFont: BehaviorRelay<[String]> = BehaviorRelay.init(value: [])
     private var selectIndexFont: Int = 0
     private var selectIndexSize: Int = 0
+    private var sizeFont = Constant.defaultSize
     private var fontFamilyNames: String = SettingDefaultFont.DEFAULT_NAME_FONT
     private let disposeBag = DisposeBag()
     override func awakeFromNib() {
@@ -172,8 +177,20 @@ extension ListFont {
                 case .close: wSelf.delegate?.dismissListFont()
                 case .done: wSelf.delegate?.done()
                 case .search: wSelf.delegate?.search()
-                case .minus, .plus: break
+                case .minus:
+                    wSelf.sizeFont -= 1
+                    if wSelf.sizeFont <= Constant.minimumSize {
+                        wSelf.sizeFont = Constant.minimumSize
+                    }
+                    wSelf.selectFont()
+                case .plus:
+                    wSelf.sizeFont += 1
+                    if wSelf.sizeFont >= Constant.maximumSize {
+                        wSelf.sizeFont = Constant.maximumSize
+                    }
+                    wSelf.selectFont()
                 }
+                wSelf.lbSize.text = "\(wSelf.sizeFont)"
             }.disposed(by: disposeBag)
         }
         
@@ -183,7 +200,7 @@ extension ListFont {
         let font = FontType.listFont.getListFont()[self.selectIndexFont]
         if let index = FontType.listSize.getListSize(forFamilyName: font).hasIndex(index: self.selectIndexSize) {
             let style = FontType.listSize.getListSize(forFamilyName: font)[index]
-            self.delegate?.updateFontStyle(font: UIFont(name: style, size: 24) ?? .systemFont(ofSize: 24))
+            self.delegate?.updateFontStyle(font: UIFont(name: style, size: self.sizeFont) ?? .systemFont(ofSize: self.sizeFont))
         }
         
         
