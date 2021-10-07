@@ -100,7 +100,7 @@ extension ListFont {
     
     private func setupUI() {
         
-        self.layer.cornerRadius = 12
+        self.layer.cornerRadius = ConstantCommon.shared.radiusViewDialog
         self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         listFontTableView.delegate = self

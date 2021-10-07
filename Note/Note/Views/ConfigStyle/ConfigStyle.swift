@@ -11,6 +11,7 @@ import RxSwift
 protocol ConfigStyleDelegate {
     func updateStatusKeyboard(status: ConfigStyle.StatusKeyboard)
     func showConfigStyleText()
+    func showBackgroundColor()
 }
 
 class ConfigStyle: UIView {
@@ -64,7 +65,8 @@ extension ConfigStyle {
                         wSelf.delegate?.updateStatusKeyboard(status: .open)
                     }
                 case .color:
-                    wSelf.updateStatusKeyboard(status: .hide, updateStatus: true)
+                    wSelf.delegate?.showBackgroundColor()
+                    wSelf.updateStatusKeyboard(status: .hide, updateStatus: false)
                 case .text:
                     wSelf.updateStatusKeyboard(status: .hide, updateStatus: true)
                     wSelf.delegate?.showConfigStyleText()

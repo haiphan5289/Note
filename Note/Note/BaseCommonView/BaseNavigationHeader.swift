@@ -124,6 +124,13 @@ class BaseNavigationHeader: UIViewController {
     }
 }
 extension BaseNavigationHeader: ConfigStyleDelegate {
+    func showBackgroundColor() {
+        let bgView: BackgroundColor = BackgroundColor.loadXib()
+        bgView.addViewToParent(view: self.view)
+        self.eventStatusKeyboard.onNext(.hide)
+        self.eventShowListFontView.onNext(false)
+    }
+    
     func showConfigStyleText() {
         self.configTextView.showView()
     }

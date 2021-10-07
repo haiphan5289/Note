@@ -140,6 +140,12 @@
 		936A9D4C2704A7DF006F9F25 /* AddNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9D4B2704A7DF006F9F25 /* AddNote.swift */; };
 		936A9D4E2704A7F0006F9F25 /* AddNote.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936A9D4D2704A7F0006F9F25 /* AddNote.xib */; };
 		936A9D502704B6D4006F9F25 /* NoteManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9D4F2704B6D4006F9F25 /* NoteManage.swift */; };
+		9396E647270F2F29002B2E2C /* BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396E646270F2F29002B2E2C /* BackgroundColor.swift */; };
+		9396E64B270F2F36002B2E2C /* BackgroundColor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9396E64A270F2F36002B2E2C /* BackgroundColor.xib */; };
+		9396E64F270F3244002B2E2C /* ViewHeaderDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9396E64E270F3244002B2E2C /* ViewHeaderDialog.xib */; };
+		9396E652270F3261002B2E2C /* ViewHeaderDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396E651270F3261002B2E2C /* ViewHeaderDialog.swift */; };
+		9396E656270F3B17002B2E2C /* SegmentControlCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396E655270F3B17002B2E2C /* SegmentControlCustom.swift */; };
+		9396E65A270F3B24002B2E2C /* SegmentControlCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9396E659270F3B24002B2E2C /* SegmentControlCustom.xib */; };
 		93AA98F9270811DA00939D3A /* PathDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA98F8270811DA00939D3A /* PathDraw.swift */; };
 		93AA98FD270846E400939D3A /* SoundNote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93AA98FC270846E400939D3A /* SoundNote.mp3 */; };
 		93AA98FF2708503D00939D3A /* BaseNavigationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA98FE2708503D00939D3A /* BaseNavigationHeader.swift */; };
@@ -305,6 +311,12 @@
 		936A9D4B2704A7DF006F9F25 /* AddNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNote.swift; sourceTree = "<group>"; };
 		936A9D4D2704A7F0006F9F25 /* AddNote.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNote.xib; sourceTree = "<group>"; };
 		936A9D4F2704B6D4006F9F25 /* NoteManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteManage.swift; sourceTree = "<group>"; };
+		9396E646270F2F29002B2E2C /* BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColor.swift; sourceTree = "<group>"; };
+		9396E64A270F2F36002B2E2C /* BackgroundColor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundColor.xib; sourceTree = "<group>"; };
+		9396E64E270F3244002B2E2C /* ViewHeaderDialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewHeaderDialog.xib; sourceTree = "<group>"; };
+		9396E651270F3261002B2E2C /* ViewHeaderDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHeaderDialog.swift; sourceTree = "<group>"; };
+		9396E655270F3B17002B2E2C /* SegmentControlCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControlCustom.swift; sourceTree = "<group>"; };
+		9396E659270F3B24002B2E2C /* SegmentControlCustom.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentControlCustom.xib; sourceTree = "<group>"; };
 		93AA98F8270811DA00939D3A /* PathDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathDraw.swift; sourceTree = "<group>"; };
 		93AA98FC270846E400939D3A /* SoundNote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SoundNote.mp3; sourceTree = "<group>"; };
 		93AA98FE2708503D00939D3A /* BaseNavigationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationHeader.swift; sourceTree = "<group>"; };
@@ -484,6 +496,9 @@
 		936A9C552704A178006F9F25 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9396E654270F3AE5002B2E2C /* SegmentControlCustom */,
+				9396E64D270F322A002B2E2C /* ViewHeaderDialog */,
+				9396E645270F2EF5002B2E2C /* BackgroundColor */,
 				93B6EFC7270B56100035EF09 /* ListFont */,
 				93AA991B2709D27800939D3A /* ConfigText */,
 				93AA99162709AE3700939D3A /* ConfigStyle */,
@@ -801,6 +816,33 @@
 			path = AddNote;
 			sourceTree = "<group>";
 		};
+		9396E645270F2EF5002B2E2C /* BackgroundColor */ = {
+			isa = PBXGroup;
+			children = (
+				9396E646270F2F29002B2E2C /* BackgroundColor.swift */,
+				9396E64A270F2F36002B2E2C /* BackgroundColor.xib */,
+			);
+			path = BackgroundColor;
+			sourceTree = "<group>";
+		};
+		9396E64D270F322A002B2E2C /* ViewHeaderDialog */ = {
+			isa = PBXGroup;
+			children = (
+				9396E64E270F3244002B2E2C /* ViewHeaderDialog.xib */,
+				9396E651270F3261002B2E2C /* ViewHeaderDialog.swift */,
+			);
+			path = ViewHeaderDialog;
+			sourceTree = "<group>";
+		};
+		9396E654270F3AE5002B2E2C /* SegmentControlCustom */ = {
+			isa = PBXGroup;
+			children = (
+				9396E655270F3B17002B2E2C /* SegmentControlCustom.swift */,
+				9396E659270F3B24002B2E2C /* SegmentControlCustom.xib */,
+			);
+			path = SegmentControlCustom;
+			sourceTree = "<group>";
+		};
 		93AA98F7270811C600939D3A /* PathDraw */ = {
 			isa = PBXGroup;
 			children = (
@@ -957,6 +999,8 @@
 				93B6EFC4270B4ABC0035EF09 /* ListTextVC.xib in Resources */,
 				93AA9904270850DE00939D3A /* NavigationItemView.xib in Resources */,
 				936A9C3C2704A0DA006F9F25 /* Localizable.strings in Resources */,
+				9396E64F270F3244002B2E2C /* ViewHeaderDialog.xib in Resources */,
+				9396E65A270F3B24002B2E2C /* SegmentControlCustom.xib in Resources */,
 				936A9C3127049F1F006F9F25 /* LaunchScreen.storyboard in Resources */,
 				936A9C2E27049F1F006F9F25 /* Assets.xcassets in Resources */,
 				936A9CDD2704A179006F9F25 /* LICENSE in Resources */,
@@ -978,6 +1022,7 @@
 				936A9D402704A61B006F9F25 /* HomeVC.xib in Resources */,
 				936A9CDE2704A179006F9F25 /* README.md in Resources */,
 				93B6EFC9270B56300035EF09 /* ListFont.xib in Resources */,
+				9396E64B270F2F36002B2E2C /* BackgroundColor.xib in Resources */,
 				936A9CDB2704A179006F9F25 /* EndIndicator.png in Resources */,
 				932CF99C270DA0F100CB75B2 /* FontSize.xib in Resources */,
 			);
@@ -1087,7 +1132,9 @@
 				93AA9902270850D400939D3A /* NavigationItemView.swift in Sources */,
 				936A9D052704A179006F9F25 /* ColorExtensions.swift in Sources */,
 				936A9D002704A179006F9F25 /* UITextViewExtensions.swift in Sources */,
+				9396E647270F2F29002B2E2C /* BackgroundColor.swift in Sources */,
 				936A9D502704B6D4006F9F25 /* NoteManage.swift in Sources */,
+				9396E652270F3261002B2E2C /* ViewHeaderDialog.swift in Sources */,
 				936A9C2727049F1E006F9F25 /* SceneDelegate.swift in Sources */,
 				936A9CFE2704A179006F9F25 /* UICollectionViewExtensions.swift in Sources */,
 				936A9CE72704A179006F9F25 /* ABProgressIndicator.swift in Sources */,
@@ -1144,6 +1191,7 @@
 				93AA99102708539D00939D3A /* TextVM.swift in Sources */,
 				936A9CE22704A179006F9F25 /* CircularSliderHelper.swift in Sources */,
 				936A9D172704A179006F9F25 /* UIFontExtensions.swift in Sources */,
+				9396E656270F3B17002B2E2C /* SegmentControlCustom.swift in Sources */,
 				936A9D0F2704A179006F9F25 /* UIWindowExtensions.swift in Sources */,
 				936A9D162704A179006F9F25 /* UIAlertControllerExtensions.swift in Sources */,
 				936A9D0B2704A179006F9F25 /* UINavigationControllerExtensions.swift in Sources */,

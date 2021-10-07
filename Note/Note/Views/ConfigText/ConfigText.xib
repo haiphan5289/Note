@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -33,10 +32,10 @@
                                             <color key="tintColor" name="ColorApp"/>
                                             <state key="normal" image="ic_close"/>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text Style" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuo-M6-qhD">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text Style" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuo-M6-qhD">
                                             <rect key="frame" x="50" y="0.0" width="314" height="50"/>
                                             <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="24"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" name="ColorApp"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51I-F9-ZmE">
@@ -48,9 +47,10 @@
                                             <state key="normal" image="ic_done"/>
                                         </button>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="lyd-aM-DeC" firstAttribute="top" secondItem="DeI-Xb-jRh" secondAttribute="top" id="7Qo-5V-Q6U"/>
                                 <constraint firstItem="lyd-aM-DeC" firstAttribute="leading" secondItem="DeI-Xb-jRh" secondAttribute="leading" id="LMh-y3-Zjy"/>
@@ -70,17 +70,17 @@
                                                 <constraint firstAttribute="width" constant="100" id="LRJ-l7-5N7"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" name="TextColorApp"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyG-tF-cdB">
                                             <rect key="frame" x="100" y="0.0" width="282" height="50"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                     </subviews>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="Hyp-Kp-lP6" secondAttribute="bottom" id="7eh-i8-tjE"/>
                                 <constraint firstItem="Hyp-Kp-lP6" firstAttribute="top" secondItem="1Zk-aD-f3t" secondAttribute="top" id="by5-Yj-cmu"/>
@@ -100,7 +100,7 @@
                                                 <constraint firstAttribute="width" constant="100" id="qKK-pX-fkN"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" name="TextColorApp"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBK-sm-Xti">
@@ -143,7 +143,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="282" height="50"/>
                                                 </button>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="aQx-2b-t6M" firstAttribute="width" secondItem="JBK-sm-Xti" secondAttribute="width" multiplier="0.851064" id="3bx-xe-GsV"/>
                                                 <constraint firstItem="Q12-7U-97V" firstAttribute="top" secondItem="JBK-sm-Xti" secondAttribute="top" id="56f-tG-beP"/>
@@ -157,7 +157,7 @@
                                     </subviews>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="sSN-bZ-Rgu" secondAttribute="bottom" id="2Im-W1-1NC"/>
                                 <constraint firstItem="sSN-bZ-Rgu" firstAttribute="top" secondItem="1Ng-mp-uJN" secondAttribute="top" id="els-xj-9Ao"/>
@@ -166,13 +166,14 @@
                             </constraints>
                         </view>
                     </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="150" id="TEu-Ky-McO"/>
                     </constraints>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="BgColorView"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2xn-Bq-tER" secondAttribute="trailing" id="9Ba-UV-V64"/>
                 <constraint firstItem="2xn-Bq-tER" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="H6G-ah-D2w"/>
@@ -193,6 +194,9 @@
         <image name="ic_close" width="24" height="24"/>
         <image name="ic_done" width="24" height="24"/>
         <image name="ic_downAddNote" width="24" height="24"/>
+        <namedColor name="BgColorView">
+            <color red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="ColorApp">
             <color red="0.57400000095367432" green="0.56599998474121094" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -202,8 +206,5 @@
         <namedColor name="TextColorApp">
             <color red="1" green="0.83137254901960789" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

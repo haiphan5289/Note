@@ -51,6 +51,9 @@ extension ConfigText {
         lbFontSize.minimumScaleFactor = 0.2
         
         self.setupPickColor()
+        
+        self.layer.cornerRadius = ConstantCommon.shared.radiusViewDialog
+        self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     private func setupRX() {

@@ -30,6 +30,8 @@ internal enum L10n {
   }
 
   internal enum StyleView {
+    /// Background Color
+    internal static let backgroundColor = L10n.tr("Localizable", "StyleView.BackgroundColor")
     /// Text Color
     internal static let pickColor = L10n.tr("Localizable", "StyleView.PickColor")
   }
