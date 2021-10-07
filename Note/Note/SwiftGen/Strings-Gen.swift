@@ -29,6 +29,15 @@ internal enum L10n {
     internal static let title = L10n.tr("Localizable", "ListFontVC.Title")
   }
 
+  internal enum SegmentControl {
+    /// Colors
+    internal static let colors = L10n.tr("Localizable", "SegmentControl.Colors")
+    /// Gradients
+    internal static let gradients = L10n.tr("Localizable", "SegmentControl.Gradients")
+    /// Images
+    internal static let images = L10n.tr("Localizable", "SegmentControl.Images")
+  }
+
   internal enum StyleView {
     /// Background Color
     internal static let backgroundColor = L10n.tr("Localizable", "StyleView.BackgroundColor")

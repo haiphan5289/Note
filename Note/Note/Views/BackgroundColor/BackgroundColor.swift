@@ -45,7 +45,7 @@ extension BackgroundColor {
         self.segmentControl.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        self.segmentControl.loadList(list: ["1", "2", "43"])
+        self.segmentControl.loadList(list: [L10n.SegmentControl.images, L10n.SegmentControl.colors, L10n.SegmentControl.gradients])
     }
     
     private func addViewHeader() {

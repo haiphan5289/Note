@@ -10,3 +10,6 @@
 "ListFontVC.Title" = "List Font";
 "StyleView.PickColor" = "Text Color";
 "StyleView.BackgroundColor" = "Background Color";
+"SegmentControl.Images" = "Images";
+"SegmentControl.Colors" = "Colors";
+"SegmentControl.Gradients" = "Gradients";

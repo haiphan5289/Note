@@ -15,6 +15,8 @@ class SegmentControlCustom: UIView {
     }
     
     @IBOutlet weak var stackView: UIStackView!
+    
+    private var listLabel: [UILabel] = []
     private let thumnailView: UIView = UIView(frame: .zero)
     private let disposeBag = DisposeBag()
     override func awakeFromNib() {
@@ -68,12 +70,12 @@ extension SegmentControlCustom {
         
         if index == 0 {
             lbName.textColor = Asset.textColorApp.color
-            self.setupViewThumnail(frame: v.frame)
         } else {
             lbName.textColor = Asset.colorApp.color
         }
         
         lbName.textAlignment = .center
+        lbName.tag = index
         v.addSubview(lbName)
         lbName.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
@@ -87,10 +89,26 @@ extension SegmentControlCustom {
         
         bt.rx.tap.bind { [weak self] _ in
             guard let wSelf = self else { return }
-            print("====")
+            wSelf.moveThumnailAnimation(moveTo: v.frame)
+            
+            wSelf.listLabel.forEach { lb in
+                if lb.tag == index {
+                    lbName.textColor = Asset.textColorApp.color
+                } else {
+                    lbName.textColor = Asset.colorApp.color
+                }
+            }
+            
         }.disposed(by: disposeBag)
         
+        self.listLabel.append(lbName)
         return v
+    }
+    
+    private func moveThumnailAnimation(moveTo: CGRect) {
+        UIView.animate(withDuration: 0.5) {
+            self.thumnailView.frame = moveTo
+        }
     }
     
     private func setupViewThumnail(frame: CGRect) {
