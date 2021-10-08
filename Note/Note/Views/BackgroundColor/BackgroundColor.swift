@@ -10,6 +10,18 @@ import RxSwift
 
 class BackgroundColor: UIView {
     
+    enum BgColorTypes: Int, CaseIterable {
+        case images, colors, gradient
+        
+        var text: String {
+            switch self {
+            case .images: return L10n.SegmentControl.images
+            case .colors: return L10n.SegmentControl.colors
+            case .gradient: return L10n.SegmentControl.gradients
+            }
+        }
+    }
+    
     struct Constant {
         static let numberOfCellinLine: CGFloat = 3
         static let spacingCell: CGFloat = 5
@@ -23,6 +35,8 @@ class BackgroundColor: UIView {
     private let viewModel: BackgroundColorVM = BackgroundColorVM()
     private let segmentControl: SegmentControlCustom = SegmentControlCustom.loadXib()
     private let headerDialogView: ViewHeaderDialog = ViewHeaderDialog.loadXib()
+    @VariableReplay private var typesColor: BgColorTypes = .images
+    
     private let disposeBag = DisposeBag()
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,9 +65,18 @@ extension BackgroundColor {
     private func setupRX() {
         self.viewModel.$listColors.asObservable()
             .bind(to: self.collectionView.rx.items(cellIdentifier: BackgroundColorCell.identifier, cellType: BackgroundColorCell.self)) { row, data, cell in
-                guard let textColor = data.text else { return }
+                guard let textColor = data.text, let img = data.img else { return }
                 cell.img.isHidden = true
-                cell.contentView.backgroundColor = UIColor(hexString: textColor)
+                
+                switch self.typesColor {
+                case .colors: cell.contentView.backgroundColor = UIColor(hexString: textColor)
+                case .images:
+                    cell.img.isHidden = false
+                    cell.img.image = UIImage(named: img)
+                    cell.contentView.backgroundColor = .clear
+                case .gradient: cell.contentView.backgroundColor = .red
+                }
+                
             }.disposed(by: disposeBag)
     }
     
@@ -67,7 +90,8 @@ extension BackgroundColor {
         self.segmentControl.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        self.segmentControl.loadList(list: [L10n.SegmentControl.images, L10n.SegmentControl.colors, L10n.SegmentControl.gradients])
+        self.segmentControl.delegate = self
+        self.segmentControl.loadList(list: BgColorTypes.allCases)
     }
     
     private func addViewHeader() {
@@ -98,5 +122,11 @@ extension BackgroundColor: UICollectionViewDelegate, UICollectionViewDelegateFlo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+}
+extension BackgroundColor: SegmentControlCustomDelegate {
+    func selectIndex(selectType: BgColorTypes) {
+        self.typesColor = selectType
+        self.collectionView.reloadData()
     }
 }

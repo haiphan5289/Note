@@ -443,6 +443,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		932EFD4E271028A50073A9FA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		934C8A5C27073F33008BCE0A /* Dropdown */ = {
 			isa = PBXGroup;
 			children = (
@@ -911,6 +918,7 @@
 		93AA98FA2708452500939D3A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				932EFD4E271028A50073A9FA /* Images */,
 				932EFC89271019380073A9FA /* ColorsResource */,
 				93AA98FB2708453E00939D3A /* SoundNote */,
 			);

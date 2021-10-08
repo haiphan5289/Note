@@ -8,6 +8,10 @@
 import UIKit
 import RxSwift
 
+protocol SegmentControlCustomDelegate {
+    func selectIndex(selectType: BackgroundColor.BgColorTypes)
+}
+
 class SegmentControlCustom: UIView {
     
     struct Constant {
@@ -16,6 +20,7 @@ class SegmentControlCustom: UIView {
     
     @IBOutlet weak var stackView: UIStackView!
     
+    var delegate: SegmentControlCustomDelegate?
     private var listLabel: [UILabel] = []
     private let thumnailView: UIView = UIView(frame: .zero)
     private let disposeBag = DisposeBag()
@@ -43,10 +48,10 @@ extension SegmentControlCustom {
         
     }
     
-    func loadList(list: [String]) {
+    func loadList(list: [BackgroundColor.BgColorTypes]) {
         list.enumerated().forEach { [weak self] item in
             guard let wSelf = self else { return }
-            wSelf.stackView.addArrangedSubview(wSelf.setupViewElement(index: item.offset, text: item.element))
+            wSelf.stackView.addArrangedSubview(wSelf.setupViewElement(index: item.offset, item: item.element))
         }
         
         self.layoutIfNeeded()
@@ -57,7 +62,7 @@ extension SegmentControlCustom {
         }
     }
     
-    private func setupViewElement(index: Int, text: String) -> UIView {
+    private func setupViewElement(index: Int, item: BackgroundColor.BgColorTypes) -> UIView {
         let v: UIView = UIView()
         v.backgroundColor = .clear
         v.tag = index + Constant.tagSegment
@@ -65,7 +70,7 @@ extension SegmentControlCustom {
         v.layer.cornerRadius = ConstantCommon.shared.radiusSegment
         
         let lbName: UILabel = UILabel(frame: .zero)
-        lbName.text = text
+        lbName.text = item.text
         lbName.font = UIFont.mySystemFont(ofSize: 16)
         
         if index == 0 {
@@ -91,10 +96,10 @@ extension SegmentControlCustom {
         bt.rx.tap.bind { [weak self] _ in
             guard let wSelf = self else { return }
             wSelf.moveThumnailAnimation(moveTo: v.frame)
-
             wSelf.listLabel.forEach { lb in
                 lb.textColor = (lb.tag == index) ? Asset.textColorApp.color : Asset.colorApp.color
             }
+            wSelf.delegate?.selectIndex(selectType: item)
 
         }.disposed(by: disposeBag)
         
