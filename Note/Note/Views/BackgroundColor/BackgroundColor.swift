@@ -19,6 +19,8 @@ class BackgroundColor: UIView {
     @IBOutlet weak var backgroundContentView: UIView!
     @IBOutlet weak var segmentContentView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    private let viewModel: BackgroundColorVM = BackgroundColorVM()
     private let segmentControl: SegmentControlCustom = SegmentControlCustom.loadXib()
     private let headerDialogView: ViewHeaderDialog = ViewHeaderDialog.loadXib()
     private let disposeBag = DisposeBag()
@@ -47,10 +49,11 @@ extension BackgroundColor {
     }
     
     private func setupRX() {
-        Observable.just([1, 2, 3, 4, 5, 6, 7])
+        self.viewModel.$listColors.asObservable()
             .bind(to: self.collectionView.rx.items(cellIdentifier: BackgroundColorCell.identifier, cellType: BackgroundColorCell.self)) { row, data, cell in
+                guard let textColor = data.text else { return }
                 cell.img.isHidden = true
-                cell.contentView.backgroundColor = .red
+                cell.contentView.backgroundColor = UIColor(hexString: textColor)
             }.disposed(by: disposeBag)
     }
     
