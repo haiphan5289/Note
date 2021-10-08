@@ -10,8 +10,15 @@ import RxSwift
 
 class BackgroundColor: UIView {
     
+    struct Constant {
+        static let numberOfCellinLine: CGFloat = 3
+        static let spacingCell: CGFloat = 5
+    }
+
+    
     @IBOutlet weak var backgroundContentView: UIView!
     @IBOutlet weak var segmentContentView: UIView!
+    @IBOutlet weak var collectionView: UICollectionView!
     private let segmentControl: SegmentControlCustom = SegmentControlCustom.loadXib()
     private let headerDialogView: ViewHeaderDialog = ViewHeaderDialog.loadXib()
     private let disposeBag = DisposeBag()
@@ -34,10 +41,22 @@ extension BackgroundColor {
         self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         self.addViewHeader()
         self.addSegment()
+        
+        collectionView.delegate = self
+        collectionView.register(BackgroundColorCell.nib, forCellWithReuseIdentifier: BackgroundColorCell.identifier)
     }
     
     private func setupRX() {
-        
+        Observable.just([1, 2, 3, 4, 5, 6, 7])
+            .bind(to: self.collectionView.rx.items(cellIdentifier: BackgroundColorCell.identifier, cellType: BackgroundColorCell.self)) { row, data, cell in
+                cell.img.isHidden = true
+                cell.contentView.backgroundColor = .red
+            }.disposed(by: disposeBag)
+    }
+    
+    private func calculateSizeCell() -> CGSize {
+        let w = (self.collectionView.bounds.size.width / Constant.numberOfCellinLine) - Constant.spacingCell
+        return CGSize(width: w, height: w)
     }
     
     private func addSegment() {
@@ -64,4 +83,17 @@ extension BackgroundColor {
         }
     }
     
+}
+extension BackgroundColor: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return self.calculateSizeCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return Constant.spacingCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 }

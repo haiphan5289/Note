@@ -11,6 +11,8 @@
 		932CF99C270DA0F100CB75B2 /* FontSize.xib in Resources */ = {isa = PBXBuildFile; fileRef = 932CF99A270DA0F100CB75B2 /* FontSize.xib */; };
 		932CF9A0270DA10200CB75B2 /* FontCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932CF99E270DA10200CB75B2 /* FontCell.swift */; };
 		932CF9A1270DA10200CB75B2 /* FontCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 932CF99F270DA10200CB75B2 /* FontCell.xib */; };
+		932EFC74270FE6FA0073A9FA /* BackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932EFC72270FE6FA0073A9FA /* BackgroundColorCell.swift */; };
+		932EFC75270FE6FA0073A9FA /* BackgroundColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 932EFC73270FE6FA0073A9FA /* BackgroundColorCell.xib */; };
 		934C8A5E27074206008BCE0A /* DropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C8A5D27074206008BCE0A /* DropdownView.swift */; };
 		936A9C2527049F1E006F9F25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C2427049F1E006F9F25 /* AppDelegate.swift */; };
 		936A9C2727049F1E006F9F25 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C2627049F1E006F9F25 /* SceneDelegate.swift */; };
@@ -180,6 +182,8 @@
 		932CF99A270DA0F100CB75B2 /* FontSize.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FontSize.xib; sourceTree = "<group>"; };
 		932CF99E270DA10200CB75B2 /* FontCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontCell.swift; sourceTree = "<group>"; };
 		932CF99F270DA10200CB75B2 /* FontCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FontCell.xib; sourceTree = "<group>"; };
+		932EFC72270FE6FA0073A9FA /* BackgroundColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorCell.swift; sourceTree = "<group>"; };
+		932EFC73270FE6FA0073A9FA /* BackgroundColorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundColorCell.xib; sourceTree = "<group>"; };
 		934C8A5D27074206008BCE0A /* DropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownView.swift; sourceTree = "<group>"; };
 		936A9C2127049F1E006F9F25 /* Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Note.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		936A9C2427049F1E006F9F25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -387,6 +391,15 @@
 				932CF99A270DA0F100CB75B2 /* FontSize.xib */,
 			);
 			path = FontSize;
+			sourceTree = "<group>";
+		};
+		932EFC71270FE6D90073A9FA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				932EFC72270FE6FA0073A9FA /* BackgroundColorCell.swift */,
+				932EFC73270FE6FA0073A9FA /* BackgroundColorCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		934C8A5C27073F33008BCE0A /* Dropdown */ = {
@@ -819,6 +832,7 @@
 		9396E645270F2EF5002B2E2C /* BackgroundColor */ = {
 			isa = PBXGroup;
 			children = (
+				932EFC71270FE6D90073A9FA /* Cell */,
 				9396E646270F2F29002B2E2C /* BackgroundColor.swift */,
 				9396E64A270F2F36002B2E2C /* BackgroundColor.xib */,
 			);
@@ -1001,6 +1015,7 @@
 				936A9C3C2704A0DA006F9F25 /* Localizable.strings in Resources */,
 				9396E64F270F3244002B2E2C /* ViewHeaderDialog.xib in Resources */,
 				9396E65A270F3B24002B2E2C /* SegmentControlCustom.xib in Resources */,
+				932EFC75270FE6FA0073A9FA /* BackgroundColorCell.xib in Resources */,
 				936A9C3127049F1F006F9F25 /* LaunchScreen.storyboard in Resources */,
 				936A9C2E27049F1F006F9F25 /* Assets.xcassets in Resources */,
 				936A9CDD2704A179006F9F25 /* LICENSE in Resources */,
@@ -1184,6 +1199,7 @@
 				936A9CD52704A179006F9F25 /* BaseTabarViewController.swift in Sources */,
 				93AA98F9270811DA00939D3A /* PathDraw.swift in Sources */,
 				936A9CE92704A179006F9F25 /* ABVideoRangeSlider.swift in Sources */,
+				932EFC74270FE6FA0073A9FA /* BackgroundColorCell.swift in Sources */,
 				936A9D292704A179006F9F25 /* CustomButton.swift in Sources */,
 				936A9D1D2704A179006F9F25 /* UIApplication+Extension.swift in Sources */,
 				936A9C452704A14D006F9F25 /* Constant.swift in Sources */,

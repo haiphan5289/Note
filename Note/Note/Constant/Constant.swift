@@ -18,6 +18,7 @@ final class ConstantCommon {
     let fontDefault: UIFont = UIFont(name: SettingDefaultFont.DEFAULT_NAME_FONT, size: 18) ?? .systemFont(ofSize: 18)
     let radiusViewDialog: CGFloat = 12
     let radiusSegment: CGFloat = 12
+    let radiusCellBgColor: CGFloat = 12
     
     private init() {}
 

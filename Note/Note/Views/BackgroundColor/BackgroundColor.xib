@@ -31,9 +31,27 @@
                                 <constraint firstAttribute="height" constant="40" id="kGa-6t-4AP"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wng-hw-oS9">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EzX-1a-wPy">
                             <rect key="frame" x="0.0" y="90" width="414" height="260"/>
+                            <subviews>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vbB-PG-scs">
+                                    <rect key="frame" x="16" y="16" width="382" height="228"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="95l-8a-Qld">
+                                        <size key="itemSize" width="128" height="128"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
+                            </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="vbB-PG-scs" secondAttribute="trailing" constant="16" id="3XJ-qQ-QbH"/>
+                                <constraint firstAttribute="bottom" secondItem="vbB-PG-scs" secondAttribute="bottom" constant="16" id="TVQ-D9-Zwx"/>
+                                <constraint firstItem="vbB-PG-scs" firstAttribute="leading" secondItem="EzX-1a-wPy" secondAttribute="leading" constant="16" id="qMY-Vu-RkH"/>
+                                <constraint firstItem="vbB-PG-scs" firstAttribute="top" secondItem="EzX-1a-wPy" secondAttribute="top" constant="16" id="wLE-Jl-aD3"/>
+                            </constraints>
                         </view>
                     </subviews>
                 </stackView>
@@ -49,6 +67,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backgroundContentView" destination="unR-BL-qOk" id="uCE-Wv-MR3"/>
+                <outlet property="collectionView" destination="vbB-PG-scs" id="o0J-YA-Hs4"/>
                 <outlet property="segmentContentView" destination="mXp-L3-b9g" id="BAg-5K-XwV"/>
             </connections>
             <point key="canvasLocation" x="-19" y="82"/>
@@ -56,7 +75,7 @@
     </objects>
     <resources>
         <namedColor name="BgColorView">
-            <color red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.1289999932050705" green="0.1289999932050705" blue="0.1289999932050705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
