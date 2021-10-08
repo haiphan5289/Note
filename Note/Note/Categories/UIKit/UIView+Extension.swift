@@ -27,20 +27,20 @@ extension UIView {
     }
     
     func dropShadow(radius : CGFloat = 1, borderColor : UIColor, borderWidth: CGFloat = 0.5, shadowColor: UIColor, opacity: Float = 0.5, offSet: CGSize, shadowRadius: CGFloat = 1, scale: Bool = true) {
-         self.layer.masksToBounds = false
-         // corner radius
-         self.layer.cornerRadius = radius
-         
-         // border
-         self.layer.borderWidth = borderWidth
-         self.layer.borderColor = borderColor.cgColor
-         
-         // shadow
-         self.layer.shadowColor = shadowColor.cgColor
-         self.layer.shadowOffset = offSet
-         self.layer.shadowOpacity = opacity
-         self.layer.shadowRadius = shadowRadius
-     }
+        self.layer.masksToBounds = false
+        // corner radius
+        self.layer.cornerRadius = radius
+        
+        // border
+        self.layer.borderWidth = borderWidth
+        self.layer.borderColor = borderColor.cgColor
+        
+        // shadow
+        self.layer.shadowColor = shadowColor.cgColor
+        self.layer.shadowOffset = offSet
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowRadius = shadowRadius
+    }
     
     func borderWithGradient(color1 : UIColor, color2 : UIColor, width : CGFloat = 1) {
         let height = self.bounds.size.height/2
@@ -64,15 +64,15 @@ extension UIView {
         self.layer.addSublayer(gradient)
     }
     
-//    func addBottomLine() {
-//        let lineView = UIView.init()
-//        lineView.backgroundColor  = UIColor.init(hex: "EFEFF4")
-//        self.addSubview(lineView)
-//        lineView.snp.makeConstraints { (make) in
-//            make.leading.trailing.bottom.equalToSuperview()
-//            make.height.equalTo(0.5)
-//        }
-//    }
+    //    func addBottomLine() {
+    //        let lineView = UIView.init()
+    //        lineView.backgroundColor  = UIColor.init(hex: "EFEFF4")
+    //        self.addSubview(lineView)
+    //        lineView.snp.makeConstraints { (make) in
+    //            make.leading.trailing.bottom.equalToSuperview()
+    //            make.height.equalTo(0.5)
+    //        }
+    //    }
     
     
     
@@ -132,7 +132,7 @@ extension UIScrollView {
 
 
 extension UIView {
-
+    
     func addBlur(style: UIBlurEffect.Style = .extraLight) {
         let blurEffect = UIBlurEffect(style: style)
         let blurBackground = UIVisualEffectView(effect: blurEffect)
@@ -239,5 +239,55 @@ extension UIView {
     var propertiesToSend: String {
         get { return objc_getAssociatedObject(self, &key) as? String ?? "" }
         set { objc_setAssociatedObject(self, &key, newValue, .OBJC_ASSOCIATION_RETAIN) }
+    }
+}
+
+typealias GradientPoints = (startPoint: CGPoint, endPoint: CGPoint)
+
+enum GradientOrientation {
+    case topRightBottomLeft
+    case topLeftBottomRight
+    case horizontal
+    case vertical
+    
+    var startPoint: CGPoint {
+        return points.startPoint
+    }
+    
+    var endPoint: CGPoint {
+        return points.endPoint
+    }
+    
+    var points: GradientPoints {
+        switch self {
+        case .topRightBottomLeft:
+            return (CGPoint(x: 0.0, y: 1.0), CGPoint(x: 1.0, y: 0.0))
+        case .topLeftBottomRight:
+            return (CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1, y: 1))
+        case .horizontal:
+            return (CGPoint(x: 0.0, y: 0.5), CGPoint(x: 1.0, y: 0.5))
+        case .vertical:
+            return (CGPoint(x: 0.0, y: 0.0), CGPoint(x: 0.0, y: 1.0))
+        }
+    }
+}
+
+extension UIView {
+    
+    func applyGradient(withColours colours: [UIColor], locations: [NSNumber]? = nil) {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = colours.map { $0.cgColor }
+        gradient.locations = locations
+        self.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    func applyGradient(withColours colours: [UIColor], gradientOrientation orientation: GradientOrientation) {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = colours.map { $0.cgColor }
+        gradient.startPoint = orientation.startPoint
+        gradient.endPoint = orientation.endPoint
+        self.layer.insertSublayer(gradient, at: 0)
     }
 }

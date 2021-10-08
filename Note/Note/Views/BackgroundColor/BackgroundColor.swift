@@ -67,14 +67,30 @@ extension BackgroundColor {
             .bind(to: self.collectionView.rx.items(cellIdentifier: BackgroundColorCell.identifier, cellType: BackgroundColorCell.self)) { row, data, cell in
                 guard let textColor = data.text, let img = data.img else { return }
                 cell.img.isHidden = true
+                cell.viewGradient.isHidden = true
                 
                 switch self.typesColor {
-                case .colors: cell.contentView.backgroundColor = UIColor(hexString: textColor)
+                case .colors:
+                    cell.contentView.backgroundColor = UIColor(hexString: textColor)
                 case .images:
                     cell.img.isHidden = false
                     cell.img.image = UIImage(named: img)
                     cell.contentView.backgroundColor = .clear
-                case .gradient: cell.contentView.backgroundColor = .red
+                case .gradient:
+                    cell.viewGradient.isHidden = false
+                    cell.viewGradient.layoutIfNeeded()
+                    
+                    if row == self.viewModel.listColors.count - 1, let t1 =  self.viewModel.listColors[row].text {
+                        let color1 = UIColor(hexString: t1) ?? .red
+                        cell.viewGradient.applyGradient(withColours: [color1, color1], gradientOrientation: .horizontal)
+                    } else if let t1 =  self.viewModel.listColors[row].text, let t2 = self.viewModel.listColors[row + 1].text {
+                        let color1 = UIColor(hexString: t1) ?? .red
+                        let color2 = UIColor(hexString: t2) ?? .blue
+                        cell.viewGradient.applyGradient(withColours: [color1, color2], gradientOrientation: .horizontal)
+                    }
+                    
+                    
+                    
                 }
                 
             }.disposed(by: disposeBag)

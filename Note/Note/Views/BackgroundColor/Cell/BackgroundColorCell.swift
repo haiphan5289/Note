@@ -9,6 +9,7 @@ import UIKit
 
 class BackgroundColorCell: UICollectionViewCell {
 
+    @IBOutlet weak var viewGradient: UIView!
     @IBOutlet weak var img: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()

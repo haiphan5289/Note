@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,19 +20,33 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s0l-W3-SNC">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33n-Rm-7G3">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="33n-Rm-7G3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="5mI-Pm-cfM"/>
+                <constraint firstAttribute="trailing" secondItem="33n-Rm-7G3" secondAttribute="trailing" id="6rt-kp-hzB"/>
                 <constraint firstItem="s0l-W3-SNC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Klo-H5-vQ8"/>
+                <constraint firstAttribute="bottom" secondItem="33n-Rm-7G3" secondAttribute="bottom" id="S4T-RD-gTu"/>
                 <constraint firstAttribute="trailing" secondItem="s0l-W3-SNC" secondAttribute="trailing" id="cSU-jA-jNb"/>
                 <constraint firstAttribute="bottom" secondItem="s0l-W3-SNC" secondAttribute="bottom" id="fZT-Nb-ZE5"/>
                 <constraint firstItem="s0l-W3-SNC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ifW-Bx-cbD"/>
+                <constraint firstItem="33n-Rm-7G3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="n0b-1S-e3R"/>
             </constraints>
             <connections>
                 <outlet property="img" destination="s0l-W3-SNC" id="rdz-DS-Usk"/>
+                <outlet property="viewGradient" destination="33n-Rm-7G3" id="SZy-EN-2TE"/>
             </connections>
             <point key="canvasLocation" x="-19" y="82"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
