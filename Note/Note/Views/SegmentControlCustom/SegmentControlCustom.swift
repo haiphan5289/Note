@@ -76,6 +76,7 @@ extension SegmentControlCustom {
         
         lbName.textAlignment = .center
         lbName.tag = index
+        self.listLabel.append(lbName)
         v.addSubview(lbName)
         lbName.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
@@ -86,22 +87,19 @@ extension SegmentControlCustom {
         bt.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        
+
         bt.rx.tap.bind { [weak self] _ in
             guard let wSelf = self else { return }
             wSelf.moveThumnailAnimation(moveTo: v.frame)
-            
+
             wSelf.listLabel.forEach { lb in
-                if lb.tag == index {
-                    lbName.textColor = Asset.textColorApp.color
-                } else {
-                    lbName.textColor = Asset.colorApp.color
-                }
+                lb.textColor = (lb.tag == index) ? Asset.textColorApp.color : Asset.colorApp.color
             }
-            
+
         }.disposed(by: disposeBag)
         
-        self.listLabel.append(lbName)
+        
+        
         return v
     }
     
