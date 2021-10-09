@@ -10,7 +10,7 @@ import RxSwift
 
 class ViewHeaderDialog: UIView {
     
-    enum ActionHeader {
+    enum ActionHeader: Int, CaseIterable {
         case cancel, done
     }
     
@@ -35,7 +35,7 @@ extension ViewHeaderDialog {
     }
     
     private func setupRX() {
-        
+
     }
     
     func updateTitleHeader(text: String) {

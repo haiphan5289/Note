@@ -8,6 +8,11 @@
 import UIKit
 import RxSwift
 
+protocol BackgroundColorDelegate {
+    func dismissBgColor()
+    func doneBgColor()
+}
+
 class BackgroundColor: UIView {
     
     enum BgColorTypes: Int, CaseIterable {
@@ -32,6 +37,7 @@ class BackgroundColor: UIView {
     @IBOutlet weak var segmentContentView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var delegate: BackgroundColorDelegate?
     private let viewModel: BackgroundColorVM = BackgroundColorVM()
     private let segmentControl: SegmentControlCustom = SegmentControlCustom.loadXib()
     private let headerDialogView: ViewHeaderDialog = ViewHeaderDialog.loadXib()
@@ -82,18 +88,34 @@ extension BackgroundColor {
                     
                     if row == self.viewModel.listColors.count - 1, let t1 =  self.viewModel.listColors[row].text {
                         let color1 = UIColor(hexString: t1) ?? .red
-                        cell.viewGradient.applyGradient(withColours: [color1, color1], gradientOrientation: .horizontal)
+                        cell.viewGradient.applyGradient(withColours: [color1, color1], gradientOrientation: .vertical)
                     } else if let t1 =  self.viewModel.listColors[row].text, let t2 = self.viewModel.listColors[row + 1].text {
                         let color1 = UIColor(hexString: t1) ?? .red
                         let color2 = UIColor(hexString: t2) ?? .blue
-                        cell.viewGradient.applyGradient(withColours: [color1, color2], gradientOrientation: .horizontal)
+                        cell.viewGradient.applyGradient(withColours: [color1, color2], gradientOrientation: .vertical)
                     }
-                    
-                    
-                    
+                }
+            }.disposed(by: disposeBag)
+        
+        ViewHeaderDialog.ActionHeader.allCases.forEach { [weak self] type in
+            guard let wSelf = self else { return }
+            let bt = wSelf.headerDialogView.bts[type.rawValue]
+            
+            bt.rx.tap.bind { [weak self] _ in
+                guard let wSelf = self else { return }
+                
+                switch type {
+                case .cancel:
+                    wSelf.hideView()
+                    wSelf.delegate?.dismissBgColor()
+                case .done:
+                    wSelf.hideView()
+                    wSelf.delegate?.doneBgColor()
                 }
                 
             }.disposed(by: disposeBag)
+            
+        }
     }
     
     private func calculateSizeCell() -> CGSize {
@@ -116,6 +138,14 @@ extension BackgroundColor {
         self.headerDialogView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+    }
+    
+    func showView() {
+        self.isHidden = false
+    }
+    
+    func hideView() {
+        self.isHidden = true
     }
     
     func addViewToParent(view: UIView) {

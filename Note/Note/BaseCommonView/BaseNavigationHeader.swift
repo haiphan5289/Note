@@ -126,6 +126,7 @@ class BaseNavigationHeader: UIViewController {
 extension BaseNavigationHeader: ConfigStyleDelegate {
     func showBackgroundColor() {
         let bgView: BackgroundColor = BackgroundColor.loadXib()
+        bgView.delegate = self
         bgView.addViewToParent(view: self.view)
         self.eventStatusKeyboard.onNext(.hide)
         self.eventShowListFontView.onNext(false)
@@ -195,5 +196,17 @@ extension BaseNavigationHeader: ListFontDelegate {
 extension BaseNavigationHeader: ListFontVCDelegae {
     func selectFont(index: Int) {
         self.listFontView.scrollToIndex(index: index)
+        
     }
+}
+extension BaseNavigationHeader: BackgroundColorDelegate {
+    func dismissBgColor() {
+        self.eventShowListFontView.onNext(true)
+    }
+    
+    func doneBgColor() {
+        self.eventShowListFontView.onNext(true)
+    }
+    
+    
 }
