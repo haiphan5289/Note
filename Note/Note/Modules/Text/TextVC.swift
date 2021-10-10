@@ -18,6 +18,7 @@ class TextVC: BaseNavigationHeader {
         static let widthTextView: CGFloat = 0.9
         static let topContraintTextView: CGFloat = 10
         static let botContraintTextView: CGFloat = 10
+        static let tagImage: Int = 99
     }
     
     // Add here outlets
@@ -45,6 +46,8 @@ extension TextVC {
     
     private func setupUI() {
         // Add here the setup for the UI
+        textView.clipsToBounds = true
+        textView.layer.cornerRadius = ConstantCommon.shared.radiusViewDialog
         textView.centerVertically()
         textView.becomeFirstResponder()
         previousFont = textView.font
@@ -119,6 +122,28 @@ extension TextVC {
                 wSelf.textViewShowListFont()
             }
             
+        }.disposed(by: disposeBag)
+        
+        self.eventUpdateBgColor.asObservable().bind { [weak self] img in
+            guard let wSelf = self else { return }
+            
+            wSelf.view.subviews.forEach { v in
+                if v.tag == Constant.tagImage {
+                    v.removeFromSuperview()
+                }
+            }
+
+            let img = UIImageView(image: img.resizeImage(wSelf.textView.bounds.size))
+            img.contentMode = .scaleToFill
+            img.tag = Constant.tagImage
+            img.clipsToBounds = true
+            img.layer.cornerRadius = ConstantCommon.shared.radiusViewDialog
+            wSelf.textView.backgroundColor = UIColor.clear
+            wSelf.view.addSubview( img)
+            wSelf.view.sendSubviewToBack(img)
+            img.snp.makeConstraints { (make) in
+                make.edges.equalTo(wSelf.textView)
+            }
         }.disposed(by: disposeBag)
     
     }

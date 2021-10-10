@@ -31,6 +31,7 @@ class BaseNavigationHeader: UIViewController {
     let eventFont: PublishSubject<StatusFont> = PublishSubject.init()
     let eventHeightKeyboard: PublishSubject<CGFloat> = PublishSubject.init()
     let navigationItemView: NavigationItemView = NavigationItemView.loadXib()
+    let eventUpdateBgColor: PublishSubject<UIImage> = PublishSubject.init()
 //    let eventPickColor: PublishSubject<UIColor> = PublishSubject.init()
     @Published var eventPickColor: UIColor
     
@@ -200,6 +201,10 @@ extension BaseNavigationHeader: ListFontVCDelegae {
     }
 }
 extension BaseNavigationHeader: BackgroundColorDelegate {
+    func updateBgColor(image: UIImage) {
+        self.eventUpdateBgColor.onNext(image)
+    }
+    
     func dismissBgColor() {
         self.eventShowListFontView.onNext(true)
     }

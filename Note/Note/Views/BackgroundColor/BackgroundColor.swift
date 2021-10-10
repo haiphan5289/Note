@@ -11,6 +11,7 @@ import RxSwift
 protocol BackgroundColorDelegate {
     func dismissBgColor()
     func doneBgColor()
+    func updateBgColor(image: UIImage)
 }
 
 class BackgroundColor: UIView {
@@ -96,6 +97,18 @@ extension BackgroundColor {
                     }
                 }
             }.disposed(by: disposeBag)
+        
+        self.collectionView.rx.itemSelected.bind { [weak self] idx in
+            guard let wSelf = self else { return }
+            switch wSelf.typesColor {
+            case .images:
+                if let text = wSelf.viewModel.listColors[idx.row].img, let img = UIImage(named: text) {
+                    wSelf.delegate?.updateBgColor(image: img)
+                }
+                
+            case .gradient, .colors: break
+            }
+        }.disposed(by: disposeBag)
         
         ViewHeaderDialog.ActionHeader.allCases.forEach { [weak self] type in
             guard let wSelf = self else { return }
