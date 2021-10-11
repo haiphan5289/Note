@@ -23,6 +23,7 @@ class TextVC: BaseNavigationHeader {
     
     // Add here outlets
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var imgBg: UIImageView!
     
     // Add here your view model
     private var viewModel: TextVM = TextVM()
@@ -52,6 +53,7 @@ extension TextVC {
         textView.becomeFirstResponder()
         previousFont = textView.font
         self.eventUpdateFontStyleView.accept(textView.font ?? ConstantCommon.shared.fontDefault)
+        self.setupImageBg()
     }
     
     private func setupRX() {
@@ -126,26 +128,35 @@ extension TextVC {
         
         self.eventUpdateBgColor.asObservable().bind { [weak self] img in
             guard let wSelf = self else { return }
-            
-            wSelf.view.subviews.forEach { v in
-                if v.tag == Constant.tagImage {
-                    v.removeFromSuperview()
-                }
-            }
-
-            let img = UIImageView(image: img.resizeImage(wSelf.textView.bounds.size))
-            img.contentMode = .scaleToFill
-            img.tag = Constant.tagImage
-            img.clipsToBounds = true
-            img.layer.cornerRadius = ConstantCommon.shared.radiusViewDialog
-            wSelf.textView.backgroundColor = UIColor.clear
-            wSelf.view.addSubview( img)
-            wSelf.view.sendSubviewToBack(img)
-            img.snp.makeConstraints { (make) in
-                make.edges.equalTo(wSelf.textView)
-            }
+            wSelf.updateImgBg(img: img)
         }.disposed(by: disposeBag)
     
+    }
+    
+    private func updateImgBg(img: UIImage) {
+        self.textView.backgroundColor = UIColor.clear
+        self.imgBg.image = img
+        self.imgBg.isHidden = false
+    }
+    
+    private func setupImageBg() {
+//        wSelf.view.subviews.forEach { v in
+//            if v.tag == Constant.tagImage {
+//                v.removeFromSuperview()
+//            }
+//        }
+
+//        let img = UIImageView(image: img.resizeImage(wSelf.textView.bounds.size))
+        self.imgBg.contentMode = .scaleToFill
+        self.imgBg.tag = Constant.tagImage
+        self.imgBg.clipsToBounds = true
+        self.imgBg.layer.cornerRadius = ConstantCommon.shared.radiusViewDialog
+        self.imgBg.isHidden = true
+        self.view.addSubview( self.imgBg)
+        self.view.sendSubviewToBack(self.imgBg)
+        self.imgBg.snp.makeConstraints { (make) in
+            make.edges.equalTo(self.textView)
+        }
     }
     
     private func textViewHideKeyboard() {
