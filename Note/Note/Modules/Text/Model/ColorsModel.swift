@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+
 struct ColorModel: Codable {
     let text: String?
     let img: String?
@@ -20,3 +22,5 @@ struct ColorModel: Codable {
     }
     
 }
+
+

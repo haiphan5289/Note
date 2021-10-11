@@ -64,7 +64,7 @@ extension HomeVC {
                 make.height.equalTo(Constant.heightAddNoteView)
             }
         }
-                
+
     }
     
     private func addDropdownView() {
@@ -83,6 +83,13 @@ extension HomeVC {
     
     private func setupRX() {
         // Add here the setup for the RX
+        
+        NoteManage.shared.$listNote.asObservable().bind { [weak self] list in
+            guard let wSelf = self else { return }
+            print("==== \(list.count)")
+        }.disposed(by: disposeBag)
+        
+        
         self.eventStatusDropDown.asObservable().bind { [weak self] status in
             guard let wSelf = self else { return }
             switch status {

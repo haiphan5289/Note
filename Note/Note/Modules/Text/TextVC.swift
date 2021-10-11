@@ -105,6 +105,7 @@ extension TextVC {
             guard let wSelf = self else { return }
             switch type {
             case .close: wSelf.navigationController?.popViewController(animated: true)
+                
             default: break
             }
         }

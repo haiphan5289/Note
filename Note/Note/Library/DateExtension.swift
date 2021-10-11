@@ -17,8 +17,8 @@ extension Date {
         return result
     }
     
-    func convertDateToLocalTime() -> Date {
-            let timeZoneOffset = Double(TimeZone.current.secondsFromGMT(for: self))
-            return Calendar.current.date(byAdding: .second, value: Int(timeZoneOffset), to: self)!
+    static func convertDateToLocalTime() -> Date {
+            let timeZoneOffset = Double(TimeZone.current.secondsFromGMT(for: Date()))
+            return Calendar.current.date(byAdding: .second, value: Int(timeZoneOffset), to: Date())!
     }
 }
