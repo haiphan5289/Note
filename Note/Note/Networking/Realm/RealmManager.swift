@@ -49,7 +49,7 @@ class RealmManager {
                 try! realm.write {
                     
                     do {
-                        let newNote = NoteModel(noteType: model.noteType, text: model.text)
+                        let newNote = NoteModel(noteType: model.noteType, text: model.text, color: model.color, gradient: model.gradient, image: model.image)
                         list[index].id = newNote.id
                         list[index].data = try newNote.toData()
                     } catch {
@@ -80,8 +80,7 @@ class RealmManager {
             
             return model
         }
-        .filter { $0 != nil }
-        .map { $0! }
+        .compactMap { $0 }
         return listRealm
     }
     

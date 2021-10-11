@@ -174,17 +174,17 @@ extension TextVC {
         case .gradient(let list ):
             self.removeCAGradientLayer()
             self.textView.backgroundColor = .clear
-            self.textView.applyGradient(withColours: list, gradientOrientation: .vertical)
+            self.textView.applyGradient(withColours: list.map { $0.covertToColor() }.compactMap{ $0 }, gradientOrientation: .vertical)
         case .colors(let color):
             self.removeCAGradientLayer()
             if let color = color {
                 self.imgBg.isHidden = true
-                self.textView.backgroundColor = color
+                self.textView.backgroundColor = color.covertToColor()
             }
         case .images(let img):
             self.removeCAGradientLayer()
-            if let img = img {
-                self.updateImgBg(img: img)
+            if let img = img, let image = img.converToImage() {
+                self.updateImgBg(img: image)
             }
         }
     }

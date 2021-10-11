@@ -17,9 +17,9 @@ protocol BackgroundColorDelegate {
 class BackgroundColor: UIView {
     
     enum BgColorTypes {
-        case images(UIImage?)
-        case colors(UIColor?)
-        case gradient([UIColor])
+        case images(String?)
+        case colors(String?)
+        case gradient([String])
         
         var text: String {
             switch self {
@@ -104,27 +104,27 @@ extension BackgroundColor {
             guard let wSelf = self else { return }
             switch wSelf.typesColor {
             case .images:
-                if let text = wSelf.viewModel.listColors[idx.row].img, let img = UIImage(named: text) {
-                    wSelf.delegate?.updateBgColor(bgColorType: .images(img))
-                    wSelf.typesColor = .images(img)
+                if let text = wSelf.viewModel.listColors[idx.row].img {
+                    wSelf.delegate?.updateBgColor(bgColorType: .images(text))
+                    wSelf.typesColor = .images(text)
                 }
                 
             case .colors:
                 let item = wSelf.viewModel.listColors[idx.row]
                 if let textColor = item.text {
-                    wSelf.delegate?.updateBgColor(bgColorType: .colors(UIColor(hexString: textColor)))
-                    wSelf.typesColor = .colors(UIColor(hexString: textColor))
+                    wSelf.delegate?.updateBgColor(bgColorType: .colors(textColor))
+                    wSelf.typesColor = .colors(textColor)
                 }
                 
             case .gradient:
-                var color1: UIColor = .red
-                var color2: UIColor = .black
+                var color1: String = ""
+                var color2: String = ""
                 if idx.row == wSelf.viewModel.listColors.count - 1, let t1 =  wSelf.viewModel.listColors[idx.row].text {
-                    color1 = UIColor(hexString: t1) ?? .red
-                    color2 = UIColor(hexString: t1) ?? .red
+                    color1 = t1
+                    color2 = t1
                 } else if let t1 =  wSelf.viewModel.listColors[idx.row].text, let t2 = wSelf.viewModel.listColors[idx.row + 1].text {
-                    color1 = UIColor(hexString: t1) ?? .red
-                    color2 = UIColor(hexString: t2) ?? .blue
+                    color1 = t1
+                    color2 = t2
                 }
                 wSelf.delegate?.updateBgColor(bgColorType: .gradient([color1, color2]))
                 wSelf.typesColor = .gradient([color1, color2])

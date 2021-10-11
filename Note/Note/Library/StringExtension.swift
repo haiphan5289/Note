@@ -128,3 +128,15 @@ extension Date {
     }
     
 }
+
+extension String {
+    
+    func converToImage() -> UIImage? {
+        return UIImage(named: self)
+    }
+    
+    func covertToColor() -> UIColor? {
+        return UIColor(hexString: self)
+    }
+    
+}
