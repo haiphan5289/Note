@@ -14,14 +14,22 @@ final class NoteManage {
     
     @VariableReplay var listNote: [NoteModel] = []
     
+    private let disposeBag = DisposeBag()
     private init() {}
     
     func start() {
-        self.getListNote()
+        self.setupRX()
+        
     }
     
-    private func getListNote() {
-        self.listNote = RealmManager.shared.getListNote()
+    private func setupRX() {
+        let getList = Observable.just(RealmManager.shared.getListNote())
+        let updateList = NotificationCenter.default.rx.notification(NSNotification.Name(PushNotificationKeys.didUpdateNote.rawValue))
+            .map { _ in RealmManager.shared.getListNote() }
+        Observable.merge(getList, updateList).bind { [weak self] list in
+            guard let wSelf = self else { return }
+            wSelf.listNote = list.sorted(by: { $0.id.compare($1.id) == ComparisonResult.orderedDescending } )
+        }.disposed(by: disposeBag)
     }
     
     func getWidthCell(width: CGFloat) -> CGFloat {

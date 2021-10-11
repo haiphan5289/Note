@@ -21,6 +21,8 @@ class TextVC: BaseNavigationHeader {
         static let tagImage: Int = 99
     }
     
+    var noteModel: NoteModel?
+    
     // Add here outlets
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var imgBg: UIImageView!
@@ -29,6 +31,7 @@ class TextVC: BaseNavigationHeader {
     private var viewModel: TextVM = TextVM()
     private var previousFont: UIFont?
     private var previousBgColor: BackgroundColor.BgColorTypes?
+    private var bgColorModel: BgColorModel?
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -56,6 +59,13 @@ extension TextVC {
         self.setupImageBg()
         
         self.textColor = textView.textColor ?? Asset.colorApp.color
+        
+        if let note = self.noteModel, let type = note.getBgColorType() {
+            self.updateBgColorWhenDone(bgColorType: type)
+            self.bgColorModel = note.bgColorModel
+        } else {
+            self.bgColorModel = BgColorModel.empty
+        }
     }
     
     private func setupRX() {
@@ -105,6 +115,13 @@ extension TextVC {
             guard let wSelf = self else { return }
             switch type {
             case .close: wSelf.navigationController?.popViewController(animated: true)
+                
+            case .done:
+                wSelf.navigationController?.popViewController(animated: true, {
+                    let noteModel: NoteModel = NoteModel(noteType: .text, text: wSelf.textView.text, bgColorModel: wSelf.bgColorModel)
+                    RealmManager.shared.updateOrInsertConfig(model: noteModel)
+                })
+                
                 
             default: break
             }
@@ -175,16 +192,19 @@ extension TextVC {
             self.removeCAGradientLayer()
             self.textView.backgroundColor = .clear
             self.textView.applyGradient(withColours: list.map { $0.covertToColor() }.compactMap{ $0 }, gradientOrientation: .vertical)
+            self.bgColorModel?.gradient = list
         case .colors(let color):
             self.removeCAGradientLayer()
             if let color = color {
                 self.imgBg.isHidden = true
                 self.textView.backgroundColor = color.covertToColor()
+                self.bgColorModel?.color = color
             }
         case .images(let img):
             self.removeCAGradientLayer()
             if let img = img, let image = img.converToImage() {
                 self.updateImgBg(img: image)
+                self.bgColorModel?.image = img
             }
         }
     }

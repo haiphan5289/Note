@@ -49,7 +49,7 @@ class RealmManager {
                 try! realm.write {
                     
                     do {
-                        let newNote = NoteModel(noteType: model.noteType, text: model.text, color: model.color, gradient: model.gradient, image: model.image)
+                        let newNote = NoteModel(noteType: model.noteType, text: model.text, bgColorModel: model.bgColorModel)
                         list[index].id = newNote.id
                         list[index].data = try newNote.toData()
                     } catch {

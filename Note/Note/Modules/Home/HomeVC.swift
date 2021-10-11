@@ -19,9 +19,12 @@ class HomeVC: UIViewController {
         static let heightAddNoteView: CGFloat = 50
         static let totalBesidesArea: CGFloat = 75
         static let contraintBottomDropDownView: CGFloat = 10
+        static let numberOfCellinLine: CGFloat = 3
+        static let spacingCell: CGFloat = 5
     }
     
     // Add here outlets
+    @IBOutlet weak var collectionView: UICollectionView!
     // Add here your view model
     private var viewModel: HomeVM = HomeVM()
     private let vAddNote: AddNote = AddNote.loadXib()
@@ -64,7 +67,11 @@ extension HomeVC {
                 make.height.equalTo(Constant.heightAddNoteView)
             }
         }
-
+        
+        self.collectionView.delegate = self
+        self.collectionView.register(HomeCell.nib, forCellWithReuseIdentifier: HomeCell.identifier)
+        
+        
     }
     
     private func addDropdownView() {
@@ -87,6 +94,19 @@ extension HomeVC {
         NoteManage.shared.$listNote.asObservable().bind { [weak self] list in
             guard let wSelf = self else { return }
             print("==== \(list.count)")
+        }.disposed(by: disposeBag)
+        
+        NoteManage.shared.$listNote.asObservable()
+            .bind(to: self.collectionView.rx.items(cellIdentifier: HomeCell.identifier, cellType: HomeCell.self)) { row, data, cell in
+                cell.contentView.backgroundColor = (row % 2 == 0) ? .red : .blue
+            }.disposed(by: disposeBag)
+        
+        self.collectionView.rx.itemSelected.bind { [weak self] idx in
+            guard let wSelf = self else { return }
+            let item = NoteManage.shared.listNote[idx.row]
+            let vc = TextVC.createVC()
+            vc.noteModel = item
+            wSelf.navigationController?.pushViewController(vc, animated: true)
         }.disposed(by: disposeBag)
         
         
@@ -127,6 +147,11 @@ extension HomeVC {
         }.disposed(by: disposeBag)
     }
     
+    private func calculateSizeCell() -> CGSize {
+        let w = (self.collectionView.bounds.size.width / Constant.numberOfCellinLine) - Constant.spacingCell
+        return CGSize(width: w, height: w)
+    }
+    
     private func playAudio() {
         do {
             guard let url = Bundle.main.url(forResource: "SoundNote", withExtension: ".mp3") else {
@@ -158,4 +183,17 @@ extension HomeVC: DropDownDelegate {
     }
     
     
+}
+extension HomeVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return self.calculateSizeCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return Constant.spacingCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 }

@@ -176,6 +176,8 @@
 		93B6EFC6270B4ABC0035EF09 /* ListTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */; };
 		93B6EFC9270B56300035EF09 /* ListFont.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B6EFC8270B56300035EF09 /* ListFont.xib */; };
 		93B6EFCB270B56430035EF09 /* ListFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFCA270B56430035EF09 /* ListFont.swift */; };
+		93CD016327149077005C09CE /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD016127149077005C09CE /* HomeCell.swift */; };
+		93CD016427149077005C09CE /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93CD016227149077005C09CE /* HomeCell.xib */; };
 		93D1B091270DE58D008FCD4B /* ListFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93D1B08E270DE58D008FCD4B /* ListFontVC.xib */; };
 		93D1B092270DE58D008FCD4B /* ListFontVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1B08F270DE58D008FCD4B /* ListFontVM.swift */; };
 		93D1B093270DE58D008FCD4B /* ListFontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1B090270DE58D008FCD4B /* ListFontVC.swift */; };
@@ -359,6 +361,8 @@
 		93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTextVC.swift; sourceTree = "<group>"; };
 		93B6EFC8270B56300035EF09 /* ListFont.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListFont.xib; sourceTree = "<group>"; };
 		93B6EFCA270B56430035EF09 /* ListFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFont.swift; sourceTree = "<group>"; };
+		93CD016127149077005C09CE /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		93CD016227149077005C09CE /* HomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
 		93D1B08E270DE58D008FCD4B /* ListFontVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListFontVC.xib; sourceTree = "<group>"; };
 		93D1B08F270DE58D008FCD4B /* ListFontVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFontVM.swift; sourceTree = "<group>"; };
 		93D1B090270DE58D008FCD4B /* ListFontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFontVC.swift; sourceTree = "<group>"; };
@@ -860,6 +864,7 @@
 		936A9D3C2704A4D1006F9F25 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				93CD016027149061005C09CE /* Cell */,
 				936A9D3D2704A61B006F9F25 /* HomeVC.xib */,
 				936A9D3E2704A61B006F9F25 /* HomeVM.swift */,
 				936A9D3F2704A61B006F9F25 /* HomeVC.swift */,
@@ -1017,6 +1022,15 @@
 			path = ListFont;
 			sourceTree = "<group>";
 		};
+		93CD016027149061005C09CE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				93CD016127149077005C09CE /* HomeCell.swift */,
+				93CD016227149077005C09CE /* HomeCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		93D1B08D270DE56B008FCD4B /* ListFont */ = {
 			isa = PBXGroup;
 			children = (
@@ -1096,6 +1110,7 @@
 				932EFC75270FE6FA0073A9FA /* BackgroundColorCell.xib in Resources */,
 				936A9C3127049F1F006F9F25 /* LaunchScreen.storyboard in Resources */,
 				936A9C2E27049F1F006F9F25 /* Assets.xcassets in Resources */,
+				93CD016427149077005C09CE /* HomeCell.xib in Resources */,
 				936A9CDD2704A179006F9F25 /* LICENSE in Resources */,
 				936A9C2C27049F1E006F9F25 /* Main.storyboard in Resources */,
 				936A9C392704A09C006F9F25 /* swiftgen.yml in Resources */,
@@ -1223,6 +1238,7 @@
 				936A9C412704A123006F9F25 /* Assets-Gen.swift in Sources */,
 				936A9CF82704A179006F9F25 /* UIEdgeInsetsExtensions.swift in Sources */,
 				93D1B093270DE58D008FCD4B /* ListFontVC.swift in Sources */,
+				93CD016327149077005C09CE /* HomeCell.swift in Sources */,
 				936A9CF72704A179006F9F25 /* UITableViewExtensions.swift in Sources */,
 				936A9D252704A179006F9F25 /* ViewControllerExtension.swift in Sources */,
 				932EFD4727101F730073A9FA /* BackgroundColorVM.swift in Sources */,

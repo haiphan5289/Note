@@ -17,22 +17,40 @@ struct NoteModel: Codable {
     let noteType: NoteType?
     let text: String?
     let id: Date = Date.convertDateToLocalTime()
-    let color: String?
-    let gradient: [String]?
-    let image: String?
+    let bgColorModel: BgColorModel?
     
     enum CodingKeys: String, CodingKey {
-        case noteType, text, color, gradient, image
+        case noteType, text, bgColorModel
     }
     
-//    func getBgColorType() -> BackgroundColor.BgColorTypes {
-//        
-//        if self.image != nil {
-//            return .colors(.red)
-//        }
-//        
-//        return .colors(.red)
-//    }
+    func getBgColorType() -> BackgroundColor.BgColorTypes? {
+        
+        if let bg = self.bgColorModel, let img = bg.image {
+            return .images(img)
+        }
+        
+        if let bg = self.bgColorModel, let color = bg.color {
+            return .colors(color)
+        }
+        
+        if let bg = self.bgColorModel, let g = bg.gradient, g.count > 0 {
+            return .gradient(g)
+        }
+        
+        return nil
+    }
     
+}
+
+struct BgColorModel: Codable {
+    var color: String?
+    var gradient: [String]?
+    var image: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case color, gradient, image
+    }
+    
+    static let empty = BgColorModel(color: nil, gradient: nil, image: nil)
 }
 
