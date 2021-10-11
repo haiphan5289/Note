@@ -11,13 +11,15 @@ import RxSwift
 protocol BackgroundColorDelegate {
     func dismissBgColor()
     func doneBgColor()
-    func updateBgColor(image: UIImage)
+    func updateBgColor(bgColorType: BackgroundColor.BgColorTypes)
 }
 
 class BackgroundColor: UIView {
     
-    enum BgColorTypes: Int, CaseIterable {
-        case images, colors, gradient
+    enum BgColorTypes {
+        case images(UIImage?)
+        case colors(UIColor?)
+        case gradient([UIColor])
         
         var text: String {
             switch self {
@@ -42,7 +44,7 @@ class BackgroundColor: UIView {
     private let viewModel: BackgroundColorVM = BackgroundColorVM()
     private let segmentControl: SegmentControlCustom = SegmentControlCustom.loadXib()
     private let headerDialogView: ViewHeaderDialog = ViewHeaderDialog.loadXib()
-    @VariableReplay private var typesColor: BgColorTypes = .images
+    @VariableReplay private var typesColor: BgColorTypes = .images(nil)
     
     private let disposeBag = DisposeBag()
     override func awakeFromNib() {
@@ -103,10 +105,27 @@ extension BackgroundColor {
             switch wSelf.typesColor {
             case .images:
                 if let text = wSelf.viewModel.listColors[idx.row].img, let img = UIImage(named: text) {
-                    wSelf.delegate?.updateBgColor(image: img)
+                    wSelf.delegate?.updateBgColor(bgColorType: .images(img))
                 }
                 
-            case .gradient, .colors: break
+            case .colors:
+                let item = wSelf.viewModel.listColors[idx.row]
+                if let textColor = item.text {
+                    wSelf.delegate?.updateBgColor(bgColorType: .colors(UIColor(hexString: textColor)))
+                }
+                
+            case .gradient:
+                var color1: UIColor = .red
+                var color2: UIColor = .black
+                if idx.row == wSelf.viewModel.listColors.count - 1, let t1 =  wSelf.viewModel.listColors[idx.row].text {
+                    color1 = UIColor(hexString: t1) ?? .red
+                    color2 = UIColor(hexString: t1) ?? .red
+                } else if let t1 =  wSelf.viewModel.listColors[idx.row].text, let t2 = wSelf.viewModel.listColors[idx.row + 1].text {
+                    color1 = UIColor(hexString: t1) ?? .red
+                    color2 = UIColor(hexString: t2) ?? .blue
+                }
+                wSelf.delegate?.updateBgColor(bgColorType: .gradient([color1, color2]))
+                
             }
         }.disposed(by: disposeBag)
         
@@ -142,7 +161,7 @@ extension BackgroundColor {
             make.edges.equalToSuperview()
         }
         self.segmentControl.delegate = self
-        self.segmentControl.loadList(list: BgColorTypes.allCases)
+        self.segmentControl.loadList(list: [BgColorTypes.images(nil), BgColorTypes.colors(nil), BgColorTypes.gradient([])])
     }
     
     private func addViewHeader() {

@@ -126,11 +126,38 @@ extension TextVC {
             
         }.disposed(by: disposeBag)
         
-        self.eventUpdateBgColor.asObservable().bind { [weak self] img in
+        self.eventUpdateBgColor.asObservable().bind { [weak self] type in
             guard let wSelf = self else { return }
-            wSelf.updateImgBg(img: img)
+            
+            switch type {
+            case .gradient(let list ):
+                wSelf.removeCAGradientLayer()
+                wSelf.textView.backgroundColor = .clear
+                wSelf.textView.applyGradient(withColours: list, gradientOrientation: .vertical)
+            case .colors(let color):
+                wSelf.removeCAGradientLayer()
+                if let color = color {
+                    wSelf.imgBg.isHidden = true
+                    wSelf.textView.backgroundColor = color
+                }
+            case .images(let img):
+                wSelf.removeCAGradientLayer()
+                if let img = img {
+                    wSelf.updateImgBg(img: img)
+                }
+            }
         }.disposed(by: disposeBag)
     
+    }
+    
+    private func removeCAGradientLayer() {
+        guard let subplayers = self.textView.layer.sublayers else {
+            return
+        }
+        
+        for sublayer in subplayers where sublayer is CAGradientLayer {
+            sublayer.removeFromSuperlayer()
+        }
     }
     
     private func updateImgBg(img: UIImage) {
@@ -140,13 +167,6 @@ extension TextVC {
     }
     
     private func setupImageBg() {
-//        wSelf.view.subviews.forEach { v in
-//            if v.tag == Constant.tagImage {
-//                v.removeFromSuperview()
-//            }
-//        }
-
-//        let img = UIImageView(image: img.resizeImage(wSelf.textView.bounds.size))
         self.imgBg.contentMode = .scaleToFill
         self.imgBg.tag = Constant.tagImage
         self.imgBg.clipsToBounds = true
