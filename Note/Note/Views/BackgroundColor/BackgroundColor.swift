@@ -10,7 +10,7 @@ import RxSwift
 
 protocol BackgroundColorDelegate {
     func dismissBgColor()
-    func doneBgColor()
+    func doneBgColor(bgColorType: BackgroundColor.BgColorTypes)
     func updateBgColor(bgColorType: BackgroundColor.BgColorTypes)
 }
 
@@ -106,12 +106,14 @@ extension BackgroundColor {
             case .images:
                 if let text = wSelf.viewModel.listColors[idx.row].img, let img = UIImage(named: text) {
                     wSelf.delegate?.updateBgColor(bgColorType: .images(img))
+                    wSelf.typesColor = .images(img)
                 }
                 
             case .colors:
                 let item = wSelf.viewModel.listColors[idx.row]
                 if let textColor = item.text {
                     wSelf.delegate?.updateBgColor(bgColorType: .colors(UIColor(hexString: textColor)))
+                    wSelf.typesColor = .colors(UIColor(hexString: textColor))
                 }
                 
             case .gradient:
@@ -125,7 +127,7 @@ extension BackgroundColor {
                     color2 = UIColor(hexString: t2) ?? .blue
                 }
                 wSelf.delegate?.updateBgColor(bgColorType: .gradient([color1, color2]))
-                
+                wSelf.typesColor = .gradient([color1, color2])
             }
         }.disposed(by: disposeBag)
         
@@ -142,7 +144,7 @@ extension BackgroundColor {
                     wSelf.delegate?.dismissBgColor()
                 case .done:
                     wSelf.hideView()
-                    wSelf.delegate?.doneBgColor()
+                    wSelf.delegate?.doneBgColor(bgColorType: wSelf.typesColor)
                 }
                 
             }.disposed(by: disposeBag)

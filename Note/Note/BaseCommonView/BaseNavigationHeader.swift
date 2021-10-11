@@ -22,18 +22,30 @@ class BaseNavigationHeader: UIViewController {
         case cancel, update(UIFont), done(UIFont)
     }
     
+    enum StatusBgColor {
+        case cancel, done(BackgroundColor.BgColorTypes)
+    }
+    
+    enum TextColorStatus {
+        case cancel, done
+    }
+    
     private let configStyleView: ConfigStyle = ConfigStyle.loadXib()
     private let configTextView: ConfigText = ConfigText.loadXib()
     private let listFontView: ListFont = ListFont.loadXib()
-
+    private let bgView: BackgroundColor = BackgroundColor.loadXib()
+    
     let eventUpdateFontStyleView: BehaviorRelay<UIFont> = BehaviorRelay.init(value: ConstantCommon.shared.fontDefault)
     let eventShowListFontView: PublishSubject<Bool> = PublishSubject.init()
     let eventFont: PublishSubject<StatusFont> = PublishSubject.init()
     let eventHeightKeyboard: PublishSubject<CGFloat> = PublishSubject.init()
     let navigationItemView: NavigationItemView = NavigationItemView.loadXib()
     let eventUpdateBgColor: PublishSubject<BackgroundColor.BgColorTypes> = PublishSubject.init()
-//    let eventPickColor: PublishSubject<UIColor> = PublishSubject.init()
+    let eventPickBgColor: PublishSubject<StatusBgColor> = PublishSubject.init()
+    let eventSaveTextColor: PublishSubject<TextColorStatus> = PublishSubject.init()
+    
     @Published var eventPickColor: UIColor
+    @VariableReplay var textColor: UIColor = Asset.textColorApp.color
     
     let eventStatusKeyboard: PublishSubject<ConfigStyle.StatusKeyboard> = PublishSubject.init()
     var vContainer: UIView!
@@ -95,6 +107,7 @@ class BaseNavigationHeader: UIViewController {
                 wSelf.configTextView.hideView()
                 wSelf.listFontView.hide()
                 wSelf.eventFont.onNext(.cancel)
+                wSelf.bgView.hideView()
             }
         }.disposed(by: disposeBag)
         
@@ -126,15 +139,16 @@ class BaseNavigationHeader: UIViewController {
 }
 extension BaseNavigationHeader: ConfigStyleDelegate {
     func showBackgroundColor() {
-        let bgView: BackgroundColor = BackgroundColor.loadXib()
-        bgView.delegate = self
-        bgView.addViewToParent(view: self.view)
+        self.bgView.delegate = self
+        self.bgView.addViewToParent(view: self.view)
         self.eventStatusKeyboard.onNext(.hide)
         self.eventShowListFontView.onNext(false)
+        self.bgView.showView()
     }
     
     func showConfigStyleText() {
         self.configTextView.showView()
+        self.configTextView.updateColorWellSelector(color: self.textColor)
     }
     
     func updateStatusKeyboard(status: ConfigStyle.StatusKeyboard) {
@@ -149,11 +163,13 @@ extension BaseNavigationHeader: ConfigTextDelegate {
     func dismiss() {
         self.configTextView.hideView()
         self.configStyleView.updateStatusKeyboard(status: .open, updateStatus: true)
+        self.eventSaveTextColor.onNext(.cancel)
     }
     
     func save() {
         self.configTextView.hideView()
         self.configStyleView.updateStatusKeyboard(status: .open, updateStatus: true)
+        self.eventSaveTextColor.onNext(.done)
     }
     
     func showConfigText() {
@@ -201,17 +217,18 @@ extension BaseNavigationHeader: ListFontVCDelegae {
     }
 }
 extension BaseNavigationHeader: BackgroundColorDelegate {
+    func doneBgColor(bgColorType: BackgroundColor.BgColorTypes) {
+        self.eventShowListFontView.onNext(true)
+        self.eventPickBgColor.onNext(.done(bgColorType))
+    }
+    
     func updateBgColor(bgColorType: BackgroundColor.BgColorTypes) {
         self.eventUpdateBgColor.onNext(bgColorType)
     }
     
     func dismissBgColor() {
         self.eventShowListFontView.onNext(true)
+        self.eventPickBgColor.onNext(.cancel)
     }
-    
-    func doneBgColor() {
-        self.eventShowListFontView.onNext(true)
-    }
-    
     
 }

@@ -101,6 +101,10 @@ extension ConfigText {
         }
     }
     
+    func updateColorWellSelector(color: UIColor) {
+        self.colorWell.selectedColor = color
+    }
+    
     func hideView() {
         self.isHidden = true
     }

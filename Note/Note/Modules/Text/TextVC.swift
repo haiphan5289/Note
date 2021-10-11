@@ -28,7 +28,7 @@ class TextVC: BaseNavigationHeader {
     // Add here your view model
     private var viewModel: TextVM = TextVM()
     private var previousFont: UIFont?
-    private var previousColor: UIColor = Asset.colorApp.color
+    private var previousBgColor: BackgroundColor.BgColorTypes?
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -54,6 +54,8 @@ extension TextVC {
         previousFont = textView.font
         self.eventUpdateFontStyleView.accept(textView.font ?? ConstantCommon.shared.fontDefault)
         self.setupImageBg()
+        
+        self.textColor = textView.textColor ?? Asset.colorApp.color
     }
     
     private func setupRX() {
@@ -70,6 +72,7 @@ extension TextVC {
                 if let f = wSelf.previousFont {
                     wSelf.textView.font = f
                 }
+                wSelf.textView.textColor = wSelf.textColor
             case .done(let font):
                 wSelf.textView.font = font
                 wSelf.previousFont = font
@@ -82,6 +85,21 @@ extension TextVC {
             guard let wSelf = self else { return }
             wSelf.textView.textColor = color
         }.disposed(by: disposeBag)
+        
+        self.eventSaveTextColor
+            .withLatestFrom(self.$eventPickColor, resultSelector:  { ( type: $0, textColor: $1 ) } )
+            .bind { [weak self] (type , textColor) in
+                guard let wSelf = self else { return }
+                
+                switch type {
+                case .cancel:
+                    wSelf.textView.textColor = wSelf.textColor
+                case .done:
+                    wSelf.textView.textColor = textColor
+                    wSelf.textColor = textColor
+                }
+                
+            }.disposed(by: disposeBag)
         
         self.navigationItemView.actionItem = { [weak self] type in
             guard let wSelf = self else { return }
@@ -128,26 +146,52 @@ extension TextVC {
         
         self.eventUpdateBgColor.asObservable().bind { [weak self] type in
             guard let wSelf = self else { return }
+            wSelf.updateBgColorWhenDone(bgColorType: type)
+        }.disposed(by: disposeBag)
+        
+        self.eventPickBgColor.asObservable().bind { [weak self] type in
+            guard let wSelf = self else { return }
             
             switch type {
-            case .gradient(let list ):
-                wSelf.removeCAGradientLayer()
-                wSelf.textView.backgroundColor = .clear
-                wSelf.textView.applyGradient(withColours: list, gradientOrientation: .vertical)
-            case .colors(let color):
-                wSelf.removeCAGradientLayer()
-                if let color = color {
-                    wSelf.imgBg.isHidden = true
-                    wSelf.textView.backgroundColor = color
+            case .cancel:
+                wSelf.resetBgColor()
+                if let pre = wSelf.previousBgColor {
+                    wSelf.updateBgColorWhenDone(bgColorType: pre)
                 }
-            case .images(let img):
-                wSelf.removeCAGradientLayer()
-                if let img = img {
-                    wSelf.updateImgBg(img: img)
-                }
+                
+            case .done( let bgColorType):
+                wSelf.previousBgColor = bgColorType
+                wSelf.updateBgColorWhenDone(bgColorType: bgColorType)
             }
+            
         }.disposed(by: disposeBag)
     
+    }
+    
+    private func updateBgColorWhenDone(bgColorType: BackgroundColor.BgColorTypes) {
+        switch bgColorType {
+        case .gradient(let list ):
+            self.removeCAGradientLayer()
+            self.textView.backgroundColor = .clear
+            self.textView.applyGradient(withColours: list, gradientOrientation: .vertical)
+        case .colors(let color):
+            self.removeCAGradientLayer()
+            if let color = color {
+                self.imgBg.isHidden = true
+                self.textView.backgroundColor = color
+            }
+        case .images(let img):
+            self.removeCAGradientLayer()
+            if let img = img {
+                self.updateImgBg(img: img)
+            }
+        }
+    }
+    
+    private func resetBgColor() {
+        self.removeCAGradientLayer()
+        self.textView.backgroundColor = .white
+        self.imgBg.isHidden = true
     }
     
     private func removeCAGradientLayer() {
