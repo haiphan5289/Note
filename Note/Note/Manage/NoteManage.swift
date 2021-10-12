@@ -40,8 +40,4 @@ final class NoteManage {
     func removeAllNote() {
         RealmManager.shared.deleteNoteAll()
     }
-    
-    func getWidthCell(width: CGFloat) -> CGFloat {
-        return (width - (ConstantCommon.shared.distanceAreaSide * 2) - (ConstantCommon.shared.distanceAreaSide * 2)) / 3
-    }
 }

@@ -199,7 +199,7 @@ extension TextVC {
     
     private func updateValueNote(note: NoteModel) {
         
-        if let type = bgColorModel.getBgColorType() {
+        if let bgColorModel = note.bgColorModel, let type = bgColorModel.getBgColorType() {
             self.updateBgColorWhenDone(bgColorType: type)
         }
         
