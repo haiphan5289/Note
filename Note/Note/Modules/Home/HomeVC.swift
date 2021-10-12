@@ -196,11 +196,7 @@ extension HomeVC: UICollectionViewDataSource {
         
         switch note.noteType {
         case .text:
-            cell.updateTextView(text: note.text ?? "")
-            if let bgColorType = note.getBgColorType() {
-                cell.updateBgColorWhenDone(bgColorType: bgColorType)
-            }
-            
+            cell.updateValue(note: note)
         default: break
         }
         

@@ -11,9 +11,9 @@ import RxSwift
 
 protocol ListFontDelegate {
     func dismissListFont()
-    func done(font: UIFont)
+    func done(fontName: String, size: CGFloat)
     func search()
-    func updateFontStyle(font: UIFont)
+    func updateFontStyle(fontName: String, size: CGFloat)
 }
 
 enum StatusList {
@@ -199,7 +199,7 @@ extension ListFont {
                     wSelf.selectIndexSize = wSelf.selectIndexSizePrevious
                 case .done:
                     if let f = wSelf.currentFont {
-                        wSelf.delegate?.done(font: f)
+                        wSelf.selectFont(isDone: true)
                         wSelf.selectIndexFontPrevious = wSelf.selectIndexFont
                         wSelf.selectIndexSizePrevious = wSelf.selectIndexSize
                     }
@@ -223,12 +223,18 @@ extension ListFont {
         
     }
     
-    func selectFont() {
+    func selectFont(isDone: Bool = false) {
         let font = FontType.listFont.getListFont()[self.selectIndexFont]
         if let index = FontType.listSize.getListSize(forFamilyName: font).hasIndex(index: self.selectIndexSize) {
             let style = FontType.listSize.getListSize(forFamilyName: font)[index]
             self.currentFont = UIFont(name: style, size: self.sizeFont)
-            self.delegate?.updateFontStyle(font: self.currentFont ?? .systemFont(ofSize: self.sizeFont))
+            
+            if isDone {
+                self.delegate?.done(fontName: style, size: self.sizeFont)
+            } else {
+                self.delegate?.updateFontStyle(fontName: style, size: self.sizeFont)
+            }
+
         }
     }
     

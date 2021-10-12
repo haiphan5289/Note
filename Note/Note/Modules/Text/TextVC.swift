@@ -31,7 +31,7 @@ class TextVC: BaseNavigationHeader {
     private var viewModel: TextVM = TextVM()
     private var previousFont: UIFont?
     private var previousBgColor: BackgroundColor.BgColorTypes?
-    private var bgColorModel: BgColorModel?
+    private var bgColorModel: BgColorModel = BgColorModel.empty
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -60,9 +60,11 @@ extension TextVC {
         
         self.textColor = textView.textColor ?? Asset.colorApp.color
         
-        if let note = self.noteModel, let type = note.getBgColorType() {
+        if let note = self.noteModel, let bgColorModel = note.bgColorModel, let type = bgColorModel.getBgColorType() {
             self.updateBgColorWhenDone(bgColorType: type)
-            self.bgColorModel = note.bgColorModel
+            self.bgColorModel = note.bgColorModel ?? BgColorModel.empty
+            self.textView.text = note.text
+            self.textView.font = bgColorModel.getFont()
         } else {
             self.bgColorModel = BgColorModel.empty
         }
@@ -77,15 +79,19 @@ extension TextVC {
             .bind { [weak self] status in
             guard let wSelf = self else { return }
             switch status {
-            case .update(let font): wSelf.textView.font = font
+            case .update(let fontName, let size):
+                wSelf.textView.font = UIFont(name: fontName, size: size)
             case .cancel:
                 if let f = wSelf.previousFont {
                     wSelf.textView.font = f
                 }
                 wSelf.textView.textColor = wSelf.textColor
-            case .done(let font):
+            case .done(let fontName, let size):
+                let font = UIFont(name: fontName, size: size) ?? UIFont.mySystemFont(ofSize: 16)
                 wSelf.textView.font = font
                 wSelf.previousFont = font
+                wSelf.bgColorModel.sizeFont = size
+                wSelf.bgColorModel.textFont = fontName
                 wSelf.eventUpdateFontStyleView.accept(font)
             }
             wSelf.textView.centerVertically()
@@ -197,19 +203,19 @@ extension TextVC {
             self.removeCAGradientLayer()
             self.textView.backgroundColor = .clear
             self.textView.applyGradient(withColours: list.map { $0.covertToColor() }.compactMap{ $0 }, gradientOrientation: .vertical)
-            self.bgColorModel = BgColorModel(color: nil, gradient: list, image: nil)
+            self.bgColorModel = BgColorModel(color: nil, gradient: list, image: nil, textFont: self.bgColorModel.textFont, sizeFont: self.bgColorModel.sizeFont)
         case .colors(let color):
             self.removeCAGradientLayer()
             if let color = color {
                 self.imgBg.isHidden = true
                 self.textView.backgroundColor = color.covertToColor()
-                self.bgColorModel = BgColorModel(color: color, gradient: nil, image: nil)
+                self.bgColorModel = BgColorModel(color: color, gradient: nil, image: nil, textFont: self.bgColorModel.textFont, sizeFont: self.bgColorModel.sizeFont)
             }
         case .images(let img):
             self.removeCAGradientLayer()
             if let img = img, let image = img.converToImage() {
                 self.updateImgBg(img: image)
-                self.bgColorModel = BgColorModel(color: nil, gradient: nil, image: img)
+                self.bgColorModel = BgColorModel(color: nil, gradient: nil, image: img, textFont: self.bgColorModel.textFont, sizeFont: self.bgColorModel.sizeFont)
             }
         }
     }

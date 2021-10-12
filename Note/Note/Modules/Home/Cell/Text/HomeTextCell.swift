@@ -36,9 +36,17 @@ class HomeTextCell: UICollectionViewCell {
         }.disposed(by: disposeBag)
     }
     
-    func updateTextView(text: String) {
+    func updateValue(note: NoteModel) {
         textView.centerVertically()
-        self.lbText.text = text
+        self.lbText.text = note.text
+        if let bg = note.bgColorModel, let f = bg.getFont() {
+            self.lbText.font = f
+        }
+        
+        if let bgColorModel = note.bgColorModel, let bgColorType = bgColorModel.getBgColorType()  {
+            self.layoutIfNeeded()
+            self.updateBgColorWhenDone(bgColorType: bgColorType)
+        }
     }
     
     private func setupImageBg() {
@@ -48,7 +56,7 @@ class HomeTextCell: UICollectionViewCell {
         self.addSubview( self.imgBg)
         self.sendSubviewToBack(self.imgBg)
         self.imgBg.snp.makeConstraints { (make) in
-            make.edges.equalTo(self.textView)
+            make.edges.equalToSuperview()
         }
     }
     

@@ -19,7 +19,7 @@ class BaseNavigationHeader: UIViewController {
     }
     
     enum StatusFont {
-        case cancel, update(UIFont), done(UIFont)
+        case cancel, update(String, CGFloat), done(String, CGFloat)
     }
     
     enum StatusBgColor {
@@ -185,19 +185,19 @@ extension BaseNavigationHeader: ConfigTextDelegate {
     
 }
 extension BaseNavigationHeader: ListFontDelegate {
-    func updateFontStyle(font: UIFont) {
-        self.eventFont.onNext(.update(font))
+    func updateFontStyle(fontName: String, size: CGFloat) {
+        self.eventFont.onNext(.update(fontName, size))
+    }
+    
+    func done(fontName: String, size: CGFloat) {
+        self.listFontView.hide()
+        self.eventFont.onNext(.done(fontName, size))
+        self.eventShowListFontView.onNext(self.listFontView.isHidden)
     }
     
     func dismissListFont() {
         self.listFontView.hide()
         self.eventFont.onNext(.cancel)
-        self.eventShowListFontView.onNext(self.listFontView.isHidden)
-    }
-    
-    func done(font: UIFont) {
-        self.listFontView.hide()
-        self.eventFont.onNext(.done(font))
         self.eventShowListFontView.onNext(self.listFontView.isHidden)
     }
     

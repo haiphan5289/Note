@@ -24,34 +24,45 @@ struct NoteModel: Codable {
         case noteType, text, bgColorModel, id, updateDate
     }
     
-    func getBgColorType() -> BackgroundColor.BgColorTypes? {
-        
-        if let bg = self.bgColorModel, let img = bg.image {
-            return .images(img)
-        }
-        
-        if let bg = self.bgColorModel, let color = bg.color {
-            return .colors(color)
-        }
-        
-        if let bg = self.bgColorModel, let g = bg.gradient, g.count > 0 {
-            return .gradient(g)
-        }
-        
-        return nil
-    }
-    
 }
 
 struct BgColorModel: Codable {
     var color: String?
     var gradient: [String]?
     var image: String?
+    var textFont: String?
+    var sizeFont: CGFloat?
     
     enum CodingKeys: String, CodingKey {
-        case color, gradient, image
+        case color, gradient, image, textFont, sizeFont
     }
     
-    static let empty = BgColorModel(color: nil, gradient: nil, image: nil)
+    func getBgColorType() -> BackgroundColor.BgColorTypes? {
+        
+        if let img = self.image {
+            return .images(img)
+        }
+        
+        if let color = self.color {
+            return .colors(color)
+        }
+        
+        if let g = self.gradient, g.count > 0 {
+            return .gradient(g)
+        }
+        
+        return nil
+    }
+    
+    func getFont() -> UIFont? {
+        if let f = self.textFont, let size = self.sizeFont {
+            return UIFont(name: f, size: size)
+        }
+        return nil
+    }
+    
+    
+    
+    static let empty = BgColorModel(color: nil, gradient: nil, image: nil, textFont: nil, sizeFont: nil)
 }
 
