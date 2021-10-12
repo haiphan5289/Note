@@ -18,6 +18,7 @@ final class NoteManage {
     private init() {}
     
     func start() {
+//        self.removeAllNote()
         self.setupRX()
         
     }

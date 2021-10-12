@@ -11,7 +11,7 @@ import RxSwift
 
 protocol ListFontDelegate {
     func dismissListFont()
-    func done(fontName: String, size: CGFloat)
+    func done(fontName: String, indexFont: Int, size: CGFloat, indexSize: Int)
     func search()
     func updateFontStyle(fontName: String, size: CGFloat)
 }
@@ -230,7 +230,7 @@ extension ListFont {
             self.currentFont = UIFont(name: style, size: self.sizeFont)
             
             if isDone {
-                self.delegate?.done(fontName: style, size: self.sizeFont)
+                self.delegate?.done(fontName: style, indexFont: self.selectIndexFont, size: self.sizeFont, indexSize: self.selectIndexSize)
             } else {
                 self.delegate?.updateFontStyle(fontName: style, size: self.sizeFont)
             }
@@ -244,12 +244,12 @@ extension ListFont {
         self.updateListSize(name: name)
     }
     
-    func scrollToIndex(index: Int) {
+    func scrollToIndex(index: Int, indexStyle: Int = 0) {
         self.selectIndexFont = index
         self.listFontTableView.scrollToIndex(index: index)
         self.listFontTableView.reloadData()
         
-        self.selectIndexSize = 0
+        self.selectIndexSize = indexStyle
         let name = FontType.listFont.getListFont()[index]
         self.updateListSize(name: name)
         self.selectFont()

@@ -19,7 +19,7 @@ class BaseNavigationHeader: UIViewController {
     }
     
     enum StatusFont {
-        case cancel, update(String, CGFloat), done(String, CGFloat)
+        case cancel, update(String, CGFloat), done(String, CGFloat, Int, Int)
     }
     
     enum StatusBgColor {
@@ -46,6 +46,7 @@ class BaseNavigationHeader: UIViewController {
     
     @Published var eventPickColor: UIColor
     @VariableReplay var textColor: UIColor = Asset.textColorApp.color
+    @VariableReplay var noteModelBase: NoteModel?
     
     let eventStatusKeyboard: PublishSubject<ConfigStyle.StatusKeyboard> = PublishSubject.init()
     var vContainer: UIView!
@@ -176,6 +177,9 @@ extension BaseNavigationHeader: ConfigTextDelegate {
         self.listFontView.showView()
         self.listFontView.scrollWhenOpen()
         self.eventShowListFontView.onNext(self.listFontView.isHidden)
+        if let note = self.noteModelBase, let bg = note.bgColorModel, let indexFont = bg.indexFont, let indexStyle = bg.indexFontStyle {
+            self.listFontView.scrollToIndex(index: indexFont, indexStyle: indexStyle)
+        }
     }
     
     func pickColor() {
@@ -189,9 +193,9 @@ extension BaseNavigationHeader: ListFontDelegate {
         self.eventFont.onNext(.update(fontName, size))
     }
     
-    func done(fontName: String, size: CGFloat) {
+    func done(fontName: String, indexFont: Int, size: CGFloat, indexSize: Int) {
         self.listFontView.hide()
-        self.eventFont.onNext(.done(fontName, size))
+        self.eventFont.onNext(.done(fontName, size, indexFont, indexSize))
         self.eventShowListFontView.onNext(self.listFontView.isHidden)
     }
     
@@ -213,7 +217,6 @@ extension BaseNavigationHeader: ListFontDelegate {
 extension BaseNavigationHeader: ListFontVCDelegae {
     func selectFont(index: Int) {
         self.listFontView.scrollToIndex(index: index)
-        
     }
 }
 extension BaseNavigationHeader: BackgroundColorDelegate {

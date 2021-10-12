@@ -60,11 +60,22 @@ extension TextVC {
         
         self.textColor = textView.textColor ?? Asset.colorApp.color
         
-        if let note = self.noteModel, let bgColorModel = note.bgColorModel, let type = bgColorModel.getBgColorType() {
-            self.updateBgColorWhenDone(bgColorType: type)
+        if let note = self.noteModel {
+            
+            if let type = bgColorModel.getBgColorType() {
+                self.updateBgColorWhenDone(bgColorType: type)
+            }
+            
+            if let bgColorModel = note.bgColorModel {
+                self.textView.font = bgColorModel.getFont()
+                self.previousFont = bgColorModel.getFont()
+                self.eventUpdateFontStyleView.accept(bgColorModel.getFont() ?? ConstantCommon.shared.fontDefault)
+            }
+            
+            
             self.bgColorModel = note.bgColorModel ?? BgColorModel.empty
             self.textView.text = note.text
-            self.textView.font = bgColorModel.getFont()
+            self.noteModelBase = note
         } else {
             self.bgColorModel = BgColorModel.empty
         }
@@ -86,12 +97,14 @@ extension TextVC {
                     wSelf.textView.font = f
                 }
                 wSelf.textView.textColor = wSelf.textColor
-            case .done(let fontName, let size):
+            case .done(let fontName, let size, let indexFont, let indexStyle):
                 let font = UIFont(name: fontName, size: size) ?? UIFont.mySystemFont(ofSize: 16)
                 wSelf.textView.font = font
                 wSelf.previousFont = font
                 wSelf.bgColorModel.sizeFont = size
                 wSelf.bgColorModel.textFont = fontName
+                wSelf.bgColorModel.indexFont = indexFont
+                wSelf.bgColorModel.indexFontStyle = indexStyle
                 wSelf.eventUpdateFontStyleView.accept(font)
             }
             wSelf.textView.centerVertically()
@@ -203,19 +216,22 @@ extension TextVC {
             self.removeCAGradientLayer()
             self.textView.backgroundColor = .clear
             self.textView.applyGradient(withColours: list.map { $0.covertToColor() }.compactMap{ $0 }, gradientOrientation: .vertical)
-            self.bgColorModel = BgColorModel(color: nil, gradient: list, image: nil, textFont: self.bgColorModel.textFont, sizeFont: self.bgColorModel.sizeFont)
+            self.bgColorModel = BgColorModel(color: nil, gradient: list, image: nil, textFont: self.bgColorModel.textFont,
+                                             sizeFont: self.bgColorModel.sizeFont, indexFont: self.bgColorModel.indexFont, indexFontStyle: self.bgColorModel.indexFontStyle)
         case .colors(let color):
             self.removeCAGradientLayer()
             if let color = color {
                 self.imgBg.isHidden = true
                 self.textView.backgroundColor = color.covertToColor()
-                self.bgColorModel = BgColorModel(color: color, gradient: nil, image: nil, textFont: self.bgColorModel.textFont, sizeFont: self.bgColorModel.sizeFont)
+                self.bgColorModel = BgColorModel(color: color, gradient: nil, image: nil, textFont: self.bgColorModel.textFont,
+                                                 sizeFont: self.bgColorModel.sizeFont, indexFont: self.bgColorModel.indexFont, indexFontStyle: self.bgColorModel.indexFontStyle)
             }
         case .images(let img):
             self.removeCAGradientLayer()
             if let img = img, let image = img.converToImage() {
                 self.updateImgBg(img: image)
-                self.bgColorModel = BgColorModel(color: nil, gradient: nil, image: img, textFont: self.bgColorModel.textFont, sizeFont: self.bgColorModel.sizeFont)
+                self.bgColorModel = BgColorModel(color: nil, gradient: nil, image: img, textFont: self.bgColorModel.textFont,
+                                                 sizeFont: self.bgColorModel.sizeFont, indexFont: self.bgColorModel.indexFont, indexFontStyle: self.bgColorModel.indexFontStyle)
             }
         }
     }
