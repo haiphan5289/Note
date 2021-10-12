@@ -158,6 +158,8 @@
 		93A65CCF271438BB00BF08B0 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A65CCC271438BB00BF08B0 /* RealmManager.swift */; };
 		93A65CD0271438BB00BF08B0 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A65CCE271438BB00BF08B0 /* RealmModel.swift */; };
 		93A65CDA27144B2B00BF08B0 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A65CD927144B2B00BF08B0 /* NoteModel.swift */; };
+		93A849642715370100E9ABBF /* HomeTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A849622715370100E9ABBF /* HomeTextCell.swift */; };
+		93A849652715370100E9ABBF /* HomeTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93A849632715370100E9ABBF /* HomeTextCell.xib */; };
 		93AA98F9270811DA00939D3A /* PathDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA98F8270811DA00939D3A /* PathDraw.swift */; };
 		93AA98FD270846E400939D3A /* SoundNote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93AA98FC270846E400939D3A /* SoundNote.mp3 */; };
 		93AA98FF2708503D00939D3A /* BaseNavigationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA98FE2708503D00939D3A /* BaseNavigationHeader.swift */; };
@@ -176,8 +178,6 @@
 		93B6EFC6270B4ABC0035EF09 /* ListTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */; };
 		93B6EFC9270B56300035EF09 /* ListFont.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B6EFC8270B56300035EF09 /* ListFont.xib */; };
 		93B6EFCB270B56430035EF09 /* ListFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFCA270B56430035EF09 /* ListFont.swift */; };
-		93CD016327149077005C09CE /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD016127149077005C09CE /* HomeCell.swift */; };
-		93CD016427149077005C09CE /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93CD016227149077005C09CE /* HomeCell.xib */; };
 		93D1B091270DE58D008FCD4B /* ListFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93D1B08E270DE58D008FCD4B /* ListFontVC.xib */; };
 		93D1B092270DE58D008FCD4B /* ListFontVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1B08F270DE58D008FCD4B /* ListFontVM.swift */; };
 		93D1B093270DE58D008FCD4B /* ListFontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1B090270DE58D008FCD4B /* ListFontVC.swift */; };
@@ -343,6 +343,8 @@
 		93A65CCC271438BB00BF08B0 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		93A65CCE271438BB00BF08B0 /* RealmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		93A65CD927144B2B00BF08B0 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
+		93A849622715370100E9ABBF /* HomeTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTextCell.swift; sourceTree = "<group>"; };
+		93A849632715370100E9ABBF /* HomeTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTextCell.xib; sourceTree = "<group>"; };
 		93AA98F8270811DA00939D3A /* PathDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathDraw.swift; sourceTree = "<group>"; };
 		93AA98FC270846E400939D3A /* SoundNote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SoundNote.mp3; sourceTree = "<group>"; };
 		93AA98FE2708503D00939D3A /* BaseNavigationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationHeader.swift; sourceTree = "<group>"; };
@@ -361,8 +363,6 @@
 		93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTextVC.swift; sourceTree = "<group>"; };
 		93B6EFC8270B56300035EF09 /* ListFont.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListFont.xib; sourceTree = "<group>"; };
 		93B6EFCA270B56430035EF09 /* ListFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFont.swift; sourceTree = "<group>"; };
-		93CD016127149077005C09CE /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
-		93CD016227149077005C09CE /* HomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
 		93D1B08E270DE58D008FCD4B /* ListFontVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListFontVC.xib; sourceTree = "<group>"; };
 		93D1B08F270DE58D008FCD4B /* ListFontVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFontVM.swift; sourceTree = "<group>"; };
 		93D1B090270DE58D008FCD4B /* ListFontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFontVC.swift; sourceTree = "<group>"; };
@@ -937,6 +937,15 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
+		93A84961271536EE00E9ABBF /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				93A849622715370100E9ABBF /* HomeTextCell.swift */,
+				93A849632715370100E9ABBF /* HomeTextCell.xib */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
 		93AA98F7270811C600939D3A /* PathDraw */ = {
 			isa = PBXGroup;
 			children = (
@@ -1025,8 +1034,7 @@
 		93CD016027149061005C09CE /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				93CD016127149077005C09CE /* HomeCell.swift */,
-				93CD016227149077005C09CE /* HomeCell.xib */,
+				93A84961271536EE00E9ABBF /* Text */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1107,10 +1115,10 @@
 				936A9C3C2704A0DA006F9F25 /* Localizable.strings in Resources */,
 				9396E64F270F3244002B2E2C /* ViewHeaderDialog.xib in Resources */,
 				9396E65A270F3B24002B2E2C /* SegmentControlCustom.xib in Resources */,
+				93A849652715370100E9ABBF /* HomeTextCell.xib in Resources */,
 				932EFC75270FE6FA0073A9FA /* BackgroundColorCell.xib in Resources */,
 				936A9C3127049F1F006F9F25 /* LaunchScreen.storyboard in Resources */,
 				936A9C2E27049F1F006F9F25 /* Assets.xcassets in Resources */,
-				93CD016427149077005C09CE /* HomeCell.xib in Resources */,
 				936A9CDD2704A179006F9F25 /* LICENSE in Resources */,
 				936A9C2C27049F1E006F9F25 /* Main.storyboard in Resources */,
 				936A9C392704A09C006F9F25 /* swiftgen.yml in Resources */,
@@ -1238,7 +1246,6 @@
 				936A9C412704A123006F9F25 /* Assets-Gen.swift in Sources */,
 				936A9CF82704A179006F9F25 /* UIEdgeInsetsExtensions.swift in Sources */,
 				93D1B093270DE58D008FCD4B /* ListFontVC.swift in Sources */,
-				93CD016327149077005C09CE /* HomeCell.swift in Sources */,
 				936A9CF72704A179006F9F25 /* UITableViewExtensions.swift in Sources */,
 				936A9D252704A179006F9F25 /* ViewControllerExtension.swift in Sources */,
 				932EFD4727101F730073A9FA /* BackgroundColorVM.swift in Sources */,
@@ -1278,6 +1285,7 @@
 				936A9D022704A179006F9F25 /* UIStoryboardExtensions.swift in Sources */,
 				936A9CD32704A179006F9F25 /* PopBaseViewController.swift in Sources */,
 				936A9D152704A179006F9F25 /* UIRefreshControlExtensions.swift in Sources */,
+				93A849642715370100E9ABBF /* HomeTextCell.swift in Sources */,
 				936A9D1A2704A179006F9F25 /* Constants.swift in Sources */,
 				934C8A5E27074206008BCE0A /* DropdownView.swift in Sources */,
 				936A9CF62704A179006F9F25 /* UISearchBarExtensions.swift in Sources */,

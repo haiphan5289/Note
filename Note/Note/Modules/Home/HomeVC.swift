@@ -30,6 +30,7 @@ class HomeVC: UIViewController {
     private let vAddNote: AddNote = AddNote.loadXib()
     private let vDropDown: DropdownView = DropdownView(frame: .zero)
     
+    private var listNote: [NoteModel] = []
     private let eventStatusDropDown: PublishSubject<AddNote.StatusAddNote> = PublishSubject.init()
     private var audio: AVAudioPlayer = AVAudioPlayer()
     
@@ -69,7 +70,8 @@ extension HomeVC {
         }
         
         self.collectionView.delegate = self
-        self.collectionView.register(HomeCell.nib, forCellWithReuseIdentifier: HomeCell.identifier)
+        self.collectionView.dataSource = self
+        self.collectionView.register(HomeTextCell.nib, forCellWithReuseIdentifier: HomeTextCell.identifier)
         
         
     }
@@ -93,13 +95,9 @@ extension HomeVC {
         
         NoteManage.shared.$listNote.asObservable().bind { [weak self] list in
             guard let wSelf = self else { return }
-            print("==== \(list.count)")
+            wSelf.listNote = list
+            wSelf.collectionView.reloadData()
         }.disposed(by: disposeBag)
-        
-        NoteManage.shared.$listNote.asObservable()
-            .bind(to: self.collectionView.rx.items(cellIdentifier: HomeCell.identifier, cellType: HomeCell.self)) { row, data, cell in
-                cell.contentView.backgroundColor = (row % 2 == 0) ? .red : .blue
-            }.disposed(by: disposeBag)
         
         self.collectionView.rx.itemSelected.bind { [weak self] idx in
             guard let wSelf = self else { return }
@@ -180,6 +178,33 @@ extension HomeVC: DropDownDelegate {
             self.navigationController?.pushViewController(vc, animated: true)
         default: break
         }
+    }
+    
+    
+}
+extension HomeVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.listNote.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeTextCell.identifier, for: indexPath) as? HomeTextCell else {
+            fatalError("Don't have Cell")
+        }
+        
+        let note = self.listNote[indexPath.row]
+        
+        switch note.noteType {
+        case .text:
+            cell.updateTextView(text: note.text ?? "")
+            if let bgColorType = note.getBgColorType() {
+                cell.updateBgColorWhenDone(bgColorType: bgColorType)
+            }
+            
+        default: break
+        }
+        
+        return cell
     }
     
     
