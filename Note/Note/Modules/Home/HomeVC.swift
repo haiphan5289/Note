@@ -46,6 +46,9 @@ class HomeVC: UIViewController {
         //This is reasson why call this method at here
         //Because when load completely, Size view.frame wii get size of file Xib not real devices
         self.addDropdownView()
+        
+        //Update cell view after back to home
+        self.collectionView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

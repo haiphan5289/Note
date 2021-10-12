@@ -34,9 +34,10 @@ struct BgColorModel: Codable {
     var sizeFont: CGFloat?
     var indexFont: Int?
     var indexFontStyle: Int?
+    var textColorString: String?
     
     enum CodingKeys: String, CodingKey {
-        case color, gradient, image, textFont, sizeFont, indexFont, indexFontStyle
+        case color, gradient, image, textFont, sizeFont, indexFont, indexFontStyle, textColorString
     }
     
     func getBgColorType() -> BackgroundColor.BgColorTypes? {
@@ -65,6 +66,6 @@ struct BgColorModel: Codable {
     
     
     
-    static let empty = BgColorModel(color: nil, gradient: nil, image: nil, textFont: nil, sizeFont: nil, indexFont: nil, indexFontStyle: nil)
+    static let empty = BgColorModel(color: nil, gradient: nil, image: nil, textFont: nil, sizeFont: nil, indexFont: nil, indexFontStyle: nil, textColorString: nil)
 }
 

@@ -51,6 +51,13 @@ class HomeTextCell: UICollectionViewCell {
             self.imgBg.isHidden = true
             self.textView.backgroundColor = .white
         }
+        
+        if let bg = note.bgColorModel, let textColor = bg.textColorString {
+            self.lbText.textColor = textColor.covertToColor()
+        } else {
+            self.lbText.textColor = Asset.textColorApp.color
+        }
+        
     }
     
     private func setupImageBg() {

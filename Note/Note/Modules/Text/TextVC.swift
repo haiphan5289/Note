@@ -61,21 +61,7 @@ extension TextVC {
         self.textColor = textView.textColor ?? Asset.colorApp.color
         
         if let note = self.noteModel {
-            
-            if let type = bgColorModel.getBgColorType() {
-                self.updateBgColorWhenDone(bgColorType: type)
-            }
-            
-            if let bgColorModel = note.bgColorModel {
-                self.textView.font = bgColorModel.getFont()
-                self.previousFont = bgColorModel.getFont()
-                self.eventUpdateFontStyleView.accept(bgColorModel.getFont() ?? ConstantCommon.shared.fontDefault)
-            }
-            
-            
-            self.bgColorModel = note.bgColorModel ?? BgColorModel.empty
-            self.textView.text = note.text
-            self.noteModelBase = note
+            self.updateValueNote(note: note)
         } else {
             self.bgColorModel = BgColorModel.empty
         }
@@ -126,6 +112,7 @@ extension TextVC {
                 case .done:
                     wSelf.textView.textColor = textColor
                     wSelf.textColor = textColor
+                    wSelf.bgColorModel.textColorString = textColor.hexString
                 }
                 
             }.disposed(by: disposeBag)
@@ -210,6 +197,28 @@ extension TextVC {
     
     }
     
+    private func updateValueNote(note: NoteModel) {
+        
+        if let type = bgColorModel.getBgColorType() {
+            self.updateBgColorWhenDone(bgColorType: type)
+        }
+        
+        if let bgColorModel = note.bgColorModel {
+            self.textView.font = bgColorModel.getFont()
+            self.previousFont = bgColorModel.getFont()
+            self.eventUpdateFontStyleView.accept(bgColorModel.getFont() ?? ConstantCommon.shared.fontDefault)
+        }
+        
+        if let bgColorModel = note.bgColorModel, let textColor = bgColorModel.textColorString {
+            self.textView.textColor = UIColor(hexString: textColor)
+            self.textColor = UIColor(hexString: textColor) ?? Asset.textColorApp.color
+        }
+        
+        self.bgColorModel = note.bgColorModel ?? BgColorModel.empty
+        self.textView.text = note.text
+        self.noteModelBase = note
+    }
+    
     private func updateBgColorWhenDone(bgColorType: BackgroundColor.BgColorTypes) {
         switch bgColorType {
         case .gradient(let list ):
@@ -217,21 +226,24 @@ extension TextVC {
             self.textView.backgroundColor = .clear
             self.textView.applyGradient(withColours: list.map { $0.covertToColor() }.compactMap{ $0 }, gradientOrientation: .vertical)
             self.bgColorModel = BgColorModel(color: nil, gradient: list, image: nil, textFont: self.bgColorModel.textFont,
-                                             sizeFont: self.bgColorModel.sizeFont, indexFont: self.bgColorModel.indexFont, indexFontStyle: self.bgColorModel.indexFontStyle)
+                                             sizeFont: self.bgColorModel.sizeFont, indexFont: self.bgColorModel.indexFont,
+                                             indexFontStyle: self.bgColorModel.indexFontStyle, textColorString: self.bgColorModel.textColorString)
         case .colors(let color):
             self.removeCAGradientLayer()
             if let color = color {
                 self.imgBg.isHidden = true
                 self.textView.backgroundColor = color.covertToColor()
                 self.bgColorModel = BgColorModel(color: color, gradient: nil, image: nil, textFont: self.bgColorModel.textFont,
-                                                 sizeFont: self.bgColorModel.sizeFont, indexFont: self.bgColorModel.indexFont, indexFontStyle: self.bgColorModel.indexFontStyle)
+                                                 sizeFont: self.bgColorModel.sizeFont, indexFont: self.bgColorModel.indexFont,
+                                                 indexFontStyle: self.bgColorModel.indexFontStyle, textColorString: self.bgColorModel.textColorString)
             }
         case .images(let img):
             self.removeCAGradientLayer()
             if let img = img, let image = img.converToImage() {
                 self.updateImgBg(img: image)
                 self.bgColorModel = BgColorModel(color: nil, gradient: nil, image: img, textFont: self.bgColorModel.textFont,
-                                                 sizeFont: self.bgColorModel.sizeFont, indexFont: self.bgColorModel.indexFont, indexFontStyle: self.bgColorModel.indexFontStyle)
+                                                 sizeFont: self.bgColorModel.sizeFont, indexFont: self.bgColorModel.indexFont,
+                                                 indexFontStyle: self.bgColorModel.indexFontStyle, textColorString: self.bgColorModel.textColorString)
             }
         }
     }
