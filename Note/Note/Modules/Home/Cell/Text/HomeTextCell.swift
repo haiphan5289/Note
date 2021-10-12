@@ -46,6 +46,10 @@ class HomeTextCell: UICollectionViewCell {
         if let bgColorModel = note.bgColorModel, let bgColorType = bgColorModel.getBgColorType()  {
             self.layoutIfNeeded()
             self.updateBgColorWhenDone(bgColorType: bgColorType)
+        } else {
+            self.removeCAGradientLayer()
+            self.imgBg.isHidden = true
+            self.textView.backgroundColor = .white
         }
     }
     
@@ -65,6 +69,7 @@ class HomeTextCell: UICollectionViewCell {
         case .gradient(let list ):
             self.removeCAGradientLayer()
             self.textView.backgroundColor = .clear
+            self.imgBg.isHidden = true
             self.textView.applyGradient(withColours: list.map { $0.covertToColor() }.compactMap{ $0 }, gradientOrientation: .vertical)
         case .colors(let color):
             self.removeCAGradientLayer()
