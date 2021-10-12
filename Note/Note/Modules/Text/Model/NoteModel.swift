@@ -16,11 +16,12 @@ struct NoteModel: Codable {
     
     let noteType: NoteType?
     let text: String?
-    let id: Date = Date.convertDateToLocalTime()
+    let id: Date?
     let bgColorModel: BgColorModel?
+    let updateDate: Date?
     
     enum CodingKeys: String, CodingKey {
-        case noteType, text, bgColorModel
+        case noteType, text, bgColorModel, id, updateDate
     }
     
     func getBgColorType() -> BackgroundColor.BgColorTypes? {

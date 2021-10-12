@@ -118,7 +118,12 @@ extension TextVC {
                 
             case .done:
                 wSelf.navigationController?.popViewController(animated: true, {
-                    let noteModel: NoteModel = NoteModel(noteType: .text, text: wSelf.textView.text, bgColorModel: wSelf.bgColorModel)
+                    let noteModel: NoteModel
+                    if let note = wSelf.noteModel {
+                        noteModel = NoteModel(noteType: .text, text: wSelf.textView.text, id: note.id, bgColorModel: wSelf.bgColorModel, updateDate: Date.convertDateToLocalTime())
+                    } else {
+                        noteModel = NoteModel(noteType: .text, text: wSelf.textView.text, id: Date.convertDateToLocalTime(), bgColorModel: wSelf.bgColorModel, updateDate: Date.convertDateToLocalTime())
+                    }
                     RealmManager.shared.updateOrInsertConfig(model: noteModel)
                 })
                 

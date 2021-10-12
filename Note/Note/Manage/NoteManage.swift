@@ -28,8 +28,16 @@ final class NoteManage {
             .map { _ in RealmManager.shared.getListNote() }
         Observable.merge(getList, updateList).bind { [weak self] list in
             guard let wSelf = self else { return }
-            wSelf.listNote = list.sorted(by: { $0.id.compare($1.id) == ComparisonResult.orderedDescending } )
+            wSelf.listNote = list.sorted(by: { $0.updateDate?.compare($1.updateDate ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedDescending } )
         }.disposed(by: disposeBag)
+    }
+    
+    func deleteNote(note: NoteModel) {
+        RealmManager.shared.deleteNote(note: note)
+    }
+    
+    func removeAllNote() {
+        RealmManager.shared.deleteNoteAll()
     }
     
     func getWidthCell(width: CGFloat) -> CGFloat {

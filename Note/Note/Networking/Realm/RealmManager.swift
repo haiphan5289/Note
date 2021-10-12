@@ -37,20 +37,19 @@ class RealmManager {
         RLMRealm.default()
     }
     
-    private func getAllConfig() -> [NoteRealm]  {
+    private func getAllNoteRealm() -> [NoteRealm]  {
         let arr = realm.objects(NoteRealm.self).toArray(ofType: NoteRealm.self)
         return arr
     }
     
     func updateOrInsertConfig(model: NoteModel) {
-        let list = self.getAllConfig()
+        let list = self.getAllNoteRealm()
         
         if let index = list.firstIndex(where: { $0.id == model.id}) {
                 try! realm.write {
                     
                     do {
-                        let newNote = NoteModel(noteType: model.noteType, text: model.text, bgColorModel: model.bgColorModel)
-                        list[index].id = newNote.id
+                        let newNote = NoteModel(noteType: model.noteType, text: model.text, id: model.id, bgColorModel: model.bgColorModel, updateDate: model.updateDate)
                         list[index].data = try newNote.toData()
                     } catch {
                         print("\(error.localizedDescription)")
@@ -68,11 +67,11 @@ class RealmManager {
     }
     
     func getListNote() -> [NoteModel] {
-        if self.getAllConfig().count <= 0 {
+        if self.getAllNoteRealm().count <= 0 {
             return []
         }
         
-        let listRealm = self.getAllConfig().map { item -> NoteModel? in
+        let listRealm = self.getAllNoteRealm().map { item -> NoteModel? in
             
             guard let model = item.data?.toCodableObject() as NoteModel? else{
                 return nil
@@ -84,7 +83,24 @@ class RealmManager {
         return listRealm
     }
     
+    func deleteNote(note: NoteModel ) {
+        let items = self.getAllNoteRealm()
+        
+        if let index = items.firstIndex(where: {$0.id == note.id}) {
+            try! realm.write {
+                realm.delete(items[index])
+                NotificationCenter.default.post(name: NSNotification.Name(PushNotificationKeys.didUpdateNote.rawValue), object: items[index], userInfo: nil)
+            }
+        }
+    }
     
+    func deleteNoteAll() {
+        let items = self.getAllNoteRealm()
+        try! realm.write {
+            realm.delete(items)
+            NotificationCenter.default.post(name: NSNotification.Name(PushNotificationKeys.didUpdateNote.rawValue), object: nil, userInfo: nil)
+        }
+    }
     
     
 }
