@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NavigationItemHome" customModule="Note" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fj0-z3-46x">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8CO-VO-Om5">
+                            <rect key="frame" x="0.0" y="0.0" width="75" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="75" id="rtm-BH-93M"/>
+                            </constraints>
+                            <state key="normal" title="Select All">
+                                <color key="titleColor" name="ColorApp"/>
+                            </state>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="erN-Dk-lsm">
+                            <rect key="frame" x="85" y="0.0" width="149" height="50"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNk-dQ-ZTd">
+                            <rect key="frame" x="244" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="cWE-Zl-Zta"/>
+                            </constraints>
+                            <color key="tintColor" name="ColorApp"/>
+                            <state key="normal" image="ic_trash"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLG-fp-2Bb">
+                            <rect key="frame" x="304" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="dtq-3O-nuR"/>
+                            </constraints>
+                            <color key="tintColor" name="ColorApp"/>
+                            <state key="normal" image="ic_moreAction"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3S-wB-RrI">
+                            <rect key="frame" x="364" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="heh-k9-T9L"/>
+                            </constraints>
+                            <color key="tintColor" name="ColorApp"/>
+                            <state key="normal" image="ic_close"/>
+                        </button>
+                    </subviews>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marvel Note" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3e-Q0-NFS">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                    <color key="textColor" name="TextColorApp"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Fj0-z3-46x" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="2tR-45-tqX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="j3e-Q0-NFS" secondAttribute="trailing" id="2u6-Tc-7fO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Fj0-z3-46x" secondAttribute="trailing" id="GAv-MZ-IY2"/>
+                <constraint firstAttribute="bottom" secondItem="Fj0-z3-46x" secondAttribute="bottom" id="R2h-C7-MoD"/>
+                <constraint firstItem="j3e-Q0-NFS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="YrV-vh-PoU"/>
+                <constraint firstItem="j3e-Q0-NFS" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="gdf-GR-dhh"/>
+                <constraint firstItem="Fj0-z3-46x" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ohT-61-Ceh"/>
+                <constraint firstItem="j3e-Q0-NFS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xcf-5Q-Z3Q"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="bts" destination="8CO-VO-Om5" collectionClass="NSMutableArray" id="uQE-QD-hai"/>
+                <outletCollection property="bts" destination="DNk-dQ-ZTd" collectionClass="NSMutableArray" id="672-uc-YpO"/>
+                <outletCollection property="bts" destination="HLG-fp-2Bb" collectionClass="NSMutableArray" id="Fct-68-M0i"/>
+                <outletCollection property="bts" destination="Q3S-wB-RrI" collectionClass="NSMutableArray" id="Y0B-Am-Gvu"/>
+            </connections>
+            <point key="canvasLocation" x="-19" y="82"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_close" width="24" height="24"/>
+        <image name="ic_moreAction" width="24" height="24"/>
+        <image name="ic_trash" width="24" height="24"/>
+        <namedColor name="ColorApp">
+            <color red="0.57400000095367432" green="0.56599998474121094" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextColorApp">
+            <color red="1" green="0.83137254901960789" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

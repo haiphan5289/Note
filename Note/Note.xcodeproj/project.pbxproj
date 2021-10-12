@@ -160,6 +160,10 @@
 		93A65CDA27144B2B00BF08B0 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A65CD927144B2B00BF08B0 /* NoteModel.swift */; };
 		93A849642715370100E9ABBF /* HomeTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A849622715370100E9ABBF /* HomeTextCell.swift */; };
 		93A849652715370100E9ABBF /* HomeTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93A849632715370100E9ABBF /* HomeTextCell.xib */; };
+		93A84969271576AE00E9ABBF /* BaseNavigationHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A84968271576AE00E9ABBF /* BaseNavigationHome.swift */; };
+		93A8496D2715878500E9ABBF /* NavigationItemHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A8496C2715878500E9ABBF /* NavigationItemHome.swift */; };
+		93A849712715879F00E9ABBF /* NavigationItemHome.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93A849702715879F00E9ABBF /* NavigationItemHome.xib */; };
+		93A8497527158DAA00E9ABBF /* DropdownActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A8497427158DAA00E9ABBF /* DropdownActionView.swift */; };
 		93AA98F9270811DA00939D3A /* PathDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA98F8270811DA00939D3A /* PathDraw.swift */; };
 		93AA98FD270846E400939D3A /* SoundNote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93AA98FC270846E400939D3A /* SoundNote.mp3 */; };
 		93AA98FF2708503D00939D3A /* BaseNavigationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA98FE2708503D00939D3A /* BaseNavigationHeader.swift */; };
@@ -345,6 +349,10 @@
 		93A65CD927144B2B00BF08B0 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
 		93A849622715370100E9ABBF /* HomeTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTextCell.swift; sourceTree = "<group>"; };
 		93A849632715370100E9ABBF /* HomeTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTextCell.xib; sourceTree = "<group>"; };
+		93A84968271576AE00E9ABBF /* BaseNavigationHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationHome.swift; sourceTree = "<group>"; };
+		93A8496C2715878500E9ABBF /* NavigationItemHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItemHome.swift; sourceTree = "<group>"; };
+		93A849702715879F00E9ABBF /* NavigationItemHome.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationItemHome.xib; sourceTree = "<group>"; };
+		93A8497427158DAA00E9ABBF /* DropdownActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownActionView.swift; sourceTree = "<group>"; };
 		93AA98F8270811DA00939D3A /* PathDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathDraw.swift; sourceTree = "<group>"; };
 		93AA98FC270846E400939D3A /* SoundNote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SoundNote.mp3; sourceTree = "<group>"; };
 		93AA98FE2708503D00939D3A /* BaseNavigationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationHeader.swift; sourceTree = "<group>"; };
@@ -563,6 +571,7 @@
 				936A9C542704A177006F9F25 /* Prefix-Header.swift */,
 				93AA98FE2708503D00939D3A /* BaseNavigationHeader.swift */,
 				93D1B096270DE5DE008FCD4B /* BaseNavigationSimpleVC.swift */,
+				93A84968271576AE00E9ABBF /* BaseNavigationHome.swift */,
 			);
 			path = BaseCommonView;
 			sourceTree = "<group>";
@@ -570,6 +579,8 @@
 		936A9C552704A178006F9F25 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				93A8497327158D8400E9ABBF /* DropdownAction */,
+				93A8496B2715876400E9ABBF /* NavigationItemHome */,
 				9396E654270F3AE5002B2E2C /* SegmentControlCustom */,
 				9396E64D270F322A002B2E2C /* ViewHeaderDialog */,
 				9396E645270F2EF5002B2E2C /* BackgroundColor */,
@@ -946,6 +957,23 @@
 			path = Text;
 			sourceTree = "<group>";
 		};
+		93A8496B2715876400E9ABBF /* NavigationItemHome */ = {
+			isa = PBXGroup;
+			children = (
+				93A8496C2715878500E9ABBF /* NavigationItemHome.swift */,
+				93A849702715879F00E9ABBF /* NavigationItemHome.xib */,
+			);
+			path = NavigationItemHome;
+			sourceTree = "<group>";
+		};
+		93A8497327158D8400E9ABBF /* DropdownAction */ = {
+			isa = PBXGroup;
+			children = (
+				93A8497427158DAA00E9ABBF /* DropdownActionView.swift */,
+			);
+			path = DropdownAction;
+			sourceTree = "<group>";
+		};
 		93AA98F7270811C600939D3A /* PathDraw */ = {
 			isa = PBXGroup;
 			children = (
@@ -1128,6 +1156,7 @@
 				93AA990F2708539D00939D3A /* TextVC.xib in Resources */,
 				932EFD3E271019380073A9FA /* ColorsJson.json in Resources */,
 				936A9CED2704A179006F9F25 /* MoreVC.xib in Resources */,
+				93A849712715879F00E9ABBF /* NavigationItemHome.xib in Resources */,
 				936A9CDF2704A179006F9F25 /* ImportOptionsVC.xib in Resources */,
 				93AA991A2709B39D00939D3A /* ConfigStyle.xib in Resources */,
 				93AA98FD270846E400939D3A /* SoundNote.mp3 in Resources */,
@@ -1195,6 +1224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				936A9D222704A179006F9F25 /* UIWindow+Extension.swift in Sources */,
+				93A8497527158DAA00E9ABBF /* DropdownActionView.swift in Sources */,
 				936A9D082704A179006F9F25 /* UISliderExtensions.swift in Sources */,
 				936A9D412704A61B006F9F25 /* HomeVM.swift in Sources */,
 				936A9D2E2704A179006F9F25 /* String+Extension.swift in Sources */,
@@ -1205,6 +1235,7 @@
 				936A9D112704A179006F9F25 /* UISwitchExtensions.swift in Sources */,
 				936A9D0A2704A179006F9F25 /* UIImageExtensions.swift in Sources */,
 				936A9D482704A643006F9F25 /* MenuVM.swift in Sources */,
+				93A8496D2715878500E9ABBF /* NavigationItemHome.swift in Sources */,
 				936A9D352704A179006F9F25 /* StringExtension.swift in Sources */,
 				936A9CE12704A179006F9F25 /* CustomSlider.swift in Sources */,
 				932EFC85271018C30073A9FA /* OptionalMessageDTO.swift in Sources */,
@@ -1266,6 +1297,7 @@
 				936A9D1F2704A179006F9F25 /* RowDetailGeneric.swift in Sources */,
 				93AA98FF2708503D00939D3A /* BaseNavigationHeader.swift in Sources */,
 				936A9CE52704A179006F9F25 /* ABBorder.swift in Sources */,
+				93A84969271576AE00E9ABBF /* BaseNavigationHome.swift in Sources */,
 				932CF99B270DA0F100CB75B2 /* FontSize.swift in Sources */,
 				936A9D062704A179006F9F25 /* UINavigationBarExtensions.swift in Sources */,
 				936A9D072704A179006F9F25 /* UIActivityExtensions.swift in Sources */,

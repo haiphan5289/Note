@@ -12,7 +12,7 @@ import RxCocoa
 import RxSwift
 import Photos
 
-class HomeVC: UIViewController {
+class HomeVC: BaseNavigationHome {
     
     struct Constant {
         static let distanceFromTopTabbar: CGFloat = 20

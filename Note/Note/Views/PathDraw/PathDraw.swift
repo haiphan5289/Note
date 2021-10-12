@@ -31,11 +31,46 @@ final class PathDraw {
         shapeLayer.strokeColor = colorLine.cgColor
         shapeLayer.fillColor = Asset.appBg.color.cgColor
         shapeLayer.lineWidth = 0.5
-        shapeLayer.shadowOffset = CGSize(width:0, height:0)
-        shapeLayer.shadowRadius = 10
-        shapeLayer.shadowColor = UIColor.gray.cgColor
-        shapeLayer.shadowOpacity = 0.3
+//        shapeLayer.shadowOffset = CGSize(width:0, height:0)
+//        shapeLayer.shadowRadius = 10
+//        shapeLayer.shadowColor = UIColor.gray.cgColor
+//        shapeLayer.shadowOpacity = 0.3
         return shapeLayer
+    }
+    
+    func createPathDropDownAction(frame: CGRect) -> CGPath {
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 0, y: 0))
+        let radius: CGFloat = 20 //change it if you want
+        //let distancefromDropDownViewToBottom
+        // This variable alaways have to be great than radius
+        let distanceToTop: CGFloat = 15
+        let distantToDraw: CGFloat = 20
+        
+        
+        path.addArc(withCenter: CGPoint(x: radius , y: radius + distanceToTop),
+                    radius: radius,
+                    startAngle: Constant.cornerNinehour,
+                    endAngle: Constant.cornerTwelvehour, clockwise: true)
+        
+        path.addLine(to: CGPoint(x: frame.width - distantToDraw, y: distanceToTop))
+        path.addLine(to: CGPoint(x: frame.width, y: 0))
+        //draw little circle
+//        path.addLine(to: CGPoint(x: frame.width, y: frame.height))
+        path.addArc(withCenter: CGPoint(x: frame.width - radius , y: frame.height - radius),
+                    radius: radius,
+                    startAngle: Constant.cornerThreehour,
+                    endAngle: Constant.cornerSixhour, clockwise: true)
+    
+        path.addArc(withCenter: CGPoint(x: radius , y: frame.height - radius),
+                    radius: radius,
+                    startAngle: Constant.cornerSixhour,
+                    endAngle: Constant.cornerNinehour, clockwise: true)
+        path.lineCapStyle = .round
+//        UIColor.red.setStroke()
+//        path.stroke()
+        path.close()
+        return path.cgPath
     }
     
     func createPathDropDown(frame: CGRect, distancefromDropDownViewToBottom: CGFloat) -> CGPath {
