@@ -192,19 +192,19 @@ extension TextVC {
             self.removeCAGradientLayer()
             self.textView.backgroundColor = .clear
             self.textView.applyGradient(withColours: list.map { $0.covertToColor() }.compactMap{ $0 }, gradientOrientation: .vertical)
-            self.bgColorModel?.gradient = list
+            self.bgColorModel = BgColorModel(color: nil, gradient: list, image: nil)
         case .colors(let color):
             self.removeCAGradientLayer()
             if let color = color {
                 self.imgBg.isHidden = true
                 self.textView.backgroundColor = color.covertToColor()
-                self.bgColorModel?.color = color
+                self.bgColorModel = BgColorModel(color: color, gradient: nil, image: nil)
             }
         case .images(let img):
             self.removeCAGradientLayer()
             if let img = img, let image = img.converToImage() {
                 self.updateImgBg(img: image)
-                self.bgColorModel?.image = img
+                self.bgColorModel = BgColorModel(color: nil, gradient: nil, image: img)
             }
         }
     }
