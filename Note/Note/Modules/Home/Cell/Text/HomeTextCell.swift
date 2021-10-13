@@ -13,7 +13,7 @@ class HomeTextCell: UICollectionViewCell {
     @IBOutlet weak var imgBg: UIImageView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var lbText: UILabel!
-    @IBOutlet weak var btSelect: UIButton!
+    @IBOutlet weak var imgSelect: UIImageView!
     
     private let disposeBag = DisposeBag()
     override func awakeFromNib() {

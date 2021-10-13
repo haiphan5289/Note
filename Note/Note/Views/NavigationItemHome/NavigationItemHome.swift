@@ -25,7 +25,7 @@ class NavigationItemHome: UIView {
     enum Action: Int, CaseIterable {
         case selectAll, trash, moreAction, cancelEdit
         
-        static var statusSelectAll: SelectAllStatus = .selectAll
+        static var statusSelectAll: SelectAllStatus = .deSelectAll
     }
     
     @IBOutlet var bts: [UIButton]!
@@ -71,15 +71,11 @@ extension NavigationItemHome {
                     Action.statusSelectAll = .deSelectAll
                 case .selectAll:
                     
-                    if wSelf.bts[Action.selectAll.rawValue].isSelected {
-                        wSelf.bts[Action.selectAll.rawValue].isHighlighted = false
-                        wSelf.bts[Action.selectAll.rawValue].isSelected = false
+                    if Action.statusSelectAll == .selectAll {
                         wSelf.bts[Action.selectAll.rawValue].setTitle(L10n.NavigationHomeItem.selectAll, for: .normal)
                         Action.statusSelectAll = .deSelectAll
                     } else {
-                        wSelf.bts[Action.selectAll.rawValue].isSelected = true
                         wSelf.bts[Action.selectAll.rawValue].setTitle(L10n.NavigationHomeItem.deselectAll, for: .normal)
-                        wSelf.bts[Action.selectAll.rawValue].isHighlighted = false
                         Action.statusSelectAll = .selectAll
                     }
                     
@@ -108,6 +104,11 @@ extension NavigationItemHome {
             
         }.disposed(by: disposeBag)
         
+    }
+    
+    func resetSelectAll() {
+        self.bts[Action.selectAll.rawValue].setTitle(L10n.NavigationHomeItem.selectAll, for: .normal)
+        Action.statusSelectAll = .deSelectAll
     }
     
 }

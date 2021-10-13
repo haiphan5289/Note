@@ -35,29 +35,28 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nmf-OC-jDC">
-                        <rect key="frame" x="26" y="0.0" width="24" height="24"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="24" id="PUg-wn-X5F"/>
-                            <constraint firstAttribute="height" constant="24" id="Ur6-au-acu"/>
-                        </constraints>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_uncheck" translatesAutoresizingMaskIntoConstraints="NO" id="bSy-55-CGg">
+                        <rect key="frame" x="21" y="5" width="24" height="24"/>
                         <color key="tintColor" name="ColorApp"/>
-                        <state key="normal" image="ic_uncheck"/>
-                    </button>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="RQd-vH-7h4"/>
+                            <constraint firstAttribute="height" constant="24" id="avc-Hi-n4w"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="1vk-le-KZe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2VY-kH-PKV"/>
+                <constraint firstItem="bSy-55-CGg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="6kw-DT-a12"/>
                 <constraint firstAttribute="bottom" secondItem="1vk-le-KZe" secondAttribute="bottom" id="BZm-V9-AFX"/>
                 <constraint firstAttribute="trailing" secondItem="yBB-8u-Nyy" secondAttribute="trailing" id="D7F-U9-8TQ"/>
                 <constraint firstItem="yBB-8u-Nyy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="E3P-3x-RcQ"/>
-                <constraint firstItem="Nmf-OC-jDC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="NWp-lT-v5C"/>
                 <constraint firstAttribute="trailing" secondItem="1vk-le-KZe" secondAttribute="trailing" id="SQx-YR-Px4"/>
-                <constraint firstAttribute="trailing" secondItem="Nmf-OC-jDC" secondAttribute="trailing" id="er1-fs-Ve9"/>
                 <constraint firstItem="1vk-le-KZe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="jlC-Ad-cac"/>
                 <constraint firstAttribute="bottom" secondItem="yBB-8u-Nyy" secondAttribute="bottom" id="ncn-dN-W8R"/>
                 <constraint firstItem="yBB-8u-Nyy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="tez-Sg-vly"/>
+                <constraint firstAttribute="trailing" secondItem="bSy-55-CGg" secondAttribute="trailing" constant="5" id="wBe-iv-W7M"/>
             </constraints>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -65,8 +64,8 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
-                <outlet property="btSelect" destination="Nmf-OC-jDC" id="L8g-R7-v67"/>
                 <outlet property="imgBg" destination="0mo-vN-a2D" id="1kO-t2-5tL"/>
+                <outlet property="imgSelect" destination="bSy-55-CGg" id="rKM-4n-gxw"/>
                 <outlet property="lbText" destination="yBB-8u-Nyy" id="rXF-YW-GhX"/>
                 <outlet property="textView" destination="1vk-le-KZe" id="Aaa-fE-hEe"/>
             </connections>

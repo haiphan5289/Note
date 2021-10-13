@@ -162,24 +162,37 @@ extension HomeVC {
             case .selectAll:
                 if NavigationItemHome.Action.statusSelectAll == .selectAll {
                     wSelf.collectionView.selectAll(animated: true)
+                    wSelf.selectIndexs = wSelf.collectionView.getIndexPaths()
                 } else {
                     wSelf.collectionView.deselectAll(animated: true)
+                    wSelf.selectIndexs = []
                 }
                 
-                wSelf.selectRows()
+                wSelf.collectionView.reloadData()
+            case .trash:
+                
+                if wSelf.selectIndexs.count == wSelf.listNote.count {
+                    NoteManage.shared.removeAllNote()
+                } else {
+                    wSelf.selectIndexs.forEach({ idx in
+                        let note = wSelf.listNote[idx.row]
+                        NoteManage.shared.deleteNote(note: note)
+                    })
+                }
+                wSelf.selectIndexs = []
+                wSelf.navigationItemView.resetSelectAll()
+                
             case .cancelEdit:
                 wSelf.collectionView.deselectAll(animated: true)
-                wSelf.selectRows()
-            case .moreAction, .trash: break
+                wSelf.selectIndexs = []
+                wSelf.navigationItemView.resetSelectAll()
+                wSelf.collectionView.reloadData()
+            case .moreAction: break
             }
             
         }.disposed(by: disposeBag)
     }
     
-    private func selectRows() {
-        self.selectIndexs = self.collectionView.indexPathsForSelectedItems ?? []
-        self.collectionView.reloadData()
-    }
     
     private func calculateSizeCell() -> CGSize {
         let w = (self.collectionView.bounds.size.width / Constant.numberOfCellinLine) - Constant.spacingCell
@@ -236,17 +249,27 @@ extension HomeVC: UICollectionViewDataSource {
         default: break
         }
         
-        cell.btSelect.isHidden = (self.navigationItemView.actionStatus == .normal) ? true : false
+        cell.imgSelect.isHidden = (self.navigationItemView.actionStatus == .normal) ? true : false
         
         let hasSelect = self.selectIndexs.contains(indexPath)
         let img = (hasSelect) ? Asset.icCheckbox.image : Asset.icUncheck.image
-        cell.btSelect.setImage(img, for: .normal)
+        cell.imgSelect.image = img
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("===== didSelectItemAt \(indexPath.row)")
+        if let index = self.selectIndexs.firstIndex(where: { $0 == indexPath }) {
+            self.selectIndexs.remove(at: index)
+            
+            if self.selectIndexs.count <= 0 {
+                self.navigationItemView.resetSelectAll()
+            }
+            
+        } else {
+            self.selectIndexs.append(indexPath)
+        }
+        self.collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
