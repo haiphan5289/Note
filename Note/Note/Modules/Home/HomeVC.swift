@@ -32,6 +32,7 @@ class HomeVC: BaseNavigationHome {
     
     private var listNote: [NoteModel] = []
     private let eventStatusDropDown: PublishSubject<AddNote.StatusAddNote> = PublishSubject.init()
+    private var selectIndexs: [IndexPath] = []
     private var audio: AVAudioPlayer = AVAudioPlayer()
     
     private let disposeBag = DisposeBag()
@@ -102,14 +103,14 @@ extension HomeVC {
             wSelf.collectionView.reloadData()
         }.disposed(by: disposeBag)
         
-        self.collectionView.rx.itemSelected.bind { [weak self] idx in
-            guard let wSelf = self else { return }
-            let item = NoteManage.shared.listNote[idx.row]
-            let vc = TextVC.createVC()
-            vc.noteModel = item
-            wSelf.eventStatusDropdown = .hide
-            wSelf.navigationController?.pushViewController(vc, animated: true)
-        }.disposed(by: disposeBag)
+//        self.collectionView.rx.itemSelected.bind { [weak self] idx in
+//            guard let wSelf = self else { return }
+//            let item = NoteManage.shared.listNote[idx.row]
+//            let vc = TextVC.createVC()
+//            vc.noteModel = item
+//            wSelf.eventStatusDropdown = .hide
+//            wSelf.navigationController?.pushViewController(vc, animated: true)
+//        }.disposed(by: disposeBag)
         
         
         self.eventStatusDropDown.asObservable().bind { [weak self] status in
@@ -148,6 +149,36 @@ extension HomeVC {
 
             }
         }.disposed(by: disposeBag)
+        
+        self.navigationItemView.$actionStatus.asObservable().bind { [weak self] stt in
+            guard let wSelf = self else { return }
+            wSelf.collectionView.reloadData()
+        }.disposed(by: disposeBag)
+        
+        self.navigationItemView.$tapAction.asObservable().bind { [weak self] tap in
+            guard let wSelf = self else { return }
+            
+            switch tap {
+            case .selectAll:
+                if NavigationItemHome.Action.statusSelectAll == .selectAll {
+                    wSelf.collectionView.selectAll(animated: true)
+                } else {
+                    wSelf.collectionView.deselectAll(animated: true)
+                }
+                
+                wSelf.selectRows()
+            case .cancelEdit:
+                wSelf.collectionView.deselectAll(animated: true)
+                wSelf.selectRows()
+            case .moreAction, .trash: break
+            }
+            
+        }.disposed(by: disposeBag)
+    }
+    
+    private func selectRows() {
+        self.selectIndexs = self.collectionView.indexPathsForSelectedItems ?? []
+        self.collectionView.reloadData()
     }
     
     private func calculateSizeCell() -> CGSize {
@@ -205,7 +236,21 @@ extension HomeVC: UICollectionViewDataSource {
         default: break
         }
         
+        cell.btSelect.isHidden = (self.navigationItemView.actionStatus == .normal) ? true : false
+        
+        let hasSelect = self.selectIndexs.contains(indexPath)
+        let img = (hasSelect) ? Asset.icCheckbox.image : Asset.icUncheck.image
+        cell.btSelect.setImage(img, for: .normal)
+        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("===== didSelectItemAt \(indexPath.row)")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        print("===== didDeselectItemAt \(indexPath.row)")
     }
     
     

@@ -18,14 +18,21 @@ class NavigationItemHome: UIView {
         case normal, edit
     }
     
+    enum SelectAllStatus {
+        case selectAll, deSelectAll
+    }
+    
     enum Action: Int, CaseIterable {
         case selectAll, trash, moreAction, cancelEdit
+        
+        static var statusSelectAll: SelectAllStatus = .selectAll
     }
     
     @IBOutlet var bts: [UIButton]!
     
     var delegate: NavigationItemHomeDelegate?
     @VariableReplay var actionStatus: ActionStatus = .normal
+    @VariableReplay var tapAction: Action = .moreAction
     private let disposeBag = DisposeBag()
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,7 +50,9 @@ class NavigationItemHome: UIView {
 extension NavigationItemHome {
     
     private func setupUI() {
-        
+        self.bts[Action.selectAll.rawValue].adjustsImageWhenHighlighted = false
+        self.bts[Action.selectAll.rawValue].adjustsImageWhenDisabled = false
+        self.bts[Action.selectAll.rawValue].isHighlighted = false
     }
     
     private func setupRX() {
@@ -57,8 +66,26 @@ extension NavigationItemHome {
                 switch type {
                 case .moreAction:
                     wSelf.delegate?.showListAction(frameParent: wSelf.bts[Action.moreAction.rawValue])
+                case .cancelEdit:
+                    wSelf.actionStatus = .normal
+                    Action.statusSelectAll = .deSelectAll
+                case .selectAll:
+                    
+                    if wSelf.bts[Action.selectAll.rawValue].isSelected {
+                        wSelf.bts[Action.selectAll.rawValue].isHighlighted = false
+                        wSelf.bts[Action.selectAll.rawValue].isSelected = false
+                        wSelf.bts[Action.selectAll.rawValue].setTitle(L10n.NavigationHomeItem.selectAll, for: .normal)
+                        Action.statusSelectAll = .deSelectAll
+                    } else {
+                        wSelf.bts[Action.selectAll.rawValue].isSelected = true
+                        wSelf.bts[Action.selectAll.rawValue].setTitle(L10n.NavigationHomeItem.deselectAll, for: .normal)
+                        wSelf.bts[Action.selectAll.rawValue].isHighlighted = false
+                        Action.statusSelectAll = .selectAll
+                    }
+                    
                 default: break
                 }
+                wSelf.tapAction = type
             }.disposed(by: disposeBag)
             
         }
@@ -71,7 +98,12 @@ extension NavigationItemHome {
                 wSelf.bts[Action.selectAll.rawValue].isHidden = true
                 wSelf.bts[Action.cancelEdit.rawValue].isHidden = true
                 wSelf.bts[Action.trash.rawValue].isHidden = true
-            case .edit: break
+                wSelf.bts[Action.moreAction.rawValue].isHidden = false
+            case .edit:
+                wSelf.bts[Action.selectAll.rawValue].isHidden = false
+                wSelf.bts[Action.cancelEdit.rawValue].isHidden = false
+                wSelf.bts[Action.trash.rawValue].isHidden = false
+                wSelf.bts[Action.moreAction.rawValue].isHidden = true
             }
             
         }.disposed(by: disposeBag)

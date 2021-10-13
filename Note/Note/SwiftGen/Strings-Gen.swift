@@ -48,6 +48,13 @@ internal enum L10n {
     internal static let title = L10n.tr("Localizable", "ListFontVC.Title")
   }
 
+  internal enum NavigationHomeItem {
+    /// DeselectAll
+    internal static let deselectAll = L10n.tr("Localizable", "NavigationHomeItem.DeselectAll")
+    /// SelectAll
+    internal static let selectAll = L10n.tr("Localizable", "NavigationHomeItem.SelectAll")
+  }
+
   internal enum SegmentControl {
     /// Colors
     internal static let colors = L10n.tr("Localizable", "SegmentControl.Colors")

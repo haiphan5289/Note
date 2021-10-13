@@ -15,6 +15,8 @@ class BaseNavigationHome: UIViewController {
     var vContainer: UIView!
     
     @VariableReplay var eventStatusDropdown: DropdownActionView.DropDownActionStatus = .hide
+    @VariableReplay var statusNavigation: NavigationItemHome.ActionStatus = .normal
+    let eventActionDropdown: PublishSubject<DropdownActionView.Action> = PublishSubject.init()
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -58,9 +60,23 @@ extension BaseNavigationHome {
     
     private func configUI() {
         self.navigationItemView.delegate = self
+        
+        self.dropdownActionView.delegate = self
     }
     
     private func configRX() {
+        
+        self.eventActionDropdown.asObservable().bind { [weak self] action in
+            guard let wSelf = self else { return }
+            
+            switch action {
+            case .trash:
+                wSelf.navigationItemView.actionStatus = .edit
+            default: break
+            }
+            
+        }.disposed(by: disposeBag)
+        
         self.$eventStatusDropdown.asObservable().bind { [weak self] stt in
             guard let wSelf = self else { return }
             
@@ -94,4 +110,10 @@ extension BaseNavigationHome: NavigationItemHomeDelegate {
     }
     
     
+}
+extension BaseNavigationHome: DropdownActionViewDelegate {
+    func selectAction(action: DropdownActionView.Action) {
+        self.eventActionDropdown.onNext(action)
+        self.eventStatusDropdown = .hide
+    }
 }

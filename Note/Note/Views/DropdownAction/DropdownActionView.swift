@@ -8,6 +8,10 @@
 import UIKit
 import RxSwift
 
+protocol DropdownActionViewDelegate {
+    func selectAction(action: DropdownActionView.Action)
+}
+
 class DropdownActionView: UIView {
     
     struct Constant {
@@ -25,11 +29,11 @@ class DropdownActionView: UIView {
     }
     
     enum Action: Int, CaseIterable {
-        case edit, sort, reminder, pin, views, reset
+        case trash, sort, reminder, pin, views, reset
         
         var text: String {
             switch self {
-            case .edit:
+            case .trash:
                 return L10n.DropdownAction.trash
             case .pin:
                 return L10n.DropdownAction.pin
@@ -46,7 +50,7 @@ class DropdownActionView: UIView {
         
         var img: UIImage {
             switch self {
-            case .edit:
+            case .trash:
                 return Asset.icTrash.image
             case .pin:
                 return Asset.icPin.image
@@ -77,7 +81,7 @@ class DropdownActionView: UIView {
         }
     }
     
-    
+    var delegate: DropdownActionViewDelegate?
     private let stackView: UIStackView = UIStackView()
     private var shapeLayer: CALayer?
     
@@ -151,12 +155,12 @@ extension DropdownActionView {
                     make.right.equalTo(lbTitle.snp.left).inset(-10)
                 }
                 
-    //            let tap: UITapGestureRecognizer = UITapGestureRecognizer()
-    //            v.addGestureRecognizer(tap)
-    //            tap.rx.event.bind { [weak self] _ in
-    //                guard let wSelf = self else { return }
-    //                wSelf.delegate?.actionCreate(type: type)
-    //            }.disposed(by: disposeBag)
+                let tap: UITapGestureRecognizer = UITapGestureRecognizer()
+                v.addGestureRecognizer(tap)
+                tap.rx.event.bind { [weak self] _ in
+                    guard let wSelf = self else { return }
+                    wSelf.delegate?.selectAction(action: type)
+                }.disposed(by: disposeBag)
                 
                 wSelf.stackView.addArrangedSubview(v)
             }

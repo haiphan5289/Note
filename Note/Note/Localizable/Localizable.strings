@@ -21,3 +21,5 @@
 "DropdownAction.Pin" = "Pin";
 "DropdownAction.Trash" = "Trash";
 "DropdownAction.Default" = "Default";
+"NavigationHomeItem.SelectAll" = "SelectAll";
+"NavigationHomeItem.DeselectAll" = "DeselectAll";
