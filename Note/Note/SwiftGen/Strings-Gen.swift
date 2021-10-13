@@ -24,6 +24,25 @@ internal enum L10n {
     internal static let videos = L10n.tr("Localizable", "Dropdown.Videos")
   }
 
+  internal enum DropdownAction {
+    /// Default
+    internal static let `default` = L10n.tr("Localizable", "DropdownAction.Default")
+    /// Edit
+    internal static let edit = L10n.tr("Localizable", "DropdownAction.Edit")
+    /// Pin
+    internal static let pin = L10n.tr("Localizable", "DropdownAction.Pin")
+    /// Reminder
+    internal static let reminder = L10n.tr("Localizable", "DropdownAction.Reminder")
+    /// Sort Date
+    internal static let sort = L10n.tr("Localizable", "DropdownAction.Sort")
+    /// Trash
+    internal static let trash = L10n.tr("Localizable", "DropdownAction.Trash")
+    /// View
+    internal static let view = L10n.tr("Localizable", "DropdownAction.View")
+    /// Views
+    internal static let views = L10n.tr("Localizable", "DropdownAction.Views")
+  }
+
   internal enum ListFontVC {
     /// List Font
     internal static let title = L10n.tr("Localizable", "ListFontVC.Title")

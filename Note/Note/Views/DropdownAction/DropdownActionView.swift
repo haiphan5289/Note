@@ -11,10 +11,74 @@ import RxSwift
 class DropdownActionView: UIView {
     
     struct Constant {
-        static let width: CGFloat = 150
-        static let height: CGFloat = 300
+        static let width: CGFloat = 200
+        static let height: CGFloat = 320
+        static let distanceView: CGFloat = 10
+        static let borderWidth: CGFloat = 1
+        static let cornerRadius: CGFloat = 8
+        static let distanceToTop: CGFloat = 15
+        static let distanceViewOfView: CGFloat = 5
     }
     
+    enum DropDownActionStatus {
+        case show, hide
+    }
+    
+    enum Action: Int, CaseIterable {
+        case edit, sort, reminder, pin, views, reset
+        
+        var text: String {
+            switch self {
+            case .edit:
+                return L10n.DropdownAction.trash
+            case .pin:
+                return L10n.DropdownAction.pin
+            case .reminder:
+                return L10n.DropdownAction.reminder
+            case .sort:
+                return L10n.DropdownAction.sort
+            case .views:
+                return L10n.DropdownAction.views
+            case .reset:
+                return L10n.DropdownAction.default
+            }
+        }
+        
+        var img: UIImage {
+            switch self {
+            case .edit:
+                return Asset.icTrash.image
+            case .pin:
+                return Asset.icPin.image
+            case .reminder:
+                return Asset.icReminder.image
+            case .sort:
+                return Asset.icSortAscending.image
+            case .views:
+                return Asset.icFourView.image
+            case .reset:
+                return Asset.icDefaultHome.image
+            }
+        }
+    }
+    
+    enum ViewsStatus: Int, CaseIterable {
+        case two, three, four
+        
+        var img: UIImage {
+            switch self {
+            case .two:
+                return Asset.icTwoView.image
+            case .three:
+                return Asset.icThreeView.image
+            case .four:
+                return Asset.icFourView.image
+            }
+        }
+    }
+    
+    
+    private let stackView: UIStackView = UIStackView()
     private var shapeLayer: CALayer?
     
     private let disposeBag = DisposeBag()
@@ -36,16 +100,117 @@ class DropdownActionView: UIView {
 extension DropdownActionView {
     
     private func setupUI() {
+        self.stackView.backgroundColor = .clear
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = Constant.distanceView
+        self.setupStackView()
         
+        self.addSubview(self.stackView)
+        self.stackView.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalToSuperview().inset(16)
+            make.top.equalToSuperview().inset(Constant.distanceToTop + 16)
+        }
     }
     
     private func setupRX() {
         
     }
     
+    private func setupStackView() {
+        Action.allCases.forEach { [weak self] type in
+            guard let wSelf = self else { return }
+            
+            if type == .views {
+                wSelf.stackView.addArrangedSubview(wSelf.setupStackViews())
+            } else {
+                let v: UIView = UIView(frame: .zero)
+                v.tag = type.rawValue
+                v.backgroundColor = Asset.appBg.color
+                v.clipsToBounds = true
+                v.layer.borderColor = UIColor.black.cgColor
+                v.layer.borderWidth = Constant.borderWidth
+                v.layer.cornerRadius = Constant.cornerRadius
+                
+                let lbTitle: UILabel = UILabel(frame: .zero)
+                lbTitle.font = UIFont.mySemiBoldSystemFont(ofSize: 16)
+                lbTitle.textColor = Asset.textColorApp.color
+                lbTitle.textAlignment = .center
+                lbTitle.text = type.text
+                v.addSubview(lbTitle)
+                lbTitle.snp.makeConstraints { make in
+                    make.center.equalToSuperview()
+                }
+                
+                let img: UIImageView = UIImageView(frame: .zero)
+                img.tintColor = Asset.textColorApp.color
+                img.image = type.img
+                v.addSubview(img)
+                img.snp.makeConstraints { make in
+                    make.centerY.equalTo(lbTitle)
+                    make.right.equalTo(lbTitle.snp.left).inset(-10)
+                }
+                
+    //            let tap: UITapGestureRecognizer = UITapGestureRecognizer()
+    //            v.addGestureRecognizer(tap)
+    //            tap.rx.event.bind { [weak self] _ in
+    //                guard let wSelf = self else { return }
+    //                wSelf.delegate?.actionCreate(type: type)
+    //            }.disposed(by: disposeBag)
+                
+                wSelf.stackView.addArrangedSubview(v)
+            }
+        }
+    }
+    
+    func setupStackViews() -> UIStackView {
+        let stackViewOfViews: UIStackView = UIStackView()
+        stackViewOfViews.backgroundColor = .clear
+        stackViewOfViews.axis = .horizontal
+        stackViewOfViews.distribution = .fillEqually
+        stackViewOfViews.spacing = Constant.distanceViewOfView
+        
+        ViewsStatus.allCases.forEach { [weak self] type in
+            guard let wSelf = self else { return }
+            let v: UIView = UIView(frame: .zero)
+            v.tag = type.rawValue
+            v.backgroundColor = Asset.appBg.color
+            v.clipsToBounds = true
+            v.layer.borderColor = UIColor.black.cgColor
+            v.layer.borderWidth = Constant.borderWidth
+            v.layer.cornerRadius = Constant.cornerRadius
+            
+            let img: UIImageView = UIImageView(frame: .zero)
+            img.tintColor = Asset.textColorApp.color
+            img.image = type.img
+            v.addSubview(img)
+            img.snp.makeConstraints { make in
+                make.center.equalToSuperview()
+            }
+            
+//            let tap: UITapGestureRecognizer = UITapGestureRecognizer()
+//            v.addGestureRecognizer(tap)
+//            tap.rx.event.bind { [weak self] _ in
+//                guard let wSelf = self else { return }
+//                wSelf.delegate?.actionCreate(type: type)
+//            }.disposed(by: disposeBag)
+            
+            stackViewOfViews.addArrangedSubview(v)
+        }
+        return stackViewOfViews
+    }
+    
+    func hideView() {
+        self.isHidden = true
+    }
+    
+    func showView() {
+        self.isHidden = false
+    }
+    
     private func addShape() {
         var shapeLayer = CAShapeLayer()
-        shapeLayer.path = PathDraw.shared.createPathDropDownAction(frame: self.frame)
+        shapeLayer.path = PathDraw.shared.createPathDropDownAction(frame: self.frame, distanceToTop: Constant.distanceToTop)
         shapeLayer = PathDraw.shared.setupShapeLayer(shapeLayer: shapeLayer, colorLine: .clear)
 
         if let oldShapeLayer = self.shapeLayer {

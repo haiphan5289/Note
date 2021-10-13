@@ -13,3 +13,11 @@
 "SegmentControl.Images" = "Images";
 "SegmentControl.Colors" = "Colors";
 "SegmentControl.Gradients" = "Gradients";
+"DropdownAction.Edit" = "Edit";
+"DropdownAction.Sort" = "Sort Date";
+"DropdownAction.Reminder" = "Reminder";
+"DropdownAction.View" = "View";
+"DropdownAction.Views" = "Views";
+"DropdownAction.Pin" = "Pin";
+"DropdownAction.Trash" = "Trash";
+"DropdownAction.Default" = "Default";

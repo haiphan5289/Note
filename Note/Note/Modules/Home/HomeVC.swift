@@ -107,12 +107,14 @@ extension HomeVC {
             let item = NoteManage.shared.listNote[idx.row]
             let vc = TextVC.createVC()
             vc.noteModel = item
+            wSelf.eventStatusDropdown = .hide
             wSelf.navigationController?.pushViewController(vc, animated: true)
         }.disposed(by: disposeBag)
         
         
         self.eventStatusDropDown.asObservable().bind { [weak self] status in
             guard let wSelf = self else { return }
+            wSelf.eventStatusDropdown = .hide
             switch status {
             case .open:
                 if #available(iOS 13, *) {

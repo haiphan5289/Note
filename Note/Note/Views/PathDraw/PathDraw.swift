@@ -38,13 +38,13 @@ final class PathDraw {
         return shapeLayer
     }
     
-    func createPathDropDownAction(frame: CGRect) -> CGPath {
+    func createPathDropDownAction(frame: CGRect, distanceToTop: CGFloat) -> CGPath {
         let path = UIBezierPath()
         path.move(to: CGPoint(x: 0, y: 0))
         let radius: CGFloat = 20 //change it if you want
         //let distancefromDropDownViewToBottom
         // This variable alaways have to be great than radius
-        let distanceToTop: CGFloat = 15
+//        let distanceToTop: CGFloat = 15
         let distantToDraw: CGFloat = 20
         
         

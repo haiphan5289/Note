@@ -11,8 +11,10 @@ import RxSwift
 
 class BaseNavigationHome: UIViewController {
     let navigationItemView: NavigationItemHome = NavigationItemHome.loadXib()
-    
+    let dropdownActionView: DropdownActionView = DropdownActionView()
     var vContainer: UIView!
+    
+    @VariableReplay var eventStatusDropdown: DropdownActionView.DropDownActionStatus = .hide
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -59,22 +61,36 @@ extension BaseNavigationHome {
     }
     
     private func configRX() {
+        self.$eventStatusDropdown.asObservable().bind { [weak self] stt in
+            guard let wSelf = self else { return }
+            
+            switch stt {
+            case .hide:
+                wSelf.dropdownActionView.hideView()
+            case .show:
+                wSelf.dropdownActionView.showView()
+            }
+            
+        }.disposed(by: disposeBag)
+        
+    }
+    
+    private func setupDropdownActionView() {
         
     }
     
 }
 extension BaseNavigationHome: NavigationItemHomeDelegate {
     func showListAction(frameParent: UIView) {
-        print("===== frameParent \(frameParent.frame)")
-        let origionX = frameParent.x + (frameParent.width / 2) - 100
-        
-        let v: DropdownActionView = DropdownActionView()
-        self.view.addSubview(v)
-        v.snp.makeConstraints { (make) in
+        let origionX = frameParent.x + (frameParent.width / 2) - DropdownActionView.Constant.width
+        self.view.addSubview(dropdownActionView)
+        dropdownActionView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().inset(origionX)
             make.top.equalTo(self.view.safeAreaLayoutGuide)
-            make.width.height.equalTo(100)
+            make.width.equalTo(DropdownActionView.Constant.width)
+            make.height.equalTo(DropdownActionView.Constant.height)
         }
+        self.eventStatusDropdown = .show
     }
     
     
