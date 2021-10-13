@@ -28,8 +28,14 @@ class DropdownActionView: UIView {
         case show, hide
     }
     
+    enum SortStatus {
+        case orderedDescending, orderedAscending
+    }
+    
     enum Action: Int, CaseIterable {
         case trash, sort, reminder, pin, views, reset
+        
+        static var sortStatus: SortStatus = .orderedDescending
         
         var text: String {
             switch self {
@@ -159,6 +165,19 @@ extension DropdownActionView {
                 v.addGestureRecognizer(tap)
                 tap.rx.event.bind { [weak self] _ in
                     guard let wSelf = self else { return }
+                    
+                    switch type {
+                    case .sort:
+                        if Action.sortStatus == .orderedDescending {
+                            Action.sortStatus = .orderedAscending
+                            img.image = Asset.icSortDescending.image
+                        } else {
+                            Action.sortStatus = .orderedDescending
+                            img.image = Asset.icSortAscending.image
+                        }
+                    default: break
+                    }
+                    
                     wSelf.delegate?.selectAction(action: type)
                 }.disposed(by: disposeBag)
                 

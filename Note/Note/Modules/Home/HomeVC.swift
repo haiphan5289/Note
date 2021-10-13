@@ -155,6 +155,22 @@ extension HomeVC {
             wSelf.collectionView.reloadData()
         }.disposed(by: disposeBag)
         
+        self.eventActionDropdown.asObservable().bind { [weak self] tap in
+            guard let wSelf = self else { return }
+            
+            switch tap {
+            case .sort:
+                if DropdownActionView.Action.sortStatus == .orderedDescending {
+                    wSelf.listNote = wSelf.listNote.sorted(by: { $0.updateDate?.compare($1.updateDate ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedDescending } )
+                } else {
+                    wSelf.listNote = wSelf.listNote.sorted(by: { $0.updateDate?.compare($1.updateDate ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedAscending } )
+                }
+                wSelf.collectionView.reloadData()
+            default: break
+            }
+            
+        }.disposed(by: disposeBag)
+        
         self.navigationItemView.$tapAction.asObservable().bind { [weak self] tap in
             guard let wSelf = self else { return }
             
