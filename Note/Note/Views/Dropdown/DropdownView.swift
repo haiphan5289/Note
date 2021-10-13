@@ -53,6 +53,8 @@ class DropdownView: UIView {
     private let scrollView: UIScrollView = UIScrollView()
     private let stackView: UIStackView = UIStackView()
     private var shapeLayer: CALayer?
+    private var frameShow: CGRect = .zero
+    private var frameHide: CGRect = .zero
     
     private let disposeBag = DisposeBag()
     override init(frame: CGRect) {
@@ -139,6 +141,24 @@ extension DropdownView {
             }.disposed(by: disposeBag)
             
             self.stackView.addArrangedSubview(v)
+        }
+    }
+    
+    func updateValueFrame(statusNote: AddNote.StatusAddNote, frame: CGRect) {
+        switch statusNote {
+        case .open:
+            self.frameShow = frame
+        case .remove:
+            self.frameHide = frame
+        }
+    }
+    
+    func getFrawm(statusNote: AddNote.StatusAddNote) -> CGRect {
+        switch statusNote {
+        case .open:
+            return self.frameShow
+        case .remove:
+            return self.frameHide
         }
     }
     

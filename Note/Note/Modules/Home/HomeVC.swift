@@ -29,6 +29,7 @@ class HomeVC: BaseNavigationHome {
     private var viewModel: HomeVM = HomeVM()
     private let vAddNote: AddNote = AddNote.loadXib()
     private let vDropDown: DropdownView = DropdownView(frame: .zero)
+    private let tap: UITapGestureRecognizer = UITapGestureRecognizer()
     
     private var listNote: [NoteModel] = []
     private let eventStatusDropDown: PublishSubject<AddNote.StatusAddNote> = PublishSubject.init()
@@ -76,7 +77,7 @@ extension HomeVC {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.register(HomeTextCell.nib, forCellWithReuseIdentifier: HomeTextCell.identifier)
-        
+        self.collectionView.addGestureRecognizer(self.tap)
         
     }
     
@@ -89,6 +90,11 @@ extension HomeVC {
             vDropDown.frame = f
             vDropDown.isHidden = true
             vDropDown.delegate = self
+            var framwShow = self.vDropDown.frame
+            framwShow.origin.y -= self.vDropDown.getHeightDropdown()
+            vDropDown.updateValueFrame(statusNote: .open, frame: framwShow)
+            let framwHide = self.vDropDown.frame
+            vDropDown.updateValueFrame(statusNote: .remove, frame: framwHide)
             self.view.addSubview(vDropDown)
         }
 
@@ -118,33 +124,21 @@ extension HomeVC {
             wSelf.eventStatusDropdown = .hide
             switch status {
             case .open:
-                if #available(iOS 13, *) {
-                    wSelf.playAudio()
-                }
+                wSelf.playAudio()
                 wSelf.vDropDown.isHidden = false
-                var f = wSelf.vDropDown.frame
                 UIView.animate(withDuration: ConstantCommon.shared.timeAnimation) {
-                    f.origin.y -= wSelf.vDropDown.getHeightDropdown()
-                    wSelf.vDropDown.frame = f
+                    wSelf.vDropDown.frame = wSelf.vDropDown.getFrawm(statusNote: .open)
                 } completion: { _ in
-                    if #available(iOS 13, *) {
-                        wSelf.audio.stop()
-                    }
+                    wSelf.audio.stop()
                 }
 
             default:
-                if #available(iOS 13, *) {
-                    wSelf.playAudio()
-                }
-                var f = wSelf.vDropDown.frame
+                wSelf.playAudio()
                 UIView.animate(withDuration: ConstantCommon.shared.timeAnimation) {
-                    f.origin.y += wSelf.vDropDown.getHeightDropdown()
-                    wSelf.vDropDown.frame = f
+                    wSelf.vDropDown.frame = wSelf.vDropDown.getFrawm(statusNote: .remove)
                 } completion: { _ in
                     wSelf.vDropDown.isHidden = true
-                    if #available(iOS 13, *) {
-                        wSelf.audio.stop()
-                    }
+                    wSelf.audio.stop()
                 }
 
             }
@@ -207,6 +201,19 @@ extension HomeVC {
             }
             
         }.disposed(by: disposeBag)
+        
+        self.tap.rx.event.bind { [weak self] _ in
+            guard let wSelf = self else { return }
+            wSelf.vAddNote.updateStatus(status: .remove)
+            wSelf.resetStatus()
+        }.disposed(by: disposeBag)
+    }
+    
+    private func resetStatus() {
+        self.collectionView.deselectAll(animated: true)
+        self.selectIndexs = []
+        self.navigationItemView.resetSelectAll()
+        self.collectionView.reloadData()
     }
     
     
