@@ -40,11 +40,11 @@ extension CHeckVC {
     }
     
     func loadRequest() {
-        guard let url = URL(string: "https://stg2.dictionary.goo.ne.jp/srch/app/%E3%81%9B/m0u") else {
-            return
-        }
-        let request = URLRequest(url: url)
-//        request.cachePolicy = URLRequest.CachePolicy
-        webView.load(request)
+//        guard let url = URL(string: "https://stg2.dictionary.goo.ne.jp/srch/app/%E3%81%9B/m0u") else {
+//            return
+//        }
+//        let request = URLRequest(url: url)
+////        request.cachePolicy = URLRequest.CachePolicy
+//        webView.load(request)
     }
 }

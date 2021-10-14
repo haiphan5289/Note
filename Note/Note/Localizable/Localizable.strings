@@ -23,3 +23,5 @@
 "DropdownAction.Default" = "Default";
 "NavigationHomeItem.SelectAll" = "SelectAll";
 "NavigationHomeItem.DeselectAll" = "DeselectAll";
+"CheckList.EnterTitle" = "Enter Title";
+"CheckList.EnterCheckList" = "Enter Check List";

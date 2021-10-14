@@ -16,6 +16,11 @@ class BaseNavigationHeader: UIViewController {
         static let heightViewStyle: CGFloat = 50
         static let heightViewText: CGFloat = 150
         static let heightViewListFont: CGFloat = 400
+        static let heightTextView: CGFloat = 300
+        static let widthTextView: CGFloat = 0.9
+        static let topContraintTextView: CGFloat = 10
+        static let botContraintTextView: CGFloat = 10
+        static let tagImage: Int = 99
     }
     
     enum StatusFont {

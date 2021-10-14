@@ -24,6 +24,9 @@
 		936548D5271811C900C84473 /* CHeckVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936548D2271811C900C84473 /* CHeckVC.xib */; };
 		936548D6271811C900C84473 /* CHeckVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936548D3271811C900C84473 /* CHeckVM.swift */; };
 		936548D7271811C900C84473 /* CHeckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936548D4271811C900C84473 /* CHeckVC.swift */; };
+		9365491627185E4300C84473 /* CheckListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9365491327185E4300C84473 /* CheckListVC.xib */; };
+		9365491727185E4300C84473 /* CheckListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9365491427185E4300C84473 /* CheckListVM.swift */; };
+		9365491827185E4300C84473 /* CheckListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9365491527185E4300C84473 /* CheckListVC.swift */; };
 		936A9C2527049F1E006F9F25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C2427049F1E006F9F25 /* AppDelegate.swift */; };
 		936A9C2727049F1E006F9F25 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C2627049F1E006F9F25 /* SceneDelegate.swift */; };
 		936A9C2927049F1E006F9F25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C2827049F1E006F9F25 /* ViewController.swift */; };
@@ -214,6 +217,9 @@
 		936548D2271811C900C84473 /* CHeckVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CHeckVC.xib; sourceTree = "<group>"; };
 		936548D3271811C900C84473 /* CHeckVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHeckVM.swift; sourceTree = "<group>"; };
 		936548D4271811C900C84473 /* CHeckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHeckVC.swift; sourceTree = "<group>"; };
+		9365491327185E4300C84473 /* CheckListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckListVC.xib; sourceTree = "<group>"; };
+		9365491427185E4300C84473 /* CheckListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListVM.swift; sourceTree = "<group>"; };
+		9365491527185E4300C84473 /* CheckListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListVC.swift; sourceTree = "<group>"; };
 		936A9C2127049F1E006F9F25 /* Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Note.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		936A9C2427049F1E006F9F25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		936A9C2627049F1E006F9F25 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -482,6 +488,26 @@
 				934C8A5D27074206008BCE0A /* DropdownView.swift */,
 			);
 			path = Dropdown;
+			sourceTree = "<group>";
+		};
+		9365491227185E0A00C84473 /* CheckList */ = {
+			isa = PBXGroup;
+			children = (
+				9365491327185E4300C84473 /* CheckListVC.xib */,
+				9365491427185E4300C84473 /* CheckListVM.swift */,
+				9365491527185E4300C84473 /* CheckListVC.swift */,
+			);
+			path = CheckList;
+			sourceTree = "<group>";
+		};
+		9365491B27185ED500C84473 /* Check */ = {
+			isa = PBXGroup;
+			children = (
+				936548D2271811C900C84473 /* CHeckVC.xib */,
+				936548D3271811C900C84473 /* CHeckVM.swift */,
+				936548D4271811C900C84473 /* CHeckVC.swift */,
+			);
+			path = Check;
 			sourceTree = "<group>";
 		};
 		936A9C1827049F1E006F9F25 = {
@@ -869,14 +895,13 @@
 		936A9D3B2704A4C9006F9F25 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9365491B27185ED500C84473 /* Check */,
 				93D1B08D270DE56B008FCD4B /* ListFont */,
 				93B6EFC0270B4AA40035EF09 /* ListText */,
 				936A9D432704A634006F9F25 /* Menu */,
+				9365491227185E0A00C84473 /* CheckList */,
 				93AA99052708535D00939D3A /* Text */,
 				936A9D3C2704A4D1006F9F25 /* Home */,
-				936548D2271811C900C84473 /* CHeckVC.xib */,
-				936548D3271811C900C84473 /* CHeckVM.swift */,
-				936548D4271811C900C84473 /* CHeckVC.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1173,6 +1198,7 @@
 				936A9D4E2704A7F0006F9F25 /* AddNote.xib in Resources */,
 				93D1B091270DE58D008FCD4B /* ListFontVC.xib in Resources */,
 				936A9CEF2704A179006F9F25 /* EmptyView.xib in Resources */,
+				9365491627185E4300C84473 /* CheckListVC.xib in Resources */,
 				936A9D472704A643006F9F25 /* MenuVC.xib in Resources */,
 				936A9CD92704A179006F9F25 /* BorderLine.png in Resources */,
 				936A9D402704A61B006F9F25 /* HomeVC.xib in Resources */,
@@ -1244,6 +1270,7 @@
 				936A9D4C2704A7DF006F9F25 /* AddNote.swift in Sources */,
 				936A9D112704A179006F9F25 /* UISwitchExtensions.swift in Sources */,
 				936A9D0A2704A179006F9F25 /* UIImageExtensions.swift in Sources */,
+				9365491827185E4300C84473 /* CheckListVC.swift in Sources */,
 				936A9D482704A643006F9F25 /* MenuVM.swift in Sources */,
 				93A8496D2715878500E9ABBF /* NavigationItemHome.swift in Sources */,
 				936A9D352704A179006F9F25 /* StringExtension.swift in Sources */,
@@ -1358,6 +1385,7 @@
 				936A9D1D2704A179006F9F25 /* UIApplication+Extension.swift in Sources */,
 				936A9C452704A14D006F9F25 /* Constant.swift in Sources */,
 				936A9D392704A179006F9F25 /* ProductViewModel.swift in Sources */,
+				9365491727185E4300C84473 /* CheckListVM.swift in Sources */,
 				932EFD4327101E420073A9FA /* ColorsModel.swift in Sources */,
 				93AA99102708539D00939D3A /* TextVM.swift in Sources */,
 				936A9CE22704A179006F9F25 /* CircularSliderHelper.swift in Sources */,

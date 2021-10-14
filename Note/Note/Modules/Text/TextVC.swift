@@ -12,15 +12,7 @@ import RxCocoa
 import RxSwift
 
 class TextVC: BaseNavigationHeader {
-    
-    struct Constant {
-        static let heightTextView: CGFloat = 300
-        static let widthTextView: CGFloat = 0.9
-        static let topContraintTextView: CGFloat = 10
-        static let botContraintTextView: CGFloat = 10
-        static let tagImage: Int = 99
-    }
-    
+
     var noteModel: NoteModel?
     
     // Add here outlets
