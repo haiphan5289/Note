@@ -21,6 +21,9 @@
 		932EFD4327101E420073A9FA /* ColorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932EFD4227101E420073A9FA /* ColorsModel.swift */; };
 		932EFD4727101F730073A9FA /* BackgroundColorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932EFD4627101F730073A9FA /* BackgroundColorVM.swift */; };
 		934C8A5E27074206008BCE0A /* DropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C8A5D27074206008BCE0A /* DropdownView.swift */; };
+		936548D5271811C900C84473 /* CHeckVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936548D2271811C900C84473 /* CHeckVC.xib */; };
+		936548D6271811C900C84473 /* CHeckVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936548D3271811C900C84473 /* CHeckVM.swift */; };
+		936548D7271811C900C84473 /* CHeckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936548D4271811C900C84473 /* CHeckVC.swift */; };
 		936A9C2527049F1E006F9F25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C2427049F1E006F9F25 /* AppDelegate.swift */; };
 		936A9C2727049F1E006F9F25 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C2627049F1E006F9F25 /* SceneDelegate.swift */; };
 		936A9C2927049F1E006F9F25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9C2827049F1E006F9F25 /* ViewController.swift */; };
@@ -208,6 +211,9 @@
 		932EFD4227101E420073A9FA /* ColorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsModel.swift; sourceTree = "<group>"; };
 		932EFD4627101F730073A9FA /* BackgroundColorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorVM.swift; sourceTree = "<group>"; };
 		934C8A5D27074206008BCE0A /* DropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownView.swift; sourceTree = "<group>"; };
+		936548D2271811C900C84473 /* CHeckVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CHeckVC.xib; sourceTree = "<group>"; };
+		936548D3271811C900C84473 /* CHeckVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHeckVM.swift; sourceTree = "<group>"; };
+		936548D4271811C900C84473 /* CHeckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHeckVC.swift; sourceTree = "<group>"; };
 		936A9C2127049F1E006F9F25 /* Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Note.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		936A9C2427049F1E006F9F25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		936A9C2627049F1E006F9F25 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -868,6 +874,9 @@
 				936A9D432704A634006F9F25 /* Menu */,
 				93AA99052708535D00939D3A /* Text */,
 				936A9D3C2704A4D1006F9F25 /* Home */,
+				936548D2271811C900C84473 /* CHeckVC.xib */,
+				936548D3271811C900C84473 /* CHeckVM.swift */,
+				936548D4271811C900C84473 /* CHeckVC.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1155,6 +1164,7 @@
 				936A9CF42704A179006F9F25 /* ExportFile.xib in Resources */,
 				93AA990F2708539D00939D3A /* TextVC.xib in Resources */,
 				932EFD3E271019380073A9FA /* ColorsJson.json in Resources */,
+				936548D5271811C900C84473 /* CHeckVC.xib in Resources */,
 				936A9CED2704A179006F9F25 /* MoreVC.xib in Resources */,
 				93A849712715879F00E9ABBF /* NavigationItemHome.xib in Resources */,
 				936A9CDF2704A179006F9F25 /* ImportOptionsVC.xib in Resources */,
@@ -1344,6 +1354,7 @@
 				93A65CD0271438BB00BF08B0 /* RealmModel.swift in Sources */,
 				932EFC74270FE6FA0073A9FA /* BackgroundColorCell.swift in Sources */,
 				936A9D292704A179006F9F25 /* CustomButton.swift in Sources */,
+				936548D6271811C900C84473 /* CHeckVM.swift in Sources */,
 				936A9D1D2704A179006F9F25 /* UIApplication+Extension.swift in Sources */,
 				936A9C452704A14D006F9F25 /* Constant.swift in Sources */,
 				936A9D392704A179006F9F25 /* ProductViewModel.swift in Sources */,
@@ -1360,6 +1371,7 @@
 				936A9D042704A179006F9F25 /* UISegmentedControlExtensions.swift in Sources */,
 				936A9D3A2704A179006F9F25 /* DateExtension.swift in Sources */,
 				936A9D122704A179006F9F25 /* UIButtonExtensions.swift in Sources */,
+				936548D7271811C900C84473 /* CHeckVC.swift in Sources */,
 				936A9D182704A179006F9F25 /* UIDatePickerExtensions.swift in Sources */,
 				936A9C462704A14D006F9F25 /* GetHeightSafeArea.swift in Sources */,
 				936A9CEB2704A179006F9F25 /* ABTimeView.swift in Sources */,

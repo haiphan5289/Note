@@ -127,6 +127,22 @@ extension Date {
         return result
     }
     
+    func covertToDate(format: String.FormatDate) -> Date? {
+        Date.formatDateDefault.locale = .current
+        Date.formatDateDefault.timeZone = TimeZone(abbreviation: "UTC+9")
+        Date.formatDateDefault.locale = Locale(identifier: "en_US_POSIX")
+        Date.formatDateDefault.dateFormat = format.rawValue
+        let result = Date.formatDateDefault.date(from: self.covertToString(format: format))
+        return result
+    }
+    
+    func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
+        return calendar.dateComponents(Set(components), from: self)
+    }
+
+    func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
+        return calendar.component(component, from: self)
+    }
 }
 
 extension String {

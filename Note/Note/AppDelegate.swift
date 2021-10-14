@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func goToTabbar() {
         window = UIWindow.init(frame: UIScreen.main.bounds)
-        let vc = BaseTabbarViewController()
+        let vc = CHeckVC.createVC()
         let navi: UINavigationController = UINavigationController(rootViewController: vc)
         window?.rootViewController = navi
         window?.makeKeyAndVisible()
