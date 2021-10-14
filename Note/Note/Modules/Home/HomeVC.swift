@@ -29,7 +29,6 @@ class HomeVC: BaseNavigationHome {
     private var viewModel: HomeVM = HomeVM()
     private let vAddNote: AddNote = AddNote.loadXib()
     private let vDropDown: DropdownView = DropdownView(frame: .zero)
-    private let tap: UITapGestureRecognizer = UITapGestureRecognizer()
     
     private var listNote: [NoteModel] = []
     private let eventStatusDropDown: PublishSubject<AddNote.StatusAddNote> = PublishSubject.init()
@@ -77,7 +76,6 @@ extension HomeVC {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.register(HomeTextCell.nib, forCellWithReuseIdentifier: HomeTextCell.identifier)
-        self.collectionView.addGestureRecognizer(self.tap)
         
     }
     
@@ -109,21 +107,12 @@ extension HomeVC {
             wSelf.collectionView.reloadData()
         }.disposed(by: disposeBag)
         
-//        self.collectionView.rx.itemSelected.bind { [weak self] idx in
-//            guard let wSelf = self else { return }
-//            let item = NoteManage.shared.listNote[idx.row]
-//            let vc = TextVC.createVC()
-//            vc.noteModel = item
-//            wSelf.eventStatusDropdown = .hide
-//            wSelf.navigationController?.pushViewController(vc, animated: true)
-//        }.disposed(by: disposeBag)
-        
-        
         self.eventStatusDropDown.asObservable().bind { [weak self] status in
             guard let wSelf = self else { return }
-            wSelf.eventStatusDropdown = .hide
+            
             switch status {
             case .open:
+                wSelf.eventStatusDropdown = .hide
                 wSelf.playAudio()
                 wSelf.vDropDown.isHidden = false
                 UIView.animate(withDuration: ConstantCommon.shared.timeAnimation) {
@@ -180,7 +169,6 @@ extension HomeVC {
                 
                 wSelf.collectionView.reloadData()
             case .trash:
-                
                 if wSelf.selectIndexs.count == wSelf.listNote.count {
                     NoteManage.shared.removeAllNote()
                 } else {
@@ -191,22 +179,48 @@ extension HomeVC {
                 }
                 wSelf.selectIndexs = []
                 wSelf.navigationItemView.resetSelectAll()
-                
             case .cancelEdit:
                 wSelf.collectionView.deselectAll(animated: true)
                 wSelf.selectIndexs = []
                 wSelf.navigationItemView.resetSelectAll()
                 wSelf.collectionView.reloadData()
-            case .moreAction: break
+            case .moreAction:
+                wSelf.vAddNote.updateStatus(status: .remove)
             }
             
         }.disposed(by: disposeBag)
         
-        self.tap.rx.event.bind { [weak self] _ in
+        self.navigationItemView.$actionStatus.asObservable().bind { [weak self] stt in
             guard let wSelf = self else { return }
-            wSelf.vAddNote.updateStatus(status: .remove)
-            wSelf.resetStatus()
+            switch stt {
+            case .normal:
+                wSelf.resetStatus()
+            case .edit: break
+            }
         }.disposed(by: disposeBag)
+        
+    }
+    
+    private func addOrRemoveNote(idx: IndexPath) {
+        if let index = self.selectIndexs.firstIndex(where: { $0 == idx }) {
+            self.selectIndexs.remove(at: index)
+            
+            if self.selectIndexs.count <= 0 {
+                self.navigationItemView.resetSelectAll()
+            }
+            
+        } else {
+            self.selectIndexs.append(idx)
+        }
+        self.collectionView.reloadData()
+    }
+    
+    private func moveToNote(idx: IndexPath) {
+        let item = NoteManage.shared.listNote[idx.row]
+        let vc = TextVC.createVC()
+        vc.noteModel = item
+        self.eventStatusDropdown = .hide
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func resetStatus() {
@@ -282,21 +296,12 @@ extension HomeVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let index = self.selectIndexs.firstIndex(where: { $0 == indexPath }) {
-            self.selectIndexs.remove(at: index)
-            
-            if self.selectIndexs.count <= 0 {
-                self.navigationItemView.resetSelectAll()
-            }
-            
-        } else {
-            self.selectIndexs.append(indexPath)
+        switch self.statusNavigation {
+        case .normal:
+            self.moveToNote(idx: indexPath)
+        case .edit:
+            self.addOrRemoveNote(idx: indexPath)
         }
-        self.collectionView.reloadData()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        print("===== didDeselectItemAt \(indexPath.row)")
     }
     
     

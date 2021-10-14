@@ -97,6 +97,11 @@ extension BaseNavigationHome {
     
 }
 extension BaseNavigationHome: NavigationItemHomeDelegate {
+    func hideDropdown() {
+        dropdownActionView.hideView()
+        self.navigationItemView.actionStatus = .normal
+    }
+    
     func showListAction(frameParent: UIView) {
         let origionX = frameParent.x + (frameParent.width / 2) - DropdownActionView.Constant.width
         self.view.addSubview(dropdownActionView)

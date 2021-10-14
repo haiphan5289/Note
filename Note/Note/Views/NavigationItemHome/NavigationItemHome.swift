@@ -10,6 +10,7 @@ import RxSwift
 
 protocol NavigationItemHomeDelegate {
     func showListAction(frameParent: UIView)
+    func hideDropdown()
 }
 
 class NavigationItemHome: UIView {
@@ -65,10 +66,20 @@ extension NavigationItemHome {
                 guard let wSelf = self else { return }
                 switch type {
                 case .moreAction:
-                    wSelf.delegate?.showListAction(frameParent: wSelf.bts[Action.moreAction.rawValue])
+                    if wSelf.bts[Action.moreAction.rawValue].isSelected {
+                        wSelf.bts[Action.moreAction.rawValue].isSelected = false
+                        wSelf.bts[Action.moreAction.rawValue].setImage(Asset.icMoreAction.image, for: .normal)
+                        wSelf.delegate?.hideDropdown()
+                    } else {
+                        wSelf.bts[Action.moreAction.rawValue].isSelected = true
+                        wSelf.bts[Action.moreAction.rawValue].setImage(Asset.icClose.image, for: .normal)
+                        wSelf.delegate?.showListAction(frameParent: wSelf.bts[Action.moreAction.rawValue])
+                    }
                 case .cancelEdit:
                     wSelf.actionStatus = .normal
                     Action.statusSelectAll = .deSelectAll
+                    wSelf.bts[Action.moreAction.rawValue].isSelected = false
+                    wSelf.bts[Action.moreAction.rawValue].setImage(Asset.icMoreAction.image, for: .normal)
                 case .selectAll:
                     
                     if Action.statusSelectAll == .selectAll {
