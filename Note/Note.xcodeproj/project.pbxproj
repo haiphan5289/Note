@@ -183,6 +183,8 @@
 		93AA991A2709B39D00939D3A /* ConfigStyle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA99192709B39D00939D3A /* ConfigStyle.xib */; };
 		93AA991D2709D2CA00939D3A /* ConfigText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA991C2709D2CA00939D3A /* ConfigText.swift */; };
 		93AA991F2709D2E200939D3A /* ConfigText.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA991E2709D2E200939D3A /* ConfigText.xib */; };
+		93AC60B42719A76800A1F480 /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC60B22719A76700A1F480 /* ToDoCell.swift */; };
+		93AC60B52719A76800A1F480 /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AC60B32719A76700A1F480 /* ToDoCell.xib */; };
 		93B6EFC4270B4ABC0035EF09 /* ListTextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B6EFC1270B4ABC0035EF09 /* ListTextVC.xib */; };
 		93B6EFC5270B4ABC0035EF09 /* ListTextVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFC2270B4ABC0035EF09 /* ListTextVM.swift */; };
 		93B6EFC6270B4ABC0035EF09 /* ListTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */; };
@@ -378,6 +380,8 @@
 		93AA99192709B39D00939D3A /* ConfigStyle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigStyle.xib; sourceTree = "<group>"; };
 		93AA991C2709D2CA00939D3A /* ConfigText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigText.swift; sourceTree = "<group>"; };
 		93AA991E2709D2E200939D3A /* ConfigText.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigText.xib; sourceTree = "<group>"; };
+		93AC60B22719A76700A1F480 /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
+		93AC60B32719A76700A1F480 /* ToDoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
 		93B6EFC1270B4ABC0035EF09 /* ListTextVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTextVC.xib; sourceTree = "<group>"; };
 		93B6EFC2270B4ABC0035EF09 /* ListTextVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTextVM.swift; sourceTree = "<group>"; };
 		93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTextVC.swift; sourceTree = "<group>"; };
@@ -493,6 +497,7 @@
 		9365491227185E0A00C84473 /* CheckList */ = {
 			isa = PBXGroup;
 			children = (
+				93AC60B12719A75200A1F480 /* Cell */,
 				9365491327185E4300C84473 /* CheckListVC.xib */,
 				9365491427185E4300C84473 /* CheckListVM.swift */,
 				9365491527185E4300C84473 /* CheckListVC.swift */,
@@ -1072,6 +1077,15 @@
 			path = ConfigText;
 			sourceTree = "<group>";
 		};
+		93AC60B12719A75200A1F480 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				93AC60B22719A76700A1F480 /* ToDoCell.swift */,
+				93AC60B32719A76700A1F480 /* ToDoCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		93B6EFC0270B4AA40035EF09 /* ListText */ = {
 			isa = PBXGroup;
 			children = (
@@ -1205,6 +1219,7 @@
 				936A9CDE2704A179006F9F25 /* README.md in Resources */,
 				93B6EFC9270B56300035EF09 /* ListFont.xib in Resources */,
 				9396E64B270F2F36002B2E2C /* BackgroundColor.xib in Resources */,
+				93AC60B52719A76800A1F480 /* ToDoCell.xib in Resources */,
 				936A9CDB2704A179006F9F25 /* EndIndicator.png in Resources */,
 				932CF99C270DA0F100CB75B2 /* FontSize.xib in Resources */,
 			);
@@ -1398,6 +1413,7 @@
 				936A9D362704A179006F9F25 /* CodableExtension.swift in Sources */,
 				936A9D042704A179006F9F25 /* UISegmentedControlExtensions.swift in Sources */,
 				936A9D3A2704A179006F9F25 /* DateExtension.swift in Sources */,
+				93AC60B42719A76800A1F480 /* ToDoCell.swift in Sources */,
 				936A9D122704A179006F9F25 /* UIButtonExtensions.swift in Sources */,
 				936548D7271811C900C84473 /* CHeckVC.swift in Sources */,
 				936A9D182704A179006F9F25 /* UIDatePickerExtensions.swift in Sources */,

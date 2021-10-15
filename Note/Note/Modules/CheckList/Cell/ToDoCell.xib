@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ToDoCell" customModule="Note" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEe-vn-cSU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_uncheck" translatesAutoresizingMaskIntoConstraints="NO" id="1CE-he-bV3">
+                                <rect key="frame" x="16" y="10" width="24" height="24"/>
+                                <color key="tintColor" name="ColorApp"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="bmp-8E-Xpd"/>
+                                    <constraint firstAttribute="width" constant="24" id="zxS-Qh-Hdn"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7g-o2-df1">
+                                <rect key="frame" x="50" y="12" width="258" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="TextColorApp"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="K7g-o2-df1" secondAttribute="bottom" constant="12" id="0Ei-yc-lbq"/>
+                            <constraint firstAttribute="trailing" secondItem="K7g-o2-df1" secondAttribute="trailing" constant="12" id="CvU-1N-oMj"/>
+                            <constraint firstItem="1CE-he-bV3" firstAttribute="centerY" secondItem="cEe-vn-cSU" secondAttribute="centerY" id="EG8-DF-6KG"/>
+                            <constraint firstItem="K7g-o2-df1" firstAttribute="leading" secondItem="1CE-he-bV3" secondAttribute="trailing" constant="10" id="Eik-I3-19P"/>
+                            <constraint firstItem="1CE-he-bV3" firstAttribute="leading" secondItem="cEe-vn-cSU" secondAttribute="leading" constant="16" id="oP7-Fo-jQv"/>
+                            <constraint firstItem="K7g-o2-df1" firstAttribute="top" secondItem="cEe-vn-cSU" secondAttribute="top" constant="12" id="yCQ-Ec-Wee"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="cEe-vn-cSU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="6qA-Sg-eTm"/>
+                    <constraint firstItem="cEe-vn-cSU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="QKO-5e-9G2"/>
+                    <constraint firstAttribute="trailing" secondItem="cEe-vn-cSU" secondAttribute="trailing" id="oMq-mV-9IQ"/>
+                    <constraint firstAttribute="bottom" secondItem="cEe-vn-cSU" secondAttribute="bottom" id="zUG-0D-ACj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="img" destination="1CE-he-bV3" id="YYq-6e-RGI"/>
+                <outlet property="lbName" destination="K7g-o2-df1" id="SE7-CP-skR"/>
+            </connections>
+            <point key="canvasLocation" x="-19" y="82"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_uncheck" width="24" height="24"/>
+        <namedColor name="ColorApp">
+            <color red="0.57400000095367432" green="0.56599998474121094" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextColorApp">
+            <color red="1" green="0.83137254901960789" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -15,6 +15,7 @@ class CheckListVC: BaseNavigationHeader {
     
     struct ConstantList {
         static let heightTf: CGFloat = 50
+        static let textNewLine: String = "\n"
     }
     
     // Add here outlets
@@ -24,10 +25,19 @@ class CheckListVC: BaseNavigationHeader {
     @IBOutlet weak var tvInput: UITextView!
     @IBOutlet weak var heightTextInput: NSLayoutConstraint!
     @IBOutlet weak var imgBg: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var btAddToDo: UIButton!
     
     private var previousFont: UIFont?
     private var previousBgColor: BackgroundColor.BgColorTypes?
     private var bgColorModel: BgColorModel = BgColorModel.empty
+    private var textColorUpdate: UIColor = .red
+    
+    private let eventKeyboardDone: PublishSubject<Void> = PublishSubject.init()
+    @VariableReplay private var listToDo: [String] = []
+    
+    private var statusFontCell: StatusFont = .cancel
+    private var textColorStatus: Bool = true
     
     // Add here your view model
     private var viewModel: CheckListVM = CheckListVM()
@@ -46,21 +56,47 @@ extension CheckListVC {
         // Add here the setup for the UI
         self.contentView.clipsToBounds = true
         self.contentView.layer.cornerRadius = ConstantApp.shared.radiusViewDialog
-        self.tfTitle.becomeFirstResponder()
         self.tfTitle.placeholder = L10n.CheckList.enterTitle
         self.tfTitle.textColor = Asset.textColorApp.color
         
-        self.tvInput.text = L10n.CheckList.enterCheckList
-        self.tvInput.textColor = Asset.disableHome.color
+        self.tvInput.becomeFirstResponder()
+        previousFont = tfTitle.font
         
         self.setupImageBg()
+        self.tableView.allowsMultipleSelection = true
+        self.tableView.delegate = self
+        self.tableView.register(ToDoCell.nib, forCellReuseIdentifier: ToDoCell.identifier)
+        
+        self.tvInput.delegate = self
     }
     
     private func setupRX() {
         // Add here the setup for the RX
-        //This is reason that use delay because Text will jump to top
+        
+        self.$listToDo.asObservable()
+            .bind(to: tableView.rx.items(cellIdentifier: ToDoCell.identifier, cellType: ToDoCell.self)) {(row, element, cell) in
+                cell.lbName.text = element
+                
+                switch self.statusFontCell {
+                case .update(let fontName, let size):
+                    let f = UIFont(name: fontName, size: size) ?? ConstantApp.shared.fontDefault
+                    cell.updateFont(font: f)
+                case .cancel, .done(_, _, _, _):
+                    if let f = self.previousFont {
+                        cell.updateFont(font: f)
+                    }
+                }
+                
+                if self.textColorStatus {
+                    cell.updateColor(color: self.textColor)
+                } else {
+                    cell.updateColor(color: self.textColorUpdate)
+                }
+                
+                
+            }.disposed(by: disposeBag)
+        
         self.eventFont.asObservable()
-            .delay(.milliseconds(200), scheduler: MainScheduler.asyncInstance)
             .bind { [weak self] status in
             guard let wSelf = self else { return }
             switch status {
@@ -86,12 +122,17 @@ extension CheckListVC {
                 wSelf.bgColorModel.indexFontStyle = indexStyle
                 wSelf.eventUpdateFontStyleView.accept(font)
             }
+                wSelf.statusFontCell = status
+                wSelf.tableView.reloadData()
         }.disposed(by: disposeBag)
         
         self.$eventPickColor.asObservable().bind { [weak self] color in
             guard let wSelf = self else { return }
             wSelf.tvInput.textColor = color
             wSelf.tfTitle.textColor = color
+            wSelf.textColorUpdate = color
+            wSelf.textColorStatus = false
+            wSelf.tableView.reloadData()
         }.disposed(by: disposeBag)
         
         self.eventSaveTextColor
@@ -109,7 +150,8 @@ extension CheckListVC {
                     wSelf.textColor = textColor
                     wSelf.bgColorModel.textColorString = textColor.hexString
                 }
-                
+                wSelf.textColorStatus = true
+                wSelf.tableView.reloadData()
             }.disposed(by: disposeBag)
         
         self.navigationItemView.actionItem = { [weak self] type in
@@ -137,6 +179,7 @@ extension CheckListVC {
             guard let wSelf = self else { return }
             if stt == .hide {
                 wSelf.tfTitle.resignFirstResponder()
+                wSelf.tvInput.resignFirstResponder()
             } else {
                 wSelf.tfTitle.becomeFirstResponder()
             }
@@ -199,6 +242,19 @@ extension CheckListVC {
             
             wSelf.heightTextInput.constant = (wSelf.tvInput.contentSize.height > ConstantList.heightTf) ?  wSelf.tvInput.contentSize.height : ConstantList.heightTf
             
+        }.disposed(by: disposeBag)
+        
+        let btAdd = self.btAddToDo.rx.tap.map { () }
+        
+        Observable.merge(btAdd, self.eventKeyboardDone).bind { [weak self] _ in
+            guard let wSelf = self, wSelf.tvInput.text.count > 0 else { return }
+            wSelf.listToDo += [wSelf.tvInput.text]
+            wSelf.tvInput.text = nil
+        }.disposed(by: disposeBag)
+        
+        self.rx.viewDidAppear.bind { [weak self] _ in
+            guard let wSelf = self else { return }
+            wSelf.tvInput.textColor = Asset.disableHome.color
         }.disposed(by: disposeBag)
     }
     
@@ -335,5 +391,19 @@ extension CheckListVC {
         self.imgBg.snp.makeConstraints { (make) in
             make.edges.equalTo(self.contentView)
         }
+    }
+}
+extension CheckListVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.1
+    }
+}
+extension CheckListVC: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == ConstantList.textNewLine {
+            eventKeyboardDone.onNext(())
+            return false
+        }
+        return true
     }
 }

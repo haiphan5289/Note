@@ -11,10 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckListVC" customModule="Note" customModuleProvider="target">
             <connections>
+                <outlet property="btAddToDo" destination="BgP-we-7Rt" id="tAd-0Q-hvp"/>
                 <outlet property="contentView" destination="SHd-hK-kTF" id="0kg-BD-sfH"/>
                 <outlet property="heightTextInput" destination="UkI-uQ-Lz6" id="dFa-Ji-F7R"/>
                 <outlet property="imgBg" destination="09B-CW-awx" id="9sP-Qu-8lW"/>
                 <outlet property="stackView" destination="xZP-AM-IPj" id="kqv-Cn-KSH"/>
+                <outlet property="tableView" destination="ZOG-8z-UBu" id="Qva-FB-yR9"/>
                 <outlet property="tfTitle" destination="3vQ-zz-YJ6" id="S1e-ta-I1L"/>
                 <outlet property="tvInput" destination="fje-6f-dNT" id="5qH-h4-M2b"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -45,18 +47,51 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fje-6f-dNT">
-                                    <rect key="frame" x="0.0" y="50" width="382" height="50"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eF9-3v-5oX">
+                                    <rect key="frame" x="0.0" y="50" width="382" height="57"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BgP-we-7Rt">
+                                            <rect key="frame" x="16" y="10" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="8cd-Uv-2gw"/>
+                                                <constraint firstAttribute="width" constant="24" id="wMv-7Q-n1r"/>
+                                            </constraints>
+                                            <color key="tintColor" name="TextColorApp"/>
+                                            <state key="normal" image="plus" catalog="system"/>
+                                        </button>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fje-6f-dNT">
+                                            <rect key="frame" x="56" y="7" width="326" height="50"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="UkI-uQ-Lz6"/>
+                                            </constraints>
+                                            <color key="textColor" systemColor="labelColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbR-SX-eYI">
+                                            <rect key="frame" x="56" y="56" width="326" height="1"/>
+                                            <color key="backgroundColor" name="ViewLine"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="RdU-wZ-djR"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="UkI-uQ-Lz6"/>
+                                        <constraint firstItem="BgP-we-7Rt" firstAttribute="leading" secondItem="eF9-3v-5oX" secondAttribute="leading" constant="16" id="14z-RC-QvP"/>
+                                        <constraint firstItem="BgP-we-7Rt" firstAttribute="top" secondItem="eF9-3v-5oX" secondAttribute="top" constant="10" id="CLF-NO-V6Y"/>
+                                        <constraint firstItem="fje-6f-dNT" firstAttribute="top" secondItem="eF9-3v-5oX" secondAttribute="top" constant="7" id="JeS-MB-WWR"/>
+                                        <constraint firstAttribute="bottom" secondItem="fje-6f-dNT" secondAttribute="bottom" id="OUA-t3-2RT"/>
+                                        <constraint firstAttribute="trailing" secondItem="fje-6f-dNT" secondAttribute="trailing" id="U2t-dQ-FES"/>
+                                        <constraint firstAttribute="bottom" secondItem="wbR-SX-eYI" secondAttribute="bottom" id="UIP-a3-o3L"/>
+                                        <constraint firstItem="wbR-SX-eYI" firstAttribute="leading" secondItem="BgP-we-7Rt" secondAttribute="trailing" constant="16" id="jfy-6b-kt7"/>
+                                        <constraint firstItem="fje-6f-dNT" firstAttribute="leading" secondItem="BgP-we-7Rt" secondAttribute="trailing" constant="16" id="wEd-P1-0ct"/>
+                                        <constraint firstAttribute="trailing" secondItem="wbR-SX-eYI" secondAttribute="trailing" id="zmj-5U-H4m"/>
                                     </constraints>
-                                    <color key="textColor" systemColor="labelColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                </textView>
+                                </view>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ZOG-8z-UBu">
-                                    <rect key="frame" x="0.0" y="100" width="382" height="200"/>
+                                    <rect key="frame" x="0.0" y="107" width="382" height="193"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableView>
                             </subviews>
@@ -84,11 +119,18 @@
         </view>
     </objects>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="AppBg">
             <color red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ColorApp">
             <color red="0.57400000095367432" green="0.56599998474121094" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextColorApp">
+            <color red="1" green="0.83137254901960789" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ViewLine">
+            <color red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
