@@ -33,6 +33,16 @@ final class NoteManage {
         }.disposed(by: disposeBag)
     }
     
+    func removeCAGradientLayer(view: UIView) {
+        guard let subplayers = view.layer.sublayers else {
+            return
+        }
+        
+        for sublayer in subplayers where sublayer is CAGradientLayer {
+            sublayer.removeFromSuperlayer()
+        }
+    }
+    
     func deleteNote(note: NoteModel) {
         RealmManager.shared.deleteNote(note: note)
     }

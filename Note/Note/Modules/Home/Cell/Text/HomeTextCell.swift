@@ -20,6 +20,7 @@ class HomeTextCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         self.setupUI()
+        self.layer.cornerRadius = ConstantApp.shared.radiusHomeNoteCell
     }
     
     
@@ -48,7 +49,7 @@ class HomeTextCell: UICollectionViewCell {
             self.layoutIfNeeded()
             self.updateBgColorWhenDone(bgColorType: bgColorType)
         } else {
-            self.removeCAGradientLayer()
+            NoteManage.shared.removeCAGradientLayer(view: self.textView)
             self.imgBg.isHidden = true
             self.textView.backgroundColor = .white
         }
@@ -75,18 +76,18 @@ class HomeTextCell: UICollectionViewCell {
     func updateBgColorWhenDone(bgColorType: BackgroundColor.BgColorTypes) {
         switch bgColorType {
         case .gradient(let list ):
-            self.removeCAGradientLayer()
+            NoteManage.shared.removeCAGradientLayer(view: self.textView)
             self.textView.backgroundColor = .clear
             self.imgBg.isHidden = true
             self.textView.applyGradient(withColours: list.map { $0.covertToColor() }.compactMap{ $0 }, gradientOrientation: .vertical)
         case .colors(let color):
-            self.removeCAGradientLayer()
+            NoteManage.shared.removeCAGradientLayer(view: self.textView)
             if let color = color {
                 self.imgBg.isHidden = true
                 self.textView.backgroundColor = color.covertToColor()
             }
         case .images(let img):
-            self.removeCAGradientLayer()
+            NoteManage.shared.removeCAGradientLayer(view: self.textView)
             if let img = img, let image = img.converToImage() {
                 self.updateImgBg(img: image)
             }
@@ -99,14 +100,5 @@ class HomeTextCell: UICollectionViewCell {
         self.imgBg.isHidden = false
     }
     
-    private func removeCAGradientLayer() {
-        guard let subplayers = self.textView.layer.sublayers else {
-            return
-        }
-        
-        for sublayer in subplayers where sublayer is CAGradientLayer {
-            sublayer.removeFromSuperlayer()
-        }
-    }
 
 }

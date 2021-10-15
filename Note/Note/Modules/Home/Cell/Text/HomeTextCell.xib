@@ -58,11 +58,6 @@
                 <constraint firstItem="yBB-8u-Nyy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="tez-Sg-vly"/>
                 <constraint firstAttribute="trailing" secondItem="bSy-55-CGg" secondAttribute="trailing" constant="5" id="wBe-iv-W7M"/>
             </constraints>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                    <real key="value" value="6"/>
-                </userDefinedRuntimeAttribute>
-            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="imgBg" destination="0mo-vN-a2D" id="1kO-t2-5tL"/>
                 <outlet property="imgSelect" destination="bSy-55-CGg" id="rKM-4n-gxw"/>

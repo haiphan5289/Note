@@ -185,6 +185,8 @@
 		93AA991F2709D2E200939D3A /* ConfigText.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA991E2709D2E200939D3A /* ConfigText.xib */; };
 		93AC60B42719A76800A1F480 /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC60B22719A76700A1F480 /* ToDoCell.swift */; };
 		93AC60B52719A76800A1F480 /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AC60B32719A76700A1F480 /* ToDoCell.xib */; };
+		93AC60BB2719C14E00A1F480 /* CheckListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC60B92719C14E00A1F480 /* CheckListCell.swift */; };
+		93AC60BC2719C14E00A1F480 /* CheckListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AC60BA2719C14E00A1F480 /* CheckListCell.xib */; };
 		93B6EFC4270B4ABC0035EF09 /* ListTextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B6EFC1270B4ABC0035EF09 /* ListTextVC.xib */; };
 		93B6EFC5270B4ABC0035EF09 /* ListTextVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFC2270B4ABC0035EF09 /* ListTextVM.swift */; };
 		93B6EFC6270B4ABC0035EF09 /* ListTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */; };
@@ -382,6 +384,8 @@
 		93AA991E2709D2E200939D3A /* ConfigText.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigText.xib; sourceTree = "<group>"; };
 		93AC60B22719A76700A1F480 /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		93AC60B32719A76700A1F480 /* ToDoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
+		93AC60B92719C14E00A1F480 /* CheckListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListCell.swift; sourceTree = "<group>"; };
+		93AC60BA2719C14E00A1F480 /* CheckListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckListCell.xib; sourceTree = "<group>"; };
 		93B6EFC1270B4ABC0035EF09 /* ListTextVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTextVC.xib; sourceTree = "<group>"; };
 		93B6EFC2270B4ABC0035EF09 /* ListTextVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTextVM.swift; sourceTree = "<group>"; };
 		93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTextVC.swift; sourceTree = "<group>"; };
@@ -1086,6 +1090,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		93AC60B82719C13700A1F480 /* CheckList */ = {
+			isa = PBXGroup;
+			children = (
+				93AC60B92719C14E00A1F480 /* CheckListCell.swift */,
+				93AC60BA2719C14E00A1F480 /* CheckListCell.xib */,
+			);
+			path = CheckList;
+			sourceTree = "<group>";
+		};
 		93B6EFC0270B4AA40035EF09 /* ListText */ = {
 			isa = PBXGroup;
 			children = (
@@ -1110,6 +1123,7 @@
 		93CD016027149061005C09CE /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				93AC60B82719C13700A1F480 /* CheckList */,
 				93A84961271536EE00E9ABBF /* Text */,
 			);
 			path = Cell;
@@ -1207,6 +1221,7 @@
 				936A9CED2704A179006F9F25 /* MoreVC.xib in Resources */,
 				93A849712715879F00E9ABBF /* NavigationItemHome.xib in Resources */,
 				936A9CDF2704A179006F9F25 /* ImportOptionsVC.xib in Resources */,
+				93AC60BC2719C14E00A1F480 /* CheckListCell.xib in Resources */,
 				93AA991A2709B39D00939D3A /* ConfigStyle.xib in Resources */,
 				93AA98FD270846E400939D3A /* SoundNote.mp3 in Resources */,
 				936A9D4E2704A7F0006F9F25 /* AddNote.xib in Resources */,
@@ -1349,6 +1364,7 @@
 				936A9D1F2704A179006F9F25 /* RowDetailGeneric.swift in Sources */,
 				93AA98FF2708503D00939D3A /* BaseNavigationHeader.swift in Sources */,
 				936A9CE52704A179006F9F25 /* ABBorder.swift in Sources */,
+				93AC60BB2719C14E00A1F480 /* CheckListCell.swift in Sources */,
 				93A84969271576AE00E9ABBF /* BaseNavigationHome.swift in Sources */,
 				932CF99B270DA0F100CB75B2 /* FontSize.swift in Sources */,
 				936A9D062704A179006F9F25 /* UINavigationBarExtensions.swift in Sources */,

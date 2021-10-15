@@ -19,6 +19,7 @@ final class ConstantApp {
     let radiusViewDialog: CGFloat = 12
     let radiusSegment: CGFloat = 12
     let radiusCellBgColor: CGFloat = 12
+    let radiusHomeNoteCell: CGFloat = 6
     
     private init() {}
 

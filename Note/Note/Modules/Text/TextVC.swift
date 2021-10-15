@@ -214,14 +214,14 @@ extension TextVC {
     private func updateBgColorWhenDone(bgColorType: BackgroundColor.BgColorTypes) {
         switch bgColorType {
         case .gradient(let list ):
-            self.removeCAGradientLayer()
+            NoteManage.shared.removeCAGradientLayer(view: self.textView)
             self.textView.backgroundColor = .clear
             self.textView.applyGradient(withColours: list.map { $0.covertToColor() }.compactMap{ $0 }, gradientOrientation: .vertical)
             self.bgColorModel = BgColorModel(color: nil, gradient: list, image: nil, textFont: self.bgColorModel.textFont,
                                              sizeFont: self.bgColorModel.sizeFont, indexFont: self.bgColorModel.indexFont,
                                              indexFontStyle: self.bgColorModel.indexFontStyle, textColorString: self.bgColorModel.textColorString)
         case .colors(let color):
-            self.removeCAGradientLayer()
+            NoteManage.shared.removeCAGradientLayer(view: self.textView)
             if let color = color {
                 self.imgBg.isHidden = true
                 self.textView.backgroundColor = color.covertToColor()
@@ -230,7 +230,7 @@ extension TextVC {
                                                  indexFontStyle: self.bgColorModel.indexFontStyle, textColorString: self.bgColorModel.textColorString)
             }
         case .images(let img):
-            self.removeCAGradientLayer()
+            NoteManage.shared.removeCAGradientLayer(view: self.textView)
             if let img = img, let image = img.converToImage() {
                 self.updateImgBg(img: image)
                 self.bgColorModel = BgColorModel(color: nil, gradient: nil, image: img, textFont: self.bgColorModel.textFont,
@@ -241,20 +241,11 @@ extension TextVC {
     }
     
     private func resetBgColor() {
-        self.removeCAGradientLayer()
+        NoteManage.shared.removeCAGradientLayer(view: self.textView)
         self.textView.backgroundColor = .white
         self.imgBg.isHidden = true
     }
     
-    private func removeCAGradientLayer() {
-        guard let subplayers = self.textView.layer.sublayers else {
-            return
-        }
-        
-        for sublayer in subplayers where sublayer is CAGradientLayer {
-            sublayer.removeFromSuperlayer()
-        }
-    }
     
     private func updateImgBg(img: UIImage) {
         self.textView.backgroundColor = UIColor.clear
