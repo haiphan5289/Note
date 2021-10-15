@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="contentView" destination="SHd-hK-kTF" id="0kg-BD-sfH"/>
                 <outlet property="heightTextInput" destination="UkI-uQ-Lz6" id="dFa-Ji-F7R"/>
+                <outlet property="imgBg" destination="09B-CW-awx" id="9sP-Qu-8lW"/>
                 <outlet property="stackView" destination="xZP-AM-IPj" id="kqv-Cn-KSH"/>
                 <outlet property="tfTitle" destination="3vQ-zz-YJ6" id="S1e-ta-I1L"/>
                 <outlet property="tvInput" destination="fje-6f-dNT" id="5qH-h4-M2b"/>
@@ -24,6 +25,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="09B-CW-awx">
+                    <rect key="frame" x="87" y="384" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHd-hK-kTF">
                     <rect key="frame" x="16" y="303" width="382" height="300"/>
                     <subviews>
