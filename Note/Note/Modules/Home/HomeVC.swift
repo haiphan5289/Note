@@ -115,7 +115,7 @@ extension HomeVC {
                 wSelf.eventStatusDropdown = .hide
                 wSelf.playAudio()
                 wSelf.vDropDown.isHidden = false
-                UIView.animate(withDuration: ConstantCommon.shared.timeAnimation) {
+                UIView.animate(withDuration: ConstantApp.shared.timeAnimation) {
                     wSelf.vDropDown.frame = wSelf.vDropDown.getFrawm(statusNote: .open)
                 } completion: { _ in
                     wSelf.audio.stop()
@@ -123,7 +123,7 @@ extension HomeVC {
 
             default:
                 wSelf.playAudio()
-                UIView.animate(withDuration: ConstantCommon.shared.timeAnimation) {
+                UIView.animate(withDuration: ConstantApp.shared.timeAnimation) {
                     wSelf.vDropDown.frame = wSelf.vDropDown.getFrawm(statusNote: .remove)
                 } completion: { _ in
                     wSelf.vDropDown.isHidden = true

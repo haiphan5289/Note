@@ -145,7 +145,7 @@ class BaseTabbarViewController: UITabBarController {
     
     private func getWidthView() -> CGFloat {
         let countHaftCustomTabbar: CGFloat = CGFloat((CustomTabbar.TabItem.allCases.count / 2))
-        let w = ((self.view.frame.width / 2) - ConstantCommon.shared.bigRadiusTabbar) / countHaftCustomTabbar
+        let w = ((self.view.frame.width / 2) - ConstantApp.shared.bigRadiusTabbar) / countHaftCustomTabbar
         return w
     }
     

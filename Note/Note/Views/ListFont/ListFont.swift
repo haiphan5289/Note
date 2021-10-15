@@ -51,7 +51,7 @@ class ListFont: UIView {
         }
         
         func getIndexFontDefault() -> Int? {
-            let fontName = ConstantCommon.shared.fontDefault.familyName
+            let fontName = ConstantApp.shared.fontDefault.familyName
             if let index = UIFont.familyNames.firstIndex(where: { $0 == fontName }) {
                 return index
             }
@@ -80,7 +80,7 @@ class ListFont: UIView {
     private var selectIndexFontPrevious: Int = 0
     private var selectIndexSizePrevious: Int = 0
     private var currentFont: UIFont?
-    private var sizeFont = ConstantCommon.shared.sizeDefault
+    private var sizeFont = ConstantApp.shared.sizeDefault
     private var fontFamilyNames: String = SettingDefaultFont.DEFAULT_NAME_FONT
     private let disposeBag = DisposeBag()
     override func awakeFromNib() {
@@ -100,7 +100,7 @@ extension ListFont {
     
     private func setupUI() {
         
-        self.layer.cornerRadius = ConstantCommon.shared.radiusViewDialog
+        self.layer.cornerRadius = ConstantApp.shared.radiusViewDialog
         self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         listFontTableView.delegate = self

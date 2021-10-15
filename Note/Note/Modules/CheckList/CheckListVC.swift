@@ -39,6 +39,8 @@ extension CheckListVC {
     
     private func setupUI() {
         // Add here the setup for the UI
+        self.contentView.clipsToBounds = true
+        self.contentView.layer.cornerRadius = ConstantApp.shared.radiusViewDialog
         self.tfTitle.becomeFirstResponder()
         self.tfTitle.placeholder = L10n.CheckList.enterTitle
         self.tfTitle.textColor = Asset.textColorApp.color

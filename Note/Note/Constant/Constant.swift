@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-final class ConstantCommon {
-    static var shared = ConstantCommon()
+final class ConstantApp {
+    static var shared = ConstantApp()
     let bigRadiusTabbar: CGFloat = 30
     let distanceCellHome: CGFloat = 10
     let distanceAreaSide: CGFloat = 16

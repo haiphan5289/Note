@@ -40,7 +40,7 @@ class BaseNavigationHeader: UIViewController {
     private let listFontView: ListFont = ListFont.loadXib()
     private let bgView: BackgroundColor = BackgroundColor.loadXib()
     
-    let eventUpdateFontStyleView: BehaviorRelay<UIFont> = BehaviorRelay.init(value: ConstantCommon.shared.fontDefault)
+    let eventUpdateFontStyleView: BehaviorRelay<UIFont> = BehaviorRelay.init(value: ConstantApp.shared.fontDefault)
     let eventShowListFontView: PublishSubject<Bool> = PublishSubject.init()
     let eventFont: PublishSubject<StatusFont> = PublishSubject.init()
     let eventHeightKeyboard: PublishSubject<CGFloat> = PublishSubject.init()

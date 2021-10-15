@@ -52,7 +52,7 @@ extension ConfigText {
         
         self.setupPickColor()
         
-        self.layer.cornerRadius = ConstantCommon.shared.radiusViewDialog
+        self.layer.cornerRadius = ConstantApp.shared.radiusViewDialog
         self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
@@ -97,7 +97,7 @@ extension ConfigText {
         view.addSubview(self)
         self.snp.makeConstraints { make in
             make.bottom.left.right.equalToSuperview()
-            make.height.equalTo(BaseNavigationHeader.Constant.heightViewText + ConstantCommon.shared.getHeightSafeArea(type: .bottom))
+            make.height.equalTo(BaseNavigationHeader.Constant.heightViewText + ConstantApp.shared.getHeightSafeArea(type: .bottom))
         }
     }
     

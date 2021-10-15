@@ -43,11 +43,11 @@ extension TextVC {
     private func setupUI() {
         // Add here the setup for the UI
         textView.clipsToBounds = true
-        textView.layer.cornerRadius = ConstantCommon.shared.radiusViewDialog
+        textView.layer.cornerRadius = ConstantApp.shared.radiusViewDialog
         textView.centerVertically()
         textView.becomeFirstResponder()
         previousFont = textView.font
-        self.eventUpdateFontStyleView.accept(textView.font ?? ConstantCommon.shared.fontDefault)
+        self.eventUpdateFontStyleView.accept(textView.font ?? ConstantApp.shared.fontDefault)
         self.setupImageBg()
         
         self.textColor = textView.textColor ?? Asset.colorApp.color
@@ -198,7 +198,7 @@ extension TextVC {
         if let bgColorModel = note.bgColorModel {
             self.textView.font = bgColorModel.getFont()
             self.previousFont = bgColorModel.getFont()
-            self.eventUpdateFontStyleView.accept(bgColorModel.getFont() ?? ConstantCommon.shared.fontDefault)
+            self.eventUpdateFontStyleView.accept(bgColorModel.getFont() ?? ConstantApp.shared.fontDefault)
         }
         
         if let bgColorModel = note.bgColorModel, let textColor = bgColorModel.textColorString {
@@ -266,7 +266,7 @@ extension TextVC {
         self.imgBg.contentMode = .scaleToFill
         self.imgBg.tag = Constant.tagImage
         self.imgBg.clipsToBounds = true
-        self.imgBg.layer.cornerRadius = ConstantCommon.shared.radiusViewDialog
+        self.imgBg.layer.cornerRadius = ConstantApp.shared.radiusViewDialog
         self.imgBg.isHidden = true
         self.view.addSubview( self.imgBg)
         self.view.sendSubviewToBack(self.imgBg)

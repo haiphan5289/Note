@@ -15,7 +15,7 @@ class BackgroundColorCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         self.clipsToBounds = true
-        self.cornerRadius = ConstantCommon.shared.radiusCellBgColor
+        self.cornerRadius = ConstantApp.shared.radiusCellBgColor
     }
 
 }

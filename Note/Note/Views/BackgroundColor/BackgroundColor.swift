@@ -62,7 +62,7 @@ class BackgroundColor: UIView {
 extension BackgroundColor {
     
     private func setupUI() {
-        self.layer.cornerRadius = ConstantCommon.shared.radiusViewDialog
+        self.layer.cornerRadius = ConstantApp.shared.radiusViewDialog
         self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         self.addViewHeader()
         self.addSegment()

@@ -61,7 +61,7 @@ struct BgColorModel: Codable {
         if let f = self.textFont, let size = self.sizeFont {
             return UIFont(name: f, size: size)
         }
-        return ConstantCommon.shared.fontDefault
+        return ConstantApp.shared.fontDefault
     }
     
     

@@ -15,7 +15,6 @@ import WebKit
 class CHeckVC: UIViewController {
     
     // Add here outlets
-    @IBOutlet weak var webView: WKWebView!
     
     // Add here your view model
     private var viewModel: CHeckVM = CHeckVM()

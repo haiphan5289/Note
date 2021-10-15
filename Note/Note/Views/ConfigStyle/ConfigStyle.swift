@@ -102,7 +102,7 @@ extension ConfigStyle {
     func setupConfigStyleWithoutKeyboard() {
         self.snp.remakeConstraints { make in
             make.left.right.bottom.equalToSuperview()
-            make.height.equalTo(BaseNavigationHeader.Constant.heightViewStyle + ConstantCommon.shared.getHeightSafeArea(type: .bottom))
+            make.height.equalTo(BaseNavigationHeader.Constant.heightViewStyle + ConstantApp.shared.getHeightSafeArea(type: .bottom))
         }
     }
     

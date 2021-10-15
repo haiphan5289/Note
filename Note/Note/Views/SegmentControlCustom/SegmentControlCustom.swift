@@ -41,7 +41,7 @@ extension SegmentControlCustom {
     
     private func setupUI() {
         self.stackView.clipsToBounds = true
-        self.stackView.layer.cornerRadius = ConstantCommon.shared.radiusSegment
+        self.stackView.layer.cornerRadius = ConstantApp.shared.radiusSegment
     }
     
     private func setupRX() {
@@ -67,7 +67,7 @@ extension SegmentControlCustom {
         v.backgroundColor = .clear
         v.tag = index + Constant.tagSegment
         v.clipsToBounds = true
-        v.layer.cornerRadius = ConstantCommon.shared.radiusSegment
+        v.layer.cornerRadius = ConstantApp.shared.radiusSegment
         
         let lbName: UILabel = UILabel(frame: .zero)
         lbName.text = item.text
@@ -119,7 +119,7 @@ extension SegmentControlCustom {
         self.thumnailView.isUserInteractionEnabled = false
         self.thumnailView.backgroundColor = Asset.viewMoveSegment.color
         self.thumnailView.clipsToBounds = true
-        self.thumnailView.cornerRadius = ConstantCommon.shared.radiusSegment
+        self.thumnailView.cornerRadius = ConstantApp.shared.radiusSegment
         self.stackView.insertSubview(self.thumnailView, at: 0)
     }
     
