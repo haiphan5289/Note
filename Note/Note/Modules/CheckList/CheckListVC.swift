@@ -300,6 +300,9 @@ extension CheckListVC {
         self.stackView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        self.imgBg.snp.makeConstraints { (make) in
+            make.edges.equalTo(self.contentView)
+        }
     }
     
     private func textViewShowKeyboard(height: CGFloat) {
@@ -313,6 +316,9 @@ extension CheckListVC {
         self.stackView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        self.imgBg.snp.makeConstraints { (make) in
+            make.edges.equalTo(self.contentView)
+        }
     }
     
     private func textViewShowListFont() {
@@ -325,6 +331,9 @@ extension CheckListVC {
         }
         self.stackView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
+        }
+        self.imgBg.snp.makeConstraints { (make) in
+            make.edges.equalTo(self.contentView)
         }
     }
 }
