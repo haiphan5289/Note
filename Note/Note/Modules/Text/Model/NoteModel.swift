@@ -19,9 +19,20 @@ struct NoteModel: Codable {
     let id: Date?
     let bgColorModel: BgColorModel?
     let updateDate: Date?
+    let noteCheckList: NoteCheckListModel?
     
     enum CodingKeys: String, CodingKey {
-        case noteType, text, bgColorModel, id, updateDate
+        case noteType, text, bgColorModel, id, updateDate, noteCheckList
+    }
+    
+}
+
+struct NoteCheckListModel: Codable {
+    let title: String?
+    let listToDo: [String]?
+    
+    enum CodingKeys: String, CodingKey {
+        case title, listToDo
     }
     
 }

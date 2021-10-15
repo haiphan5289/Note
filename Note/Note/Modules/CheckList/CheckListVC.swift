@@ -18,6 +18,8 @@ class CheckListVC: BaseNavigationHeader {
         static let textNewLine: String = "\n"
     }
     
+    var noteModel: NoteModel?
+    
     // Add here outlets
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var tfTitle: UITextField!
@@ -68,6 +70,12 @@ extension CheckListVC {
         self.tableView.register(ToDoCell.nib, forCellReuseIdentifier: ToDoCell.identifier)
         
         self.tvInput.delegate = self
+        
+        if let note = self.noteModel {
+            self.updateValueNote(note: note)
+        } else {
+            self.bgColorModel = BgColorModel.empty
+        }
     }
     
     private func setupRX() {
@@ -161,13 +169,14 @@ extension CheckListVC {
                 
             case .done:
                 wSelf.navigationController?.popViewController(animated: true, {
-//                    let noteModel: NoteModel
-//                    if let note = wSelf.noteModel {
-//                        noteModel = NoteModel(noteType: .text, text: wSelf.textView.text, id: note.id, bgColorModel: wSelf.bgColorModel, updateDate: Date.convertDateToLocalTime())
-//                    } else {
-//                        noteModel = NoteModel(noteType: .text, text: wSelf.textView.text, id: Date.convertDateToLocalTime(), bgColorModel: wSelf.bgColorModel, updateDate: Date.convertDateToLocalTime())
-//                    }
-//                    RealmManager.shared.updateOrInsertConfig(model: noteModel)
+                    let noteModel: NoteModel
+                    let noteCheckList = NoteCheckListModel(title: wSelf.tfTitle.text, listToDo: wSelf.listToDo)
+                    if let note = wSelf.noteModel {
+                        noteModel = NoteModel(noteType: .checkList, text: nil, id: note.id, bgColorModel: wSelf.bgColorModel, updateDate: Date.convertDateToLocalTime(), noteCheckList: noteCheckList)
+                    } else {
+                        noteModel = NoteModel(noteType: .checkList, text: nil, id: Date.convertDateToLocalTime(), bgColorModel: wSelf.bgColorModel, updateDate: Date.convertDateToLocalTime(), noteCheckList: noteCheckList)
+                    }
+                    RealmManager.shared.updateOrInsertConfig(model: noteModel)
                 })
                 
                 
@@ -278,7 +287,11 @@ extension CheckListVC {
         }
         
         self.bgColorModel = note.bgColorModel ?? BgColorModel.empty
-//        self.textView.text = note.text
+        if let model = note.noteCheckList {
+            self.tfTitle.text = model.title
+            self.listToDo = model.listToDo ?? []
+        }
+        
         self.noteModelBase = note
     }
     
