@@ -170,7 +170,7 @@ extension CheckListVC {
             case .done:
                 wSelf.navigationController?.popViewController(animated: true, {
                     let noteModel: NoteModel
-                    let noteCheckList = NoteCheckListModel(title: wSelf.tfTitle.text, listToDo: wSelf.listToDo)
+                    let noteCheckList = NoteCheckListModel(title: wSelf.tfTitle.text, listToDo: wSelf.listToDo, listSelect: wSelf.tableView.indexPathsForSelectedRows)
                     if let note = wSelf.noteModel {
                         noteModel = NoteModel(noteType: .checkList, text: nil, id: note.id, bgColorModel: wSelf.bgColorModel, updateDate: Date.convertDateToLocalTime(), noteCheckList: noteCheckList)
                     } else {

@@ -478,7 +478,6 @@
 			isa = PBXGroup;
 			children = (
 				932EFD4227101E420073A9FA /* ColorsModel.swift */,
-				93A65CD927144B2B00BF08B0 /* NoteModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -918,6 +917,7 @@
 		936A9D3C2704A4D1006F9F25 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				93AC60BF2719CB0300A1F480 /* Model */,
 				93CD016027149061005C09CE /* Cell */,
 				936A9D3D2704A61B006F9F25 /* HomeVC.xib */,
 				936A9D3E2704A61B006F9F25 /* HomeVM.swift */,
@@ -1097,6 +1097,14 @@
 				93AC60BA2719C14E00A1F480 /* CheckListCell.xib */,
 			);
 			path = CheckList;
+			sourceTree = "<group>";
+		};
+		93AC60BF2719CB0300A1F480 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				93A65CD927144B2B00BF08B0 /* NoteModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		93B6EFC0270B4AA40035EF09 /* ListText */ = {

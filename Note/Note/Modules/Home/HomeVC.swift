@@ -76,6 +76,7 @@ extension HomeVC {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.register(HomeTextCell.nib, forCellWithReuseIdentifier: HomeTextCell.identifier)
+        self.collectionView.register(CheckListCell.nib, forCellWithReuseIdentifier: CheckListCell.identifier)
         
     }
     
@@ -277,25 +278,38 @@ extension HomeVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeTextCell.identifier, for: indexPath) as? HomeTextCell else {
-            fatalError("Don't have Cell")
-        }
-        
         let note = self.listNote[indexPath.row]
-        
+    
         switch note.noteType {
-        case .text:
+        case .checkList:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CheckListCell.identifier, for: indexPath) as? CheckListCell else {
+                fatalError("Don't have Cell")
+            }
+            
             cell.updateValue(note: note)
-        default: break
+            cell.layoutIfNeeded()
+            return cell
+        case .text:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeTextCell.identifier, for: indexPath) as? HomeTextCell else {
+                fatalError("Don't have Cell")
+            }
+            cell.layoutIfNeeded()
+            cell.updateValue(note: note)
+            cell.imgSelect.isHidden = (self.navigationItemView.actionStatus == .normal) ? true : false
+            
+            let hasSelect = self.selectIndexs.contains(indexPath)
+            let img = (hasSelect) ? Asset.icCheckbox.image : Asset.icUncheck.image
+            cell.imgSelect.image = img
+            cell.layoutIfNeeded()
+            return cell
+        default:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeTextCell.identifier, for: indexPath) as? HomeTextCell else {
+                fatalError("Don't have Cell")
+            }
+            return cell
         }
         
-        cell.imgSelect.isHidden = (self.navigationItemView.actionStatus == .normal) ? true : false
-        
-        let hasSelect = self.selectIndexs.contains(indexPath)
-        let img = (hasSelect) ? Asset.icCheckbox.image : Asset.icUncheck.image
-        cell.imgSelect.image = img
-        
-        return cell
+
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -30,9 +30,10 @@ struct NoteModel: Codable {
 struct NoteCheckListModel: Codable {
     let title: String?
     let listToDo: [String]?
+    let listSelect: [IndexPath]?
     
     enum CodingKeys: String, CodingKey {
-        case title, listToDo
+        case title, listToDo, listSelect
     }
     
 }
