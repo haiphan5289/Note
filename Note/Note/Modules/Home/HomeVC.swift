@@ -333,7 +333,7 @@ extension HomeVC: UICollectionViewDataSource {
             if let model = note.noteDrawModel {
                 cell.updateValueNote(noteModel: model)
             } else {
-                cell.canvasView.isHidden = true
+                cell.img.isHidden = true
             }
             
             cell.layoutIfNeeded()

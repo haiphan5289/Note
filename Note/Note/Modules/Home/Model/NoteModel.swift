@@ -30,8 +30,9 @@ struct NoteModel: Codable {
 
 struct NoteDrawModel: Codable {
     let data: Data?
+    let imageData: Data?
     enum CodingKeys: String, CodingKey {
-        case data
+        case data, imageData
     }
 }
 

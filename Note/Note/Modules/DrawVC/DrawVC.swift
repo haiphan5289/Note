@@ -74,7 +74,7 @@ extension DrawVC {
             case .done:
                 wSelf.navigationController?.popViewController(animated: true, {
                     let noteModel: NoteModel
-                    let noteDraw = NoteDrawModel(data: wSelf.canvasView.drawing.dataRepresentation())
+                    let noteDraw = NoteDrawModel(data: wSelf.canvasView.drawing.dataRepresentation(), imageData: wSelf.converToImage())
                     if let note = wSelf.noteModel {
                         noteModel = NoteModel(noteType: .draw, text: nil, id: note.id, bgColorModel: nil,
                                               updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: noteDraw)
@@ -84,11 +84,18 @@ extension DrawVC {
                     }
                     RealmManager.shared.updateOrInsertConfig(model: noteModel)
                 })
-                
-                
+        
             default: break
             }
         }
+    }
+    
+    private func converToImage() -> Data? {
+        UIGraphicsBeginImageContextWithOptions(self.canvasView.bounds.size, false, UIScreen.main.scale)
+        self.canvasView.drawHierarchy(in: self.canvasView.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image?.pngData()
     }
     
     private func updateValueNote(noteModel: NoteDrawModel) {

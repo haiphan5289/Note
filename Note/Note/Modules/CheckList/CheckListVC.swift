@@ -37,6 +37,7 @@ class CheckListVC: BaseNavigationHeader {
     
     private let eventKeyboardDone: PublishSubject<Void> = PublishSubject.init()
     @VariableReplay private var listToDo: [String] = []
+    private var listSelect: [IndexPath] = []
     
     private var statusFontCell: StatusFont = .cancel
     private var textColorStatus: Bool = true
@@ -101,8 +102,34 @@ extension CheckListVC {
                     cell.updateColor(color: self.textColorUpdate)
                 }
                 
+                if self.listSelect.contains(where: { $0.row == row }) {
+                    cell.img.image = Asset.icCheckbox.image
+                } else {
+                    cell.img.image = Asset.icUncheck.image
+                }
+                
                 
             }.disposed(by: disposeBag)
+        
+        self.tableView.rx.itemSelected.bind { [weak self] idx in
+            guard let wSelf = self else { return }
+            
+            if let index = wSelf.listSelect.firstIndex(where: { $0 == idx }) {
+                wSelf.listSelect.remove(at: index)
+            } else {
+                wSelf.listSelect.append(idx)
+            }
+            wSelf.tableView.reloadData()
+        }.disposed(by: disposeBag)
+        
+        self.tableView.rx.itemDeleted.bind { [weak self] idx in
+            guard let wSelf = self else { return }
+            
+            if let index = wSelf.listSelect.firstIndex(where: { $0 == idx }) {
+                wSelf.listSelect.remove(at: index)
+            }
+            wSelf.tableView.reloadData()
+        }.disposed(by: disposeBag)
         
         self.eventFont.asObservable()
             .bind { [weak self] status in
@@ -170,7 +197,7 @@ extension CheckListVC {
             case .done:
                 wSelf.navigationController?.popViewController(animated: true, {
                     let noteModel: NoteModel
-                    let noteCheckList = NoteCheckListModel(title: wSelf.tfTitle.text, listToDo: wSelf.listToDo, listSelect: wSelf.tableView.indexPathsForSelectedRows)
+                    let noteCheckList = NoteCheckListModel(title: wSelf.tfTitle.text, listToDo: wSelf.listToDo, listSelect: wSelf.listSelect)
                     if let note = wSelf.noteModel {
                         noteModel = NoteModel(noteType: .checkList, text: nil, id: note.id, bgColorModel: wSelf.bgColorModel,
                                               updateDate: Date.convertDateToLocalTime(), noteCheckList: noteCheckList, noteDrawModel: nil)

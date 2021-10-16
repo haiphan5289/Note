@@ -10,24 +10,18 @@ import PencilKit
 
 class DrawHomeCell: UICollectionViewCell {
 
-    @IBOutlet weak var canvasView: PKCanvasView!
+    @IBOutlet weak var img: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
     func updateValueNote(noteModel: NoteDrawModel) {
-        guard let d = noteModel.data else {
+        guard let d = noteModel.imageData, let image: UIImage = UIImage(data: d) else {
             return
         }
-        do {
-            let data = try PKDrawing.init(data: d)
-            self.canvasView.drawing = data
-            self.canvasView.isHidden = false
-            
-        } catch {
-            print(error.localizedDescription)
-        }
+        self.img.image = image
+        self.img.isHidden = false
     }
 
 }
