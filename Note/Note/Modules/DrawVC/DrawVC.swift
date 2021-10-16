@@ -19,15 +19,19 @@ class DrawVC: BaseNavigationOnlyHeader {
         static let canvasOverScrollHeight: CGFloat = 500
     }
     
+    enum ActionUndo: Int, CaseIterable {
+        case undo, redo
+    }
+    
     var noteModel: NoteModel?
     
     // Add here outlets
     @IBOutlet weak var canvasView: PKCanvasView!
+    @IBOutlet var bts: [UIButton]!
     
     // Add here your view model
     private var viewModel: DrawVM = DrawVM()
     
-    private var drawing = PKDrawing()
     private let toolPicker = PKToolPicker.init()
     
     
@@ -61,6 +65,9 @@ extension DrawVC {
         if let note = self.noteModel, let model = note.noteDrawModel {
             self.updateValueNote(noteModel: model)
         }
+        
+        self.updateStatusButtonUndo()
+        
     }
     
     private func setupRX() {
@@ -88,6 +95,39 @@ extension DrawVC {
             default: break
             }
         }
+        
+        ActionUndo.allCases.forEach { [weak self] type in
+            guard let wSelf = self else { return }
+            let bt = wSelf.bts[type.rawValue]
+            
+            bt.rx.tap.bind { [weak self] _ in
+                guard let wSelf = self else { return }
+                
+                switch type {
+                case .undo:
+                    wSelf.undoManager?.undo()
+                case .redo:
+                    wSelf.undoManager?.redo()
+                }
+                wSelf.updateStatusButtonUndo()
+            }.disposed(by: disposeBag)
+        }
+    }
+    
+    private func updateStatusButtonUndo() {
+        
+        if let canUndo = self.undoManager?.canUndo, canUndo {
+            self.bts[ActionUndo.undo.rawValue].setTitleColor(Asset.textColorApp.color, for: .normal)
+        } else {
+            self.bts[ActionUndo.undo.rawValue].setTitleColor(Asset.disableHome.color, for: .normal)
+        }
+        
+        if let redo = self.undoManager?.canRedo, redo {
+            self.bts[ActionUndo.redo.rawValue].setTitleColor(Asset.textColorApp.color, for: .normal)
+        } else {
+            self.bts[ActionUndo.redo.rawValue].setTitleColor(Asset.disableHome.color, for: .normal)
+        }
+        
     }
     
     private func converToImage() -> Data? {
@@ -121,11 +161,26 @@ extension DrawVC {
 
 }
 extension DrawVC: PKCanvasViewDelegate {
+    func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
+        self.updateStatusButtonUndo()
+    }
+    
+    func canvasViewDidFinishRendering(_ canvasView: PKCanvasView) {
+        
+    }
+    
+    func canvasViewDidEndUsingTool(_ canvasView: PKCanvasView) {
+        
+    }
+    func canvasViewDidBeginUsingTool(_ canvasView: PKCanvasView) {
+        
+    }
 }
 
 extension DrawVC: PKToolPickerObserver {
     
     func toolPickerSelectedToolDidChange(_ toolPicker: PKToolPicker) {
+        
         print("toolPickerSelectedToolDidChange")
     }
     

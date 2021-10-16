@@ -13,6 +13,8 @@
             <connections>
                 <outlet property="canvasView" destination="N31-S5-fyp" id="VjR-t3-rxO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outletCollection property="bts" destination="OND-9c-6Uf" collectionClass="NSMutableArray" id="Yjv-EY-fJg"/>
+                <outletCollection property="bts" destination="GzL-cm-s8H" collectionClass="NSMutableArray" id="iEs-jG-ao4"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -20,6 +22,28 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vmb-Lv-YfG">
+                    <rect key="frame" x="16" y="678" width="382" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OND-9c-6Uf">
+                            <rect key="frame" x="0.0" y="0.0" width="181" height="50"/>
+                            <color key="tintColor" name="ColorApp"/>
+                            <state key="normal" title="  Undo" image="ic_undo">
+                                <color key="titleColor" name="TextColorApp"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GzL-cm-s8H">
+                            <rect key="frame" x="201" y="0.0" width="181" height="50"/>
+                            <color key="tintColor" name="ColorApp"/>
+                            <state key="normal" title="  Redo" image="ic_redo">
+                                <color key="titleColor" name="TextColorApp"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="6RI-GZ-uJQ"/>
+                    </constraints>
+                </stackView>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N31-S5-fyp" customClass="PKCanvasView">
                     <rect key="frame" x="16" y="60" width="382" height="602"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -29,16 +53,27 @@
             <color key="backgroundColor" name="AppBg"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="N31-S5-fyp" secondAttribute="bottom" constant="200" id="212-fT-V3X"/>
+                <constraint firstItem="vmb-Lv-YfG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Ti2-Ai-Fdg"/>
+                <constraint firstItem="vmb-Lv-YfG" firstAttribute="top" secondItem="N31-S5-fyp" secondAttribute="bottom" constant="16" id="clZ-me-oXG"/>
                 <constraint firstItem="N31-S5-fyp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="huQ-bI-2GJ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="N31-S5-fyp" secondAttribute="trailing" constant="16" id="noV-60-dZz"/>
                 <constraint firstItem="N31-S5-fyp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="p5Y-nP-1dq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vmb-Lv-YfG" secondAttribute="trailing" constant="16" id="wAw-WH-p4W"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="141"/>
+            <point key="canvasLocation" x="137.68115942028987" y="140.625"/>
         </view>
     </objects>
     <resources>
+        <image name="ic_redo" width="24" height="24"/>
+        <image name="ic_undo" width="24" height="24"/>
         <namedColor name="AppBg">
             <color red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ColorApp">
+            <color red="0.57400000095367432" green="0.56599998474121094" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextColorApp">
+            <color red="1" green="0.83137254901960789" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
