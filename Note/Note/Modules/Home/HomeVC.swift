@@ -266,6 +266,9 @@ extension HomeVC: DropDownDelegate {
         case .checkList:
             let vc = CheckListVC.createVC()
             self.navigationController?.pushViewController(vc, animated: true)
+        case .draw:
+            let vc = DrawVC.createVC()
+            self.navigationController?.pushViewController(vc, animated: true)
         default: break
         }
     }

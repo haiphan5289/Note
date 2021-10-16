@@ -155,6 +155,9 @@
 		936A9D4C2704A7DF006F9F25 /* AddNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9D4B2704A7DF006F9F25 /* AddNote.swift */; };
 		936A9D4E2704A7F0006F9F25 /* AddNote.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936A9D4D2704A7F0006F9F25 /* AddNote.xib */; };
 		936A9D502704B6D4006F9F25 /* NoteManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A9D4F2704B6D4006F9F25 /* NoteManage.swift */; };
+		937B7752271A75A300892EC9 /* DrawVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937B774F271A75A300892EC9 /* DrawVC.xib */; };
+		937B7753271A75A300892EC9 /* DrawVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937B7750271A75A300892EC9 /* DrawVM.swift */; };
+		937B7754271A75A300892EC9 /* DrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937B7751271A75A300892EC9 /* DrawVC.swift */; };
 		9396E647270F2F29002B2E2C /* BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396E646270F2F29002B2E2C /* BackgroundColor.swift */; };
 		9396E64B270F2F36002B2E2C /* BackgroundColor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9396E64A270F2F36002B2E2C /* BackgroundColor.xib */; };
 		9396E64F270F3244002B2E2C /* ViewHeaderDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9396E64E270F3244002B2E2C /* ViewHeaderDialog.xib */; };
@@ -354,6 +357,9 @@
 		936A9D4B2704A7DF006F9F25 /* AddNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNote.swift; sourceTree = "<group>"; };
 		936A9D4D2704A7F0006F9F25 /* AddNote.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNote.xib; sourceTree = "<group>"; };
 		936A9D4F2704B6D4006F9F25 /* NoteManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteManage.swift; sourceTree = "<group>"; };
+		937B774F271A75A300892EC9 /* DrawVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawVC.xib; sourceTree = "<group>"; };
+		937B7750271A75A300892EC9 /* DrawVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawVM.swift; sourceTree = "<group>"; };
+		937B7751271A75A300892EC9 /* DrawVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawVC.swift; sourceTree = "<group>"; };
 		9396E646270F2F29002B2E2C /* BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColor.swift; sourceTree = "<group>"; };
 		9396E64A270F2F36002B2E2C /* BackgroundColor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundColor.xib; sourceTree = "<group>"; };
 		9396E64E270F3244002B2E2C /* ViewHeaderDialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewHeaderDialog.xib; sourceTree = "<group>"; };
@@ -907,6 +913,7 @@
 				93D1B08D270DE56B008FCD4B /* ListFont */,
 				93B6EFC0270B4AA40035EF09 /* ListText */,
 				936A9D432704A634006F9F25 /* Menu */,
+				937B774E271A756700892EC9 /* DrawVC */,
 				9365491227185E0A00C84473 /* CheckList */,
 				93AA99052708535D00939D3A /* Text */,
 				936A9D3C2704A4D1006F9F25 /* Home */,
@@ -943,6 +950,16 @@
 				936A9D4D2704A7F0006F9F25 /* AddNote.xib */,
 			);
 			path = AddNote;
+			sourceTree = "<group>";
+		};
+		937B774E271A756700892EC9 /* DrawVC */ = {
+			isa = PBXGroup;
+			children = (
+				937B774F271A75A300892EC9 /* DrawVC.xib */,
+				937B7750271A75A300892EC9 /* DrawVM.swift */,
+				937B7751271A75A300892EC9 /* DrawVC.swift */,
+			);
+			path = DrawVC;
 			sourceTree = "<group>";
 		};
 		9396E645270F2EF5002B2E2C /* BackgroundColor */ = {
@@ -1240,6 +1257,7 @@
 				936A9CD92704A179006F9F25 /* BorderLine.png in Resources */,
 				936A9D402704A61B006F9F25 /* HomeVC.xib in Resources */,
 				936A9CDE2704A179006F9F25 /* README.md in Resources */,
+				937B7752271A75A300892EC9 /* DrawVC.xib in Resources */,
 				93B6EFC9270B56300035EF09 /* ListFont.xib in Resources */,
 				9396E64B270F2F36002B2E2C /* BackgroundColor.xib in Resources */,
 				93AC60B52719A76800A1F480 /* ToDoCell.xib in Resources */,
@@ -1337,6 +1355,7 @@
 				936A9D492704A643006F9F25 /* MenuVC.swift in Sources */,
 				936A9D0E2704A179006F9F25 /* ActivityExt.swift in Sources */,
 				93B6EFCB270B56430035EF09 /* ListFont.swift in Sources */,
+				937B7753271A75A300892EC9 /* DrawVM.swift in Sources */,
 				93D1B09A270DF8E0008FCD4B /* ArrayExxtension.swift in Sources */,
 				936A9D092704A179006F9F25 /* UIViewControllerExtensions.swift in Sources */,
 				936A9D242704A179006F9F25 /* NumberExtension.swift in Sources */,
@@ -1366,6 +1385,7 @@
 				936A9C2727049F1E006F9F25 /* SceneDelegate.swift in Sources */,
 				936A9CFE2704A179006F9F25 /* UICollectionViewExtensions.swift in Sources */,
 				936A9CE72704A179006F9F25 /* ABProgressIndicator.swift in Sources */,
+				937B7754271A75A300892EC9 /* DrawVC.swift in Sources */,
 				936A9CF32704A179006F9F25 /* ExportFile.swift in Sources */,
 				936A9CE42704A179006F9F25 /* CustomTabbar.swift in Sources */,
 				936A9D2B2704A179006F9F25 /* Drive+Extension.swift in Sources */,
@@ -1596,14 +1616,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7VA7N3EEEN;
+				DEVELOPMENT_TEAM = ZX8LBHXXZB;
 				INFOPLIST_FILE = Note/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = haiphan.Note;
+				PRODUCT_BUNDLE_IDENTIFIER = haiphan05.Note;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1617,14 +1637,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7VA7N3EEEN;
+				DEVELOPMENT_TEAM = ZX8LBHXXZB;
 				INFOPLIST_FILE = Note/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = haiphan.Note;
+				PRODUCT_BUNDLE_IDENTIFIER = haiphan05.Note;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
