@@ -172,9 +172,11 @@ extension CheckListVC {
                     let noteModel: NoteModel
                     let noteCheckList = NoteCheckListModel(title: wSelf.tfTitle.text, listToDo: wSelf.listToDo, listSelect: wSelf.tableView.indexPathsForSelectedRows)
                     if let note = wSelf.noteModel {
-                        noteModel = NoteModel(noteType: .checkList, text: nil, id: note.id, bgColorModel: wSelf.bgColorModel, updateDate: Date.convertDateToLocalTime(), noteCheckList: noteCheckList)
+                        noteModel = NoteModel(noteType: .checkList, text: nil, id: note.id, bgColorModel: wSelf.bgColorModel,
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: noteCheckList, noteDrawModel: nil)
                     } else {
-                        noteModel = NoteModel(noteType: .checkList, text: nil, id: Date.convertDateToLocalTime(), bgColorModel: wSelf.bgColorModel, updateDate: Date.convertDateToLocalTime(), noteCheckList: noteCheckList)
+                        noteModel = NoteModel(noteType: .checkList, text: nil, id: Date.convertDateToLocalTime(), bgColorModel: wSelf.bgColorModel,
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: noteCheckList, noteDrawModel: nil)
                     }
                     RealmManager.shared.updateOrInsertConfig(model: noteModel)
                 })

@@ -164,6 +164,7 @@
 		9396E652270F3261002B2E2C /* ViewHeaderDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396E651270F3261002B2E2C /* ViewHeaderDialog.swift */; };
 		9396E656270F3B17002B2E2C /* SegmentControlCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396E655270F3B17002B2E2C /* SegmentControlCustom.swift */; };
 		9396E65A270F3B24002B2E2C /* SegmentControlCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9396E659270F3B24002B2E2C /* SegmentControlCustom.xib */; };
+		93A4EA35271AAC3400B0B1E5 /* BaseNavigationOnlyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A4EA34271AAC3300B0B1E5 /* BaseNavigationOnlyHeader.swift */; };
 		93A65CCF271438BB00BF08B0 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A65CCC271438BB00BF08B0 /* RealmManager.swift */; };
 		93A65CD0271438BB00BF08B0 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A65CCE271438BB00BF08B0 /* RealmModel.swift */; };
 		93A65CDA27144B2B00BF08B0 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A65CD927144B2B00BF08B0 /* NoteModel.swift */; };
@@ -366,6 +367,7 @@
 		9396E651270F3261002B2E2C /* ViewHeaderDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHeaderDialog.swift; sourceTree = "<group>"; };
 		9396E655270F3B17002B2E2C /* SegmentControlCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControlCustom.swift; sourceTree = "<group>"; };
 		9396E659270F3B24002B2E2C /* SegmentControlCustom.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentControlCustom.xib; sourceTree = "<group>"; };
+		93A4EA34271AAC3300B0B1E5 /* BaseNavigationOnlyHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationOnlyHeader.swift; sourceTree = "<group>"; };
 		93A65CCC271438BB00BF08B0 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		93A65CCE271438BB00BF08B0 /* RealmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		93A65CD927144B2B00BF08B0 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
@@ -618,6 +620,7 @@
 				93AA98FE2708503D00939D3A /* BaseNavigationHeader.swift */,
 				93D1B096270DE5DE008FCD4B /* BaseNavigationSimpleVC.swift */,
 				93A84968271576AE00E9ABBF /* BaseNavigationHome.swift */,
+				93A4EA34271AAC3300B0B1E5 /* BaseNavigationOnlyHeader.swift */,
 			);
 			path = BaseCommonView;
 			sourceTree = "<group>";
@@ -1414,6 +1417,7 @@
 				936A9CD32704A179006F9F25 /* PopBaseViewController.swift in Sources */,
 				936A9D152704A179006F9F25 /* UIRefreshControlExtensions.swift in Sources */,
 				93A849642715370100E9ABBF /* HomeTextCell.swift in Sources */,
+				93A4EA35271AAC3400B0B1E5 /* BaseNavigationOnlyHeader.swift in Sources */,
 				936A9D1A2704A179006F9F25 /* Constants.swift in Sources */,
 				934C8A5E27074206008BCE0A /* DropdownView.swift in Sources */,
 				936A9CF62704A179006F9F25 /* UISearchBarExtensions.swift in Sources */,

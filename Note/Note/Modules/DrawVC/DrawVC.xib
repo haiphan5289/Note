@@ -20,8 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N31-S5-fyp" customClass="PKCanvasView">
-                    <rect key="frame" x="16" y="244" width="382" height="418"/>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N31-S5-fyp" customClass="PKCanvasView">
+                    <rect key="frame" x="16" y="60" width="382" height="602"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </subviews>
@@ -29,7 +29,7 @@
             <color key="backgroundColor" name="AppBg"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="N31-S5-fyp" secondAttribute="bottom" constant="200" id="212-fT-V3X"/>
-                <constraint firstItem="N31-S5-fyp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="200" id="huQ-bI-2GJ"/>
+                <constraint firstItem="N31-S5-fyp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="huQ-bI-2GJ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="N31-S5-fyp" secondAttribute="trailing" constant="16" id="noV-60-dZz"/>
                 <constraint firstItem="N31-S5-fyp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="p5Y-nP-1dq"/>
             </constraints>

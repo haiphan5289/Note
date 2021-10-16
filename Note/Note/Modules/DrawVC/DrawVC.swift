@@ -12,12 +12,14 @@ import RxCocoa
 import RxSwift
 import PencilKit
 
-class DrawVC: UIViewController {
+class DrawVC: BaseNavigationOnlyHeader {
     
     struct Constant {
         static let canvasWidth: CGFloat = 768
         static let canvasOverScrollHeight: CGFloat = 500
     }
+    
+    var noteModel: NoteModel?
     
     // Add here outlets
     @IBOutlet weak var canvasView: PKCanvasView!
@@ -54,10 +56,51 @@ extension DrawVC {
         toolPicker.addObserver(self)
         canvasView.becomeFirstResponder()
         
+        canvasView.layer.cornerRadius = ConstantApp.shared.radiusViewDialog
+        
+        if let note = self.noteModel, let model = note.noteDrawModel {
+            self.updateValueNote(noteModel: model)
+        }
     }
     
     private func setupRX() {
         // Add here the setup for the RX
+        
+        self.navigationItemView.actionItem = { [weak self] type in
+            guard let wSelf = self else { return }
+            switch type {
+            case .close: wSelf.navigationController?.popViewController(animated: true)
+                
+            case .done:
+                wSelf.navigationController?.popViewController(animated: true, {
+                    let noteModel: NoteModel
+                    let noteDraw = NoteDrawModel(data: wSelf.canvasView.drawing.dataRepresentation())
+                    if let note = wSelf.noteModel {
+                        noteModel = NoteModel(noteType: .draw, text: nil, id: note.id, bgColorModel: nil,
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: noteDraw)
+                    } else {
+                        noteModel = NoteModel(noteType: .draw, text: nil, id: Date.convertDateToLocalTime(), bgColorModel: nil,
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: noteDraw)
+                    }
+                    RealmManager.shared.updateOrInsertConfig(model: noteModel)
+                })
+                
+                
+            default: break
+            }
+        }
+    }
+    
+    private func updateValueNote(noteModel: NoteDrawModel) {
+        guard let d = noteModel.data else {
+            return
+        }
+        do {
+            let data = try PKDrawing.init(data: d)
+            self.canvasView.drawing = data
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     private func updateDrawWhenChangeLayou() {

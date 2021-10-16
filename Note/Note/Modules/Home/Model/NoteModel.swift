@@ -20,11 +20,19 @@ struct NoteModel: Codable {
     let bgColorModel: BgColorModel?
     let updateDate: Date?
     let noteCheckList: NoteCheckListModel?
+    let noteDrawModel: NoteDrawModel?
     
     enum CodingKeys: String, CodingKey {
-        case noteType, text, bgColorModel, id, updateDate, noteCheckList
+        case noteType, text, bgColorModel, id, updateDate, noteCheckList, noteDrawModel
     }
     
+}
+
+struct NoteDrawModel: Codable {
+    let data: Data?
+    enum CodingKeys: String, CodingKey {
+        case data
+    }
 }
 
 struct NoteCheckListModel: Codable {

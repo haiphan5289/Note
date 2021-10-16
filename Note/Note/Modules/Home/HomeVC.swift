@@ -218,10 +218,27 @@ extension HomeVC {
     
     private func moveToNote(idx: IndexPath) {
         let item = NoteManage.shared.listNote[idx.row]
-        let vc = TextVC.createVC()
-        vc.noteModel = item
-        self.eventStatusDropdown = .hide
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        switch item.noteType {
+        case .text:
+            let vc = TextVC.createVC()
+            vc.noteModel = item
+            self.eventStatusDropdown = .hide
+            self.navigationController?.pushViewController(vc, animated: true)
+        case .checkList:
+            let vc = CheckListVC.createVC()
+            vc.noteModel = item
+            self.eventStatusDropdown = .hide
+            self.navigationController?.pushViewController(vc, animated: true)
+        case .draw:
+            let vc = DrawVC.createVC()
+            vc.noteModel = item
+            self.eventStatusDropdown = .hide
+            self.navigationController?.pushViewController(vc, animated: true)
+        default: break
+        }
+        
+        
     }
     
     private func resetStatus() {
