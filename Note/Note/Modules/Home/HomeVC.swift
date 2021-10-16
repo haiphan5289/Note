@@ -77,6 +77,7 @@ extension HomeVC {
         self.collectionView.dataSource = self
         self.collectionView.register(HomeTextCell.nib, forCellWithReuseIdentifier: HomeTextCell.identifier)
         self.collectionView.register(CheckListCell.nib, forCellWithReuseIdentifier: CheckListCell.identifier)
+        self.collectionView.register(DrawHomeCell.nib, forCellWithReuseIdentifier: DrawHomeCell.identifier)
         
     }
     
@@ -322,6 +323,22 @@ extension HomeVC: UICollectionViewDataSource {
             cell.imgSelect.image = img
             cell.layoutIfNeeded()
             return cell
+            
+        case .draw:
+            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DrawHomeCell.identifier, for: indexPath) as? DrawHomeCell else {
+                fatalError("Don't have Cell")
+            }
+            
+            if let model = note.noteDrawModel {
+                cell.updateValueNote(noteModel: model)
+            } else {
+                cell.canvasView.isHidden = true
+            }
+            
+            cell.layoutIfNeeded()
+            return cell
+            
         default:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeTextCell.identifier, for: indexPath) as? HomeTextCell else {
                 fatalError("Don't have Cell")

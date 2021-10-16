@@ -165,6 +165,8 @@
 		9396E656270F3B17002B2E2C /* SegmentControlCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396E655270F3B17002B2E2C /* SegmentControlCustom.swift */; };
 		9396E65A270F3B24002B2E2C /* SegmentControlCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9396E659270F3B24002B2E2C /* SegmentControlCustom.xib */; };
 		93A4EA35271AAC3400B0B1E5 /* BaseNavigationOnlyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A4EA34271AAC3300B0B1E5 /* BaseNavigationOnlyHeader.swift */; };
+		93A4EA3A271AB6C000B0B1E5 /* DrawHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A4EA38271AB6C000B0B1E5 /* DrawHomeCell.swift */; };
+		93A4EA3B271AB6C000B0B1E5 /* DrawHomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93A4EA39271AB6C000B0B1E5 /* DrawHomeCell.xib */; };
 		93A65CCF271438BB00BF08B0 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A65CCC271438BB00BF08B0 /* RealmManager.swift */; };
 		93A65CD0271438BB00BF08B0 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A65CCE271438BB00BF08B0 /* RealmModel.swift */; };
 		93A65CDA27144B2B00BF08B0 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A65CD927144B2B00BF08B0 /* NoteModel.swift */; };
@@ -368,6 +370,8 @@
 		9396E655270F3B17002B2E2C /* SegmentControlCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControlCustom.swift; sourceTree = "<group>"; };
 		9396E659270F3B24002B2E2C /* SegmentControlCustom.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentControlCustom.xib; sourceTree = "<group>"; };
 		93A4EA34271AAC3300B0B1E5 /* BaseNavigationOnlyHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationOnlyHeader.swift; sourceTree = "<group>"; };
+		93A4EA38271AB6C000B0B1E5 /* DrawHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawHomeCell.swift; sourceTree = "<group>"; };
+		93A4EA39271AB6C000B0B1E5 /* DrawHomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawHomeCell.xib; sourceTree = "<group>"; };
 		93A65CCC271438BB00BF08B0 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		93A65CCE271438BB00BF08B0 /* RealmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		93A65CD927144B2B00BF08B0 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
@@ -994,6 +998,15 @@
 			path = SegmentControlCustom;
 			sourceTree = "<group>";
 		};
+		93A4EA37271AB6A600B0B1E5 /* Draw */ = {
+			isa = PBXGroup;
+			children = (
+				93A4EA38271AB6C000B0B1E5 /* DrawHomeCell.swift */,
+				93A4EA39271AB6C000B0B1E5 /* DrawHomeCell.xib */,
+			);
+			path = Draw;
+			sourceTree = "<group>";
+		};
 		93A65CCB271438BB00BF08B0 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
@@ -1151,6 +1164,7 @@
 		93CD016027149061005C09CE /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				93A4EA37271AB6A600B0B1E5 /* Draw */,
 				93AC60B82719C13700A1F480 /* CheckList */,
 				93A84961271536EE00E9ABBF /* Text */,
 			);
@@ -1255,6 +1269,7 @@
 				936A9D4E2704A7F0006F9F25 /* AddNote.xib in Resources */,
 				93D1B091270DE58D008FCD4B /* ListFontVC.xib in Resources */,
 				936A9CEF2704A179006F9F25 /* EmptyView.xib in Resources */,
+				93A4EA3B271AB6C000B0B1E5 /* DrawHomeCell.xib in Resources */,
 				9365491627185E4300C84473 /* CheckListVC.xib in Resources */,
 				936A9D472704A643006F9F25 /* MenuVC.xib in Resources */,
 				936A9CD92704A179006F9F25 /* BorderLine.png in Resources */,
@@ -1381,6 +1396,7 @@
 				932EFC86271018C30073A9FA /* ReadJson.swift in Sources */,
 				93AA9902270850D400939D3A /* NavigationItemView.swift in Sources */,
 				936A9D052704A179006F9F25 /* ColorExtensions.swift in Sources */,
+				93A4EA3A271AB6C000B0B1E5 /* DrawHomeCell.swift in Sources */,
 				936A9D002704A179006F9F25 /* UITextViewExtensions.swift in Sources */,
 				9396E647270F2F29002B2E2C /* BackgroundColor.swift in Sources */,
 				936A9D502704B6D4006F9F25 /* NoteManage.swift in Sources */,
