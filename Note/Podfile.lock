@@ -190,6 +190,7 @@ PODS:
   - Toast-Swift (4.0.1)
   - UIDropDown (1.1.1)
   - ViewAnimator (3.1.0)
+  - WeScan (1.7.0)
   - WMSegmentControl (2.2)
 
 DEPENDENCIES:
@@ -235,6 +236,7 @@ DEPENDENCIES:
   - Toast-Swift (~> 4.0.1)
   - UIDropDown
   - ViewAnimator
+  - WeScan (>= 0.9)
   - WMSegmentControl
 
 SPEC REPOS:
@@ -297,6 +299,7 @@ SPEC REPOS:
     - Toast-Swift
     - UIDropDown
     - ViewAnimator
+    - WeScan
     - WMSegmentControl
 
 SPEC CHECKSUMS:
@@ -358,8 +361,9 @@ SPEC CHECKSUMS:
   Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
   UIDropDown: 22e6e3e22d419884c8f21d95ea9be36aac905ed4
   ViewAnimator: a9ceed80266e00fd435ec4fb99b2df64d580d0e4
+  WeScan: fed582f6c38014d529afb5aa9ffd1bad38fc72b7
   WMSegmentControl: 4bb3a61e28cd0a0fcfcf932bec1f5795835b9f3f
 
-PODFILE CHECKSUM: 57508ca8f80ba3188b8261d9310cf5d686f044b8
+PODFILE CHECKSUM: fbca3e0cd3330d00dcbc2f1f25e77a4ed9a750d3
 
 COCOAPODS: 1.10.1

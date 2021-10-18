@@ -11,6 +11,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 import Photos
+//import WeScan
 
 class HomeVC: BaseNavigationHome {
     
@@ -78,6 +79,13 @@ extension HomeVC {
         self.collectionView.register(HomeTextCell.nib, forCellWithReuseIdentifier: HomeTextCell.identifier)
         self.collectionView.register(CheckListCell.nib, forCellWithReuseIdentifier: CheckListCell.identifier)
         self.collectionView.register(DrawHomeCell.nib, forCellWithReuseIdentifier: DrawHomeCell.identifier)
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            let scannerViewController = ImageScannerController()
+//            scannerViewController.imageScannerDelegate = self
+//            self.present(scannerViewController, animated: true)
+        }
         
     }
     
@@ -373,3 +381,17 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
         return 0
     }
 }
+//extension HomeVC: ImageScannerControllerDelegate {
+//    func imageScannerController(_ scanner: ImageScannerController, didFinishScanningWithResults results: ImageScannerResults) {
+//
+//    }
+//
+//    func imageScannerControllerDidCancel(_ scanner: ImageScannerController) {
+//
+//    }
+//
+//    func imageScannerController(_ scanner: ImageScannerController, didFailWithError error: Error) {
+//
+//    }
+//
+//}

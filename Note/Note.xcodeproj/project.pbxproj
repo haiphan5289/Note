@@ -198,6 +198,10 @@
 		93B6EFC6270B4ABC0035EF09 /* ListTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */; };
 		93B6EFC9270B56300035EF09 /* ListFont.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B6EFC8270B56300035EF09 /* ListFont.xib */; };
 		93B6EFCB270B56430035EF09 /* ListFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFCA270B56430035EF09 /* ListFont.swift */; };
+		93BA0C48271C0C4200B9E121 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93BA0C47271C0C4200B9E121 /* GoogleService-Info.plist */; };
+		93C0112E271D0FA100CDB8B9 /* QRCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C0112B271D0FA100CDB8B9 /* QRCodeVC.xib */; };
+		93C0112F271D0FA100CDB8B9 /* QRCodeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C0112C271D0FA100CDB8B9 /* QRCodeVM.swift */; };
+		93C01130271D0FA100CDB8B9 /* QRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C0112D271D0FA100CDB8B9 /* QRCodeVC.swift */; };
 		93D1B091270DE58D008FCD4B /* ListFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93D1B08E270DE58D008FCD4B /* ListFontVC.xib */; };
 		93D1B092270DE58D008FCD4B /* ListFontVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1B08F270DE58D008FCD4B /* ListFontVM.swift */; };
 		93D1B093270DE58D008FCD4B /* ListFontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1B090270DE58D008FCD4B /* ListFontVC.swift */; };
@@ -403,6 +407,10 @@
 		93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTextVC.swift; sourceTree = "<group>"; };
 		93B6EFC8270B56300035EF09 /* ListFont.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListFont.xib; sourceTree = "<group>"; };
 		93B6EFCA270B56430035EF09 /* ListFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFont.swift; sourceTree = "<group>"; };
+		93BA0C47271C0C4200B9E121 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		93C0112B271D0FA100CDB8B9 /* QRCodeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeVC.xib; sourceTree = "<group>"; };
+		93C0112C271D0FA100CDB8B9 /* QRCodeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeVM.swift; sourceTree = "<group>"; };
+		93C0112D271D0FA100CDB8B9 /* QRCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeVC.swift; sourceTree = "<group>"; };
 		93D1B08E270DE58D008FCD4B /* ListFontVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListFontVC.xib; sourceTree = "<group>"; };
 		93D1B08F270DE58D008FCD4B /* ListFontVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFontVM.swift; sourceTree = "<group>"; };
 		93D1B090270DE58D008FCD4B /* ListFontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFontVC.swift; sourceTree = "<group>"; };
@@ -571,6 +579,7 @@
 				936A9C2A27049F1E006F9F25 /* Main.storyboard */,
 				936A9C2D27049F1F006F9F25 /* Assets.xcassets */,
 				936A9C2F27049F1F006F9F25 /* LaunchScreen.storyboard */,
+				93BA0C47271C0C4200B9E121 /* GoogleService-Info.plist */,
 				936A9C3227049F1F006F9F25 /* Info.plist */,
 			);
 			path = Note;
@@ -916,6 +925,7 @@
 		936A9D3B2704A4C9006F9F25 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				93C0112A271D0F8600CDB8B9 /* QRCode */,
 				9365491B27185ED500C84473 /* Check */,
 				93D1B08D270DE56B008FCD4B /* ListFont */,
 				93B6EFC0270B4AA40035EF09 /* ListText */,
@@ -1161,6 +1171,16 @@
 			path = ListFont;
 			sourceTree = "<group>";
 		};
+		93C0112A271D0F8600CDB8B9 /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				93C0112B271D0FA100CDB8B9 /* QRCodeVC.xib */,
+				93C0112C271D0FA100CDB8B9 /* QRCodeVM.swift */,
+				93C0112D271D0FA100CDB8B9 /* QRCodeVC.swift */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
 		93CD016027149061005C09CE /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1224,6 +1244,19 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				"zh-Hans",
+				es,
+				"es-419",
+				it,
+				"zh-Hant",
+				hu,
+				tr,
+				pl,
+				"pt-BR",
+				ru,
+				fr,
+				"pt-PT",
 			);
 			mainGroup = 936A9C1827049F1E006F9F25;
 			productRefGroup = 936A9C2227049F1E006F9F25 /* Products */;
@@ -1268,6 +1301,7 @@
 				93AA98FD270846E400939D3A /* SoundNote.mp3 in Resources */,
 				936A9D4E2704A7F0006F9F25 /* AddNote.xib in Resources */,
 				93D1B091270DE58D008FCD4B /* ListFontVC.xib in Resources */,
+				93C0112E271D0FA100CDB8B9 /* QRCodeVC.xib in Resources */,
 				936A9CEF2704A179006F9F25 /* EmptyView.xib in Resources */,
 				93A4EA3B271AB6C000B0B1E5 /* DrawHomeCell.xib in Resources */,
 				9365491627185E4300C84473 /* CheckListVC.xib in Resources */,
@@ -1281,6 +1315,7 @@
 				93AC60B52719A76800A1F480 /* ToDoCell.xib in Resources */,
 				936A9CDB2704A179006F9F25 /* EndIndicator.png in Resources */,
 				932CF99C270DA0F100CB75B2 /* FontSize.xib in Resources */,
+				93BA0C48271C0C4200B9E121 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1438,6 +1473,7 @@
 				934C8A5E27074206008BCE0A /* DropdownView.swift in Sources */,
 				936A9CF62704A179006F9F25 /* UISearchBarExtensions.swift in Sources */,
 				93A65CDA27144B2B00BF08B0 /* NoteModel.swift in Sources */,
+				93C01130271D0FA100CDB8B9 /* QRCodeVC.swift in Sources */,
 				936A9CF22704A179006F9F25 /* CircularSlider.swift in Sources */,
 				936A9D322704A179006F9F25 /* Font+Extension.swift in Sources */,
 				93AA991D2709D2CA00939D3A /* ConfigText.swift in Sources */,
@@ -1467,6 +1503,7 @@
 				9365491727185E4300C84473 /* CheckListVM.swift in Sources */,
 				932EFD4327101E420073A9FA /* ColorsModel.swift in Sources */,
 				93AA99102708539D00939D3A /* TextVM.swift in Sources */,
+				93C0112F271D0FA100CDB8B9 /* QRCodeVM.swift in Sources */,
 				936A9CE22704A179006F9F25 /* CircularSliderHelper.swift in Sources */,
 				936A9D172704A179006F9F25 /* UIFontExtensions.swift in Sources */,
 				9396E656270F3B17002B2E2C /* SegmentControlCustom.swift in Sources */,

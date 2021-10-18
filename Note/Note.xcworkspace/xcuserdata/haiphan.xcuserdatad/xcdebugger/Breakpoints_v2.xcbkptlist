@@ -3,4 +3,54 @@
    uuid = "02B39459-0E8C-4D22-BB91-3C662004AC7D"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "927B7288-65FC-43D5-8A51-DE4313941DAA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/WeScan/WeScan/Edit/EditScanViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "EditScanViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "927B7288-65FC-43D5-8A51-DE4313941DAA - 4991d7ea20957ea2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeScan.EditScanViewController.(imageView in _0DEF7E51F6B946F9DD348F877018A4E8).getter : __C.UIImageView"
+                  moduleName = "WeScan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/haiphan/Desktop/haiphan/Note/Note/Pods/WeScan/WeScan/Edit/EditScanViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "156">
+               </Location>
+               <Location
+                  uuid = "927B7288-65FC-43D5-8A51-DE4313941DAA - d8b0e11ed41a6088"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __C.UIImageView in WeScan.EditScanViewController.(imageView in _0DEF7E51F6B946F9DD348F877018A4E8).getter : __C.UIImageView"
+                  moduleName = "WeScan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/haiphan/Desktop/haiphan/Note/Note/Pods/WeScan/WeScan/Edit/EditScanViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
