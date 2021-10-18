@@ -158,6 +158,8 @@
 		937B7752271A75A300892EC9 /* DrawVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937B774F271A75A300892EC9 /* DrawVC.xib */; };
 		937B7753271A75A300892EC9 /* DrawVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937B7750271A75A300892EC9 /* DrawVM.swift */; };
 		937B7754271A75A300892EC9 /* DrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937B7751271A75A300892EC9 /* DrawVC.swift */; };
+		939217B0271D93CD008BC4E7 /* QRCodeTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939217AF271D93CD008BC4E7 /* QRCodeTextView.xib */; };
+		939217B3271D93D9008BC4E7 /* QRCodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939217B2271D93D9008BC4E7 /* QRCodeTextView.swift */; };
 		9396E647270F2F29002B2E2C /* BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396E646270F2F29002B2E2C /* BackgroundColor.swift */; };
 		9396E64B270F2F36002B2E2C /* BackgroundColor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9396E64A270F2F36002B2E2C /* BackgroundColor.xib */; };
 		9396E64F270F3244002B2E2C /* ViewHeaderDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9396E64E270F3244002B2E2C /* ViewHeaderDialog.xib */; };
@@ -202,6 +204,8 @@
 		93C0112E271D0FA100CDB8B9 /* QRCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C0112B271D0FA100CDB8B9 /* QRCodeVC.xib */; };
 		93C0112F271D0FA100CDB8B9 /* QRCodeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C0112C271D0FA100CDB8B9 /* QRCodeVM.swift */; };
 		93C01130271D0FA100CDB8B9 /* QRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C0112D271D0FA100CDB8B9 /* QRCodeVC.swift */; };
+		93C0114B271D48F100CDB8B9 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C0114A271D48F100CDB8B9 /* QRCodeView.swift */; };
+		93C0114F271D490B00CDB8B9 /* QRCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C0114E271D490B00CDB8B9 /* QRCodeView.xib */; };
 		93D1B091270DE58D008FCD4B /* ListFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93D1B08E270DE58D008FCD4B /* ListFontVC.xib */; };
 		93D1B092270DE58D008FCD4B /* ListFontVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1B08F270DE58D008FCD4B /* ListFontVM.swift */; };
 		93D1B093270DE58D008FCD4B /* ListFontVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1B090270DE58D008FCD4B /* ListFontVC.swift */; };
@@ -367,6 +371,8 @@
 		937B774F271A75A300892EC9 /* DrawVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawVC.xib; sourceTree = "<group>"; };
 		937B7750271A75A300892EC9 /* DrawVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawVM.swift; sourceTree = "<group>"; };
 		937B7751271A75A300892EC9 /* DrawVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawVC.swift; sourceTree = "<group>"; };
+		939217AF271D93CD008BC4E7 /* QRCodeTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeTextView.xib; sourceTree = "<group>"; };
+		939217B2271D93D9008BC4E7 /* QRCodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeTextView.swift; sourceTree = "<group>"; };
 		9396E646270F2F29002B2E2C /* BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColor.swift; sourceTree = "<group>"; };
 		9396E64A270F2F36002B2E2C /* BackgroundColor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundColor.xib; sourceTree = "<group>"; };
 		9396E64E270F3244002B2E2C /* ViewHeaderDialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewHeaderDialog.xib; sourceTree = "<group>"; };
@@ -411,6 +417,8 @@
 		93C0112B271D0FA100CDB8B9 /* QRCodeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeVC.xib; sourceTree = "<group>"; };
 		93C0112C271D0FA100CDB8B9 /* QRCodeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeVM.swift; sourceTree = "<group>"; };
 		93C0112D271D0FA100CDB8B9 /* QRCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeVC.swift; sourceTree = "<group>"; };
+		93C0114A271D48F100CDB8B9 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
+		93C0114E271D490B00CDB8B9 /* QRCodeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeView.xib; sourceTree = "<group>"; };
 		93D1B08E270DE58D008FCD4B /* ListFontVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListFontVC.xib; sourceTree = "<group>"; };
 		93D1B08F270DE58D008FCD4B /* ListFontVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFontVM.swift; sourceTree = "<group>"; };
 		93D1B090270DE58D008FCD4B /* ListFontVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFontVC.swift; sourceTree = "<group>"; };
@@ -641,6 +649,8 @@
 		936A9C552704A178006F9F25 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				939217AE271D934D008BC4E7 /* DataQRCode */,
+				93C01149271D48D100CDB8B9 /* QRCode */,
 				93A8497327158D8400E9ABBF /* DropdownAction */,
 				93A8496B2715876400E9ABBF /* NavigationItemHome */,
 				9396E654270F3AE5002B2E2C /* SegmentControlCustom */,
@@ -925,8 +935,8 @@
 		936A9D3B2704A4C9006F9F25 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				93C0112A271D0F8600CDB8B9 /* QRCode */,
 				9365491B27185ED500C84473 /* Check */,
+				93C0112A271D0F8600CDB8B9 /* QRCode */,
 				93D1B08D270DE56B008FCD4B /* ListFont */,
 				93B6EFC0270B4AA40035EF09 /* ListText */,
 				936A9D432704A634006F9F25 /* Menu */,
@@ -977,6 +987,15 @@
 				937B7751271A75A300892EC9 /* DrawVC.swift */,
 			);
 			path = DrawVC;
+			sourceTree = "<group>";
+		};
+		939217AE271D934D008BC4E7 /* DataQRCode */ = {
+			isa = PBXGroup;
+			children = (
+				939217AF271D93CD008BC4E7 /* QRCodeTextView.xib */,
+				939217B2271D93D9008BC4E7 /* QRCodeTextView.swift */,
+			);
+			path = DataQRCode;
 			sourceTree = "<group>";
 		};
 		9396E645270F2EF5002B2E2C /* BackgroundColor */ = {
@@ -1181,6 +1200,15 @@
 			path = QRCode;
 			sourceTree = "<group>";
 		};
+		93C01149271D48D100CDB8B9 /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				93C0114A271D48F100CDB8B9 /* QRCodeView.swift */,
+				93C0114E271D490B00CDB8B9 /* QRCodeView.xib */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
 		93CD016027149061005C09CE /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1277,6 +1305,7 @@
 				936A9CDA2704A179006F9F25 /* StartIndicator.png in Resources */,
 				93B6EFC4270B4ABC0035EF09 /* ListTextVC.xib in Resources */,
 				93AA9904270850DE00939D3A /* NavigationItemView.xib in Resources */,
+				93C0114F271D490B00CDB8B9 /* QRCodeView.xib in Resources */,
 				936A9C3C2704A0DA006F9F25 /* Localizable.strings in Resources */,
 				9396E64F270F3244002B2E2C /* ViewHeaderDialog.xib in Resources */,
 				9396E65A270F3B24002B2E2C /* SegmentControlCustom.xib in Resources */,
@@ -1314,6 +1343,7 @@
 				9396E64B270F2F36002B2E2C /* BackgroundColor.xib in Resources */,
 				93AC60B52719A76800A1F480 /* ToDoCell.xib in Resources */,
 				936A9CDB2704A179006F9F25 /* EndIndicator.png in Resources */,
+				939217B0271D93CD008BC4E7 /* QRCodeTextView.xib in Resources */,
 				932CF99C270DA0F100CB75B2 /* FontSize.xib in Resources */,
 				93BA0C48271C0C4200B9E121 /* GoogleService-Info.plist in Resources */,
 			);
@@ -1418,6 +1448,7 @@
 				936A9CF12704A179006F9F25 /* String+HTML.swift in Sources */,
 				936A9CCE2704A179006F9F25 /* BaseNavigationLargeTitle.swift in Sources */,
 				936A9CFF2704A179006F9F25 /* UIImage+Extensions.swift in Sources */,
+				939217B3271D93D9008BC4E7 /* QRCodeTextView.swift in Sources */,
 				936A9D1C2704A179006F9F25 /* RangeTimeSlider.swift in Sources */,
 				93D1B097270DE5DE008FCD4B /* BaseNavigationSimpleVC.swift in Sources */,
 				936A9CFA2704A179006F9F25 /* UILayoutPriorityExtensions.swift in Sources */,
@@ -1468,6 +1499,7 @@
 				936A9CD32704A179006F9F25 /* PopBaseViewController.swift in Sources */,
 				936A9D152704A179006F9F25 /* UIRefreshControlExtensions.swift in Sources */,
 				93A849642715370100E9ABBF /* HomeTextCell.swift in Sources */,
+				93C0114B271D48F100CDB8B9 /* QRCodeView.swift in Sources */,
 				93A4EA35271AAC3400B0B1E5 /* BaseNavigationOnlyHeader.swift in Sources */,
 				936A9D1A2704A179006F9F25 /* Constants.swift in Sources */,
 				934C8A5E27074206008BCE0A /* DropdownView.swift in Sources */,

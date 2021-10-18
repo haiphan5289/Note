@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewVC" customModule="CameraMakeUp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QRCodeVC" customModule="Note" customModuleProvider="target">
             <connections>
+                <outlet property="cameraView" destination="X5S-qb-Als" id="7rm-pi-p0j"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,14 +18,72 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5S-qb-Als">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" name="AppBg"/>
+                </view>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbL-Qa-GtP">
+                    <rect key="frame" x="177" y="792" width="60" height="60"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iqs-vG-XnA">
+                            <rect key="frame" x="5" y="5" width="50" height="50"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="25"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wK9-Ju-Z3i">
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" name="ColorApp"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="1ok-P9-nqq"/>
+                        <constraint firstAttribute="height" constant="60" id="C2G-s9-T2c"/>
+                        <constraint firstItem="wK9-Ju-Z3i" firstAttribute="top" secondItem="VbL-Qa-GtP" secondAttribute="top" id="HAG-sv-iU4"/>
+                        <constraint firstItem="Iqs-vG-XnA" firstAttribute="leading" secondItem="VbL-Qa-GtP" secondAttribute="leading" constant="5" id="YXF-Wp-cVe"/>
+                        <constraint firstAttribute="trailing" secondItem="wK9-Ju-Z3i" secondAttribute="trailing" id="iZ6-tl-0j9"/>
+                        <constraint firstItem="Iqs-vG-XnA" firstAttribute="top" secondItem="VbL-Qa-GtP" secondAttribute="top" constant="5" id="pwN-A6-7eC"/>
+                        <constraint firstAttribute="trailing" secondItem="Iqs-vG-XnA" secondAttribute="trailing" constant="5" id="qP8-r4-UtP"/>
+                        <constraint firstAttribute="bottom" secondItem="Iqs-vG-XnA" secondAttribute="bottom" constant="5" id="svj-eN-G6J"/>
+                        <constraint firstAttribute="bottom" secondItem="wK9-Ju-Z3i" secondAttribute="bottom" id="vEj-Cv-Nq9"/>
+                        <constraint firstItem="wK9-Ju-Z3i" firstAttribute="leading" secondItem="VbL-Qa-GtP" secondAttribute="leading" id="wG3-h9-n4e"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="30"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="AppBg"/>
+            <constraints>
+                <constraint firstItem="X5S-qb-Als" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="MzX-Jw-CVt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="X5S-qb-Als" secondAttribute="trailing" id="PBb-mq-O01"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="VbL-Qa-GtP" secondAttribute="bottom" constant="10" id="PeL-jx-XeN"/>
+                <constraint firstItem="VbL-Qa-GtP" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="uZW-rM-jxg"/>
+                <constraint firstAttribute="bottom" secondItem="X5S-qb-Als" secondAttribute="bottom" id="xPT-dh-d4B"/>
+                <constraint firstItem="X5S-qb-Als" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="y7V-Yc-kP9"/>
+            </constraints>
             <point key="canvasLocation" x="139" y="141"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="AppBg">
+            <color red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ColorApp">
+            <color red="0.57400000095367432" green="0.56599998474121094" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

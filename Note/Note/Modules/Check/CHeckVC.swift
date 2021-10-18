@@ -15,6 +15,7 @@ import WebKit
 class CHeckVC: UIViewController {
     
     // Add here outlets
+    @IBOutlet weak var checkSw: UISwitch!
     
     // Add here your view model
     private var viewModel: CHeckVM = CHeckVM()
@@ -32,6 +33,14 @@ extension CHeckVC {
     
     private func setupUI() {
         // Add here the setup for the UI
+        /*For on state*/
+        checkSw.onTintColor = .red
+
+        /*For off state*/
+        checkSw.tintColor = .green
+        checkSw.layer.cornerRadius = checkSw.frame.height / 2.0
+        checkSw.backgroundColor = .green
+        checkSw.clipsToBounds = true
     }
     
     private func setupRX() {

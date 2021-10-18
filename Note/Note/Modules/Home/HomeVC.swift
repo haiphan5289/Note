@@ -82,7 +82,7 @@ extension HomeVC {
         
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let scannerViewController = ImageScannerController()
+//            let scannerViewController = ImageScannerController()
 //            scannerViewController.imageScannerDelegate = self
 //            self.present(scannerViewController, animated: true)
         }
@@ -294,6 +294,9 @@ extension HomeVC: DropDownDelegate {
             self.navigationController?.pushViewController(vc, animated: true)
         case .draw:
             let vc = DrawVC.createVC()
+            self.navigationController?.pushViewController(vc, animated: true)
+        case .qrCode:
+            let vc = QRCodeVC.createVC()
             self.navigationController?.pushViewController(vc, animated: true)
         default: break
         }

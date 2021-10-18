@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="QRCodeView" customModule="Note" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6o-40-04I">
+                    <rect key="frame" x="170" y="0.0" width="30" height="3"/>
+                    <color key="backgroundColor" name="TextColorApp"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="ACF-zL-M1r"/>
+                        <constraint firstAttribute="height" constant="3" id="jro-9L-yn2"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFM-9F-esU">
+                    <rect key="frame" x="170" y="197" width="30" height="3"/>
+                    <color key="backgroundColor" name="TextColorApp"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="5i7-ya-9rQ"/>
+                        <constraint firstAttribute="height" constant="3" id="jvi-7n-vPT"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BmS-1s-TE6">
+                    <rect key="frame" x="0.0" y="197" width="30" height="3"/>
+                    <color key="backgroundColor" name="TextColorApp"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="3" id="T66-7W-ZkU"/>
+                        <constraint firstAttribute="width" constant="30" id="ttm-YZ-X0A"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPc-7A-he0">
+                    <rect key="frame" x="197" y="170" width="3" height="30"/>
+                    <color key="backgroundColor" name="TextColorApp"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="azy-R2-tIX"/>
+                        <constraint firstAttribute="width" constant="3" id="phu-HJ-hdt"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZw-w6-5xq">
+                    <rect key="frame" x="0.0" y="170" width="3" height="30"/>
+                    <color key="backgroundColor" name="TextColorApp"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="3" id="96N-b1-gjX"/>
+                        <constraint firstAttribute="height" constant="30" id="Ni9-0Y-rSW"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sQx-9E-oMY">
+                    <rect key="frame" x="197" y="0.0" width="3" height="30"/>
+                    <color key="backgroundColor" name="TextColorApp"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="DNl-t3-rM6"/>
+                        <constraint firstAttribute="width" constant="3" id="s22-vk-GLy"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VGH-fy-ySV">
+                    <rect key="frame" x="0.0" y="0.0" width="3" height="30"/>
+                    <color key="backgroundColor" name="TextColorApp"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="8HD-3g-Kuf"/>
+                        <constraint firstAttribute="width" constant="3" id="ppt-3o-Xpb"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8A4-Fg-avS">
+                    <rect key="frame" x="0.0" y="0.0" width="30" height="3"/>
+                    <color key="backgroundColor" name="TextColorApp"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="3" id="Whl-tb-uoP"/>
+                        <constraint firstAttribute="width" constant="30" id="ts8-hs-zC9"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="VGH-fy-ySV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2xo-HN-BYu"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="BFM-9F-esU" secondAttribute="bottom" id="3Cn-t1-3Wl"/>
+                <constraint firstItem="8A4-Fg-avS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3Hd-KN-Gx8"/>
+                <constraint firstItem="VGH-fy-ySV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5h7-mT-Y62"/>
+                <constraint firstItem="j6o-40-04I" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6Zp-UY-3eg"/>
+                <constraint firstAttribute="trailing" secondItem="BFM-9F-esU" secondAttribute="trailing" id="ATw-TC-59u"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="sQx-9E-oMY" secondAttribute="trailing" id="Bve-b4-4aj"/>
+                <constraint firstAttribute="bottom" secondItem="cPc-7A-he0" secondAttribute="bottom" id="Ndk-nf-j1O"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cPc-7A-he0" secondAttribute="trailing" id="TAe-2A-9fn"/>
+                <constraint firstAttribute="bottom" secondItem="DZw-w6-5xq" secondAttribute="bottom" id="Zeo-11-NUT"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="BmS-1s-TE6" secondAttribute="bottom" id="n3H-Ua-eag"/>
+                <constraint firstItem="sQx-9E-oMY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rwb-aM-W3s"/>
+                <constraint firstItem="DZw-w6-5xq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="sUf-4u-n1A"/>
+                <constraint firstItem="8A4-Fg-avS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ujK-Ao-s4x"/>
+                <constraint firstAttribute="trailing" secondItem="j6o-40-04I" secondAttribute="trailing" id="wao-wl-ysr"/>
+                <constraint firstItem="BmS-1s-TE6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xx2-GF-7pp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="animationView" destination="j6o-40-04I" collectionClass="NSMutableArray" id="DIY-WU-SbV"/>
+                <outletCollection property="animationView" destination="BFM-9F-esU" collectionClass="NSMutableArray" id="BTi-cL-fBy"/>
+                <outletCollection property="animationView" destination="BmS-1s-TE6" collectionClass="NSMutableArray" id="JlK-G0-aiV"/>
+                <outletCollection property="animationView" destination="cPc-7A-he0" collectionClass="NSMutableArray" id="Esm-zj-wB8"/>
+                <outletCollection property="animationView" destination="DZw-w6-5xq" collectionClass="NSMutableArray" id="pCM-1c-jAo"/>
+                <outletCollection property="animationView" destination="sQx-9E-oMY" collectionClass="NSMutableArray" id="sop-HI-KCR"/>
+                <outletCollection property="animationView" destination="VGH-fy-ySV" collectionClass="NSMutableArray" id="Igw-ej-fuO"/>
+                <outletCollection property="animationView" destination="8A4-Fg-avS" collectionClass="NSMutableArray" id="FVS-h7-xHe"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="82"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="TextColorApp">
+            <color red="1" green="0.83137254901960789" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
