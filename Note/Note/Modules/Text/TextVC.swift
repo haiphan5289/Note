@@ -14,6 +14,7 @@ import RxSwift
 class TextVC: BaseNavigationHeader {
 
     var noteModel: NoteModel?
+    var textQRCode: String?
     
     // Add here outlets
     @IBOutlet weak var textView: UITextView!
@@ -56,6 +57,10 @@ extension TextVC {
             self.updateValueNote(note: note)
         } else {
             self.bgColorModel = BgColorModel.empty
+        }
+        
+        if let t = self.self.textQRCode {
+            self.textView.text = t
         }
     }
     
@@ -115,6 +120,8 @@ extension TextVC {
             case .close: wSelf.navigationController?.popViewController(animated: true)
                 
             case .done:
+                wSelf.removeQRCodeVC()
+                
                 wSelf.navigationController?.popViewController(animated: true, {
                     let noteModel: NoteModel
                     if let note = wSelf.noteModel {
@@ -189,6 +196,20 @@ extension TextVC {
             
         }.disposed(by: disposeBag)
     
+    }
+    
+    private func removeQRCodeVC() {
+        if var viewControllers = self.navigationController?.viewControllers
+           {
+            for (index, controller) in viewControllers.enumerated()
+               {
+                   if controller is QRCodeVC
+                   {
+                    viewControllers.remove(at: index)
+                       self.navigationController?.viewControllers = viewControllers
+                   }
+               }
+           }
     }
     
     private func updateValueNote(note: NoteModel) {

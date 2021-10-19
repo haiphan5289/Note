@@ -15,35 +15,85 @@
             <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mkH-w0-Aeh">
-                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <color key="textColor" name="TextColorApp"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0Ch-v2-PcD">
+                    <rect key="frame" x="16" y="16" width="268" height="268"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mkH-w0-Aeh">
+                            <rect key="frame" x="0.0" y="0.0" width="268" height="213"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="textColor" name="TextColorApp"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Qec-jQ-Ac4">
+                            <rect key="frame" x="0.0" y="228" width="268" height="40"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59H-tD-Tvw">
+                                    <rect key="frame" x="0.0" y="0.0" width="129" height="40"/>
+                                    <color key="backgroundColor" name="ViewMoveSegment"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="Pls-8D-aIr"/>
+                                    </constraints>
+                                    <color key="tintColor" name="ColorApp"/>
+                                    <state key="normal" title=" Cancel" image="ic_close">
+                                        <color key="titleColor" name="TextColorApp"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="6"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQ2-GN-yBV">
+                                    <rect key="frame" x="139" y="0.0" width="129" height="40"/>
+                                    <color key="backgroundColor" name="ViewMoveSegment"/>
+                                    <color key="tintColor" name="ColorApp"/>
+                                    <state key="normal" title=" Done" image="ic_done">
+                                        <color key="titleColor" name="TextColorApp"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="6"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" name="AppBg"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="mkH-w0-Aeh" secondAttribute="bottom" id="3ia-zZ-70p"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mkH-w0-Aeh" secondAttribute="trailing" id="HU6-2W-GhC"/>
-                <constraint firstItem="mkH-w0-Aeh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Lv0-ea-3T7"/>
-                <constraint firstItem="mkH-w0-Aeh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="XJQ-z4-Y99"/>
+                <constraint firstItem="0Ch-v2-PcD" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-16" id="4ST-Dj-rkX"/>
+                <constraint firstAttribute="bottom" secondItem="0Ch-v2-PcD" secondAttribute="bottom" constant="16" id="Jy0-X8-4Qm"/>
+                <constraint firstItem="0Ch-v2-PcD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="YUp-2t-lvn"/>
+                <constraint firstItem="0Ch-v2-PcD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="ngy-MJ-aQ9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="textView" destination="mkH-w0-Aeh" id="Y6p-Vx-Ej3"/>
+                <outletCollection property="bts" destination="59H-tD-Tvw" collectionClass="NSMutableArray" id="D0j-XN-ltK"/>
+                <outletCollection property="bts" destination="RQ2-GN-yBV" collectionClass="NSMutableArray" id="koi-IT-umE"/>
             </connections>
             <point key="canvasLocation" x="139" y="82"/>
         </view>
     </objects>
     <resources>
+        <image name="ic_close" width="24" height="24"/>
+        <image name="ic_done" width="24" height="24"/>
         <namedColor name="AppBg">
             <color red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="ColorApp">
+            <color red="0.57400000095367432" green="0.56599998474121094" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="TextColorApp">
             <color red="1" green="0.83137254901960789" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ViewMoveSegment">
+            <color red="0.41960784313725491" green="0.49803921568627452" blue="0.62745098039215685" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

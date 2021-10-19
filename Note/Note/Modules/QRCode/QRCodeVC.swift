@@ -67,6 +67,7 @@ extension QRCodeVC {
             make.center.equalToSuperview()
             make.height.width.equalTo(300)
         }
+        self.showView.delegate = self
         self.showView.hideView()
     }
     
@@ -79,6 +80,7 @@ extension QRCodeVC {
         let originY = (self.view.bounds.size.height / 2) -  (Constant.height / 2)
         let f = CGRect(x: originX, y: originY, width: Constant.height, height: Constant.height)
         self.contentQRCodeView.frame = f
+        self.contentQRCodeView.clipsToBounds = true
         self.frameCenter = f
         self.contentQRCodeView.backgroundColor = .clear
         self.view.addSubview(self.contentQRCodeView)
@@ -189,10 +191,25 @@ extension QRCodeVC {
     
     private func showViewQRCode(text: String) {
         self.showView.updateValue(text: text)
-        self.showView.isHidden = false
+        self.showView.showView()
         self.contentQRCodeView.isHidden = true
     }
 }
 extension QRCodeVC: AVCaptureMetadataOutputObjectsDelegate {
+    
+}
+extension QRCodeVC: QRCodeTextViewDelegate {
+    func tapAction(action: QRCodeTextView.Action) {
+        self.contentQRCodeView.isHidden = false
+        self.showView.hideView()
+        
+        switch action {
+        case .cancel: break
+        case .done:
+            let vc = TextVC.createVC()
+            vc.textQRCode = self.showView.getTextQRCode()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     
 }
