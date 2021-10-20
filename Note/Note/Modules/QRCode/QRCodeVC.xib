@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QRCodeVC" customModule="Note" customModuleProvider="target">
             <connections>
                 <outlet property="cameraView" destination="X5S-qb-Als" id="7rm-pi-p0j"/>
+                <outlet property="contentCamereDetectView" destination="haF-Kl-2c7" id="Lqx-3x-w1j"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,7 +20,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5S-qb-Als">
+                <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5S-qb-Als">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" name="AppBg"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="haF-Kl-2c7">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" name="AppBg"/>
                 </view>
@@ -68,14 +73,18 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="AppBg"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="haF-Kl-2c7" secondAttribute="trailing" id="8OA-Kn-fHM"/>
+                <constraint firstItem="haF-Kl-2c7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LMn-UE-BdO"/>
                 <constraint firstItem="X5S-qb-Als" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="MzX-Jw-CVt"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="X5S-qb-Als" secondAttribute="trailing" id="PBb-mq-O01"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="VbL-Qa-GtP" secondAttribute="bottom" constant="10" id="PeL-jx-XeN"/>
+                <constraint firstItem="haF-Kl-2c7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qV5-l5-kYS"/>
                 <constraint firstItem="VbL-Qa-GtP" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="uZW-rM-jxg"/>
                 <constraint firstAttribute="bottom" secondItem="X5S-qb-Als" secondAttribute="bottom" id="xPT-dh-d4B"/>
                 <constraint firstItem="X5S-qb-Als" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="y7V-Yc-kP9"/>
+                <constraint firstAttribute="bottom" secondItem="haF-Kl-2c7" secondAttribute="bottom" id="yqp-mq-QTB"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="141"/>
+            <point key="canvasLocation" x="137.68115942028987" y="140.625"/>
         </view>
     </objects>
     <resources>

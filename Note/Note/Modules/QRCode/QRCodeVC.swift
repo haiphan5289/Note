@@ -20,6 +20,7 @@ class QRCodeVC: UIViewController {
     
     // Add here outlets
     @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var contentCamereDetectView: UIView!
     
     // Add here your view model
     private var viewModel: QRCodeVM = QRCodeVM()
@@ -31,6 +32,7 @@ class QRCodeVC: UIViewController {
     private var contentQRCodeView: UIView = UIView(frame: .zero)
     private var frameCenter: CGRect = .zero
     private let showView: QRCodeTextView = QRCodeTextView.loadXib()
+    private let cameraDetectObjectView: CameraDetectObject = CameraDetectObject.loadXib()
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -47,13 +49,28 @@ class QRCodeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = false
         self.setupViewQR()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.cameraDetectObjectView.startRunning()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.cameraDetectObjectView.updateFramePreview()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.stopCapture()
+        self.cameraDetectObjectView.stopRunning()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
     
 }
@@ -69,6 +86,12 @@ extension QRCodeVC {
         }
         self.showView.delegate = self
         self.showView.hideView()
+        
+        self.contentCamereDetectView.addSubview(self.cameraDetectObjectView)
+        self.cameraDetectObjectView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        self.cameraDetectObjectView.startStepUp()
     }
     
     private func setupRX() {

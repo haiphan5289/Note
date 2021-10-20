@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CHeckVC" customModule="Note" customModuleProvider="target">
             <connections>
-                <outlet property="checkSw" destination="f4X-pm-NC0" id="cdS-qf-csL"/>
+                <outlet property="previewView" destination="BdD-sG-vHw" id="rYQ-pl-VEr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,37 +19,24 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AWV-gF-AOU">
-                    <rect key="frame" x="91" y="87" width="49" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="onTintColor" systemColor="systemBlueColor"/>
-                    <color key="thumbTintColor" name="AppBg"/>
-                </switch>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="f4X-pm-NC0">
-                    <rect key="frame" x="129" y="258" width="49" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="tintColor" name="ColorApp"/>
-                    <color key="onTintColor" red="0.29803921570000003" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="thumbTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </switch>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BdD-sG-vHw">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="BdD-sG-vHw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2dv-HK-vfu"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BdD-sG-vHw" secondAttribute="trailing" id="3mM-Xx-VAR"/>
+                <constraint firstItem="BdD-sG-vHw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HOq-ig-A9I"/>
+                <constraint firstAttribute="bottom" secondItem="BdD-sG-vHw" secondAttribute="bottom" id="oNX-Zw-xFQ"/>
+            </constraints>
             <point key="canvasLocation" x="139" y="141"/>
         </view>
     </objects>
     <resources>
-        <namedColor name="AppBg">
-            <color red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="ColorApp">
-            <color red="0.57400000095367432" green="0.56599998474121094" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
