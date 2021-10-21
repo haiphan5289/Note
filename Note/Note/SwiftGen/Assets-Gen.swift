@@ -50,6 +50,7 @@ internal enum Asset {
   internal static let icTrash = ImageAsset(name: "ic_trash")
   internal static let icTwoView = ImageAsset(name: "ic_two_view")
   internal static let icUndo = ImageAsset(name: "ic_undo")
+  internal static let sss = ImageAsset(name: "SSS")
   internal static let icHome = ImageAsset(name: "ic_home")
   internal static let icMenu = ImageAsset(name: "ic_menu")
   internal static let icClose = ImageAsset(name: "ic_close")

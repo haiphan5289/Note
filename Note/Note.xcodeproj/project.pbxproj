@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -162,6 +162,10 @@
 		939130C52720502800A17AA4 /* CameraDetectObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939130C42720502800A17AA4 /* CameraDetectObject.swift */; };
 		939217B0271D93CD008BC4E7 /* QRCodeTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939217AF271D93CD008BC4E7 /* QRCodeTextView.xib */; };
 		939217B3271D93D9008BC4E7 /* QRCodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939217B2271D93D9008BC4E7 /* QRCodeTextView.swift */; };
+		9393CF6427213F81000DC32E /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9393CF6327213F81000DC32E /* PinLayout */; };
+		9393CF6B2721404A000DC32E /* ScrollableAndZoomingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CF682721404A000DC32E /* ScrollableAndZoomingImageView.swift */; };
+		9393CF6C2721404A000DC32E /* CropRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CF692721404A000DC32E /* CropRectView.swift */; };
+		9393CF6D2721404A000DC32E /* CropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CF6A2721404A000DC32E /* CropView.swift */; };
 		9396E647270F2F29002B2E2C /* BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396E646270F2F29002B2E2C /* BackgroundColor.swift */; };
 		9396E64B270F2F36002B2E2C /* BackgroundColor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9396E64A270F2F36002B2E2C /* BackgroundColor.xib */; };
 		9396E64F270F3244002B2E2C /* ViewHeaderDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9396E64E270F3244002B2E2C /* ViewHeaderDialog.xib */; };
@@ -377,6 +381,9 @@
 		939130C42720502800A17AA4 /* CameraDetectObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDetectObject.swift; sourceTree = "<group>"; };
 		939217AF271D93CD008BC4E7 /* QRCodeTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeTextView.xib; sourceTree = "<group>"; };
 		939217B2271D93D9008BC4E7 /* QRCodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeTextView.swift; sourceTree = "<group>"; };
+		9393CF682721404A000DC32E /* ScrollableAndZoomingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableAndZoomingImageView.swift; sourceTree = "<group>"; };
+		9393CF692721404A000DC32E /* CropRectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropRectView.swift; sourceTree = "<group>"; };
+		9393CF6A2721404A000DC32E /* CropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropView.swift; sourceTree = "<group>"; };
 		9396E646270F2F29002B2E2C /* BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColor.swift; sourceTree = "<group>"; };
 		9396E64A270F2F36002B2E2C /* BackgroundColor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundColor.xib; sourceTree = "<group>"; };
 		9396E64E270F3244002B2E2C /* ViewHeaderDialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewHeaderDialog.xib; sourceTree = "<group>"; };
@@ -435,6 +442,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9393CF6427213F81000DC32E /* PinLayout in Frameworks */,
 				9F17E688D6E5DC8617F4A480 /* Pods_Note.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -653,6 +661,7 @@
 		936A9C552704A178006F9F25 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9393CF662721404A000DC32E /* CropView */,
 				93A755E1271FB79A00F74AEE /* CameraDetectObject */,
 				939217AE271D934D008BC4E7 /* DataQRCode */,
 				93C01149271D48D100CDB8B9 /* QRCode */,
@@ -940,6 +949,7 @@
 		936A9D3B2704A4C9006F9F25 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9393CF6F2721435D000DC32E /* Crop */,
 				9365491B27185ED500C84473 /* Check */,
 				93C0112A271D0F8600CDB8B9 /* QRCode */,
 				93D1B08D270DE56B008FCD4B /* ListFont */,
@@ -1001,6 +1011,31 @@
 				939217B2271D93D9008BC4E7 /* QRCodeTextView.swift */,
 			);
 			path = DataQRCode;
+			sourceTree = "<group>";
+		};
+		9393CF662721404A000DC32E /* CropView */ = {
+			isa = PBXGroup;
+			children = (
+				9393CF672721404A000DC32E /* Subviews */,
+				9393CF6A2721404A000DC32E /* CropView.swift */,
+			);
+			path = CropView;
+			sourceTree = "<group>";
+		};
+		9393CF672721404A000DC32E /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				9393CF682721404A000DC32E /* ScrollableAndZoomingImageView.swift */,
+				9393CF692721404A000DC32E /* CropRectView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		9393CF6F2721435D000DC32E /* Crop */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Crop;
 			sourceTree = "<group>";
 		};
 		9396E645270F2EF5002B2E2C /* BackgroundColor */ = {
@@ -1261,6 +1296,9 @@
 			dependencies = (
 			);
 			name = Note;
+			packageProductDependencies = (
+				9393CF6327213F81000DC32E /* PinLayout */,
+			);
 			productName = Note;
 			productReference = 936A9C2127049F1E006F9F25 /* Note.app */;
 			productType = "com.apple.product-type.application";
@@ -1301,6 +1339,9 @@
 				"pt-PT",
 			);
 			mainGroup = 936A9C1827049F1E006F9F25;
+			packageReferences = (
+				9393CF6227213F81000DC32E /* XCRemoteSwiftPackageReference "PinLayout" */,
+			);
 			productRefGroup = 936A9C2227049F1E006F9F25 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1563,12 +1604,15 @@
 				936A9D042704A179006F9F25 /* UISegmentedControlExtensions.swift in Sources */,
 				936A9D3A2704A179006F9F25 /* DateExtension.swift in Sources */,
 				93AC60B42719A76800A1F480 /* ToDoCell.swift in Sources */,
+				9393CF6C2721404A000DC32E /* CropRectView.swift in Sources */,
+				9393CF6D2721404A000DC32E /* CropView.swift in Sources */,
 				936A9D122704A179006F9F25 /* UIButtonExtensions.swift in Sources */,
 				936548D7271811C900C84473 /* CHeckVC.swift in Sources */,
 				936A9D182704A179006F9F25 /* UIDatePickerExtensions.swift in Sources */,
 				936A9C462704A14D006F9F25 /* GetHeightSafeArea.swift in Sources */,
 				936A9CEB2704A179006F9F25 /* ABTimeView.swift in Sources */,
 				93AA99152709AA0C00939D3A /* UITextViewExtension.swift in Sources */,
+				9393CF6B2721404A000DC32E /* ScrollableAndZoomingImageView.swift in Sources */,
 				93B6EFC6270B4ABC0035EF09 /* ListTextVC.swift in Sources */,
 				936A9D312704A179006F9F25 /* UIAllertVC+Extension.swift in Sources */,
 				936A9D212704A179006F9F25 /* UITapgesture+Extension.swift in Sources */,
@@ -1778,6 +1822,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9393CF6227213F81000DC32E /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9393CF6327213F81000DC32E /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9393CF6227213F81000DC32E /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 936A9C1927049F1E006F9F25 /* Project object */;
 }
