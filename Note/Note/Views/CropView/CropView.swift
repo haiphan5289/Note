@@ -71,6 +71,9 @@ class CropView: UIView {
 		self.addSubview(self.leftMaskView)
 		self.addSubview(self.rightMaskView)
 		self.addSubview(self.bottomMaskView)
+        
+        self.backgroundColor = Asset.appBg.color
+        self.scrollableImageView.backgroundColor = Asset.appBg.color
 	}
 	
 	private func setupInteractions() {

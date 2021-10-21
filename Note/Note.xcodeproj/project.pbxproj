@@ -166,6 +166,9 @@
 		9393CF6B2721404A000DC32E /* ScrollableAndZoomingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CF682721404A000DC32E /* ScrollableAndZoomingImageView.swift */; };
 		9393CF6C2721404A000DC32E /* CropRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CF692721404A000DC32E /* CropRectView.swift */; };
 		9393CF6D2721404A000DC32E /* CropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CF6A2721404A000DC32E /* CropView.swift */; };
+		9393CF7327214484000DC32E /* CropVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9393CF7027214484000DC32E /* CropVC.xib */; };
+		9393CF7427214484000DC32E /* CropVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CF7127214484000DC32E /* CropVM.swift */; };
+		9393CF7527214484000DC32E /* CropVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CF7227214484000DC32E /* CropVC.swift */; };
 		9396E647270F2F29002B2E2C /* BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396E646270F2F29002B2E2C /* BackgroundColor.swift */; };
 		9396E64B270F2F36002B2E2C /* BackgroundColor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9396E64A270F2F36002B2E2C /* BackgroundColor.xib */; };
 		9396E64F270F3244002B2E2C /* ViewHeaderDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9396E64E270F3244002B2E2C /* ViewHeaderDialog.xib */; };
@@ -384,6 +387,9 @@
 		9393CF682721404A000DC32E /* ScrollableAndZoomingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableAndZoomingImageView.swift; sourceTree = "<group>"; };
 		9393CF692721404A000DC32E /* CropRectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropRectView.swift; sourceTree = "<group>"; };
 		9393CF6A2721404A000DC32E /* CropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropView.swift; sourceTree = "<group>"; };
+		9393CF7027214484000DC32E /* CropVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CropVC.xib; sourceTree = "<group>"; };
+		9393CF7127214484000DC32E /* CropVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropVM.swift; sourceTree = "<group>"; };
+		9393CF7227214484000DC32E /* CropVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropVC.swift; sourceTree = "<group>"; };
 		9396E646270F2F29002B2E2C /* BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColor.swift; sourceTree = "<group>"; };
 		9396E64A270F2F36002B2E2C /* BackgroundColor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundColor.xib; sourceTree = "<group>"; };
 		9396E64E270F3244002B2E2C /* ViewHeaderDialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewHeaderDialog.xib; sourceTree = "<group>"; };
@@ -949,8 +955,8 @@
 		936A9D3B2704A4C9006F9F25 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				9393CF6F2721435D000DC32E /* Crop */,
 				9365491B27185ED500C84473 /* Check */,
+				9393CF6F2721435D000DC32E /* Crop */,
 				93C0112A271D0F8600CDB8B9 /* QRCode */,
 				93D1B08D270DE56B008FCD4B /* ListFont */,
 				93B6EFC0270B4AA40035EF09 /* ListText */,
@@ -1034,6 +1040,9 @@
 		9393CF6F2721435D000DC32E /* Crop */ = {
 			isa = PBXGroup;
 			children = (
+				9393CF7027214484000DC32E /* CropVC.xib */,
+				9393CF7127214484000DC32E /* CropVM.swift */,
+				9393CF7227214484000DC32E /* CropVC.swift */,
 			);
 			path = Crop;
 			sourceTree = "<group>";
@@ -1357,6 +1366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				932CF9A1270DA10200CB75B2 /* FontCell.xib in Resources */,
+				9393CF7327214484000DC32E /* CropVC.xib in Resources */,
 				936A9CDA2704A179006F9F25 /* StartIndicator.png in Resources */,
 				93B6EFC4270B4ABC0035EF09 /* ListTextVC.xib in Resources */,
 				93AA9904270850DE00939D3A /* NavigationItemView.xib in Resources */,
@@ -1468,6 +1478,7 @@
 				9365491827185E4300C84473 /* CheckListVC.swift in Sources */,
 				936A9D482704A643006F9F25 /* MenuVM.swift in Sources */,
 				93A8496D2715878500E9ABBF /* NavigationItemHome.swift in Sources */,
+				9393CF7427214484000DC32E /* CropVM.swift in Sources */,
 				936A9D352704A179006F9F25 /* StringExtension.swift in Sources */,
 				936A9CE12704A179006F9F25 /* CustomSlider.swift in Sources */,
 				932EFC85271018C30073A9FA /* OptionalMessageDTO.swift in Sources */,
@@ -1554,6 +1565,7 @@
 				93AA99112708539D00939D3A /* TextVC.swift in Sources */,
 				936A9D022704A179006F9F25 /* UIStoryboardExtensions.swift in Sources */,
 				936A9CD32704A179006F9F25 /* PopBaseViewController.swift in Sources */,
+				9393CF7527214484000DC32E /* CropVC.swift in Sources */,
 				936A9D152704A179006F9F25 /* UIRefreshControlExtensions.swift in Sources */,
 				93A849642715370100E9ABBF /* HomeTextCell.swift in Sources */,
 				93C0114B271D48F100CDB8B9 /* QRCodeView.swift in Sources */,

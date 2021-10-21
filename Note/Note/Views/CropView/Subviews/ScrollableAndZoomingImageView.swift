@@ -54,7 +54,7 @@ class ScrollableAndZoomingImageView: UIView {
 	func style() {
 		self.backgroundColor = .white
 	
-		self.scrollView.backgroundColor = .white
+        self.scrollView.backgroundColor = Asset.appBg.color
 	}
 	
 	func update() {

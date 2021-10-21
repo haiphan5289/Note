@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QRCodeVC" customModule="Note" customModuleProvider="target">
             <connections>
+                <outlet property="btCapture" destination="wK9-Ju-Z3i" id="dTA-1a-zY2"/>
                 <outlet property="cameraView" destination="X5S-qb-Als" id="7rm-pi-p0j"/>
                 <outlet property="contentCamereDetectView" destination="haF-Kl-2c7" id="Lqx-3x-w1j"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

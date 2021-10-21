@@ -21,6 +21,7 @@ class QRCodeVC: UIViewController {
     // Add here outlets
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var contentCamereDetectView: UIView!
+    @IBOutlet weak var btCapture: UIButton!
     
     // Add here your view model
     private var viewModel: QRCodeVM = QRCodeVM()
@@ -96,6 +97,11 @@ extension QRCodeVC {
     
     private func setupRX() {
         // Add here the setup for the RX
+        self.btCapture.rx.tap.bind { [weak self] _ in
+            guard let wSelf = self else { return }
+            let vc = CropVC.createVC()
+            wSelf.present(vc, animated: true, completion: nil)
+        }.disposed(by: disposeBag)
     }
     
     private func setupViewQR() {
