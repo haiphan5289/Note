@@ -75,6 +75,17 @@ class CropView: UIView {
         self.backgroundColor = Asset.appBg.color
         self.scrollableImageView.backgroundColor = Asset.appBg.color
 	}
+    
+    func updateValueCropView(rect: CGRect) {
+        print("===== \(rect)")
+        self.leftMargin = rect.origin.x
+        self.topMargin = rect.origin.y
+        let detectRightMargin = self.bounds.width - (rect.origin.x + rect.width)
+        self.rightMargin = detectRightMargin
+        let detectBottomMargin = self.bounds.height - (rect.origin.y + rect.height)
+        self.bottomMargin = detectBottomMargin
+        self.layoutIfNeeded()
+    }
 	
 	private func setupInteractions() {
 		self.scrollableImageView.didZoom = { [unowned self] in

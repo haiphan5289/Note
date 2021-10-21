@@ -100,6 +100,8 @@ extension QRCodeVC {
         self.btCapture.rx.tap.bind { [weak self] _ in
             guard let wSelf = self else { return }
             let vc = CropVC.createVC()
+            vc.imageDocument = wSelf.cameraDetectObjectView.imageCropVC
+            vc.rectCropView = wSelf.cameraDetectObjectView.rectCropView
             wSelf.present(vc, animated: true, completion: nil)
         }.disposed(by: disposeBag)
     }
@@ -189,9 +191,6 @@ extension QRCodeVC {
         self.contentQRCodeView.layer.removeAllAnimations() // resets any previous animations and cancels the fade out
         self.contentQRCodeView.alpha = 1
         self.contentQRCodeView.frame = frame
-//        UIView.animate(withDuration: 1, delay: 1, options: [], animations: { // after 1 second fade away
-//            self.contentQRCodeView.frame = self.frameCenter
-//        })
     }
     
     private func showQRInCenter() {

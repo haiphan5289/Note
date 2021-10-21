@@ -13,6 +13,8 @@ import Vision
 class CameraDetectObject: UIView {
     
     @IBOutlet weak var previewView: UIImageView!
+    var imageCropVC: UIImage?
+    var rectCropView: CGRect?
     
     private let captureSession = AVCaptureSession()
     private lazy var previewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
@@ -118,12 +120,7 @@ extension CameraDetectObject {
                 self.drawBoundingBox(rect: rect)
                 
                 //Handle the button action
-                if self.isTapped{
-                    self.isTapped = false
-                    //Handle image correction and estraxtion
-//                    self.capturedImageView.contentMode = .scaleAspectFit
-//                    self.capturedImageView.image = self.imageExtraction(rect, from: image)
-                }
+                self.imageCropVC = self.imageExtraction(rect, from: image)
             }
         })
         
@@ -157,6 +154,9 @@ extension CameraDetectObject {
         maskLayer.borderWidth = 6.0
         previewLayer.insertSublayer(maskLayer, at: 1)
         
+        self.rectCropView = rect
+        print("==== createLayer \(rect)")
+        
     }
     
     func removeMask() {
@@ -166,21 +166,7 @@ extension CameraDetectObject {
     
     //MARK: Utilities
     func imageExtraction(_ observation: VNRectangleObservation, from buffer: CVImageBuffer) -> UIImage {
-        var ciImage = CIImage(cvImageBuffer: buffer)
-        
-        let topLeft = observation.topLeft.scaled(to: ciImage.extent.size)
-        let topRight = observation.topRight.scaled(to: ciImage.extent.size)
-        let bottomLeft = observation.bottomLeft.scaled(to: ciImage.extent.size)
-        let bottomRight = observation.bottomRight.scaled(to: ciImage.extent.size)
-        
-        // pass filters to extract/rectify the image
-        ciImage = ciImage.applyingFilter("CIPerspectiveCorrection", parameters: [
-            "inputTopLeft": CIVector(cgPoint: topLeft),
-            "inputTopRight": CIVector(cgPoint: topRight),
-            "inputBottomLeft": CIVector(cgPoint: bottomLeft),
-            "inputBottomRight": CIVector(cgPoint: bottomRight),
-        ])
-        
+        let ciImage = CIImage(cvImageBuffer: buffer)
         let context = CIContext()
         let cgImage = context.createCGImage(ciImage, from: ciImage.extent)
         let output = UIImage(cgImage: cgImage!)

@@ -15,7 +15,8 @@ class CropVC: UIViewController {
     
     // Add here outlets
     
-    var imageDocument: UIImage
+    var imageDocument: UIImage?
+    var rectCropView: CGRect?
     
     // Add here your view model
     private var viewModel: CropVM = CropVM()
@@ -26,6 +27,14 @@ class CropVC: UIViewController {
         super.viewDidLoad()
         self.setupUI()
         self.setupRX()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let rect = self.rectCropView {
+            self.cropView.updateValueCropView(rect: rect)
+        }
     }
     
 }
@@ -48,7 +57,6 @@ extension CropVC {
         if let img = self.imageDocument {
             self.cropView.image = img
         }
-        
     }
     
     private func setupInteractions() {
