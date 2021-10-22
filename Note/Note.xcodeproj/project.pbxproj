@@ -181,6 +181,8 @@
 		939A01692722F05D001ED967 /* PhotoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939A01662722F05D001ED967 /* PhotoVC.xib */; };
 		939A016A2722F05D001ED967 /* PhotoVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939A01672722F05D001ED967 /* PhotoVM.swift */; };
 		939A016B2722F05D001ED967 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939A01682722F05D001ED967 /* PhotoVC.swift */; };
+		939A017127230575001ED967 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939A016F27230575001ED967 /* PhotoCell.swift */; };
+		939A017227230575001ED967 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939A017027230575001ED967 /* PhotoCell.xib */; };
 		93A4EA35271AAC3400B0B1E5 /* BaseNavigationOnlyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A4EA34271AAC3300B0B1E5 /* BaseNavigationOnlyHeader.swift */; };
 		93A4EA3A271AB6C000B0B1E5 /* DrawHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A4EA38271AB6C000B0B1E5 /* DrawHomeCell.swift */; };
 		93A4EA3B271AB6C000B0B1E5 /* DrawHomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93A4EA39271AB6C000B0B1E5 /* DrawHomeCell.xib */; };
@@ -409,6 +411,8 @@
 		939A01662722F05D001ED967 /* PhotoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoVC.xib; sourceTree = "<group>"; };
 		939A01672722F05D001ED967 /* PhotoVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVM.swift; sourceTree = "<group>"; };
 		939A01682722F05D001ED967 /* PhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
+		939A016F27230575001ED967 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		939A017027230575001ED967 /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		93A4EA34271AAC3300B0B1E5 /* BaseNavigationOnlyHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationOnlyHeader.swift; sourceTree = "<group>"; };
 		93A4EA38271AB6C000B0B1E5 /* DrawHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawHomeCell.swift; sourceTree = "<group>"; };
 		93A4EA39271AB6C000B0B1E5 /* DrawHomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawHomeCell.xib; sourceTree = "<group>"; };
@@ -1112,6 +1116,15 @@
 			path = Photo;
 			sourceTree = "<group>";
 		};
+		939A016E2723055C001ED967 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				939A016F27230575001ED967 /* PhotoCell.swift */,
+				939A017027230575001ED967 /* PhotoCell.xib */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
 		93A4EA37271AB6A600B0B1E5 /* Draw */ = {
 			isa = PBXGroup;
 			children = (
@@ -1307,6 +1320,7 @@
 		93CD016027149061005C09CE /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				939A016E2723055C001ED967 /* Photo */,
 				93A4EA37271AB6A600B0B1E5 /* Draw */,
 				93AC60B82719C13700A1F480 /* CheckList */,
 				93A84961271536EE00E9ABBF /* Text */,
@@ -1436,6 +1450,7 @@
 				936A9D4E2704A7F0006F9F25 /* AddNote.xib in Resources */,
 				93D1B091270DE58D008FCD4B /* ListFontVC.xib in Resources */,
 				93C0112E271D0FA100CDB8B9 /* QRCodeVC.xib in Resources */,
+				939A017227230575001ED967 /* PhotoCell.xib in Resources */,
 				936A9CEF2704A179006F9F25 /* EmptyView.xib in Resources */,
 				93A4EA3B271AB6C000B0B1E5 /* DrawHomeCell.xib in Resources */,
 				9365491627185E4300C84473 /* CheckListVC.xib in Resources */,
@@ -1666,6 +1681,7 @@
 				936548D7271811C900C84473 /* CHeckVC.swift in Sources */,
 				936A9D182704A179006F9F25 /* UIDatePickerExtensions.swift in Sources */,
 				936A9C462704A14D006F9F25 /* GetHeightSafeArea.swift in Sources */,
+				939A017127230575001ED967 /* PhotoCell.swift in Sources */,
 				936A9CEB2704A179006F9F25 /* ABTimeView.swift in Sources */,
 				93AA99152709AA0C00939D3A /* UITextViewExtension.swift in Sources */,
 				9393CF6B2721404A000DC32E /* ScrollableAndZoomingImageView.swift in Sources */,

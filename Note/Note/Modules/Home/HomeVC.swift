@@ -80,6 +80,8 @@ extension HomeVC {
         self.collectionView.register(HomeTextCell.nib, forCellWithReuseIdentifier: HomeTextCell.identifier)
         self.collectionView.register(CheckListCell.nib, forCellWithReuseIdentifier: CheckListCell.identifier)
         self.collectionView.register(DrawHomeCell.nib, forCellWithReuseIdentifier: DrawHomeCell.identifier)
+        self.collectionView.register(PhotoCell.nib, forCellWithReuseIdentifier: PhotoCell.identifier)
+        
         
         
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -365,6 +367,23 @@ extension HomeVC: UICollectionViewDataSource {
                 cell.img.isHidden = true
             }
             
+            cell.layoutIfNeeded()
+            return cell
+            
+        case .photo:
+            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.identifier, for: indexPath) as? PhotoCell else {
+                fatalError("Don't have Cell")
+            }
+            
+            
+            cell.layoutIfNeeded()
+            cell.updateValue(note: note)
+            cell.imgSelect.isHidden = (self.navigationItemView.actionStatus == .normal) ? true : false
+            
+            let hasSelect = self.selectIndexs.contains(indexPath)
+            let img = (hasSelect) ? Asset.icCheckbox.image : Asset.icUncheck.image
+            cell.imgSelect.image = img
             cell.layoutIfNeeded()
             return cell
             
