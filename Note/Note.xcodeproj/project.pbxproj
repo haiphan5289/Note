@@ -178,6 +178,9 @@
 		9396E652270F3261002B2E2C /* ViewHeaderDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396E651270F3261002B2E2C /* ViewHeaderDialog.swift */; };
 		9396E656270F3B17002B2E2C /* SegmentControlCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396E655270F3B17002B2E2C /* SegmentControlCustom.swift */; };
 		9396E65A270F3B24002B2E2C /* SegmentControlCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9396E659270F3B24002B2E2C /* SegmentControlCustom.xib */; };
+		939A01692722F05D001ED967 /* PhotoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939A01662722F05D001ED967 /* PhotoVC.xib */; };
+		939A016A2722F05D001ED967 /* PhotoVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939A01672722F05D001ED967 /* PhotoVM.swift */; };
+		939A016B2722F05D001ED967 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939A01682722F05D001ED967 /* PhotoVC.swift */; };
 		93A4EA35271AAC3400B0B1E5 /* BaseNavigationOnlyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A4EA34271AAC3300B0B1E5 /* BaseNavigationOnlyHeader.swift */; };
 		93A4EA3A271AB6C000B0B1E5 /* DrawHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A4EA38271AB6C000B0B1E5 /* DrawHomeCell.swift */; };
 		93A4EA3B271AB6C000B0B1E5 /* DrawHomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93A4EA39271AB6C000B0B1E5 /* DrawHomeCell.xib */; };
@@ -403,6 +406,9 @@
 		9396E651270F3261002B2E2C /* ViewHeaderDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHeaderDialog.swift; sourceTree = "<group>"; };
 		9396E655270F3B17002B2E2C /* SegmentControlCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControlCustom.swift; sourceTree = "<group>"; };
 		9396E659270F3B24002B2E2C /* SegmentControlCustom.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentControlCustom.xib; sourceTree = "<group>"; };
+		939A01662722F05D001ED967 /* PhotoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoVC.xib; sourceTree = "<group>"; };
+		939A01672722F05D001ED967 /* PhotoVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVM.swift; sourceTree = "<group>"; };
+		939A01682722F05D001ED967 /* PhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
 		93A4EA34271AAC3300B0B1E5 /* BaseNavigationOnlyHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationOnlyHeader.swift; sourceTree = "<group>"; };
 		93A4EA38271AB6C000B0B1E5 /* DrawHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawHomeCell.swift; sourceTree = "<group>"; };
 		93A4EA39271AB6C000B0B1E5 /* DrawHomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawHomeCell.xib; sourceTree = "<group>"; };
@@ -963,6 +969,7 @@
 		936A9D3B2704A4C9006F9F25 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				939A01652722F048001ED967 /* Photo */,
 				9392ED9C2721A856005B24F4 /* QRCodePage */,
 				9365491B27185ED500C84473 /* Check */,
 				9393CF6F2721435D000DC32E /* Crop */,
@@ -1093,6 +1100,16 @@
 				9396E659270F3B24002B2E2C /* SegmentControlCustom.xib */,
 			);
 			path = SegmentControlCustom;
+			sourceTree = "<group>";
+		};
+		939A01652722F048001ED967 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				939A01662722F05D001ED967 /* PhotoVC.xib */,
+				939A01672722F05D001ED967 /* PhotoVM.swift */,
+				939A01682722F05D001ED967 /* PhotoVC.swift */,
+			);
+			path = Photo;
 			sourceTree = "<group>";
 		};
 		93A4EA37271AB6A600B0B1E5 /* Draw */ = {
@@ -1392,6 +1409,7 @@
 				93AA9904270850DE00939D3A /* NavigationItemView.xib in Resources */,
 				93C0114F271D490B00CDB8B9 /* QRCodeView.xib in Resources */,
 				936A9C3C2704A0DA006F9F25 /* Localizable.strings in Resources */,
+				939A01692722F05D001ED967 /* PhotoVC.xib in Resources */,
 				9396E64F270F3244002B2E2C /* ViewHeaderDialog.xib in Resources */,
 				9396E65A270F3B24002B2E2C /* SegmentControlCustom.xib in Resources */,
 				93A849652715370100E9ABBF /* HomeTextCell.xib in Resources */,
@@ -1546,6 +1564,7 @@
 				936A9CF72704A179006F9F25 /* UITableViewExtensions.swift in Sources */,
 				936A9D252704A179006F9F25 /* ViewControllerExtension.swift in Sources */,
 				932EFD4727101F730073A9FA /* BackgroundColorVM.swift in Sources */,
+				939A016A2722F05D001ED967 /* PhotoVM.swift in Sources */,
 				932EFC84271018C30073A9FA /* APILink.swift in Sources */,
 				932EFC86271018C30073A9FA /* ReadJson.swift in Sources */,
 				93AA9902270850D400939D3A /* NavigationItemView.swift in Sources */,
@@ -1617,6 +1636,7 @@
 				936A9CEE2704A179006F9F25 /* MoreVC.swift in Sources */,
 				936A9CD52704A179006F9F25 /* BaseTabarViewController.swift in Sources */,
 				93AA98F9270811DA00939D3A /* PathDraw.swift in Sources */,
+				939A016B2722F05D001ED967 /* PhotoVC.swift in Sources */,
 				936A9CE92704A179006F9F25 /* ABVideoRangeSlider.swift in Sources */,
 				93A65CD0271438BB00BF08B0 /* RealmModel.swift in Sources */,
 				932EFC74270FE6FA0073A9FA /* BackgroundColorCell.swift in Sources */,

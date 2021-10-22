@@ -35,6 +35,7 @@ class HomeVC: BaseNavigationHome {
     private let eventStatusDropDown: PublishSubject<AddNote.StatusAddNote> = PublishSubject.init()
     private var selectIndexs: [IndexPath] = []
     private var audio: AVAudioPlayer = AVAudioPlayer()
+    private let eventPickerUrl: PublishSubject<UIImage> = PublishSubject.init()
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -200,6 +201,15 @@ extension HomeVC {
             
         }.disposed(by: disposeBag)
         
+        self.eventPickerUrl.asObservable().debounce(.milliseconds(200), scheduler: MainScheduler.asyncInstance)
+            .bind { [weak self] url in
+                guard let wSelf = self else { return }
+                let vc = PhotoVC.createVC()
+                vc.imagePhotoLibrary = url
+                vc.hidePickCOlor()
+                wSelf.navigationController?.pushViewController(vc, animated: true)
+            }.disposed(by: disposeBag)
+        
         self.navigationItemView.$actionStatus.asObservable().bind { [weak self] stt in
             guard let wSelf = self else { return }
             switch stt {
@@ -246,8 +256,14 @@ extension HomeVC {
             self.navigationController?.pushViewController(vc, animated: true)
         default: break
         }
-        
-        
+    }
+    
+    private func presentImagePicker() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.mediaTypes = UIImagePickerController.availableMediaTypes(for:.photoLibrary)!
+        self.present(imagePickerController, animated: true, completion: nil)
     }
     
     private func resetStatus() {
@@ -298,6 +314,8 @@ extension HomeVC: DropDownDelegate {
         case .qrCode:
             let vc = QRCodeVC.createVC()
             self.navigationController?.pushViewController(vc, animated: true)
+        case .photo:
+            self.presentImagePicker()
         default: break
         }
     }
@@ -397,4 +415,19 @@ extension HomeVC: ImageScannerControllerDelegate {
 
     }
 
+}
+extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        defer {
+//             picker.dismiss(animated: true)
+//         }
+         
+         // get the image
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+             return
+         }
+        picker.dismiss(animated: true) {
+            self.eventPickerUrl.onNext(image)
+        }
+    }
 }

@@ -142,6 +142,10 @@ class BaseNavigationHeader: UIViewController {
             self.eventHeightKeyboard.onNext(h)
         }
     }
+    
+    func hidePickCOlor() {
+        self.configStyleView.bts[ConfigStyle.ActionConfig.color.rawValue].isHidden = true
+    }
 }
 extension BaseNavigationHeader: ConfigStyleDelegate {
     func showBackgroundColor() {
