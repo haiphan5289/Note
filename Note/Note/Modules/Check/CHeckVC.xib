@@ -10,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CHeckVC" customModule="Note" customModuleProvider="target">
             <connections>
-                <outlet property="previewView" destination="BdD-sG-vHw" id="rYQ-pl-VEr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,19 +17,8 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BdD-sG-vHw">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                </imageView>
-            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="BdD-sG-vHw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2dv-HK-vfu"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BdD-sG-vHw" secondAttribute="trailing" id="3mM-Xx-VAR"/>
-                <constraint firstItem="BdD-sG-vHw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HOq-ig-A9I"/>
-                <constraint firstAttribute="bottom" secondItem="BdD-sG-vHw" secondAttribute="bottom" id="oNX-Zw-xFQ"/>
-            </constraints>
             <point key="canvasLocation" x="139" y="141"/>
         </view>
     </objects>

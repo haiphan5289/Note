@@ -9,6 +9,8 @@ import UIKit
 import RxSwift
 import Photos
 import Vision
+import Foundation
+import AVFoundation
 
 class CameraDetectObject: UIView {
     
@@ -16,9 +18,18 @@ class CameraDetectObject: UIView {
     var imageCropVC: UIImage?
     var rectCropView: CGRect?
     
-    private let captureSession = AVCaptureSession()
-    private lazy var previewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
-    private let videoDataOutput = AVCaptureVideoDataOutput()
+    private var noRectangleCount = 0
+    
+    /// The minimum number of time required by `noRectangleCount` to validate that no rectangles have been found.
+    private let noRectangleThreshold = 3
+    private let rectangleFunnel = RectangleFeaturesFunnel()
+    private var displayedRectangleResult: RectangleDetectorResult?
+    let quadView = QuadrilateralView()
+    
+    
+    var captureSessionManager: CaptureSessionManager?
+    let videoPreviewLayer = AVCaptureVideoPreviewLayer()
+    var focusRectangle: FocusRectangleView!
     
     private var maskLayer = CAShapeLayer()
     
@@ -41,71 +52,65 @@ extension CameraDetectObject {
     
     private func setupUI() {
         
+        self.backgroundColor = .darkGray
+        self.layer.addSublayer(videoPreviewLayer)
+       
+        quadView.translatesAutoresizingMaskIntoConstraints = false
+        quadView.editable = false
+        self.addSubview(quadView)
+        
+        var quadViewConstraints = [NSLayoutConstraint]()
+        quadViewConstraints = [
+            quadView.topAnchor.constraint(equalTo: self.topAnchor),
+            self.bottomAnchor.constraint(equalTo: quadView.bottomAnchor),
+            self.trailingAnchor.constraint(equalTo: quadView.trailingAnchor),
+            quadView.leadingAnchor.constraint(equalTo: self.leadingAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(quadViewConstraints)
+        
+        captureSessionManager = CaptureSessionManager(videoPreviewLayer: videoPreviewLayer, delegate: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(subjectAreaDidChange), name: Notification.Name.AVCaptureDeviceSubjectAreaDidChange, object: nil)
+    }
+    
+    @objc private func subjectAreaDidChange() {
+        /// Reset the focus and exposure back to automatic
+        do {
+            try CaptureSession.current.resetFocusToAuto()
+        } catch {
+            return
+        }
+        
+        /// Remove the focus rectangle if one exists
+        CaptureSession.current.removeFocusRectangleIfNeeded(focusRectangle, animated: true)
     }
     
     private func setupRX() {
         
     }
     
-    func startStepUp() {
-        self.setCameraInput()
-        self.showCameraFeed()
-        self.setCameraOutput()
-    }
-    
-    func updateFramePreview() {
-        self.previewLayer.frame = self.previewView.bounds
-    }
-    
-    func stopRunning() {
-        self.videoDataOutput.setSampleBufferDelegate(nil, queue: nil)
-        self.captureSession.stopRunning()
-    }
-    
-    func startRunning() {
-        self.videoDataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "camera_frame_processing_queue"))
-        self.captureSession.startRunning()
-    }
-    
-    //MARK: Session initialisation and video output
-    private func setCameraInput() {
-        guard let device = AVCaptureDevice.DiscoverySession(
-            deviceTypes: [.builtInWideAngleCamera, .builtInDualCamera, .builtInTrueDepthCamera],
-            mediaType: .video,
-            position: .back).devices.first else {
-                fatalError("No back camera device found.")
-        }
-        let cameraInput = try! AVCaptureDeviceInput(device: device)
-        self.captureSession.addInput(cameraInput)
-    }
-    
-    private func showCameraFeed() {
-        self.previewLayer.videoGravity = .resizeAspectFill
-        self.previewView.layer.addSublayer(self.previewLayer)
-        self.previewLayer.frame = self.previewView.frame
-    }
-    
-    private func setCameraOutput() {
-        self.videoDataOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(value: kCVPixelFormatType_32BGRA)] as [String : Any]
+    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
         
-        self.videoDataOutput.alwaysDiscardsLateVideoFrames = true
-        self.videoDataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "camera_frame_processing_queue"))
-        self.captureSession.addOutput(self.videoDataOutput)
+        guard  let touch = touches.first else { return }
+        let touchPoint = touch.location(in: self)
+        let convertedTouchPoint: CGPoint = videoPreviewLayer.captureDevicePointConverted(fromLayerPoint: touchPoint)
         
-        guard let connection = self.videoDataOutput.connection(with: AVMediaType.video),
-            connection.isVideoOrientationSupported else { return }
+        CaptureSession.current.removeFocusRectangleIfNeeded(focusRectangle, animated: false)
         
-        connection.videoOrientation = .portrait
-    }
-    
-    //MARK: AVCaptureVideo Delegate
-    func captureOutput(_ output: AVCaptureOutput,didOutput sampleBuffer: CMSampleBuffer,from connection: AVCaptureConnection) {
-        guard let frame = CMSampleBufferGetImageBuffer(sampleBuffer) else {
-            debugPrint("unable to get image from sample buffer")
+        focusRectangle = FocusRectangleView(touchPoint: touchPoint)
+        self.addSubview(focusRectangle)
+        
+        do {
+            try CaptureSession.current.setFocusPointToTapPoint(convertedTouchPoint)
+        } catch {
+            let error = ImageScannerControllerError.inputDevice
+            guard let captureSessionManager = captureSessionManager else { return }
+            captureSessionManager.delegate?.captureSessionManager(captureSessionManager, didFailWithError: error)
             return
         }
-        self.detectRectangle(in: frame)
     }
+    
     
     //MARK: rectangle Detection
     private func detectRectangle(in image: CVPixelBuffer) {
@@ -137,25 +142,25 @@ extension CameraDetectObject {
     
     //MARK: drawing Bounding Box
     func drawBoundingBox(rect : VNRectangleObservation) {
-        let transform = CGAffineTransform(scaleX: 1, y: -1).translatedBy(x: 0, y: -self.previewLayer.bounds.height)
-        let scale = CGAffineTransform.identity.scaledBy(x: self.previewLayer.bounds.width, y: self.previewLayer.bounds.height)
-        
-        let bounds = rect.boundingBox.applying(scale).applying(transform)
-        
-        createLayer(in: bounds)
+//        let transform = CGAffineTransform(scaleX: 1, y: -1).translatedBy(x: 0, y: -self.previewLayer.bounds.height)
+//        let scale = CGAffineTransform.identity.scaledBy(x: self.previewLayer.bounds.width, y: self.previewLayer.bounds.height)
+//
+//        let bounds = rect.boundingBox.applying(scale).applying(transform)
+//
+//        createLayer(in: bounds)
     }
     
     private func createLayer(in rect: CGRect) {
-        maskLayer = CAShapeLayer()
-        maskLayer.frame = rect
-        maskLayer.cornerRadius = 10
-        maskLayer.opacity = 1
-        maskLayer.borderColor = UIColor.systemBlue.cgColor
-        maskLayer.borderWidth = 6.0
-        previewLayer.insertSublayer(maskLayer, at: 1)
-        
-        self.rectCropView = rect
-        print("==== createLayer \(rect)")
+//        maskLayer = CAShapeLayer()
+//        maskLayer.frame = rect
+//        maskLayer.cornerRadius = 10
+//        maskLayer.opacity = 1
+//        maskLayer.borderColor = UIColor.systemBlue.cgColor
+//        maskLayer.borderWidth = 6.0
+//        previewLayer.insertSublayer(maskLayer, at: 1)
+//        
+//        self.rectCropView = rect
+//        print("==== createLayer \(rect)")
         
     }
     
@@ -176,111 +181,56 @@ extension CameraDetectObject {
     }
     
 }
-extension CameraDetectObject: AVCaptureVideoDataOutputSampleBufferDelegate {
+
+extension CameraDetectObject: RectangleDetectionDelegateProtocol {
+    func captureSessionManager(_ captureSessionManager: CaptureSessionManager, didFailWithError error: Error) {
+        
+//        activityIndicator.stopAnimating()
+//        shutterButton.isUserInteractionEnabled = true
+//
+//        guard let imageScannerController = navigationController as? ImageScannerController else { return }
+//        imageScannerController.imageScannerDelegate?.imageScannerController(imageScannerController, didFailWithError: error)
+    }
     
-//    //MARK: AVCaptureVideo Delegate
-//    func captureOutput(_ output: AVCaptureOutput,didOutput sampleBuffer: CMSampleBuffer,from connection: AVCaptureConnection) {
-//        guard let frame = CMSampleBufferGetImageBuffer(sampleBuffer) else {
-//            debugPrint("unable to get image from sample buffer")
-//            return
-//        }
-//        self.detectRectangle(in: frame)
-//    }
-//
-//    //MARK: rectangle Detection
-//    private func detectRectangle(in image: CVPixelBuffer) {
-//        //removeMask()
-//        let request = VNDetectRectanglesRequest(completionHandler: { (request: VNRequest, error: Error?) in
-//            DispatchQueue.main.async {
-//
-//                guard let results = request.results as? [VNRectangleObservation] else { return }
-//                self.removeMask()
-//
-//                guard let rect = results.first else{return}
-//                self.drawBoundingBox(rect: rect)
-//
-//                //Handle the button action
-//                if self.isTapped{
-//                    self.isTapped = false
-//                    //Handle image correction and estraxtion
-////                    self.capturedImageView.contentMode = .scaleAspectFit
-////                    self.capturedImageView.image = self.imageExtraction(rect, from: image)
-//                }
-//            }
-//        })
-//
-//        //Set the value for the detected rectangle
-//        request.minimumAspectRatio = VNAspectRatio(0.3)
-//        request.maximumAspectRatio = VNAspectRatio(0.9)
-//        request.minimumSize = Float(0.3)
-//        request.maximumObservations = 1
-//
-//
-//        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: image, options: [:])
-//        try? imageRequestHandler.perform([request])
-//    }
-//
-//    //MARK: drawing Bounding Box
-//    func drawBoundingBox(rect : VNRectangleObservation) {
-//        let transform = CGAffineTransform(scaleX: 1, y: -1).translatedBy(x: 0, y: -self.previewLayer.bounds.height)
-//        let scale = CGAffineTransform.identity.scaledBy(x: self.previewLayer.bounds.width, y: self.previewLayer.bounds.height)
-//
-//        let bounds = rect.boundingBox.applying(scale).applying(transform)
-//
-//        createLayer(in: bounds)
-//    }
-//
-//    private func createLayer(in rect: CGRect) {
-//        maskLayer = CAShapeLayer()
-//        maskLayer.frame = rect
-//        maskLayer.cornerRadius = 10
-//        maskLayer.opacity = 1
-//        maskLayer.borderColor = UIColor.systemBlue.cgColor
-//        maskLayer.borderWidth = 6.0
-//        previewLayer.insertSublayer(maskLayer, at: 1)
-//
-//    }
-//
-//    func removeMask() {
-//        maskLayer.removeFromSuperlayer()
-//    }
-//
-////    //MARK: Handle photo Button
-////    @IBAction func didTakePhoto(_ sender: UIButton) {
-////        self.isTapped = true
-////    }
-//
-//    //MARK: Utilities
-//    func imageExtraction(_ observation: VNRectangleObservation, from buffer: CVImageBuffer) -> UIImage {
-//        var ciImage = CIImage(cvImageBuffer: buffer)
-//
-//        let topLeft = observation.topLeft.scaled(to: ciImage.extent.size)
-//        let topRight = observation.topRight.scaled(to: ciImage.extent.size)
-//        let bottomLeft = observation.bottomLeft.scaled(to: ciImage.extent.size)
-//        let bottomRight = observation.bottomRight.scaled(to: ciImage.extent.size)
-//
-//        // pass filters to extract/rectify the image
-//        ciImage = ciImage.applyingFilter("CIPerspectiveCorrection", parameters: [
-//            "inputTopLeft": CIVector(cgPoint: topLeft),
-//            "inputTopRight": CIVector(cgPoint: topRight),
-//            "inputBottomLeft": CIVector(cgPoint: bottomLeft),
-//            "inputBottomRight": CIVector(cgPoint: bottomRight),
-//        ])
-//
-//        let context = CIContext()
-//        let cgImage = context.createCGImage(ciImage, from: ciImage.extent)
-//        let output = UIImage(cgImage: cgImage!)
-//
-//        //return image
-//        return output
-//    }
+    func didStartCapturingPicture(for captureSessionManager: CaptureSessionManager) {
+//        activityIndicator.startAnimating()
+//        captureSessionManager.stop()
+//        shutterButton.isUserInteractionEnabled = false
+    }
     
+    func captureSessionManager(_ captureSessionManager: CaptureSessionManager, didCapturePicture picture: UIImage, withQuad quad: Quadrilateral?) {
+//        activityIndicator.stopAnimating()
+//        
+//        let editVC = EditScanViewController(image: picture, quad: quad)
+//        navigationController?.pushViewController(editVC, animated: false)
+//        
+//        shutterButton.isUserInteractionEnabled = true
+    }
+    
+    func captureSessionManager(_ captureSessionManager: CaptureSessionManager, didDetectQuad quad: Quadrilateral?, _ imageSize: CGSize) {
+        guard let quad = quad else {
+            // If no quad has been detected, we remove the currently displayed on on the quadView.
+            quadView.removeQuadrilateral()
+            return
+        }
+        
+        let portraitImageSize = CGSize(width: imageSize.height, height: imageSize.width)
+        
+        let scaleTransform = CGAffineTransform.scaleTransform(forSize: portraitImageSize, aspectFillInSize: quadView.bounds.size)
+        let scaledImageSize = imageSize.applying(scaleTransform)
+        
+        let rotationTransform = CGAffineTransform(rotationAngle: CGFloat.pi / 2.0)
+
+        let imageBounds = CGRect(origin: .zero, size: scaledImageSize).applying(rotationTransform)
+
+        let translationTransform = CGAffineTransform.translateTransform(fromCenterOfRect: imageBounds, toCenterOfRect: quadView.bounds)
+        
+        let transforms = [scaleTransform, rotationTransform, translationTransform]
+        
+        let transformedQuad = quad.applyTransforms(transforms)
+        
+        quadView.drawQuadrilateral(quad: transformedQuad, animated: true)
+    }
     
 }
 
-extension CGPoint {
-    func scaled(to size: CGSize) -> CGPoint {
-        return CGPoint(x: self.x * size.width,
-                       y: self.y * size.height)
-    }
-}

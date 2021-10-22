@@ -77,7 +77,6 @@ class CropView: UIView {
 	}
     
     func updateValueCropView(rect: CGRect) {
-        print("===== \(rect)")
         self.leftMargin = rect.origin.x
         self.topMargin = rect.origin.y
         let detectRightMargin = self.bounds.width - (rect.origin.x + rect.width)

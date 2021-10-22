@@ -52,22 +52,22 @@ class QRCodeVC: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
         self.setupViewQR()
+        self.cameraDetectObjectView.quadView.removeQuadrilateral()
+        self.cameraDetectObjectView.captureSessionManager?.start()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.cameraDetectObjectView.startRunning()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.cameraDetectObjectView.updateFramePreview()
+        self.cameraDetectObjectView.videoPreviewLayer.frame = view.layer.bounds
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.stopCapture()
-        self.cameraDetectObjectView.stopRunning()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -92,7 +92,7 @@ extension QRCodeVC {
         self.cameraDetectObjectView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        self.cameraDetectObjectView.startStepUp()
+//        self.cameraDetectObjectView.startStepUp()
     }
     
     private func setupRX() {

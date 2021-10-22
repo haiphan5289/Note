@@ -162,6 +162,9 @@
 		939130C52720502800A17AA4 /* CameraDetectObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939130C42720502800A17AA4 /* CameraDetectObject.swift */; };
 		939217B0271D93CD008BC4E7 /* QRCodeTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939217AF271D93CD008BC4E7 /* QRCodeTextView.xib */; };
 		939217B3271D93D9008BC4E7 /* QRCodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939217B2271D93D9008BC4E7 /* QRCodeTextView.swift */; };
+		9392EDA02721A878005B24F4 /* QRCodePageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392ED9D2721A878005B24F4 /* QRCodePageVM.swift */; };
+		9392EDA12721A878005B24F4 /* QRCodePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392ED9E2721A878005B24F4 /* QRCodePageVC.swift */; };
+		9392EDA22721A878005B24F4 /* QRCodePageVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9392ED9F2721A878005B24F4 /* QRCodePageVC.storyboard */; };
 		9393CF6427213F81000DC32E /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9393CF6327213F81000DC32E /* PinLayout */; };
 		9393CF6B2721404A000DC32E /* ScrollableAndZoomingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CF682721404A000DC32E /* ScrollableAndZoomingImageView.swift */; };
 		9393CF6C2721404A000DC32E /* CropRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CF692721404A000DC32E /* CropRectView.swift */; };
@@ -209,6 +212,7 @@
 		93B6EFC6270B4ABC0035EF09 /* ListTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */; };
 		93B6EFC9270B56300035EF09 /* ListFont.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B6EFC8270B56300035EF09 /* ListFont.xib */; };
 		93B6EFCB270B56430035EF09 /* ListFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFCA270B56430035EF09 /* ListFont.swift */; };
+		93B9D3ED2722ADB0003220BF /* CameraDetect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B9D3EC2722ADB0003220BF /* CameraDetect.swift */; };
 		93BA0C48271C0C4200B9E121 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93BA0C47271C0C4200B9E121 /* GoogleService-Info.plist */; };
 		93C0112E271D0FA100CDB8B9 /* QRCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C0112B271D0FA100CDB8B9 /* QRCodeVC.xib */; };
 		93C0112F271D0FA100CDB8B9 /* QRCodeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C0112C271D0FA100CDB8B9 /* QRCodeVM.swift */; };
@@ -384,6 +388,9 @@
 		939130C42720502800A17AA4 /* CameraDetectObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDetectObject.swift; sourceTree = "<group>"; };
 		939217AF271D93CD008BC4E7 /* QRCodeTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeTextView.xib; sourceTree = "<group>"; };
 		939217B2271D93D9008BC4E7 /* QRCodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeTextView.swift; sourceTree = "<group>"; };
+		9392ED9D2721A878005B24F4 /* QRCodePageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodePageVM.swift; sourceTree = "<group>"; };
+		9392ED9E2721A878005B24F4 /* QRCodePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodePageVC.swift; sourceTree = "<group>"; };
+		9392ED9F2721A878005B24F4 /* QRCodePageVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCodePageVC.storyboard; sourceTree = "<group>"; };
 		9393CF682721404A000DC32E /* ScrollableAndZoomingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableAndZoomingImageView.swift; sourceTree = "<group>"; };
 		9393CF692721404A000DC32E /* CropRectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropRectView.swift; sourceTree = "<group>"; };
 		9393CF6A2721404A000DC32E /* CropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropView.swift; sourceTree = "<group>"; };
@@ -430,6 +437,7 @@
 		93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTextVC.swift; sourceTree = "<group>"; };
 		93B6EFC8270B56300035EF09 /* ListFont.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListFont.xib; sourceTree = "<group>"; };
 		93B6EFCA270B56430035EF09 /* ListFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFont.swift; sourceTree = "<group>"; };
+		93B9D3EC2722ADB0003220BF /* CameraDetect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDetect.swift; sourceTree = "<group>"; };
 		93BA0C47271C0C4200B9E121 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		93C0112B271D0FA100CDB8B9 /* QRCodeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeVC.xib; sourceTree = "<group>"; };
 		93C0112C271D0FA100CDB8B9 /* QRCodeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeVM.swift; sourceTree = "<group>"; };
@@ -955,6 +963,7 @@
 		936A9D3B2704A4C9006F9F25 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9392ED9C2721A856005B24F4 /* QRCodePage */,
 				9365491B27185ED500C84473 /* Check */,
 				9393CF6F2721435D000DC32E /* Crop */,
 				93C0112A271D0F8600CDB8B9 /* QRCode */,
@@ -1017,6 +1026,16 @@
 				939217B2271D93D9008BC4E7 /* QRCodeTextView.swift */,
 			);
 			path = DataQRCode;
+			sourceTree = "<group>";
+		};
+		9392ED9C2721A856005B24F4 /* QRCodePage */ = {
+			isa = PBXGroup;
+			children = (
+				9392ED9D2721A878005B24F4 /* QRCodePageVM.swift */,
+				9392ED9E2721A878005B24F4 /* QRCodePageVC.swift */,
+				9392ED9F2721A878005B24F4 /* QRCodePageVC.storyboard */,
+			);
+			path = QRCodePage;
 			sourceTree = "<group>";
 		};
 		9393CF662721404A000DC32E /* CropView */ = {
@@ -1107,6 +1126,7 @@
 			children = (
 				939130C12720501400A17AA4 /* CameraDetectObject.xib */,
 				939130C42720502800A17AA4 /* CameraDetectObject.swift */,
+				93B9D3EC2722ADB0003220BF /* CameraDetect.swift */,
 			);
 			path = CameraDetectObject;
 			sourceTree = "<group>";
@@ -1383,6 +1403,7 @@
 				936A9C2C27049F1E006F9F25 /* Main.storyboard in Resources */,
 				936A9C392704A09C006F9F25 /* swiftgen.yml in Resources */,
 				936A9CDC2704A179006F9F25 /* ProgressIndicator.png in Resources */,
+				9392EDA22721A878005B24F4 /* QRCodePageVC.storyboard in Resources */,
 				93AA991F2709D2E200939D3A /* ConfigText.xib in Resources */,
 				936A9CF42704A179006F9F25 /* ExportFile.xib in Resources */,
 				93AA990F2708539D00939D3A /* TextVC.xib in Resources */,
@@ -1549,6 +1570,7 @@
 				93A84969271576AE00E9ABBF /* BaseNavigationHome.swift in Sources */,
 				932CF99B270DA0F100CB75B2 /* FontSize.swift in Sources */,
 				936A9D062704A179006F9F25 /* UINavigationBarExtensions.swift in Sources */,
+				9392EDA02721A878005B24F4 /* QRCodePageVM.swift in Sources */,
 				936A9D072704A179006F9F25 /* UIActivityExtensions.swift in Sources */,
 				936A9D142704A179006F9F25 /* UIImageViewExtensions.swift in Sources */,
 				936A9D2A2704A179006F9F25 /* CustomSegment.swift in Sources */,
@@ -1564,6 +1586,7 @@
 				936A9D102704A179006F9F25 /* UILabelExtensions.swift in Sources */,
 				93AA99112708539D00939D3A /* TextVC.swift in Sources */,
 				936A9D022704A179006F9F25 /* UIStoryboardExtensions.swift in Sources */,
+				9392EDA12721A878005B24F4 /* QRCodePageVC.swift in Sources */,
 				936A9CD32704A179006F9F25 /* PopBaseViewController.swift in Sources */,
 				9393CF7527214484000DC32E /* CropVC.swift in Sources */,
 				936A9D152704A179006F9F25 /* UIRefreshControlExtensions.swift in Sources */,
@@ -1581,6 +1604,7 @@
 				936A9D2F2704A179006F9F25 /* PropertyWapper.swift in Sources */,
 				936A9CE32704A179006F9F25 /* CustomTabbarView.swift in Sources */,
 				936A9CFB2704A179006F9F25 /* UINavigationItemExtensions.swift in Sources */,
+				93B9D3ED2722ADB0003220BF /* CameraDetect.swift in Sources */,
 				936A9CD22704A179006F9F25 /* Message.swift in Sources */,
 				93B6EFC5270B4ABC0035EF09 /* ListTextVM.swift in Sources */,
 				936A9D2D2704A179006F9F25 /* UITextField_Extension.swift in Sources */,

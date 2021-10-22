@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Code PageVC-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="QRCodePageVC" id="Y6W-OH-hqX" customClass="QRCodePageVC" customModule="Note" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fF9-dy-Yze">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <connections>
+                                    <segue destination="xJc-9y-pcm" kind="embed" id="8LV-D7-7ci"/>
+                                </connections>
+                            </containerView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tgs-VM-D6F">
+                                <rect key="frame" x="177" y="792" width="60" height="60"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IHe-CY-qk9">
+                                        <rect key="frame" x="5" y="5" width="50" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oE2-kn-gKl">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="ColorApp"/>
+                                <constraints>
+                                    <constraint firstItem="oE2-kn-gKl" firstAttribute="top" secondItem="Tgs-VM-D6F" secondAttribute="top" id="8Ln-me-M6p"/>
+                                    <constraint firstItem="IHe-CY-qk9" firstAttribute="top" secondItem="Tgs-VM-D6F" secondAttribute="top" constant="5" id="GGN-ad-3fo"/>
+                                    <constraint firstAttribute="width" constant="60" id="GI0-bs-Y6q"/>
+                                    <constraint firstAttribute="bottom" secondItem="oE2-kn-gKl" secondAttribute="bottom" id="Pbi-DY-If5"/>
+                                    <constraint firstAttribute="trailing" secondItem="oE2-kn-gKl" secondAttribute="trailing" id="Spf-j1-rTu"/>
+                                    <constraint firstItem="IHe-CY-qk9" firstAttribute="leading" secondItem="Tgs-VM-D6F" secondAttribute="leading" constant="5" id="TLh-jj-QOV"/>
+                                    <constraint firstItem="oE2-kn-gKl" firstAttribute="leading" secondItem="Tgs-VM-D6F" secondAttribute="leading" id="UMt-g2-uSa"/>
+                                    <constraint firstAttribute="bottom" secondItem="IHe-CY-qk9" secondAttribute="bottom" constant="5" id="kS7-o5-rLX"/>
+                                    <constraint firstAttribute="trailing" secondItem="IHe-CY-qk9" secondAttribute="trailing" constant="5" id="oRS-YF-OLg"/>
+                                    <constraint firstAttribute="height" constant="60" id="sqj-Z7-MFb"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="AppBg"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="fF9-dy-Yze" secondAttribute="trailing" id="76P-I2-YiC"/>
+                            <constraint firstAttribute="bottom" secondItem="fF9-dy-Yze" secondAttribute="bottom" id="QTH-JR-Atq"/>
+                            <constraint firstItem="Tgs-VM-D6F" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="l2A-pM-qeG"/>
+                            <constraint firstItem="fF9-dy-Yze" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="pZh-wa-e0j"/>
+                            <constraint firstItem="fF9-dy-Yze" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="w1w-sE-m9y"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Tgs-VM-D6F" secondAttribute="bottom" constant="10" id="xLo-kZ-vWO"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="126"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="xnL-Tf-VMS">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="xJc-9y-pcm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UEB-i6-vIh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="892" y="121"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="AppBg">
+            <color red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ColorApp">
+            <color red="0.57400000095367432" green="0.56599998474121094" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
