@@ -14,12 +14,16 @@ import RxSwift
 class PhotoVC: BaseNavigationHeader {
     
     // Add here outlets
+    var noteModel: NoteModel?
     var imagePhotoLibrary: UIImage?
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
     // Add here your view model
     private var viewModel: PhotoVM = PhotoVM()
+    
+    private var previousFont: UIFont?
+    private var bgColorModel: BgColorModel = BgColorModel.empty
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -42,22 +46,18 @@ extension PhotoVC {
         textView.layer.cornerRadius = ConstantApp.shared.radiusViewDialog
         textView.centerVertically()
         textView.becomeFirstResponder()
-//        previousFont = textView.font
-//        self.eventUpdateFontStyleView.accept(textView.font ?? ConstantApp.shared.fontDefault)
-//        self.setupImageBg()
-//        
-//        self.textColor = textView.textColor ?? Asset.colorApp.color
-//        
-//        if let note = self.noteModel {
-//            self.updateValueNote(note: note)
-//        } else {
-//            self.bgColorModel = BgColorModel.empty
-//        }
-//        
-//        if let t = self.self.textQRCode {
-//            self.textView.text = t
-//        }
+        previousFont = textView.font
+        self.eventUpdateFontStyleView.accept(textView.font ?? ConstantApp.shared.fontDefault)
         
+        self.textColor = textView.textColor ?? Asset.colorApp.color
+        
+        if let note = self.noteModel {
+            self.updateValueNote(note: note)
+        } else {
+            self.bgColorModel = BgColorModel.empty
+        }
+        
+        self.imageView.contentMode = .scaleToFill
         self.imageView.clipsToBounds = true
         self.imageView.layer.cornerRadius = ConstantApp.shared.radiusViewDialog
        
@@ -68,24 +68,71 @@ extension PhotoVC {
     
     private func setupRX() {
         // Add here the setup for the RX
+        //This is reason that use delay because Text will jump to top
+        self.eventFont.asObservable()
+            .delay(.milliseconds(200), scheduler: MainScheduler.asyncInstance)
+            .bind { [weak self] status in
+            guard let wSelf = self else { return }
+            switch status {
+            case .update(let fontName, let size):
+                wSelf.textView.font = UIFont(name: fontName, size: size)
+            case .cancel:
+                if let f = wSelf.previousFont {
+                    wSelf.textView.font = f
+                }
+                wSelf.textView.textColor = wSelf.textColor
+            case .done(let fontName, let size, let indexFont, let indexStyle):
+                let font = UIFont(name: fontName, size: size) ?? UIFont.mySystemFont(ofSize: 16)
+                wSelf.textView.font = font
+                wSelf.previousFont = font
+                wSelf.bgColorModel.sizeFont = size
+                wSelf.bgColorModel.textFont = fontName
+                wSelf.bgColorModel.indexFont = indexFont
+                wSelf.bgColorModel.indexFontStyle = indexStyle
+                wSelf.eventUpdateFontStyleView.accept(font)
+            }
+            wSelf.textView.centerVertically()
+        }.disposed(by: disposeBag)
+        
+        self.$eventPickColor.asObservable().bind { [weak self] color in
+            guard let wSelf = self else { return }
+            wSelf.textView.textColor = color
+        }.disposed(by: disposeBag)
+        
+        self.eventSaveTextColor
+            .withLatestFrom(self.$eventPickColor, resultSelector:  { ( type: $0, textColor: $1 ) } )
+            .bind { [weak self] (type , textColor) in
+                guard let wSelf = self else { return }
+                
+                switch type {
+                case .cancel:
+                    wSelf.textView.textColor = wSelf.textColor
+                case .done:
+                    wSelf.textView.textColor = textColor
+                    wSelf.textColor = textColor
+                    wSelf.bgColorModel.textColorString = textColor.hexString
+                }
+                
+            }.disposed(by: disposeBag)
+        
         self.navigationItemView.actionItem = { [weak self] type in
             guard let wSelf = self else { return }
             switch type {
             case .close: wSelf.navigationController?.popViewController(animated: true)
                 
-            case .done: break
-//                wSelf.navigationController?.popViewController(animated: true, {
-//                    let noteModel: NoteModel
-//                    let noteDraw = NoteDrawModel(data: wSelf.canvasView.drawing.dataRepresentation(), imageData: wSelf.converToImage())
-//                    if let note = wSelf.noteModel {
-//                        noteModel = NoteModel(noteType: .draw, text: nil, id: note.id, bgColorModel: nil,
-//                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: noteDraw)
-//                    } else {
-//                        noteModel = NoteModel(noteType: .draw, text: nil, id: Date.convertDateToLocalTime(), bgColorModel: nil,
-//                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: noteDraw)
-//                    }
-//                    RealmManager.shared.updateOrInsertConfig(model: noteModel)
-//                })
+            case .done: 
+                wSelf.navigationController?.popViewController(animated: true, {
+                    let noteModel: NoteModel
+                    let notePhoto = NotePhotoModel(imgData: wSelf.imageView.image?.pngData(), text: wSelf.textView.text)
+                    if let note = wSelf.noteModel {
+                        noteModel = NoteModel(noteType: .photo, text: nil, id: note.id, bgColorModel: nil,
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: notePhoto)
+                    } else {
+                        noteModel = NoteModel(noteType: .photo, text: nil, id: Date.convertDateToLocalTime(), bgColorModel: nil,
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: notePhoto)
+                    }
+                    RealmManager.shared.updateOrInsertConfig(model: noteModel)
+                })
         
             default: break
             }
@@ -125,6 +172,24 @@ extension PhotoVC {
             }
             
         }.disposed(by: disposeBag)
+    }
+    
+    private func updateValueNote(note: NoteModel) {
+        
+        if let bgColorModel = note.bgColorModel {
+            self.textView.font = bgColorModel.getFont()
+            self.previousFont = bgColorModel.getFont()
+            self.eventUpdateFontStyleView.accept(bgColorModel.getFont() ?? ConstantApp.shared.fontDefault)
+        }
+        
+        if let bgColorModel = note.bgColorModel, let textColor = bgColorModel.textColorString {
+            self.textView.textColor = UIColor(hexString: textColor)
+            self.textColor = UIColor(hexString: textColor) ?? Asset.textColorApp.color
+        }
+        
+        self.bgColorModel = note.bgColorModel ?? BgColorModel.empty
+        self.textView.text = note.text
+        self.noteModelBase = note
     }
     
     private func textViewHideKeyboard() {

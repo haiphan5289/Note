@@ -84,10 +84,10 @@ extension DrawVC {
                     let noteDraw = NoteDrawModel(data: wSelf.canvasView.drawing.dataRepresentation(), imageData: wSelf.converToImage())
                     if let note = wSelf.noteModel {
                         noteModel = NoteModel(noteType: .draw, text: nil, id: note.id, bgColorModel: nil,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: noteDraw)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: noteDraw, notePhotoModel: nil)
                     } else {
                         noteModel = NoteModel(noteType: .draw, text: nil, id: Date.convertDateToLocalTime(), bgColorModel: nil,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: noteDraw)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: noteDraw, notePhotoModel: nil)
                     }
                     RealmManager.shared.updateOrInsertConfig(model: noteModel)
                 })

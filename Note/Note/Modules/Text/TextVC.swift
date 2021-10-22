@@ -59,7 +59,7 @@ extension TextVC {
             self.bgColorModel = BgColorModel.empty
         }
         
-        if let t = self.self.textQRCode {
+        if let t = self.textQRCode {
             self.textView.text = t
         }
     }
@@ -126,10 +126,10 @@ extension TextVC {
                     let noteModel: NoteModel
                     if let note = wSelf.noteModel {
                         noteModel = NoteModel(noteType: .text, text: wSelf.textView.text, id: note.id, bgColorModel: wSelf.bgColorModel,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: nil)
                     } else {
                         noteModel = NoteModel(noteType: .text, text: wSelf.textView.text, id: Date.convertDateToLocalTime(), bgColorModel: wSelf.bgColorModel,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: nil)
                     }
                     RealmManager.shared.updateOrInsertConfig(model: noteModel)
                 })
