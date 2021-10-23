@@ -132,7 +132,12 @@ class CheckListCell: UICollectionViewCell {
             NoteManage.shared.removeCAGradientLayer(view: self.contentView)
             self.contentView.backgroundColor = .clear
             self.imgBg.isHidden = true
-            self.contentView.applyGradient(withColours: list.map { $0.covertToColor() }.compactMap{ $0 }, gradientOrientation: .vertical)
+            
+            //Push it to Concurrent to Update UI corectly
+            DispatchQueue.main.async {
+                self.contentView.applyGradient(withColours: list.map { $0.covertToColor() }.compactMap{ $0 }, gradientOrientation: .vertical)
+            }
+            
         case .colors(let color):
             NoteManage.shared.removeCAGradientLayer(view: self.contentView)
             if let color = color {

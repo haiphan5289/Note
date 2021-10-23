@@ -79,7 +79,10 @@ class HomeTextCell: UICollectionViewCell {
             NoteManage.shared.removeCAGradientLayer(view: self.textView)
             self.textView.backgroundColor = .clear
             self.imgBg.isHidden = true
-            self.textView.applyGradient(withColours: list.map { $0.covertToColor() }.compactMap{ $0 }, gradientOrientation: .vertical)
+            //Push it to Concurrent to Update UI corectly
+            DispatchQueue.main.async {
+                self.textView.applyGradient(withColours: list.map { $0.covertToColor() }.compactMap{ $0 }, gradientOrientation: .vertical)
+            }
         case .colors(let color):
             NoteManage.shared.removeCAGradientLayer(view: self.textView)
             if let color = color {

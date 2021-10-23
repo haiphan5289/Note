@@ -122,4 +122,10 @@ extension NavigationItemHome {
         Action.statusSelectAll = .deSelectAll
     }
     
+    func enableButtonMoreAction() {
+        self.bts[Action.moreAction.rawValue].isSelected = false
+        self.bts[Action.moreAction.rawValue].setImage(Asset.icMoreAction.image, for: .normal)
+        self.delegate?.hideDropdown()
+    }
+    
 }

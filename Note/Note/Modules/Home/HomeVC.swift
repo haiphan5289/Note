@@ -20,7 +20,9 @@ class HomeVC: BaseNavigationHome {
         static let heightAddNoteView: CGFloat = 50
         static let totalBesidesArea: CGFloat = 75
         static let contraintBottomDropDownView: CGFloat = 10
-        static let numberOfCellinLine: CGFloat = 3
+        static let numberOfCellisTwo: CGFloat = 2
+        static let numberOfCellisThree: CGFloat = 3
+        static let numberOfCellisFour: CGFloat = 4
         static let spacingCell: CGFloat = 5
     }
     
@@ -36,6 +38,7 @@ class HomeVC: BaseNavigationHome {
     private var selectIndexs: [IndexPath] = []
     private var audio: AVAudioPlayer = AVAudioPlayer()
     private let eventPickerUrl: PublishSubject<UIImage> = PublishSubject.init()
+    private var sizeCell: CGSize = .zero
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -221,6 +224,12 @@ extension HomeVC {
             }
         }.disposed(by: disposeBag)
         
+        Observable.merge(Observable.just(AppSettings.numberOfCellHome), self.eventNumberOfCell.asObservable())
+            .bind { [weak self] status in
+            guard let wSelf = self else { return }
+            wSelf.calculateSizeCell(numberOfCell: status)
+        }.disposed(by: disposeBag)
+
     }
     
     private func addOrRemoveNote(idx: IndexPath) {
@@ -276,9 +285,22 @@ extension HomeVC {
     }
     
     
-    private func calculateSizeCell() -> CGSize {
-        let w = (self.collectionView.bounds.size.width / Constant.numberOfCellinLine) - Constant.spacingCell
-        return CGSize(width: w, height: w)
+    private func calculateSizeCell(numberOfCell: DropdownActionView.ViewsStatus) {
+        
+        switch numberOfCell {
+        case .three:
+            let w = (self.collectionView.bounds.size.width / Constant.numberOfCellisThree) - Constant.spacingCell
+            self.sizeCell = CGSize(width: w, height: w)
+        case .two:
+            let w = (self.collectionView.bounds.size.width / Constant.numberOfCellisTwo) - Constant.spacingCell
+            self.sizeCell = CGSize(width: w, height: w)
+        case .four:
+            let w = (self.collectionView.bounds.size.width / Constant.numberOfCellisFour) - Constant.spacingCell
+            self.sizeCell = CGSize(width: w, height: w)
+        }
+        
+        AppSettings.numberOfCellHome = numberOfCell
+        self.collectionView.reloadData()
     }
     
     private func playAudio() {
@@ -337,7 +359,7 @@ extension HomeVC: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CheckListCell.identifier, for: indexPath) as? CheckListCell else {
                 fatalError("Don't have Cell")
             }
-            
+            cell.layoutIfNeeded()
             cell.updateValue(note: note)
             cell.layoutIfNeeded()
             return cell
@@ -360,7 +382,7 @@ extension HomeVC: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DrawHomeCell.identifier, for: indexPath) as? DrawHomeCell else {
                 fatalError("Don't have Cell")
             }
-            
+            cell.layoutIfNeeded()
             if let model = note.noteDrawModel {
                 cell.updateValueNote(noteModel: model)
             } else {
@@ -410,7 +432,7 @@ extension HomeVC: UICollectionViewDataSource {
 }
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return self.calculateSizeCell()
+        return self.sizeCell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

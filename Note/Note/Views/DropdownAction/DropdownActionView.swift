@@ -10,6 +10,7 @@ import RxSwift
 
 protocol DropdownActionViewDelegate {
     func selectAction(action: DropdownActionView.Action)
+    func selectNumberOfCell(viewStatus: DropdownActionView.ViewsStatus)
 }
 
 class DropdownActionView: UIView {
@@ -72,7 +73,7 @@ class DropdownActionView: UIView {
         }
     }
     
-    enum ViewsStatus: Int, CaseIterable {
+    enum ViewsStatus: Int, Codable, CaseIterable {
         case two, three, four
         
         var img: UIImage {
@@ -211,12 +212,12 @@ extension DropdownActionView {
                 make.center.equalToSuperview()
             }
             
-//            let tap: UITapGestureRecognizer = UITapGestureRecognizer()
-//            v.addGestureRecognizer(tap)
-//            tap.rx.event.bind { [weak self] _ in
-//                guard let wSelf = self else { return }
-//                wSelf.delegate?.actionCreate(type: type)
-//            }.disposed(by: disposeBag)
+            let tap: UITapGestureRecognizer = UITapGestureRecognizer()
+            v.addGestureRecognizer(tap)
+            tap.rx.event.bind { [weak self] _ in
+                guard let wSelf = self else { return }
+                wSelf.delegate?.selectNumberOfCell(viewStatus: type)
+            }.disposed(by: disposeBag)
             
             stackViewOfViews.addArrangedSubview(v)
         }

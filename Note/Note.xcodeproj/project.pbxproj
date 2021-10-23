@@ -208,6 +208,8 @@
 		93AA991A2709B39D00939D3A /* ConfigStyle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA99192709B39D00939D3A /* ConfigStyle.xib */; };
 		93AA991D2709D2CA00939D3A /* ConfigText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA991C2709D2CA00939D3A /* ConfigText.swift */; };
 		93AA991F2709D2E200939D3A /* ConfigText.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AA991E2709D2E200939D3A /* ConfigText.xib */; };
+		93AC4F2A2723A91E0009FE3B /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC4F292723A91E0009FE3B /* Storage.swift */; };
+		93AC4F2E2723A9350009FE3B /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC4F2D2723A9350009FE3B /* AppSettings.swift */; };
 		93AC60B42719A76800A1F480 /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC60B22719A76700A1F480 /* ToDoCell.swift */; };
 		93AC60B52719A76800A1F480 /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AC60B32719A76700A1F480 /* ToDoCell.xib */; };
 		93AC60BB2719C14E00A1F480 /* CheckListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC60B92719C14E00A1F480 /* CheckListCell.swift */; };
@@ -438,6 +440,8 @@
 		93AA99192709B39D00939D3A /* ConfigStyle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigStyle.xib; sourceTree = "<group>"; };
 		93AA991C2709D2CA00939D3A /* ConfigText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigText.swift; sourceTree = "<group>"; };
 		93AA991E2709D2E200939D3A /* ConfigText.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigText.xib; sourceTree = "<group>"; };
+		93AC4F292723A91E0009FE3B /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		93AC4F2D2723A9350009FE3B /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		93AC60B22719A76700A1F480 /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		93AC60B32719A76700A1F480 /* ToDoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
 		93AC60B92719C14E00A1F480 /* CheckListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListCell.swift; sourceTree = "<group>"; };
@@ -526,6 +530,7 @@
 				932EFC82271018C30073A9FA /* ReadJson.swift */,
 				932EFC83271018C30073A9FA /* Request.swift */,
 				93A65CCB271438BB00BF08B0 /* Realm */,
+				93AC4F2C2723A9270009FE3B /* Settings */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1251,6 +1256,15 @@
 			path = ConfigText;
 			sourceTree = "<group>";
 		};
+		93AC4F2C2723A9270009FE3B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				93AC4F2D2723A9350009FE3B /* AppSettings.swift */,
+				93AC4F292723A91E0009FE3B /* Storage.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		93AC60B12719A75200A1F480 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1547,12 +1561,14 @@
 				936A9D382704A179006F9F25 /* PushNotificationHandler.swift in Sources */,
 				936A9C2927049F1E006F9F25 /* ViewController.swift in Sources */,
 				936A9D1E2704A179006F9F25 /* Obserable+Extension.swift in Sources */,
+				93AC4F2A2723A91E0009FE3B /* Storage.swift in Sources */,
 				936A9C402704A123006F9F25 /* Strings-Gen.swift in Sources */,
 				936A9D282704A179006F9F25 /* UIColor+Extensions.swift in Sources */,
 				936A9D342704A179006F9F25 /* ReadMoreTextViewExtension.swift in Sources */,
 				936A9D372704A179006F9F25 /* Encode+Extension.swift in Sources */,
 				936A9D0C2704A179006F9F25 /* UIViewExtensions.swift in Sources */,
 				936A9D192704A179006F9F25 /* UITextField+Extensions.swift in Sources */,
+				93AC4F2E2723A9350009FE3B /* AppSettings.swift in Sources */,
 				936A9CD72704A179006F9F25 /* Prefix-Header.swift in Sources */,
 				936A9CEC2704A179006F9F25 /* ABVideoHelper.swift in Sources */,
 				936A9CFD2704A179006F9F25 /* UIView+Extension.swift in Sources */,
