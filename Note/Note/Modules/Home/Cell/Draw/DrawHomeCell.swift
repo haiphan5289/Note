@@ -11,6 +11,7 @@ import PencilKit
 class DrawHomeCell: UICollectionViewCell {
 
     @IBOutlet weak var img: UIImageView!
+    @IBOutlet weak var imgSelect: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

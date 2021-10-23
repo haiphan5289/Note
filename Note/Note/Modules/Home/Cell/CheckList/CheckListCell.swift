@@ -17,6 +17,7 @@ class CheckListCell: UICollectionViewCell {
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var removeView: UIView!
+    @IBOutlet weak var imgSelect: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

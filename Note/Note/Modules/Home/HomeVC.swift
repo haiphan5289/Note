@@ -164,6 +164,8 @@ extension HomeVC {
                 } else {
                     wSelf.listNote = wSelf.listNote.sorted(by: { $0.updateDate?.compare($1.updateDate ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedAscending } )
                 }
+                wSelf.resetStatus()
+                wSelf.navigationItemView.enableButtonMoreAction()
                 wSelf.collectionView.reloadData()
             case .reset:
                 wSelf.listNote = wSelf.listNote.sorted(by: { $0.updateDate?.compare($1.updateDate ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedDescending } )
@@ -366,6 +368,10 @@ extension HomeVC: UICollectionViewDataSource {
             }
             cell.layoutIfNeeded()
             cell.updateValue(note: note)
+            cell.imgSelect.isHidden = (self.navigationItemView.actionStatus == .normal) ? true : false
+            let hasSelect = self.selectIndexs.contains(indexPath)
+            let img = (hasSelect) ? Asset.icCheckbox.image : Asset.icUncheck.image
+            cell.imgSelect.image = img
             cell.layoutIfNeeded()
             return cell
         case .text:
@@ -393,6 +399,11 @@ extension HomeVC: UICollectionViewDataSource {
             } else {
                 cell.img.isHidden = true
             }
+            
+            cell.imgSelect.isHidden = (self.navigationItemView.actionStatus == .normal) ? true : false
+            let hasSelect = self.selectIndexs.contains(indexPath)
+            let img = (hasSelect) ? Asset.icCheckbox.image : Asset.icUncheck.image
+            cell.imgSelect.image = img
             
             cell.layoutIfNeeded()
             return cell
@@ -425,7 +436,7 @@ extension HomeVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch self.statusNavigation {
+        switch self.navigationItemView.actionStatus {
         case .normal:
             self.moveToNote(idx: indexPath)
         case .edit:
