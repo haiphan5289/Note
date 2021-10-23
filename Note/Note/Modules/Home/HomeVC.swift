@@ -165,6 +165,11 @@ extension HomeVC {
                     wSelf.listNote = wSelf.listNote.sorted(by: { $0.updateDate?.compare($1.updateDate ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedAscending } )
                 }
                 wSelf.collectionView.reloadData()
+            case .reset:
+                wSelf.listNote = wSelf.listNote.sorted(by: { $0.updateDate?.compare($1.updateDate ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedDescending } )
+                wSelf.resetStatus()
+                wSelf.eventNumberOfCell.onNext(.three)
+                wSelf.navigationItemView.enableButtonMoreAction()
             default: break
             }
             
