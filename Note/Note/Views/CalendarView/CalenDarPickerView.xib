@@ -17,16 +17,28 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1eB-R6-Bai">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="XdQ-Lt-nM4">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rnr-aP-dWK">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <subviews>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="XdQ-Lt-nM4">
+                                    <rect key="frame" x="16" y="0.0" width="382" height="896"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gcx-Hq-6MH">
+                                        <size key="itemSize" width="128" height="128"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
+                            </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gcx-Hq-6MH">
-                                <size key="itemSize" width="128" height="128"/>
-                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            </collectionViewFlowLayout>
-                        </collectionView>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="XdQ-Lt-nM4" secondAttribute="bottom" id="ikk-ke-1Bo"/>
+                                <constraint firstItem="XdQ-Lt-nM4" firstAttribute="leading" secondItem="rnr-aP-dWK" secondAttribute="leading" constant="16" id="jwE-Px-DqP"/>
+                                <constraint firstAttribute="trailing" secondItem="XdQ-Lt-nM4" secondAttribute="trailing" constant="16" id="sHm-iV-Uo3"/>
+                                <constraint firstItem="XdQ-Lt-nM4" firstAttribute="top" secondItem="rnr-aP-dWK" secondAttribute="top" id="tz4-zh-ajT"/>
+                            </constraints>
+                        </view>
                     </subviews>
                 </stackView>
             </subviews>

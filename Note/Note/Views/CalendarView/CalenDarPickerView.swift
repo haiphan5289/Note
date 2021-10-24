@@ -9,6 +9,10 @@ import UIKit
 import RxSwift
 
 class CalenDarPickerView: UIView {
+    
+    struct Constant {
+        static let heightCell: CGFloat = 40
+    }
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -41,7 +45,7 @@ extension CalenDarPickerView {
     private func setupRX() {
         Observable.just(self.generateDaysInMonth(for: Date.convertDateToLocalTime()))
             .bind(to: self.collectionView.rx.items(cellIdentifier: CalendarCell.identifier, cellType: CalendarCell.self)) { row, data, cell in
-                cell.contentView.backgroundColor = (row % 2 == 0) ? .red : .green
+                cell.updateValue(day: data)
             }.disposed(by: disposeBag)
     }
     
@@ -110,8 +114,8 @@ extension CalenDarPickerView {
     }
     
     private func calculateSizeCell() -> CGSize {
-        let width = Int(collectionView.frame.width / 7)
-        let height = 50
+        let width = collectionView.frame.width / 7
+        let height = Constant.heightCell
         return CGSize(width: width, height: height)
     }
 }
@@ -120,4 +124,11 @@ extension CalenDarPickerView: UICollectionViewDelegate, UICollectionViewDelegate
         return self.calculateSizeCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 }

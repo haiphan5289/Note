@@ -24,6 +24,7 @@
 		933C6DA227255E8A0076EF03 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933C6DA027255E8A0076EF03 /* CalendarCell.xib */; };
 		933C6DA8272562570076EF03 /* CalenDarPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933C6DA7272562570076EF03 /* CalenDarPickerView.swift */; };
 		933C6DAC2725626D0076EF03 /* CalenDarPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933C6DAB2725626D0076EF03 /* CalenDarPickerView.xib */; };
+		933C6DB0272565B70076EF03 /* CalendarPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933C6DAF272565B70076EF03 /* CalendarPickerModel.swift */; };
 		934C8A5E27074206008BCE0A /* DropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C8A5D27074206008BCE0A /* DropdownView.swift */; };
 		936548D5271811C900C84473 /* CHeckVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936548D2271811C900C84473 /* CHeckVC.xib */; };
 		936548D6271811C900C84473 /* CHeckVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936548D3271811C900C84473 /* CHeckVM.swift */; };
@@ -259,6 +260,7 @@
 		933C6DA027255E8A0076EF03 /* CalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
 		933C6DA7272562570076EF03 /* CalenDarPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenDarPickerView.swift; sourceTree = "<group>"; };
 		933C6DAB2725626D0076EF03 /* CalenDarPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalenDarPickerView.xib; sourceTree = "<group>"; };
+		933C6DAF272565B70076EF03 /* CalendarPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPickerModel.swift; sourceTree = "<group>"; };
 		934C8A5D27074206008BCE0A /* DropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownView.swift; sourceTree = "<group>"; };
 		936548D2271811C900C84473 /* CHeckVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CHeckVC.xib; sourceTree = "<group>"; };
 		936548D3271811C900C84473 /* CHeckVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHeckVM.swift; sourceTree = "<group>"; };
@@ -581,6 +583,7 @@
 				933C6D9E27255E720076EF03 /* Cell */,
 				933C6DA7272562570076EF03 /* CalenDarPickerView.swift */,
 				933C6DAB2725626D0076EF03 /* CalenDarPickerView.xib */,
+				933C6DAF272565B70076EF03 /* CalendarPickerModel.swift */,
 			);
 			path = CalendarView;
 			sourceTree = "<group>";
@@ -1607,6 +1610,7 @@
 				936A9D0E2704A179006F9F25 /* ActivityExt.swift in Sources */,
 				93B6EFCB270B56430035EF09 /* ListFont.swift in Sources */,
 				937B7753271A75A300892EC9 /* DrawVM.swift in Sources */,
+				933C6DB0272565B70076EF03 /* CalendarPickerModel.swift in Sources */,
 				93D1B09A270DF8E0008FCD4B /* ArrayExxtension.swift in Sources */,
 				936A9D092704A179006F9F25 /* UIViewControllerExtensions.swift in Sources */,
 				936A9D242704A179006F9F25 /* NumberExtension.swift in Sources */,
