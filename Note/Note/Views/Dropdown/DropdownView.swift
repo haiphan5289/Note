@@ -25,7 +25,7 @@ class DropdownView: UIView {
     }
     
     enum TypeView: Int, CaseIterable {
-        case text, checkList, draw, photo, video, qrCode
+        case text, checkList, draw, photo, qrCode
         
         var text: String {
             switch self {
@@ -33,7 +33,6 @@ class DropdownView: UIView {
             case .checkList: return L10n.Dropdown.checkList
             case .draw: return L10n.Dropdown.draw
             case .photo: return L10n.Dropdown.photos
-            case .video: return L10n.Dropdown.videos
             case .qrCode: return "QR_Code"
             }
         }
@@ -44,7 +43,6 @@ class DropdownView: UIView {
             case .checkList: return Asset.icChecklistDD.image
             case .draw: return Asset.icDrawDD.image
             case .photo: return Asset.icPhotoDD.image
-            case .video: return Asset.icVideoDD.image
             case .qrCode: return Asset.icVideoDD.image
             }
         }
