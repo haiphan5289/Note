@@ -39,6 +39,7 @@ class HomeVC: BaseNavigationHome {
     private var audio: AVAudioPlayer = AVAudioPlayer()
     private let eventPickerUrl: PublishSubject<UIImage> = PublishSubject.init()
     private var sizeCell: CGSize = .zero
+    private let calendarView: CalenDarPickerView = CalenDarPickerView.loadXib()
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -86,6 +87,12 @@ extension HomeVC {
         self.collectionView.register(PhotoCell.nib, forCellWithReuseIdentifier: PhotoCell.identifier)
         
         
+        self.view.addSubview(self.calendarView)
+        self.calendarView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.width.equalTo(300)
+        }
+        
         
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 //            let scannerViewController = ImageScannerController()
@@ -119,6 +126,7 @@ extension HomeVC {
         
         NoteManage.shared.$listNote.asObservable().bind { [weak self] list in
             guard let wSelf = self else { return }
+            
             wSelf.listNote = list
             wSelf.collectionView.reloadData()
         }.disposed(by: disposeBag)

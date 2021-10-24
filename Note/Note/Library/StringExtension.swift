@@ -100,6 +100,7 @@ extension String {
         case MMddyyyy = "MM/dd/yyyy"
         case ddMMyyyy = "dd/MM/yyyy"
         case MMddyyyyHHmmss = "MM/dd/yyyy HH:mm:ss"
+        case d = "d"
     }
     
     func convertToDate() -> Date? {
