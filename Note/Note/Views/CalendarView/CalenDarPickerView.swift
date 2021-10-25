@@ -12,9 +12,12 @@ class CalenDarPickerView: UIView {
     
     struct Constant {
         static let heightCell: CGFloat = 40
+        static let heightView: CGFloat = 350
     }
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var lbTimeMinute: UILabel!
+    @IBOutlet weak var segmentCOntrol: UISegmentedControl!
     
     private let calendar = Calendar(identifier: .gregorian)
     
@@ -40,6 +43,8 @@ extension CalenDarPickerView {
         self.layer.cornerRadius = ConstantApp.shared.radiusViewDialog
         self.collectionView.register(CalendarCell.nib, forCellWithReuseIdentifier: CalendarCell.identifier)
         self.collectionView.delegate = self
+        self.collectionView.isScrollEnabled = false
+
     }
     
     private func setupRX() {
@@ -47,6 +52,18 @@ extension CalenDarPickerView {
             .bind(to: self.collectionView.rx.items(cellIdentifier: CalendarCell.identifier, cellType: CalendarCell.self)) { row, data, cell in
                 cell.updateValue(day: data)
             }.disposed(by: disposeBag)
+        
+        self.segmentCOntrol.rx.value.changed.bind { [weak self] idx in
+            guard let wSelf = self, let typeTime = String.TimeTo12Or24Hour(rawValue: idx) else { return }
+            let h = Date().get(.hour)
+            let m = Date().get(.minute)
+            wSelf.updateTime(textTime: "\(h):\(m)", coverToTime: typeTime)
+        }.disposed(by: disposeBag)
+        
+    }
+    
+    private func updateTime(textTime: String, coverToTime: String.TimeTo12Or24Hour) {
+        self.lbTimeMinute.text = textTime.coverTo12Hours(coverToTime: coverToTime)
     }
     
     func generateDaysInMonth(for baseDate: Date) -> [Day] {

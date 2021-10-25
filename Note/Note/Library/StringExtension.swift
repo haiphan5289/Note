@@ -92,6 +92,10 @@ extension UIImageView {
 
 extension String {
     
+    enum TimeTo12Or24Hour: Int {
+        case twelve, twentyFour
+    }
+    
     enum FormatDate: String, CaseIterable {
         case yyyyMMddHHmmss = "yyyy-MM-dd HH:mm:ss"
         case HHmmssddMMyyyy = "HH:mm:ss dd/MM/yyyy"
@@ -101,6 +105,45 @@ extension String {
         case ddMMyyyy = "dd/MM/yyyy"
         case MMddyyyyHHmmss = "MM/dd/yyyy HH:mm:ss"
         case d = "d"
+        case HHmma = "h:mm a"
+    }
+    
+    func coverTo12Hours(coverToTime: TimeTo12Or24Hour) -> String? {
+        guard let format = self.getFormatDate() else {
+            return nil
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format.rawValue
+
+        let date = dateFormatter.date(from: self)
+        
+        switch coverToTime {
+        case .twelve:
+            dateFormatter.dateFormat = String.FormatDate.HHmma.rawValue
+        case .twentyFour:
+            dateFormatter.dateFormat = String.FormatDate.HHmm.rawValue
+        }
+        
+        guard let d = date else {
+            return nil
+        }
+        return dateFormatter.string(from: d)
+    }
+    
+    func getFormatDate() -> FormatDate? {
+        var date: Date?
+        var formatDate: FormatDate?
+        FormatDate.allCases.forEach { format in
+            if date != nil {
+                return
+            }
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale.current
+            dateFormatter.dateFormat = format.rawValue
+            date = dateFormatter.date(from: self)
+            formatDate = format
+        }
+        return formatDate
     }
     
     func convertToDate() -> Date? {

@@ -34,7 +34,7 @@ class CalendarCell: UICollectionViewCell {
       accessibilityTraits.remove(.selected)
       accessibilityHint = "Tap to select"
 
-        self.lbDay.textColor = isWithinDisplayedMonth ? .label : .secondaryLabel
+        self.lbDay.textColor = isWithinDisplayedMonth ? Asset.textColorApp.color : .secondaryLabel
 //      self.isHidden = true
     }
 

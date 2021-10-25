@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,14 +23,24 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcz-Ul-cXJ">
+                        <rect key="frame" x="0.0" y="49" width="50" height="1"/>
+                        <color key="backgroundColor" name="ViewLine"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="RVg-cu-Ynh"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="gcN-jT-7Wd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="2Sc-js-L1I"/>
+                <constraint firstAttribute="bottom" secondItem="dcz-Ul-cXJ" secondAttribute="bottom" id="Qyq-aZ-Qwz"/>
                 <constraint firstAttribute="trailing" secondItem="gcN-jT-7Wd" secondAttribute="trailing" id="a8Z-iR-XSt"/>
+                <constraint firstAttribute="trailing" secondItem="dcz-Ul-cXJ" secondAttribute="trailing" id="dnM-t5-ibT"/>
                 <constraint firstAttribute="bottom" secondItem="gcN-jT-7Wd" secondAttribute="bottom" id="jCg-mU-Svy"/>
                 <constraint firstItem="gcN-jT-7Wd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="on3-Vm-pzF"/>
+                <constraint firstItem="dcz-Ul-cXJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="t4n-Fg-xNN"/>
             </constraints>
             <connections>
                 <outlet property="lbDay" destination="gcN-jT-7Wd" id="uWF-Mv-ym0"/>
@@ -37,4 +48,9 @@
             <point key="canvasLocation" x="132" y="74"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <namedColor name="ViewLine">
+            <color red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
