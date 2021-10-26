@@ -44,6 +44,11 @@ extension CalenDarPickerView {
         self.collectionView.register(CalendarCell.nib, forCellWithReuseIdentifier: CalendarCell.identifier)
         self.collectionView.delegate = self
         self.collectionView.isScrollEnabled = false
+        
+        segmentCOntrol.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Asset.textColorApp.color], for: .selected)
+
+        // color of other options
+        segmentCOntrol.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
 
     }
     
