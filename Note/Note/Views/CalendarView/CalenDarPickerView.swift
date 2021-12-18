@@ -12,7 +12,7 @@ class CalenDarPickerView: UIView {
     
     struct Constant {
         static let heightCell: CGFloat = 40
-        static let heightView: CGFloat = 350
+        static let heightView: CGFloat = 450
     }
 
     @IBOutlet weak var collectionView: UICollectionView!

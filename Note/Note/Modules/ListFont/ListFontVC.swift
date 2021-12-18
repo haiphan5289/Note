@@ -96,24 +96,24 @@ extension ListFontVC: UITableViewDelegate {
         return 0.1
     }
     
-    func tableView(_ tableView: UITableView,
-                            contextMenuConfigurationForRowAt indexPath: IndexPath,
-                            point: CGPoint) -> UIContextMenuConfiguration? {
-        return UIContextMenuConfiguration(  identifier: nil,
-                                            previewProvider: nil,
-                                            actionProvider: { suggestedActions in
-            // Context menu with title.
-
-            // Use the IndexPathContextMenu protocol to produce the UIActions.
-            let shareAction = self.shareAction(indexPath)
-            let inspectAction = self.inspectAction(indexPath)
-            let duplicateAction = self.duplicateAction(indexPath)
-            let deleteAction = self.deleteAction(indexPath)
-
-            return UIMenu(title: "",
-                          children: [shareAction, inspectAction, duplicateAction, deleteAction])
-        })
-    }
+//    func tableView(_ tableView: UITableView,
+//                            contextMenuConfigurationForRowAt indexPath: IndexPath,
+//                            point: CGPoint) -> UIContextMenuConfiguration? {
+//        return UIContextMenuConfiguration(  identifier: nil,
+//                                            previewProvider: nil,
+//                                            actionProvider: { suggestedActions in
+//            // Context menu with title.
+//
+//            // Use the IndexPathContextMenu protocol to produce the UIActions.
+//            let shareAction = self.shareAction(indexPath)
+//            let inspectAction = self.inspectAction(indexPath)
+//            let duplicateAction = self.duplicateAction(indexPath)
+//            let deleteAction = self.deleteAction(indexPath)
+//
+//            return UIMenu(title: "",
+//                          children: [shareAction, inspectAction, duplicateAction, deleteAction])
+//        })
+//    }
 }
 extension ListFontVC: IndexPathContextMenu {
     func performShare(_ indexPath: IndexPath) {

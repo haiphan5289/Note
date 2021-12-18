@@ -88,7 +88,8 @@ extension HomeVC {
         
         self.view.addSubview(self.calendarView)
         self.calendarView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.left.right.equalToSuperview().inset(16)
             make.height.width.equalTo(CalenDarPickerView.Constant.heightView)
         }
         
