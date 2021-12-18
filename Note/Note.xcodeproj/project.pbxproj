@@ -194,6 +194,7 @@
 		93A65CCF271438BB00BF08B0 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A65CCC271438BB00BF08B0 /* RealmManager.swift */; };
 		93A65CD0271438BB00BF08B0 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A65CCE271438BB00BF08B0 /* RealmModel.swift */; };
 		93A65CDA27144B2B00BF08B0 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A65CD927144B2B00BF08B0 /* NoteModel.swift */; };
+		93A6BBA12743F2FF009CFD64 /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A6BBA02743F2FF009CFD64 /* ContextMenu.swift */; };
 		93A849642715370100E9ABBF /* HomeTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A849622715370100E9ABBF /* HomeTextCell.swift */; };
 		93A849652715370100E9ABBF /* HomeTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93A849632715370100E9ABBF /* HomeTextCell.xib */; };
 		93A84969271576AE00E9ABBF /* BaseNavigationHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A84968271576AE00E9ABBF /* BaseNavigationHome.swift */; };
@@ -431,6 +432,7 @@
 		93A65CCC271438BB00BF08B0 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		93A65CCE271438BB00BF08B0 /* RealmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		93A65CD927144B2B00BF08B0 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
+		93A6BBA02743F2FF009CFD64 /* ContextMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
 		93A849622715370100E9ABBF /* HomeTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTextCell.swift; sourceTree = "<group>"; };
 		93A849632715370100E9ABBF /* HomeTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTextCell.xib; sourceTree = "<group>"; };
 		93A84968271576AE00E9ABBF /* BaseNavigationHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationHome.swift; sourceTree = "<group>"; };
@@ -1379,6 +1381,7 @@
 				93D1B08E270DE58D008FCD4B /* ListFontVC.xib */,
 				93D1B08F270DE58D008FCD4B /* ListFontVM.swift */,
 				93D1B090270DE58D008FCD4B /* ListFontVC.swift */,
+				93A6BBA02743F2FF009CFD64 /* ContextMenu.swift */,
 			);
 			path = ListFont;
 			sourceTree = "<group>";
@@ -1731,6 +1734,7 @@
 				9393CF6D2721404A000DC32E /* CropView.swift in Sources */,
 				936A9D122704A179006F9F25 /* UIButtonExtensions.swift in Sources */,
 				936548D7271811C900C84473 /* CHeckVC.swift in Sources */,
+				93A6BBA12743F2FF009CFD64 /* ContextMenu.swift in Sources */,
 				936A9D182704A179006F9F25 /* UIDatePickerExtensions.swift in Sources */,
 				936A9C462704A14D006F9F25 /* GetHeightSafeArea.swift in Sources */,
 				939A017127230575001ED967 /* PhotoCell.swift in Sources */,
