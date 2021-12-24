@@ -84,22 +84,12 @@ extension HomeVC {
         self.collectionView.register(CheckListCell.nib, forCellWithReuseIdentifier: CheckListCell.identifier)
         self.collectionView.register(DrawHomeCell.nib, forCellWithReuseIdentifier: DrawHomeCell.identifier)
         self.collectionView.register(PhotoCell.nib, forCellWithReuseIdentifier: PhotoCell.identifier)
-        
-        
-        self.view.addSubview(self.calendarView)
-        self.calendarView.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.left.right.equalToSuperview().inset(16)
-            make.height.width.equalTo(CalenDarPickerView.Constant.heightView)
-        }
-        
-        
+    
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 //            let scannerViewController = ImageScannerController()
 //            scannerViewController.imageScannerDelegate = self
 //            self.present(scannerViewController, animated: true)
 //        }
-        
     }
     
     private func addDropdownView() {

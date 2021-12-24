@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,14 +32,21 @@
                                     <color key="tintColor" name="ColorApp"/>
                                     <state key="normal" image="ic_done"/>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMl-BM-b9v">
+                                    <rect key="frame" x="16" y="6" width="48" height="38"/>
+                                    <color key="tintColor" name="ColorApp"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="ic_close"/>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="M5g-bU-ifn" secondAttribute="trailing" constant="16" id="01h-T2-mER"/>
                                 <constraint firstItem="vEx-gG-XtM" firstAttribute="centerY" secondItem="Y3H-W3-2Wq" secondAttribute="centerY" id="7OM-Ug-QGH"/>
                                 <constraint firstItem="M5g-bU-ifn" firstAttribute="centerY" secondItem="Y3H-W3-2Wq" secondAttribute="centerY" id="BQf-yb-cbf"/>
+                                <constraint firstItem="NMl-BM-b9v" firstAttribute="centerY" secondItem="M5g-bU-ifn" secondAttribute="centerY" id="DYi-zy-1c6"/>
                                 <constraint firstAttribute="height" constant="50" id="HNq-Et-6m2"/>
                                 <constraint firstItem="vEx-gG-XtM" firstAttribute="centerX" secondItem="Y3H-W3-2Wq" secondAttribute="centerX" id="PhX-qV-9im"/>
+                                <constraint firstItem="NMl-BM-b9v" firstAttribute="leading" secondItem="Y3H-W3-2Wq" secondAttribute="leading" constant="16" id="rNr-Ve-3Hs"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1v6-r1-7EC">
@@ -220,7 +228,7 @@
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" name="AppBg"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="1eB-R6-Bai" secondAttribute="trailing" constant="16" id="6Sd-d0-wGN"/>
                 <constraint firstItem="1eB-R6-Bai" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="7rk-0r-LMo"/>
@@ -240,16 +248,16 @@
                 <outlet property="collectionView" destination="XdQ-Lt-nM4" id="YJ3-9p-Gyu"/>
                 <outlet property="lbTimeMinute" destination="6RV-fu-lex" id="2gm-Cz-DT3"/>
                 <outlet property="segmentCOntrol" destination="poo-XM-eaB" id="aaC-ae-1Ni"/>
+                <outletCollection property="bts" destination="NMl-BM-b9v" collectionClass="NSMutableArray" id="KLf-Xc-ZL7"/>
+                <outletCollection property="bts" destination="M5g-bU-ifn" collectionClass="NSMutableArray" id="sb6-iS-aXa"/>
             </connections>
             <point key="canvasLocation" x="-72.463768115942031" y="66.964285714285708"/>
         </view>
     </objects>
     <resources>
+        <image name="ic_close" width="24" height="24"/>
         <image name="ic_done" width="24" height="24"/>
         <image name="ic_notification_bell" width="24" height="24"/>
-        <namedColor name="AppBg">
-            <color red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="ColorApp">
             <color red="0.57400000095367432" green="0.56599998474121094" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

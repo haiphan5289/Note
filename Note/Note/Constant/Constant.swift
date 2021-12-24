@@ -20,6 +20,8 @@ final class ConstantApp {
     let radiusSegment: CGFloat = 12
     let radiusCellBgColor: CGFloat = 12
     let radiusHomeNoteCell: CGFloat = 6
+    let titleNotificaiton: String = "You have a Notfication Note"
+    let identifierNotification: String = "PushLocalNote"
     
     private init() {}
 

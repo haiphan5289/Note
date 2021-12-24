@@ -25,6 +25,8 @@ class TextVC: BaseNavigationHeader {
     private var previousFont: UIFont?
     private var previousBgColor: BackgroundColor.BgColorTypes?
     private var bgColorModel: BgColorModel = BgColorModel.empty
+    private let calendarView: CalenDarPickerView = CalenDarPickerView.loadXib()
+    private var reminder: Day?
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -62,6 +64,15 @@ extension TextVC {
         if let t = self.textQRCode {
             self.textView.text = t
         }
+        
+        self.view.addSubview(self.calendarView)
+        self.calendarView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.right.equalToSuperview().inset(16)
+            make.height.width.equalTo(CalenDarPickerView.Constant.heightView)
+        }
+        self.calendarView.hideView()
+        self.calendarView.delegate = self
     }
     
     private func setupRX() {
@@ -118,7 +129,6 @@ extension TextVC {
             guard let wSelf = self else { return }
             switch type {
             case .close: wSelf.navigationController?.popViewController(animated: true)
-                
             case .done:
                 wSelf.removeQRCodeVC()
                 
@@ -126,14 +136,15 @@ extension TextVC {
                     let noteModel: NoteModel
                     if let note = wSelf.noteModel {
                         noteModel = NoteModel(noteType: .text, text: wSelf.textView.text, id: note.id, bgColorModel: wSelf.bgColorModel,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: nil)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: nil, reminder: wSelf.reminder)
                     } else {
                         noteModel = NoteModel(noteType: .text, text: wSelf.textView.text, id: Date.convertDateToLocalTime(), bgColorModel: wSelf.bgColorModel,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: nil)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: nil, reminder: wSelf.reminder)
                     }
                     RealmManager.shared.updateOrInsertConfig(model: noteModel)
                 })
-                
+            case .reminder:
+                wSelf.calendarView.showView()
                 
             default: break
             }
@@ -313,5 +324,11 @@ extension TextVC {
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(BaseNavigationHeader.Constant.heightViewListFont + Constant.botContraintTextView)
         }
+    }
+}
+extension TextVC: CalenDarPickerViewDelegate {
+    func updateReminder(day: Day) {
+        self.reminder = day
+        NoteManage.shared.pushLocal(day: day)
     }
 }

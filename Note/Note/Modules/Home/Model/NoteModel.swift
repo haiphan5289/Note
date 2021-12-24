@@ -22,9 +22,10 @@ struct NoteModel: Codable {
     let noteCheckList: NoteCheckListModel?
     let noteDrawModel: NoteDrawModel?
     let notePhotoModel: NotePhotoModel?
+    var reminder: Day?
     
     enum CodingKeys: String, CodingKey {
-        case noteType, text, bgColorModel, id, updateDate, noteCheckList, noteDrawModel, notePhotoModel
+        case noteType, text, bgColorModel, id, updateDate, noteCheckList, noteDrawModel, notePhotoModel, reminder
     }
     
 }

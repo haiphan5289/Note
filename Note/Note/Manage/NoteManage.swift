@@ -33,6 +33,19 @@ final class NoteManage {
         }.disposed(by: disposeBag)
     }
     
+    func pushLocal(day: Day) {
+        let content = UNMutableNotificationContent()
+        content.title = ConstantApp.shared.titleNotificaiton
+//        content.body = "Body"
+        content.sound = UNNotificationSound.default
+
+        let calendar = Calendar(identifier: .gregorian)
+        let component = calendar.dateComponents([.year,.day,.month,.hour,.minute,.second], from: day.date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: false)
+        let request = UNNotificationRequest(identifier: ConstantApp.shared.identifierNotification, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
     func removeCAGradientLayer(view: UIView) {
         guard let subplayers = view.layer.sublayers else {
             return
