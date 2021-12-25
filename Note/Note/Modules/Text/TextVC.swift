@@ -140,6 +140,10 @@ extension TextVC {
                     } else {
                         noteModel = NoteModel(noteType: .text, text: wSelf.textView.text, id: Date.convertDateToLocalTime(), bgColorModel: wSelf.bgColorModel,
                                               updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: nil, reminder: wSelf.reminder)
+                        
+                        if let r = wSelf.reminder {
+                            NoteManage.shared.pushLocal(day: r)
+                        }
                     }
                     RealmManager.shared.updateOrInsertConfig(model: noteModel)
                 })
@@ -329,6 +333,5 @@ extension TextVC {
 extension TextVC: CalenDarPickerViewDelegate {
     func updateReminder(day: Day) {
         self.reminder = day
-        NoteManage.shared.pushLocal(day: day)
     }
 }

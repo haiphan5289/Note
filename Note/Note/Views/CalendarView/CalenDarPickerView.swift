@@ -67,12 +67,8 @@ extension CalenDarPickerView {
         
         // color of other options
         segmentCOntrol.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
-        let today = Date()
-        let nextDate = Calendar.current.date(byAdding: .month, value: 1, to: today)
-        self.selectDate = nextDate ?? Date.convertDateToLocalTime()
-        self.collectionView.reloadData()
         self.setupTimePicker()
-        self.updateTimeLabel(date: Date(), coverToTime: .twelve)
+        self.updateTimeLabel(date: Date(), coverToTime: .twentyFour)
     }
     
     private func setupRX() {
