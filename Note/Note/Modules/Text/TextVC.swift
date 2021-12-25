@@ -142,7 +142,7 @@ extension TextVC {
                                               updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: nil, reminder: wSelf.reminder)
                         
                         if let r = wSelf.reminder {
-                            NoteManage.shared.pushLocal(day: r)
+                            NoteManage.shared.pushLocal(day: r, identifierNotification: "\(noteModel.id ?? Date.convertDateToLocalTime())")
                         }
                     }
                     RealmManager.shared.updateOrInsertConfig(model: noteModel)

@@ -33,7 +33,7 @@ final class NoteManage {
         }.disposed(by: disposeBag)
     }
     
-    func pushLocal(day: Day) {
+    func pushLocal(day: Day, identifierNotification: String) {
         let content = UNMutableNotificationContent()
         content.title = ConstantApp.shared.titleNotificaiton
 //        content.body = "Body"
@@ -43,7 +43,7 @@ final class NoteManage {
         calendar.timeZone = TimeZone(identifier: "UTC")!
         let component = calendar.dateComponents([.year,.day,.month,.hour,.minute,.second], from: day.date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: false)
-        let request = UNNotificationRequest(identifier: ConstantApp.shared.identifierNotification, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: identifierNotification, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
@@ -61,7 +61,20 @@ final class NoteManage {
         RealmManager.shared.deleteNote(note: note)
     }
     
+    private func removeNotification(note: NoteModel) {
+        UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: {requests -> () in
+            for request in requests{
+                if request.identifier == "\(note.id ?? Date.convertDateToLocalTime())" {
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [request.identifier])
+                }
+            }
+        })
+    }
+    
     func removeAllNote() {
         RealmManager.shared.deleteNoteAll()
+        let center = UNUserNotificationCenter.current()
+        center.removeAllDeliveredNotifications() // To remove all delivered notifications
+        center.removeAllPendingNotificationRequests()
     }
 }
