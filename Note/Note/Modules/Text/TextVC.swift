@@ -26,7 +26,7 @@ class TextVC: BaseNavigationHeader {
     private var previousBgColor: BackgroundColor.BgColorTypes?
     private var bgColorModel: BgColorModel = BgColorModel.empty
     private let calendarView: CalenDarPickerView = CalenDarPickerView.loadXib()
-    private var reminder: Day?
+    private var reminder: CalendaModel?
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -73,6 +73,9 @@ extension TextVC {
         }
         self.calendarView.hideView()
         self.calendarView.delegate = self
+        if let note = self.noteModel, let r = note.reminder {
+            self.calendarView.reloadValue(remider: r)
+        }
     }
     
     private func setupRX() {
@@ -141,8 +144,8 @@ extension TextVC {
                         noteModel = NoteModel(noteType: .text, text: wSelf.textView.text, id: Date.convertDateToLocalTime(), bgColorModel: wSelf.bgColorModel,
                                               updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: nil, reminder: wSelf.reminder)
                         
-                        if let r = wSelf.reminder {
-                            NoteManage.shared.pushLocal(day: r, identifierNotification: "\(noteModel.id ?? Date.convertDateToLocalTime())")
+                        if let r = wSelf.reminder, r.isReminder {
+                            NoteManage.shared.pushLocal(day: r.day, identifierNotification: "\(noteModel.id ?? Date.convertDateToLocalTime())")
                         }
                     }
                     RealmManager.shared.updateOrInsertConfig(model: noteModel)
@@ -331,7 +334,7 @@ extension TextVC {
     }
 }
 extension TextVC: CalenDarPickerViewDelegate {
-    func updateReminder(day: Day) {
-        self.reminder = day
+    func updateReminder(calendar: CalendaModel) {
+        self.reminder = calendar
     }
 }

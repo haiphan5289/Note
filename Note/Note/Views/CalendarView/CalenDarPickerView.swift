@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 
 protocol CalenDarPickerViewDelegate {
-    func updateReminder(day: Day)
+    func updateReminder(calendar: CalendaModel)
 }
 
 class CalenDarPickerView: UIView {
@@ -27,19 +27,20 @@ class CalenDarPickerView: UIView {
         case clsoe, done
     }
     
+    var selectDate: Date = Date.convertDateToLocalTime()
     var delegate: CalenDarPickerViewDelegate?
+    var remider: Bool = false
      
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var lbTimeMinute: UILabel!
+    @IBOutlet weak var tfTimeMinute: UITextField!
     @IBOutlet weak var segmentCOntrol: UISegmentedControl!
     @IBOutlet var bts: [UIButton]!
+    @IBOutlet weak var remiderSwitch: UISwitch!
     
     private let calendar = Calendar(identifier: .gregorian)
     private var selectIndex: Int?
-    private var selectDate: Date = Date.convertDateToLocalTime()
     private var selectHHmm: Date = Date.convertDateToLocalTime()
     private let datePicker = UIDatePicker()
-    private let tfSub: UITextField = UITextField(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
     
     private let disposeBag = DisposeBag()
     override func awakeFromNib() {
@@ -66,16 +67,18 @@ extension CalenDarPickerView {
         segmentCOntrol.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Asset.textColorApp.color], for: .selected)
         
         // color of other options
-        segmentCOntrol.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
+        segmentCOntrol.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Asset.viewLine.color], for: .normal)
         self.setupTimePicker()
         self.updateTimeLabel(date: Date(), coverToTime: .twentyFour)
+        
+        self.remiderSwitch.isOn = self.remider
     }
     
     private func setupRX() {
         Observable.just(self.generateDaysInMonth(for: self.selectDate))
             .bind(to: self.collectionView.rx.items(cellIdentifier: CalendarCell.identifier, cellType: CalendarCell.self)) { row, data, cell in
                 cell.updateValue(day: data)
-                if let index = self.selectIndex, index == row {
+                if data.date.get(.day) == self.selectDate.get(.day) {
                     cell.contentView.backgroundColor = Asset.viewMoveSegment.color
                 } else {
                     cell.contentView.backgroundColor = .clear
@@ -85,6 +88,8 @@ extension CalenDarPickerView {
         self.collectionView.rx.itemSelected.bind { [weak self] idx in
             guard let wSelf = self else { return }
             wSelf.selectIndex = idx.row
+            let item = wSelf.generateDaysInMonth(for: wSelf.selectDate)[idx.row]
+            wSelf.selectDate = item.date
             wSelf.collectionView.reloadData()
         }.disposed(by: disposeBag)
         
@@ -102,16 +107,22 @@ extension CalenDarPickerView {
                 case .clsoe: wSelf.hideView()
                 case .done:
                     if let index = wSelf.selectIndex {
-                        let item = wSelf.generateDaysInMonth(for: Date.convertDateToLocalTime())[index]
+                        let item = wSelf.generateDaysInMonth(for: wSelf.selectDate)[index]
                         let date = item.date.setTime(hour: wSelf.selectHHmm.get(.hour), min: wSelf.selectHHmm.get(.minute), sec: wSelf.selectHHmm.get(.second))
                         let day: Day = Day(date: date ?? Date(), number: item.number, isSelected: item.isSelected, isWithinDisplayedMonth: item.isWithinDisplayedMonth)
-                        wSelf.delegate?.updateReminder(day: day)
+                        wSelf.delegate?.updateReminder(calendar: CalendaModel(day: day, isReminder: wSelf.remiderSwitch.isOn))
                     }
                     wSelf.hideView()
                 }
             }.disposed(by: wSelf.disposeBag)
         }
         
+    }
+    
+    func reloadValue(remider: CalendaModel) {
+        self.selectDate = remider.day.date
+        self.remiderSwitch.isOn = remider.isReminder
+        self.collectionView.reloadData()
     }
     
     private func updateTimeLabel(date: Date, coverToTime: String.TimeTo12Or24Hour) {
@@ -125,27 +136,25 @@ extension CalenDarPickerView {
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels
         }
-        
+
         //ToolBar
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
-        tfSub.isHidden = true
-        tfSub.becomeFirstResponder()
-        self.addSubview(tfSub)
+        self.tfTimeMinute.becomeFirstResponder()
         //done button & cancel button
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: nil)
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: nil)
         toolbar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-        
-        self.tfSub.inputAccessoryView = toolbar
-        self.tfSub.inputView = datePicker
-        
+
+        self.tfTimeMinute.inputAccessoryView = toolbar
+        self.tfTimeMinute.inputView = datePicker
+
         doneButton.rx.tap.bind { [weak self] _ in
             guard let wSelf = self else {
                 return
             }
-            wSelf.tfSub.text = wSelf.datePicker.date.string(from: String.FormatDate.HHmmss.rawValue)
+            wSelf.tfTimeMinute.text = wSelf.datePicker.date.string(from: String.FormatDate.HHmmss.rawValue)
             wSelf.selectHHmm = wSelf.datePicker.date
             wSelf.endEditing(true)
         }.disposed(by: disposeBag)
@@ -158,16 +167,16 @@ extension CalenDarPickerView {
     
     func showView() {
         self.isHidden = false
-        self.tfSub.becomeFirstResponder()
+        self.tfTimeMinute.becomeFirstResponder()
     }
     
     func hideView() {
         self.isHidden = true
-        self.tfSub.resignFirstResponder()
+        self.tfTimeMinute.resignFirstResponder()
     }
     
     private func updateTime(textTime: String, coverToTime: String.TimeTo12Or24Hour) {
-        self.lbTimeMinute.text = textTime.coverTo12Hours(coverToTime: coverToTime)
+        self.tfTimeMinute.text = textTime.coverTo12Hours(coverToTime: coverToTime)
     }
     
     private func generateDaysInMonth(for baseDate: Date) -> [Day] {

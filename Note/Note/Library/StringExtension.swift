@@ -107,6 +107,10 @@ extension String {
         case d = "d"
         case HHmma = "h:mm a"
         case HHmmss = "h:mm:ss"
+        case ddMMyyyyHHmmss = "dd/MM/yyyy HH:mm:ss"
+        case yyyyMMđHHmm = "yyyyMMddHHmm"
+        case HHmmEEEEddMMyyyy = "HH:mm, EEEE dd/MM/yyyy"
+        case EEddThangMM = "E, dd %@ MM "
     }
     
     func coverTo12Hours(coverToTime: TimeTo12Or24Hour) -> String? {

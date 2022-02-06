@@ -146,20 +146,21 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gMt-sa-Qnp">
                                             <rect key="frame" x="197" y="0.0" width="75" height="40"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="59:59" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6RV-fu-lex">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="789789" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y4a-Xd-cyq">
                                                     <rect key="frame" x="0.0" y="0.0" width="75" height="40"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" name="TextColorApp"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                             <color key="backgroundColor" name="ViewLine"/>
                                             <constraints>
-                                                <constraint firstItem="6RV-fu-lex" firstAttribute="top" secondItem="gMt-sa-Qnp" secondAttribute="top" id="5mZ-Us-Imj"/>
-                                                <constraint firstAttribute="trailing" secondItem="6RV-fu-lex" secondAttribute="trailing" id="IS2-RZ-DMn"/>
                                                 <constraint firstAttribute="width" constant="75" id="ITa-kg-rA3"/>
-                                                <constraint firstItem="6RV-fu-lex" firstAttribute="leading" secondItem="gMt-sa-Qnp" secondAttribute="leading" id="bMt-wW-SyH"/>
-                                                <constraint firstAttribute="bottom" secondItem="6RV-fu-lex" secondAttribute="bottom" id="cwz-sO-5q3"/>
+                                                <constraint firstItem="Y4a-Xd-cyq" firstAttribute="leading" secondItem="gMt-sa-Qnp" secondAttribute="leading" id="Nfw-Wm-Lpr"/>
+                                                <constraint firstItem="Y4a-Xd-cyq" firstAttribute="top" secondItem="gMt-sa-Qnp" secondAttribute="top" id="b5f-md-FU2"/>
+                                                <constraint firstAttribute="trailing" secondItem="Y4a-Xd-cyq" secondAttribute="trailing" id="rGp-yN-rVh"/>
+                                                <constraint firstAttribute="bottom" secondItem="Y4a-Xd-cyq" secondAttribute="bottom" id="zEu-ux-CjT"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -246,8 +247,9 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="collectionView" destination="XdQ-Lt-nM4" id="YJ3-9p-Gyu"/>
-                <outlet property="lbTimeMinute" destination="6RV-fu-lex" id="2gm-Cz-DT3"/>
+                <outlet property="remiderSwitch" destination="U2N-SU-pce" id="lsd-nr-4sg"/>
                 <outlet property="segmentCOntrol" destination="poo-XM-eaB" id="aaC-ae-1Ni"/>
+                <outlet property="tfTimeMinute" destination="Y4a-Xd-cyq" id="FjR-Xh-5Vz"/>
                 <outletCollection property="bts" destination="NMl-BM-b9v" collectionClass="NSMutableArray" id="KLf-Xc-ZL7"/>
                 <outletCollection property="bts" destination="M5g-bU-ifn" collectionClass="NSMutableArray" id="sb6-iS-aXa"/>
             </connections>
