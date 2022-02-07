@@ -49,5 +49,20 @@ extension NavigationItemView {
     private func setupRX() {
         
     }
+    
+    func setupValuePin(isPin: Bool) {
+        self.bts[ActionNavigation.pin.rawValue].isSelected = isPin
+        self.bts[ActionNavigation.pin.rawValue].tintColor = isPin ? Asset.textColorApp.color :  Asset.colorApp.color
+    }
+    
+    func actionPin() {
+        if self.bts[ActionNavigation.pin.rawValue].isSelected {
+            self.bts[ActionNavigation.pin.rawValue].isSelected = false
+            self.bts[ActionNavigation.pin.rawValue].tintColor = Asset.colorApp.color
+        } else {
+            self.bts[ActionNavigation.pin.rawValue].isSelected = true
+            self.bts[ActionNavigation.pin.rawValue].tintColor = Asset.textColorApp.color
+        }
+    }
 }
  

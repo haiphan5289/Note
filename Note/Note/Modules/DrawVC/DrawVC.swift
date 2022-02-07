@@ -80,14 +80,15 @@ extension DrawVC {
                 
             case .done:
                 wSelf.navigationController?.popViewController(animated: true, {
+                    let isPin = wSelf.navigationItemView.bts[NavigationItemView.ActionNavigation.pin.rawValue].isSelected
                     let noteModel: NoteModel
                     let noteDraw = NoteDrawModel(data: wSelf.canvasView.drawing.dataRepresentation(), imageData: wSelf.converToImage())
                     if let note = wSelf.noteModel {
                         noteModel = NoteModel(noteType: .draw, text: nil, id: note.id, bgColorModel: nil,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: noteDraw, notePhotoModel: nil)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: noteDraw, notePhotoModel: nil, isPin: isPin)
                     } else {
                         noteModel = NoteModel(noteType: .draw, text: nil, id: Date.convertDateToLocalTime(), bgColorModel: nil,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: noteDraw, notePhotoModel: nil)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: noteDraw, notePhotoModel: nil, isPin: isPin)
                     }
                     RealmManager.shared.updateOrInsertConfig(model: noteModel)
                 })

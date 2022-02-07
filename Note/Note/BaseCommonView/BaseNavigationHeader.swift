@@ -35,6 +35,8 @@ class BaseNavigationHeader: UIViewController {
         case cancel, done
     }
     
+    var noteModel: NoteModel?
+    
     private let configStyleView: ConfigStyle = ConfigStyle.loadXib()
     private let configTextView: ConfigText = ConfigText.loadXib()
     private let listFontView: ListFont = ListFont.loadXib()
@@ -102,6 +104,10 @@ class BaseNavigationHeader: UIViewController {
         self.listFontView.delegate = self
         self.listFontView.addViewToParent(view: self.view)
         self.listFontView.isHidden = true
+        
+        if let note = self.noteModel {
+            self.navigationItemView.setupValuePin(isPin: note.isPin ?? false)
+        }
     }
     
     private func configRX() {

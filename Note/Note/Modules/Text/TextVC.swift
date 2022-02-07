@@ -13,7 +13,7 @@ import RxSwift
 
 class TextVC: BaseNavigationHeader {
 
-    var noteModel: NoteModel?
+    
     var textQRCode: String?
     
     // Add here outlets
@@ -136,13 +136,14 @@ extension TextVC {
                 wSelf.removeQRCodeVC()
                 
                 wSelf.navigationController?.popViewController(animated: true, {
+                    let isPin = wSelf.navigationItemView.bts[NavigationItemView.ActionNavigation.pin.rawValue].isSelected
                     let noteModel: NoteModel
                     if let note = wSelf.noteModel {
                         noteModel = NoteModel(noteType: .text, text: wSelf.textView.text, id: note.id, bgColorModel: wSelf.bgColorModel,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: nil, reminder: wSelf.reminder)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: nil, reminder: wSelf.reminder, isPin: isPin)
                     } else {
                         noteModel = NoteModel(noteType: .text, text: wSelf.textView.text, id: Date.convertDateToLocalTime(), bgColorModel: wSelf.bgColorModel,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: nil, reminder: wSelf.reminder)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: nil, reminder: wSelf.reminder, isPin: isPin)
                         
                         if let r = wSelf.reminder, r.isReminder {
                             NoteManage.shared.pushLocal(day: r.day, identifierNotification: "\(noteModel.id ?? Date.convertDateToLocalTime())")
@@ -152,7 +153,8 @@ extension TextVC {
                 })
             case .reminder:
                 wSelf.calendarView.showView()
-                
+            case .pin:
+                wSelf.navigationItemView.actionPin()
             default: break
             }
         }

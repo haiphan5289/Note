@@ -14,7 +14,6 @@ import RxSwift
 class PhotoVC: BaseNavigationHeader {
     
     // Add here outlets
-    var noteModel: NoteModel?
     var imagePhotoLibrary: UIImage?
     
     @IBOutlet weak var textView: UITextView!
@@ -122,14 +121,15 @@ extension PhotoVC {
                 
             case .done: 
                 wSelf.navigationController?.popViewController(animated: true, {
+                    let isPin = wSelf.navigationItemView.bts[NavigationItemView.ActionNavigation.pin.rawValue].isSelected
                     let noteModel: NoteModel
                     let notePhoto = NotePhotoModel(imgData: wSelf.imageView.image?.pngData(), text: wSelf.textView.text)
                     if let note = wSelf.noteModel {
                         noteModel = NoteModel(noteType: .photo, text: nil, id: note.id, bgColorModel: nil,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: notePhoto)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: notePhoto, isPin: isPin)
                     } else {
                         noteModel = NoteModel(noteType: .photo, text: nil, id: Date.convertDateToLocalTime(), bgColorModel: nil,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: notePhoto)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: nil, notePhotoModel: notePhoto, isPin: isPin)
                     }
                     RealmManager.shared.updateOrInsertConfig(model: noteModel)
                 })

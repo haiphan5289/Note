@@ -18,7 +18,6 @@ class CheckListVC: BaseNavigationHeader {
         static let textNewLine: String = "\n"
     }
     
-    var noteModel: NoteModel?
     
     // Add here outlets
     @IBOutlet weak var contentView: UIView!
@@ -196,14 +195,15 @@ extension CheckListVC {
                 
             case .done:
                 wSelf.navigationController?.popViewController(animated: true, {
+                    let isPin = wSelf.navigationItemView.bts[NavigationItemView.ActionNavigation.pin.rawValue].isSelected
                     let noteModel: NoteModel
                     let noteCheckList = NoteCheckListModel(title: wSelf.tfTitle.text, listToDo: wSelf.listToDo, listSelect: wSelf.listSelect)
                     if let note = wSelf.noteModel {
                         noteModel = NoteModel(noteType: .checkList, text: nil, id: note.id, bgColorModel: wSelf.bgColorModel,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: noteCheckList, noteDrawModel: nil, notePhotoModel: nil)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: noteCheckList, noteDrawModel: nil, notePhotoModel: nil, isPin: isPin)
                     } else {
                         noteModel = NoteModel(noteType: .checkList, text: nil, id: Date.convertDateToLocalTime(), bgColorModel: wSelf.bgColorModel,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: noteCheckList, noteDrawModel: nil, notePhotoModel: nil)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: noteCheckList, noteDrawModel: nil, notePhotoModel: nil, isPin: isPin)
                     }
                     RealmManager.shared.updateOrInsertConfig(model: noteModel)
                 })
