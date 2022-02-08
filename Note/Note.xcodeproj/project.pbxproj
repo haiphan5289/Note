@@ -177,6 +177,10 @@
 		9393CF7327214484000DC32E /* CropVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9393CF7027214484000DC32E /* CropVC.xib */; };
 		9393CF7427214484000DC32E /* CropVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CF7127214484000DC32E /* CropVM.swift */; };
 		9393CF7527214484000DC32E /* CropVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CF7227214484000DC32E /* CropVC.swift */; };
+		9395660027B2D5B600C1EB2B /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939565FE27B2D5B600C1EB2B /* MenuCell.swift */; };
+		9395660127B2D5B600C1EB2B /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939565FF27B2D5B600C1EB2B /* MenuCell.xib */; };
+		9395660627B2D9B200C1EB2B /* MenuPremiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395660427B2D9B200C1EB2B /* MenuPremiumCell.swift */; };
+		9395660727B2D9B200C1EB2B /* MenuPremiumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9395660527B2D9B200C1EB2B /* MenuPremiumCell.xib */; };
 		9396E647270F2F29002B2E2C /* BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396E646270F2F29002B2E2C /* BackgroundColor.swift */; };
 		9396E64B270F2F36002B2E2C /* BackgroundColor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9396E64A270F2F36002B2E2C /* BackgroundColor.xib */; };
 		9396E64F270F3244002B2E2C /* ViewHeaderDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9396E64E270F3244002B2E2C /* ViewHeaderDialog.xib */; };
@@ -416,6 +420,10 @@
 		9393CF7027214484000DC32E /* CropVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CropVC.xib; sourceTree = "<group>"; };
 		9393CF7127214484000DC32E /* CropVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropVM.swift; sourceTree = "<group>"; };
 		9393CF7227214484000DC32E /* CropVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropVC.swift; sourceTree = "<group>"; };
+		939565FE27B2D5B600C1EB2B /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		939565FF27B2D5B600C1EB2B /* MenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
+		9395660427B2D9B200C1EB2B /* MenuPremiumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPremiumCell.swift; sourceTree = "<group>"; };
+		9395660527B2D9B200C1EB2B /* MenuPremiumCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuPremiumCell.xib; sourceTree = "<group>"; };
 		9396E646270F2F29002B2E2C /* BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColor.swift; sourceTree = "<group>"; };
 		9396E64A270F2F36002B2E2C /* BackgroundColor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundColor.xib; sourceTree = "<group>"; };
 		9396E64E270F3244002B2E2C /* ViewHeaderDialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewHeaderDialog.xib; sourceTree = "<group>"; };
@@ -1045,6 +1053,7 @@
 		936A9D432704A634006F9F25 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				939565FD27B2D59F00C1EB2B /* Cell */,
 				936A9D442704A643006F9F25 /* MenuVC.xib */,
 				936A9D452704A643006F9F25 /* MenuVM.swift */,
 				936A9D462704A643006F9F25 /* MenuVC.swift */,
@@ -1116,6 +1125,33 @@
 				9393CF7227214484000DC32E /* CropVC.swift */,
 			);
 			path = Crop;
+			sourceTree = "<group>";
+		};
+		939565FD27B2D59F00C1EB2B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9395660327B2D98C00C1EB2B /* Normal */,
+				9395660227B2D98500C1EB2B /* Prenium */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		9395660227B2D98500C1EB2B /* Prenium */ = {
+			isa = PBXGroup;
+			children = (
+				9395660427B2D9B200C1EB2B /* MenuPremiumCell.swift */,
+				9395660527B2D9B200C1EB2B /* MenuPremiumCell.xib */,
+			);
+			path = Prenium;
+			sourceTree = "<group>";
+		};
+		9395660327B2D98C00C1EB2B /* Normal */ = {
+			isa = PBXGroup;
+			children = (
+				939565FE27B2D5B600C1EB2B /* MenuCell.swift */,
+				939565FF27B2D5B600C1EB2B /* MenuCell.xib */,
+			);
+			path = Normal;
 			sourceTree = "<group>";
 		};
 		9396E645270F2EF5002B2E2C /* BackgroundColor */ = {
@@ -1481,6 +1517,7 @@
 				93B6EFC4270B4ABC0035EF09 /* ListTextVC.xib in Resources */,
 				93AA9904270850DE00939D3A /* NavigationItemView.xib in Resources */,
 				93C0114F271D490B00CDB8B9 /* QRCodeView.xib in Resources */,
+				9395660127B2D5B600C1EB2B /* MenuCell.xib in Resources */,
 				936A9C3C2704A0DA006F9F25 /* Localizable.strings in Resources */,
 				939A01692722F05D001ED967 /* PhotoVC.xib in Resources */,
 				933C6DAC2725626D0076EF03 /* CalenDarPickerView.xib in Resources */,
@@ -1524,6 +1561,7 @@
 				9396E64B270F2F36002B2E2C /* BackgroundColor.xib in Resources */,
 				93AC60B52719A76800A1F480 /* ToDoCell.xib in Resources */,
 				936A9CDB2704A179006F9F25 /* EndIndicator.png in Resources */,
+				9395660727B2D9B200C1EB2B /* MenuPremiumCell.xib in Resources */,
 				939217B0271D93CD008BC4E7 /* QRCodeTextView.xib in Resources */,
 				932CF99C270DA0F100CB75B2 /* FontSize.xib in Resources */,
 				93BA0C48271C0C4200B9E121 /* GoogleService-Info.plist in Resources */,
@@ -1591,6 +1629,7 @@
 				936A9D112704A179006F9F25 /* UISwitchExtensions.swift in Sources */,
 				936A9D0A2704A179006F9F25 /* UIImageExtensions.swift in Sources */,
 				9365491827185E4300C84473 /* CheckListVC.swift in Sources */,
+				9395660627B2D9B200C1EB2B /* MenuPremiumCell.swift in Sources */,
 				936A9D482704A643006F9F25 /* MenuVM.swift in Sources */,
 				93A8496D2715878500E9ABBF /* NavigationItemHome.swift in Sources */,
 				9393CF7427214484000DC32E /* CropVM.swift in Sources */,
@@ -1611,6 +1650,7 @@
 				93AC4F2A2723A91E0009FE3B /* Storage.swift in Sources */,
 				936A9C402704A123006F9F25 /* Strings-Gen.swift in Sources */,
 				936A9D282704A179006F9F25 /* UIColor+Extensions.swift in Sources */,
+				9395660027B2D5B600C1EB2B /* MenuCell.swift in Sources */,
 				936A9D342704A179006F9F25 /* ReadMoreTextViewExtension.swift in Sources */,
 				936A9D372704A179006F9F25 /* Encode+Extension.swift in Sources */,
 				936A9D0C2704A179006F9F25 /* UIViewExtensions.swift in Sources */,

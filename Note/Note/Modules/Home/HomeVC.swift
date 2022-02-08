@@ -39,7 +39,6 @@ class HomeVC: BaseNavigationHome {
     private var audio: AVAudioPlayer = AVAudioPlayer()
     private let eventPickerUrl: PublishSubject<UIImage> = PublishSubject.init()
     private var sizeCell: CGSize = .zero
-    private let calendarView: CalenDarPickerView = CalenDarPickerView.loadXib()
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
