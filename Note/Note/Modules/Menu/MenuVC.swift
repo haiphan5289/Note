@@ -14,22 +14,22 @@ import RxSwift
 class MenuVC: UIViewController {
     
     enum MenuElement: Int, CaseIterable {
-        case getPrenium, restore,  autoLock, shareApp, rateApp, feedBackApp, myApps, term, policy
+        case  autoLock, shareApp, myApps, term, policy
         
         var text: String {
             switch self {
-            case .getPrenium:
-                return ""
-            case .restore:
-                return "Restore"
+//            case .getPrenium:
+//                return ""
+//            case .restore:
+//                return "Restore"
             case .autoLock:
                 return "AutoLock"
             case .shareApp:
                 return "Share App"
-            case .rateApp:
-                return "Rate App"
-            case .feedBackApp:
-                return "FeedBack App"
+//            case .rateApp:
+//                return "Rate App"
+//            case .feedBackApp:
+//                return "FeedBack App"
             case .myApps:
                 return "My Apps"
             case .term:
@@ -98,7 +98,7 @@ extension MenuVC {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(MenuCell.nib, forCellReuseIdentifier: MenuCell.identifier)
-        self.tableView.register(MenuPremiumCell.nib, forCellReuseIdentifier: MenuPremiumCell.identifier)
+//        self.tableView.register(MenuPremiumCell.nib, forCellReuseIdentifier: MenuPremiumCell.identifier)
     }
     
     private func setupRX() {
@@ -125,11 +125,6 @@ extension MenuVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch MenuElement.init(rawValue: indexPath.row) {
-        case .getPrenium:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuPremiumCell.identifier) as! MenuPremiumCell? else {
-                return UITableViewCell.init()
-            }
-            return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuCell.identifier) as? MenuCell else { return UITableViewCell.init() }
             cell.lbName.text = MenuElement.allCases[indexPath.row].text
