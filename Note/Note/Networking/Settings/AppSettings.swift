@@ -11,4 +11,11 @@ import Foundation
 enum AppSettings {
     @Storage(key: "sortModel", defaultValue: SortModel.valueDefault)
     static var sortModel: SortModel
+    
+    @Storage(key: "autoLock", defaultValue: MenuVC.AutoLockValue.never)
+    static var autoLock: MenuVC.AutoLockValue
+    
+    @Storage(key: "appLockConfig", defaultValue: AppLockModel.defaultValue)
+    static var appLockConfig: AppLockModel
+    
 }

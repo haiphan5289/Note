@@ -35,3 +35,10 @@ extension Date {
         return cal.date(from: components)
     }
 }
+extension Date {
+    
+    static func - (lhs: Date, rhs: Date) -> TimeInterval {
+        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+    }
+    
+}

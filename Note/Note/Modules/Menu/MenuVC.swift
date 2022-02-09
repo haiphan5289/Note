@@ -41,33 +41,33 @@ class MenuVC: UIViewController {
     }
     
     enum AutoLockValue: Int, Codable, CaseIterable {
-        case instantly, oneminute, fiveminute, onehour, fivehour, nerver
+        case instantly, oneminute, fiveminute, onehour, fivehour, never
         
         var text: String {
             switch self {
             case .instantly:
-                return "L10n.AutoLock.instantly"
+                return "instantly"
             case .oneminute:
-                return "L10n.AutoLock.oneMinute"
+                return "one minute"
             case .fiveminute:
-                return "L10n.AutoLock.fiveMinute"
+                return "five minute"
             case .onehour:
-                return "L10n.AutoLock.oneHour"
+                return "one hour"
             case .fivehour:
-                return "L10n.AutoLock.fiveHour"
-            case .nerver:
-                return "L10n.AutoLock.fiveHour"
+                return "five hour"
+            case .never:
+                return "never"
             }
         }
         
         var valueSeconds: Int {
             switch self {
             case .instantly: return 0
-            case .fiveminute: return 0
-            case .oneminute: return 0
-            case .onehour: return 0
-            case .fivehour: return 0
-            case .nerver: return 0
+            case .fiveminute: return  5 * 60
+            case .oneminute: return 60
+            case .onehour: return 60 * 60
+            case .fivehour: return 5 * 60 * 60
+            case .never: return 0
             }
         }
     }
@@ -112,11 +112,9 @@ extension MenuVC {
                        buttonTitles: AutoLockValue.allCases.map{ $0.text },
                        highlightedButtonIndex: nil) { [weak self] idx in
             guard let wSelf = self, let value = AutoLockValue(rawValue: idx) else { return }
-//            let lock = AppLockModel(isUsingFaceID: app.isUsingFaceID,
-//                                    autoLockValue: value,
-//                                    passCode: app.passCode,
-//                                    isEnable: app.isEnable)
-//            BackgroundLock.shared.updateValueAppLock(app: lock)
+            let lock = AppLockModel(autoLockValue: value)
+            BackgroundLock.shared.updateValueAppLock(app: lock)
+            wSelf.tableView.reloadData()
         }
     }
 }
@@ -137,9 +135,12 @@ extension MenuVC: UITableViewDataSource {
             cell.lbName.text = MenuElement.allCases[indexPath.row].text
             if MenuElement.allCases[indexPath.row] == .autoLock {
                 cell.lbDes.isHidden = false
+                cell.lbDes.text = AppSettings.appLockConfig.autoLockValue.text
             } else {
                 cell.lbDes.isHidden = true
             }
+            
+            
             return cell
         }
     }

@@ -10,6 +10,11 @@ import UIKit
 import RxSwift
 
 final class NoteManage {
+    
+    enum StatusApp {
+        case bg, foreground
+    }
+    
     static var shared = NoteManage()
     
     @VariableReplay var listNote: [NoteModel] = []

@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIFont.overrideInitialize()
         FirebaseApp.configure()
         NoteManage.shared.start()
+        BackgroundLock.shared.start()
         self.goToTabbar()
         
         //setup Push Notification

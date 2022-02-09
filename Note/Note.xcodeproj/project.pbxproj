@@ -243,6 +243,11 @@
 		93D1B097270DE5DE008FCD4B /* BaseNavigationSimpleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1B096270DE5DE008FCD4B /* BaseNavigationSimpleVC.swift */; };
 		93D1B09A270DF8E0008FCD4B /* ArrayExxtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1B099270DF8E0008FCD4B /* ArrayExxtension.swift */; };
 		93E561AF27B3605C0090B694 /* SortModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E561AE27B3605C0090B694 /* SortModel.swift */; };
+		93E561B427B3BEEE0090B694 /* LockScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93E561B127B3BEEE0090B694 /* LockScreenVC.xib */; };
+		93E561B527B3BEEE0090B694 /* LockScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E561B227B3BEEE0090B694 /* LockScreenVM.swift */; };
+		93E561B627B3BEEE0090B694 /* LockScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E561B327B3BEEE0090B694 /* LockScreenVC.swift */; };
+		93E561B827B3C41E0090B694 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E561B727B3C41E0090B694 /* Background.swift */; };
+		93E561BB27B3CABB0090B694 /* AppLockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E561BA27B3CABB0090B694 /* AppLockModel.swift */; };
 		9F17E688D6E5DC8617F4A480 /* Pods_Note.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452D3D813B7458C82BE42484 /* Pods_Note.framework */; };
 /* End PBXBuildFile section */
 
@@ -487,6 +492,11 @@
 		93D1B096270DE5DE008FCD4B /* BaseNavigationSimpleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationSimpleVC.swift; sourceTree = "<group>"; };
 		93D1B099270DF8E0008FCD4B /* ArrayExxtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExxtension.swift; sourceTree = "<group>"; };
 		93E561AE27B3605C0090B694 /* SortModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortModel.swift; sourceTree = "<group>"; };
+		93E561B127B3BEEE0090B694 /* LockScreenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LockScreenVC.xib; sourceTree = "<group>"; };
+		93E561B227B3BEEE0090B694 /* LockScreenVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenVM.swift; sourceTree = "<group>"; };
+		93E561B327B3BEEE0090B694 /* LockScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenVC.swift; sourceTree = "<group>"; };
+		93E561B727B3C41E0090B694 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		93E561BA27B3CABB0090B694 /* AppLockModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLockModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -711,6 +721,7 @@
 			children = (
 				936A9C482704A162006F9F25 /* SettingDefaultFont.swift */,
 				936A9D4F2704B6D4006F9F25 /* NoteManage.swift */,
+				93E561B727B3C41E0090B694 /* Background.swift */,
 			);
 			path = Manage;
 			sourceTree = "<group>";
@@ -1025,6 +1036,7 @@
 		936A9D3B2704A4C9006F9F25 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				93E561B027B3BED90090B694 /* LockScreen */,
 				939A01652722F048001ED967 /* Photo */,
 				9392ED9C2721A856005B24F4 /* QRCodePage */,
 				9365491B27185ED500C84473 /* Check */,
@@ -1436,6 +1448,25 @@
 			path = ListFont;
 			sourceTree = "<group>";
 		};
+		93E561B027B3BED90090B694 /* LockScreen */ = {
+			isa = PBXGroup;
+			children = (
+				93E561B927B3CAA90090B694 /* Model */,
+				93E561B127B3BEEE0090B694 /* LockScreenVC.xib */,
+				93E561B227B3BEEE0090B694 /* LockScreenVM.swift */,
+				93E561B327B3BEEE0090B694 /* LockScreenVC.swift */,
+			);
+			path = LockScreen;
+			sourceTree = "<group>";
+		};
+		93E561B927B3CAA90090B694 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				93E561BA27B3CABB0090B694 /* AppLockModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1558,6 +1589,7 @@
 				936A9CD92704A179006F9F25 /* BorderLine.png in Resources */,
 				936A9D402704A61B006F9F25 /* HomeVC.xib in Resources */,
 				936A9CDE2704A179006F9F25 /* README.md in Resources */,
+				93E561B427B3BEEE0090B694 /* LockScreenVC.xib in Resources */,
 				933C6DA227255E8A0076EF03 /* CalendarCell.xib in Resources */,
 				937B7752271A75A300892EC9 /* DrawVC.xib in Resources */,
 				93B6EFC9270B56300035EF09 /* ListFont.xib in Resources */,
@@ -1670,6 +1702,7 @@
 				933C6DB0272565B70076EF03 /* CalendarPickerModel.swift in Sources */,
 				93D1B09A270DF8E0008FCD4B /* ArrayExxtension.swift in Sources */,
 				936A9D092704A179006F9F25 /* UIViewControllerExtensions.swift in Sources */,
+				93E561B627B3BEEE0090B694 /* LockScreenVC.swift in Sources */,
 				936A9D242704A179006F9F25 /* NumberExtension.swift in Sources */,
 				936A9C2527049F1E006F9F25 /* AppDelegate.swift in Sources */,
 				932EFC87271018C30073A9FA /* Request.swift in Sources */,
@@ -1699,8 +1732,10 @@
 				9396E652270F3261002B2E2C /* ViewHeaderDialog.swift in Sources */,
 				936A9C2727049F1E006F9F25 /* SceneDelegate.swift in Sources */,
 				936A9CFE2704A179006F9F25 /* UICollectionViewExtensions.swift in Sources */,
+				93E561B527B3BEEE0090B694 /* LockScreenVM.swift in Sources */,
 				936A9CE72704A179006F9F25 /* ABProgressIndicator.swift in Sources */,
 				937B7754271A75A300892EC9 /* DrawVC.swift in Sources */,
+				93E561B827B3C41E0090B694 /* Background.swift in Sources */,
 				936A9CF32704A179006F9F25 /* ExportFile.swift in Sources */,
 				936A9CE42704A179006F9F25 /* CustomTabbar.swift in Sources */,
 				936A9D2B2704A179006F9F25 /* Drive+Extension.swift in Sources */,
@@ -1738,6 +1773,7 @@
 				93E561AF27B3605C0090B694 /* SortModel.swift in Sources */,
 				936A9D1A2704A179006F9F25 /* Constants.swift in Sources */,
 				934C8A5E27074206008BCE0A /* DropdownView.swift in Sources */,
+				93E561BB27B3CABB0090B694 /* AppLockModel.swift in Sources */,
 				936A9CF62704A179006F9F25 /* UISearchBarExtensions.swift in Sources */,
 				93A65CDA27144B2B00BF08B0 /* NoteModel.swift in Sources */,
 				93C01130271D0FA100CDB8B9 /* QRCodeVC.swift in Sources */,
