@@ -52,6 +52,11 @@ final class NoteManage {
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
+    func openLink(link: String) {
+        guard let url = URL(string: link) else { return }
+        UIApplication.shared.open(url)
+    }
+    
     func removeCAGradientLayer(view: UIView) {
         guard let subplayers = view.layer.sublayers else {
             return

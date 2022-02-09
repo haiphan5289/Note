@@ -149,6 +149,8 @@ extension MenuVC: UITableViewDataSource {
         switch MenuElement.init(rawValue: indexPath.row) {
         case .autoLock:
             self.actionSheetAutoLock()
+        case .term, .policy:
+            NoteManage.shared.openLink(link: ConstantApp.shared.policy)
         default: break
         }
     }

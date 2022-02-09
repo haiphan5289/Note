@@ -22,6 +22,7 @@ final class ConstantApp {
     let radiusHomeNoteCell: CGFloat = 6
     let titleNotificaiton: String = "You have a Notfication Note"
     let identifierNotification: String = "PushLocalNote"
+    let policy: String = "https://sites.google.com/view/marvel-note/trang-ch%E1%BB%A7"
     
     private init() {}
 
