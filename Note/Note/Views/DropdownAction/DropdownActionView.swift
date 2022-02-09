@@ -33,7 +33,7 @@ class DropdownActionView: UIView {
         case orderedDescending, orderedAscending
     }
     
-    enum Action: Int, CaseIterable {
+    enum Action: Int, Codable, CaseIterable {
         case trash, sort, reminder, pin, views, reset
         
         static var sortStatus: SortStatus = .orderedDescending
@@ -91,6 +91,7 @@ class DropdownActionView: UIView {
     var delegate: DropdownActionViewDelegate?
     private let stackView: UIStackView = UIStackView()
     private var shapeLayer: CALayer?
+    private var views: [UIView] = []
     
     private let disposeBag = DisposeBag()
     override init(frame: CGRect) {
@@ -142,6 +143,9 @@ extension DropdownActionView {
                 v.layer.borderColor = UIColor.black.cgColor
                 v.layer.borderWidth = Constant.borderWidth
                 v.layer.cornerRadius = Constant.cornerRadius
+                if type == AppSettings.sortModel.type {
+                    v.layer.borderColor = Asset.textColorApp.color.cgColor
+                }
                 
                 let lbTitle: UILabel = UILabel(frame: .zero)
                 lbTitle.font = UIFont.mySemiBoldSystemFont(ofSize: 16)
@@ -164,6 +168,7 @@ extension DropdownActionView {
                 
                 let tap: UITapGestureRecognizer = UITapGestureRecognizer()
                 v.addGestureRecognizer(tap)
+                wSelf.views.append(v)
                 tap.rx.event.bind { [weak self] _ in
                     guard let wSelf = self else { return }
                     
@@ -178,6 +183,12 @@ extension DropdownActionView {
                         }
                     default: break
                     }
+                    
+                    wSelf.views.forEach { v in
+                        v.layer.borderColor = UIColor.clear.cgColor
+                    }
+                    v.layer.borderColor = Asset.textColorApp.color.cgColor
+                    v.layer.borderWidth = 1
                     
                     wSelf.delegate?.selectAction(action: type)
                 }.disposed(by: disposeBag)

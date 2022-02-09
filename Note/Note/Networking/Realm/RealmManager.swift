@@ -50,7 +50,8 @@ class RealmManager {
                     
                     do {
                         let newNote = NoteModel(noteType: model.noteType, text: model.text, id: model.id, bgColorModel: model.bgColorModel,
-                                                updateDate: model.updateDate, noteCheckList: model.noteCheckList, noteDrawModel: model.noteDrawModel, notePhotoModel: model.notePhotoModel, isPin: model.isPin)
+                                                updateDate: model.updateDate, noteCheckList: model.noteCheckList, noteDrawModel: model.noteDrawModel,
+                                                notePhotoModel: model.notePhotoModel, reminder: model.reminder, isPin: model.isPin)
                         list[index].data = try newNote.toData()
                     } catch {
                         print("\(error.localizedDescription)")

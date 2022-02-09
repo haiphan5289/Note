@@ -236,24 +236,34 @@ extension HomeVC {
             wSelf.collectionView.reloadData()
         }.disposed(by: disposeBag)
         
-        self.eventActionDropdown.asObservable().bind { [weak self] tap in
+        Observable.merge(self.eventActionDropdown.asObservable(), Observable.just(AppSettings.sortModel.type))
+            .bind { [weak self] tap in
             guard let wSelf = self else { return }
             
             switch tap {
             case .sort:
                 if DropdownActionView.Action.sortStatus == .orderedDescending {
                     wSelf.listNote = wSelf.listNote.sorted(by: { $0.updateDate?.compare($1.updateDate ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedDescending } )
+                    AppSettings.sortModel = SortModel(type: .sort, isAscending: false, viewStatus: AppSettings.sortModel.viewStatus)
                 } else {
                     wSelf.listNote = wSelf.listNote.sorted(by: { $0.updateDate?.compare($1.updateDate ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedAscending } )
+                    AppSettings.sortModel = SortModel(type: .sort, isAscending: true, viewStatus: AppSettings.sortModel.viewStatus)
                 }
                 wSelf.resetStatus()
                 wSelf.navigationItemView.enableButtonMoreAction()
                 wSelf.collectionView.reloadData()
+            case .pin:
+                wSelf.listNote = wSelf.listNote.sorted(by: { ($0.isPin ?? false) && !($1.isPin ?? false) })
+                AppSettings.sortModel = SortModel(type: .pin, isAscending: true, viewStatus: AppSettings.sortModel.viewStatus)
+            case .reminder:
+                wSelf.listNote = wSelf.listNote.sorted(by: { $0.reminder?.day.date.compare($1.reminder?.day.date ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedAscending } )
+                AppSettings.sortModel = SortModel(type: .reminder, isAscending: true, viewStatus: AppSettings.sortModel.viewStatus)
             case .reset:
                 wSelf.listNote = wSelf.listNote.sorted(by: { $0.updateDate?.compare($1.updateDate ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedDescending } )
                 wSelf.resetStatus()
                 wSelf.eventNumberOfCell.onNext(.three)
                 wSelf.navigationItemView.enableButtonMoreAction()
+                AppSettings.sortModel = SortModel(type: .reset, isAscending: true, viewStatus: AppSettings.sortModel.viewStatus)
             default: break
             }
             
@@ -313,13 +323,15 @@ extension HomeVC {
             }
         }.disposed(by: disposeBag)
         
-        Observable.merge(Observable.just(AppSettings.numberOfCellHome), self.eventNumberOfCell.asObservable())
+        Observable.merge(Observable.just(AppSettings.sortModel.viewStatus), self.eventNumberOfCell.asObservable())
             .bind { [weak self] status in
             guard let wSelf = self else { return }
             wSelf.calculateSizeCell(numberOfCell: status)
         }.disposed(by: disposeBag)
 
     }
+    
+    
     
     private func addOrRemoveNote(idx: IndexPath) {
         if let index = self.selectIndexs.firstIndex(where: { $0 == idx }) {
@@ -336,7 +348,7 @@ extension HomeVC {
     }
     
     private func moveToNote(idx: IndexPath) {
-        let item = NoteManage.shared.listNote[idx.row]
+        let item = self.listNote[idx.row]
         
         switch item.noteType {
         case .text:
@@ -380,15 +392,17 @@ extension HomeVC {
         case .three:
             let w = (self.collectionView.bounds.size.width / Constant.numberOfCellisThree) - Constant.spacingCell
             self.sizeCell = CGSize(width: w, height: w)
+            AppSettings.sortModel = SortModel(type: AppSettings.sortModel.type, isAscending: AppSettings.sortModel.isAscending, viewStatus: .three)
         case .two:
             let w = (self.collectionView.bounds.size.width / Constant.numberOfCellisTwo) - Constant.spacingCell
             self.sizeCell = CGSize(width: w, height: w)
+            AppSettings.sortModel = SortModel(type: AppSettings.sortModel.type, isAscending: AppSettings.sortModel.isAscending, viewStatus: .two)
         case .four:
             let w = (self.collectionView.bounds.size.width / Constant.numberOfCellisFour) - Constant.spacingCell
             self.sizeCell = CGSize(width: w, height: w)
+            AppSettings.sortModel = SortModel(type: AppSettings.sortModel.type, isAscending: AppSettings.sortModel.isAscending, viewStatus: .four)
         }
         
-        AppSettings.numberOfCellHome = numberOfCell
         self.collectionView.reloadData()
     }
     

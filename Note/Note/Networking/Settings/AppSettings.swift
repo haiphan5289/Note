@@ -9,6 +9,6 @@
 import Foundation
 
 enum AppSettings {
-    @Storage(key: "numberOfCell", defaultValue: DropdownActionView.ViewsStatus.three)
-    static var numberOfCellHome: DropdownActionView.ViewsStatus
+    @Storage(key: "sortModel", defaultValue: SortModel.valueDefault)
+    static var sortModel: SortModel
 }
