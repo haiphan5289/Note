@@ -280,7 +280,7 @@
 		9365491327185E4300C84473 /* CheckListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckListVC.xib; sourceTree = "<group>"; };
 		9365491427185E4300C84473 /* CheckListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListVM.swift; sourceTree = "<group>"; };
 		9365491527185E4300C84473 /* CheckListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListVC.swift; sourceTree = "<group>"; };
-		936A9C2127049F1E006F9F25 /* Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Note.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		936A9C2127049F1E006F9F25 /* Marvel Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marvel Note.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		936A9C2427049F1E006F9F25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		936A9C2627049F1E006F9F25 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		936A9C2827049F1E006F9F25 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -657,7 +657,7 @@
 		936A9C2227049F1E006F9F25 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				936A9C2127049F1E006F9F25 /* Note.app */,
+				936A9C2127049F1E006F9F25 /* Marvel Note.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1489,7 +1489,7 @@
 				9393CF6327213F81000DC32E /* PinLayout */,
 			);
 			productName = Note;
-			productReference = 936A9C2127049F1E006F9F25 /* Note.app */;
+			productReference = 936A9C2127049F1E006F9F25 /* Marvel Note.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1992,10 +1992,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = haiphan05.Note;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = notehaiphan;
+				PRODUCT_NAME = "Marvel Note";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2013,10 +2013,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = haiphan05.Note;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = notehaiphan;
+				PRODUCT_NAME = "Marvel Note";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
