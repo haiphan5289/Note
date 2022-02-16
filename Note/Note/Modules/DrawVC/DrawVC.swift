@@ -33,6 +33,8 @@ class DrawVC: BaseNavigationOnlyHeader {
     private var viewModel: DrawVM = DrawVM()
     
     private let toolPicker = PKToolPicker.init()
+    private let calendarView: CalenDarPickerView = CalenDarPickerView.loadXib()
+    private var reminder: CalendaModel?
     
     
     private let disposeBag = DisposeBag()
@@ -68,6 +70,18 @@ extension DrawVC {
         
         self.updateStatusButtonUndo()
         
+        self.view.addSubview(self.calendarView)
+        self.calendarView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.right.equalToSuperview().inset(16)
+            make.height.width.equalTo(CalenDarPickerView.Constant.heightView)
+        }
+        self.calendarView.hideView()
+        self.calendarView.delegate = self
+        if let note = self.noteModel, let r = note.reminder {
+            self.calendarView.reloadValue(remider: r)
+        }
+        
     }
     
     private func setupRX() {
@@ -85,10 +99,13 @@ extension DrawVC {
                     let noteDraw = NoteDrawModel(data: wSelf.canvasView.drawing.dataRepresentation(), imageData: wSelf.converToImage())
                     if let note = wSelf.noteModel {
                         noteModel = NoteModel(noteType: .draw, text: nil, id: note.id, bgColorModel: nil,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: noteDraw, notePhotoModel: nil, isPin: isPin)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: noteDraw, notePhotoModel: nil, reminder: wSelf.reminder, isPin: isPin)
                     } else {
                         noteModel = NoteModel(noteType: .draw, text: nil, id: Date.convertDateToLocalTime(), bgColorModel: nil,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: noteDraw, notePhotoModel: nil, isPin: isPin)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: nil, noteDrawModel: noteDraw, notePhotoModel: nil, reminder: wSelf.reminder, isPin: isPin)
+                        if let r = wSelf.reminder, r.isReminder {
+                            NoteManage.shared.pushLocal(day: r.day, identifierNotification: "\(noteModel.id ?? Date.convertDateToLocalTime())")
+                        }
                     }
                     RealmManager.shared.updateOrInsertConfig(model: noteModel)
                 })
@@ -195,5 +212,10 @@ extension DrawVC: PKToolPickerObserver {
     
     func toolPickerFramesObscuredDidChange(_ toolPicker: PKToolPicker) {
         print("toolPickerFramesObscuredDidChange")
+    }
+}
+extension DrawVC: CalenDarPickerViewDelegate {
+    func updateReminder(calendar: CalendaModel) {
+        self.reminder = calendar
     }
 }

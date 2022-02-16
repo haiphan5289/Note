@@ -37,6 +37,8 @@ class CheckListVC: BaseNavigationHeader {
     private let eventKeyboardDone: PublishSubject<Void> = PublishSubject.init()
     @VariableReplay private var listToDo: [String] = []
     private var listSelect: [IndexPath] = []
+    private let calendarView: CalenDarPickerView = CalenDarPickerView.loadXib()
+    private var reminder: CalendaModel?
     
     private var statusFontCell: StatusFont = .cancel
     private var textColorStatus: Bool = true
@@ -75,6 +77,18 @@ extension CheckListVC {
             self.updateValueNote(note: note)
         } else {
             self.bgColorModel = BgColorModel.empty
+        }
+        
+        self.view.addSubview(self.calendarView)
+        self.calendarView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.right.equalToSuperview().inset(16)
+            make.height.width.equalTo(CalenDarPickerView.Constant.heightView)
+        }
+        self.calendarView.hideView()
+        self.calendarView.delegate = self
+        if let note = self.noteModel, let r = note.reminder {
+            self.calendarView.reloadValue(remider: r)
         }
     }
     
@@ -200,15 +214,22 @@ extension CheckListVC {
                     let noteCheckList = NoteCheckListModel(title: wSelf.tfTitle.text, listToDo: wSelf.listToDo, listSelect: wSelf.listSelect)
                     if let note = wSelf.noteModel {
                         noteModel = NoteModel(noteType: .checkList, text: nil, id: note.id, bgColorModel: wSelf.bgColorModel,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: noteCheckList, noteDrawModel: nil, notePhotoModel: nil, isPin: isPin)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: noteCheckList, noteDrawModel: nil,
+                                              notePhotoModel: nil, reminder: wSelf.reminder, isPin: isPin)
                     } else {
                         noteModel = NoteModel(noteType: .checkList, text: nil, id: Date.convertDateToLocalTime(), bgColorModel: wSelf.bgColorModel,
-                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: noteCheckList, noteDrawModel: nil, notePhotoModel: nil, isPin: isPin)
+                                              updateDate: Date.convertDateToLocalTime(), noteCheckList: noteCheckList, noteDrawModel: nil,
+                                              notePhotoModel: nil, reminder: wSelf.reminder, isPin: isPin)
+                        if let r = wSelf.reminder, r.isReminder {
+                            NoteManage.shared.pushLocal(day: r.day, identifierNotification: "\(noteModel.id ?? Date.convertDateToLocalTime())")
+                        }
                     }
                     RealmManager.shared.updateOrInsertConfig(model: noteModel)
                 })
-                
-                
+            case .reminder:
+                wSelf.calendarView.showView()
+            case .pin:
+                wSelf.navigationItemView.actionPin()
             default: break
             }
         }
@@ -437,5 +458,10 @@ extension CheckListVC: UITextViewDelegate {
             return false
         }
         return true
+    }
+}
+extension CheckListVC: CalenDarPickerViewDelegate {
+    func updateReminder(calendar: CalendaModel) {
+        self.reminder = calendar
     }
 }

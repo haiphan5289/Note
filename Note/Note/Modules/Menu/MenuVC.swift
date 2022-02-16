@@ -107,7 +107,7 @@ extension MenuVC {
     
     private func actionSheetAutoLock() {
         self.showAlert(type: .actionSheet,
-                       title: "L10n.AutoLock.set",
+                       title: "Set time to Auto-Lock",
                        message: nil,
                        buttonTitles: AutoLockValue.allCases.map{ $0.text },
                        highlightedButtonIndex: nil) { [weak self] idx in
