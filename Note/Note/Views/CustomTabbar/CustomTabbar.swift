@@ -20,7 +20,7 @@ class CustomTabbar: UITabBar {
             case .home:
                 return HomeVC.createVC()
             case .menu:
-                return MenuVC.createVC()
+                return HomeV2VC.createVC()
             }
         }
         

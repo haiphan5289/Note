@@ -230,6 +230,13 @@
 		93B6EFC6270B4ABC0035EF09 /* ListTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */; };
 		93B6EFC9270B56300035EF09 /* ListFont.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B6EFC8270B56300035EF09 /* ListFont.xib */; };
 		93B6EFCB270B56430035EF09 /* ListFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6EFCA270B56430035EF09 /* ListFont.swift */; };
+		93B72C7C2821571800AFFE9E /* HomeV2VC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B72C792821571800AFFE9E /* HomeV2VC.xib */; };
+		93B72C7D2821571800AFFE9E /* HomeV2VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B72C7A2821571800AFFE9E /* HomeV2VM.swift */; };
+		93B72C7E2821571800AFFE9E /* HomeV2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B72C7B2821571800AFFE9E /* HomeV2VC.swift */; };
+		93B72C82282158B000AFFE9E /* NoteStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B72C80282158B000AFFE9E /* NoteStatusCell.swift */; };
+		93B72C83282158B000AFFE9E /* NoteStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B72C81282158B000AFFE9E /* NoteStatusCell.xib */; };
+		93B72C8828215EF600AFFE9E /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B72C8628215EF600AFFE9E /* ProjectCell.swift */; };
+		93B72C8928215EF600AFFE9E /* ProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B72C8728215EF600AFFE9E /* ProjectCell.xib */; };
 		93B9D3ED2722ADB0003220BF /* CameraDetect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B9D3EC2722ADB0003220BF /* CameraDetect.swift */; };
 		93BA0C48271C0C4200B9E121 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93BA0C47271C0C4200B9E121 /* GoogleService-Info.plist */; };
 		93C0112E271D0FA100CDB8B9 /* QRCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C0112B271D0FA100CDB8B9 /* QRCodeVC.xib */; };
@@ -280,7 +287,7 @@
 		9365491327185E4300C84473 /* CheckListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckListVC.xib; sourceTree = "<group>"; };
 		9365491427185E4300C84473 /* CheckListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListVM.swift; sourceTree = "<group>"; };
 		9365491527185E4300C84473 /* CheckListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListVC.swift; sourceTree = "<group>"; };
-		936A9C2127049F1E006F9F25 /* Marvel Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marvel Note.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		936A9C2127049F1E006F9F25 /* Easy Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Easy Note.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		936A9C2427049F1E006F9F25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		936A9C2627049F1E006F9F25 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		936A9C2827049F1E006F9F25 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -479,6 +486,13 @@
 		93B6EFC3270B4ABC0035EF09 /* ListTextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTextVC.swift; sourceTree = "<group>"; };
 		93B6EFC8270B56300035EF09 /* ListFont.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListFont.xib; sourceTree = "<group>"; };
 		93B6EFCA270B56430035EF09 /* ListFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFont.swift; sourceTree = "<group>"; };
+		93B72C792821571800AFFE9E /* HomeV2VC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeV2VC.xib; sourceTree = "<group>"; };
+		93B72C7A2821571800AFFE9E /* HomeV2VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeV2VM.swift; sourceTree = "<group>"; };
+		93B72C7B2821571800AFFE9E /* HomeV2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeV2VC.swift; sourceTree = "<group>"; };
+		93B72C80282158B000AFFE9E /* NoteStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStatusCell.swift; sourceTree = "<group>"; };
+		93B72C81282158B000AFFE9E /* NoteStatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteStatusCell.xib; sourceTree = "<group>"; };
+		93B72C8628215EF600AFFE9E /* ProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
+		93B72C8728215EF600AFFE9E /* ProjectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectCell.xib; sourceTree = "<group>"; };
 		93B9D3EC2722ADB0003220BF /* CameraDetect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDetect.swift; sourceTree = "<group>"; };
 		93BA0C47271C0C4200B9E121 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		93C0112B271D0FA100CDB8B9 /* QRCodeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeVC.xib; sourceTree = "<group>"; };
@@ -657,7 +671,7 @@
 		936A9C2227049F1E006F9F25 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				936A9C2127049F1E006F9F25 /* Marvel Note.app */,
+				936A9C2127049F1E006F9F25 /* Easy Note.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1048,6 +1062,7 @@
 				937B774E271A756700892EC9 /* DrawVC */,
 				9365491227185E0A00C84473 /* CheckList */,
 				93AA99052708535D00939D3A /* Text */,
+				93B72C78282156F600AFFE9E /* HomeV2 */,
 				936A9D3C2704A4D1006F9F25 /* Home */,
 			);
 			path = Modules;
@@ -1407,6 +1422,44 @@
 			path = ListFont;
 			sourceTree = "<group>";
 		};
+		93B72C78282156F600AFFE9E /* HomeV2 */ = {
+			isa = PBXGroup;
+			children = (
+				93B72C7F2821587300AFFE9E /* Cell */,
+				93B72C792821571800AFFE9E /* HomeV2VC.xib */,
+				93B72C7A2821571800AFFE9E /* HomeV2VM.swift */,
+				93B72C7B2821571800AFFE9E /* HomeV2VC.swift */,
+			);
+			path = HomeV2;
+			sourceTree = "<group>";
+		};
+		93B72C7F2821587300AFFE9E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				93B72C8528215EE300AFFE9E /* Projects */,
+				93B72C8428215ED400AFFE9E /* Normal */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		93B72C8428215ED400AFFE9E /* Normal */ = {
+			isa = PBXGroup;
+			children = (
+				93B72C80282158B000AFFE9E /* NoteStatusCell.swift */,
+				93B72C81282158B000AFFE9E /* NoteStatusCell.xib */,
+			);
+			path = Normal;
+			sourceTree = "<group>";
+		};
+		93B72C8528215EE300AFFE9E /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				93B72C8628215EF600AFFE9E /* ProjectCell.swift */,
+				93B72C8728215EF600AFFE9E /* ProjectCell.xib */,
+			);
+			path = Projects;
+			sourceTree = "<group>";
+		};
 		93C0112A271D0F8600CDB8B9 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -1489,7 +1542,7 @@
 				9393CF6327213F81000DC32E /* PinLayout */,
 			);
 			productName = Note;
-			productReference = 936A9C2127049F1E006F9F25 /* Marvel Note.app */;
+			productReference = 936A9C2127049F1E006F9F25 /* Easy Note.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1566,8 +1619,10 @@
 				936A9C2C27049F1E006F9F25 /* Main.storyboard in Resources */,
 				936A9C392704A09C006F9F25 /* swiftgen.yml in Resources */,
 				936A9CDC2704A179006F9F25 /* ProgressIndicator.png in Resources */,
+				93B72C8928215EF600AFFE9E /* ProjectCell.xib in Resources */,
 				9392EDA22721A878005B24F4 /* QRCodePageVC.storyboard in Resources */,
 				93AA991F2709D2E200939D3A /* ConfigText.xib in Resources */,
+				93B72C7C2821571800AFFE9E /* HomeV2VC.xib in Resources */,
 				936A9CF42704A179006F9F25 /* ExportFile.xib in Resources */,
 				93AA990F2708539D00939D3A /* TextVC.xib in Resources */,
 				932EFD3E271019380073A9FA /* ColorsJson.json in Resources */,
@@ -1586,6 +1641,7 @@
 				93A4EA3B271AB6C000B0B1E5 /* DrawHomeCell.xib in Resources */,
 				9365491627185E4300C84473 /* CheckListVC.xib in Resources */,
 				936A9D472704A643006F9F25 /* MenuVC.xib in Resources */,
+				93B72C83282158B000AFFE9E /* NoteStatusCell.xib in Resources */,
 				936A9CD92704A179006F9F25 /* BorderLine.png in Resources */,
 				936A9D402704A61B006F9F25 /* HomeVC.xib in Resources */,
 				936A9CDE2704A179006F9F25 /* README.md in Resources */,
@@ -1683,11 +1739,13 @@
 				936A9C2927049F1E006F9F25 /* ViewController.swift in Sources */,
 				936A9D1E2704A179006F9F25 /* Obserable+Extension.swift in Sources */,
 				93AC4F2A2723A91E0009FE3B /* Storage.swift in Sources */,
+				93B72C8828215EF600AFFE9E /* ProjectCell.swift in Sources */,
 				936A9C402704A123006F9F25 /* Strings-Gen.swift in Sources */,
 				936A9D282704A179006F9F25 /* UIColor+Extensions.swift in Sources */,
 				9395660027B2D5B600C1EB2B /* MenuCell.swift in Sources */,
 				936A9D342704A179006F9F25 /* ReadMoreTextViewExtension.swift in Sources */,
 				936A9D372704A179006F9F25 /* Encode+Extension.swift in Sources */,
+				93B72C7E2821571800AFFE9E /* HomeV2VC.swift in Sources */,
 				936A9D0C2704A179006F9F25 /* UIViewExtensions.swift in Sources */,
 				936A9D192704A179006F9F25 /* UITextField+Extensions.swift in Sources */,
 				93AC4F2E2723A9350009FE3B /* AppSettings.swift in Sources */,
@@ -1816,6 +1874,7 @@
 				936A9D0F2704A179006F9F25 /* UIWindowExtensions.swift in Sources */,
 				936A9D162704A179006F9F25 /* UIAlertControllerExtensions.swift in Sources */,
 				933C6DA8272562570076EF03 /* CalenDarPickerView.swift in Sources */,
+				93B72C82282158B000AFFE9E /* NoteStatusCell.swift in Sources */,
 				936A9D0B2704A179006F9F25 /* UINavigationControllerExtensions.swift in Sources */,
 				936A9D0D2704A179006F9F25 /* UIGestureRecognizerExtensions.swift in Sources */,
 				936A9D362704A179006F9F25 /* CodableExtension.swift in Sources */,
@@ -1825,6 +1884,7 @@
 				9393CF6C2721404A000DC32E /* CropRectView.swift in Sources */,
 				9393CF6D2721404A000DC32E /* CropView.swift in Sources */,
 				936A9D122704A179006F9F25 /* UIButtonExtensions.swift in Sources */,
+				93B72C7D2821571800AFFE9E /* HomeV2VM.swift in Sources */,
 				936548D7271811C900C84473 /* CHeckVC.swift in Sources */,
 				93A6BBA12743F2FF009CFD64 /* ContextMenu.swift in Sources */,
 				936A9D182704A179006F9F25 /* UIDatePickerExtensions.swift in Sources */,
@@ -1994,7 +2054,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = notehaiphan;
-				PRODUCT_NAME = "Marvel Note";
+				PRODUCT_NAME = "Easy Note";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2016,7 +2076,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = notehaiphan;
-				PRODUCT_NAME = "Marvel Note";
+				PRODUCT_NAME = "Easy Note";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

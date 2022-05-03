@@ -32,7 +32,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
                   endingLineNumber = "15"
-                  offsetFromSymbolStart = "156">
+                  offsetFromSymbolStart = "221">
                </Location>
                <Location
                   uuid = "927B7288-65FC-43D5-8A51-DE4313941DAA - d8b0e11ed41a6088"
@@ -47,7 +47,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
                   endingLineNumber = "16"
-                  offsetFromSymbolStart = "36">
+                  offsetFromSymbolStart = "41">
                </Location>
                <Location
                   uuid = "927B7288-65FC-43D5-8A51-DE4313941DAA - bcc1ec5261a77fa1"
@@ -80,6 +80,20 @@
                   offsetFromSymbolStart = "41">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4858021E-E1F5-41BA-8433-F8B766729BD4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Note/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
