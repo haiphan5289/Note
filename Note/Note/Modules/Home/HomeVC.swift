@@ -30,8 +30,8 @@ class HomeVC: BaseNavigationHome {
     @IBOutlet weak var collectionView: UICollectionView!
     // Add here your view model
     private var viewModel: HomeVM = HomeVM()
-    private let vAddNote: AddNote = AddNote.loadXib()
-    private let vDropDown: DropdownView = DropdownView(frame: .zero)
+//    private let vAddNote: AddNote = AddNote.loadXib()
+//    private let vDropDown: DropdownView = DropdownView(frame: .zero)
     
     @VariableReplay private var listNote: [NoteModel] = []
     private let eventStatusDropDown: PublishSubject<AddNote.StatusAddNote> = PublishSubject.init()
@@ -51,15 +51,17 @@ class HomeVC: BaseNavigationHome {
         super.viewWillAppear(animated)
         //This is reasson why call this method at here
         //Because when load completely, Size view.frame wii get size of file Xib not real devices
-        self.addDropdownView()
+//        self.addDropdownView()
         
         //Update cell view after back to home
         self.collectionView.reloadData()
+        self.navigationController?.isNavigationBarHidden = false
+        self.setupBackButtonSingle()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.vAddNote.updateStatus(status: .remove)
+//        self.vAddNote.updateStatus(status: .remove)
     }
     
     
@@ -67,16 +69,16 @@ class HomeVC: BaseNavigationHome {
 extension HomeVC {
     
     private func setupUI() {
-        vAddNote.delegate = self
-        // Add here the setup for the UI
-        if let height = self.tabBarController?.tabBar.frame.height {
-            self.view.addSubview(vAddNote)
-            self.vAddNote.snp.makeConstraints { make in
-                make.left.right.equalToSuperview()
-                make.bottom.equalToSuperview().inset(height - Constant.distanceFromTopTabbar)
-                make.height.equalTo(Constant.heightAddNoteView)
-            }
-        }
+//        vAddNote.delegate = self
+//        // Add here the setup for the UI
+//        if let height = self.tabBarController?.tabBar.frame.height {
+//            self.view.addSubview(vAddNote)
+//            self.vAddNote.snp.makeConstraints { make in
+//                make.left.right.equalToSuperview()
+//                make.bottom.equalToSuperview().inset(height - Constant.distanceFromTopTabbar)
+//                make.height.equalTo(Constant.heightAddNoteView)
+//            }
+//        }
         
         self.collectionView.delegate = self
         self.collectionView.register(HomeTextCell.nib, forCellWithReuseIdentifier: HomeTextCell.identifier)
@@ -91,24 +93,24 @@ extension HomeVC {
 //        }
     }
     
-    private func addDropdownView() {
-        if let height = self.tabBarController?.tabBar.frame.height {
-            let f: CGRect = CGRect(x: (self.view.frame.width / 2) - ((self.view.frame.width - Constant.totalBesidesArea) / 2),
-                                   y: self.view.frame.height - Constant.heightAddNoteView - height,
-                                   width: self.view.frame.width - Constant.totalBesidesArea,
-                                   height: vDropDown.getHeightDropdown())
-            vDropDown.frame = f
-            vDropDown.isHidden = true
-            vDropDown.delegate = self
-            var framwShow = self.vDropDown.frame
-            framwShow.origin.y -= self.vDropDown.getHeightDropdown()
-            vDropDown.updateValueFrame(statusNote: .open, frame: framwShow)
-            let framwHide = self.vDropDown.frame
-            vDropDown.updateValueFrame(statusNote: .remove, frame: framwHide)
-            self.view.addSubview(vDropDown)
-        }
-
-    }
+//    private func addDropdownView() {
+//        if let height = self.tabBarController?.tabBar.frame.height {
+//            let f: CGRect = CGRect(x: (self.view.frame.width / 2) - ((self.view.frame.width - Constant.totalBesidesArea) / 2),
+//                                   y: self.view.frame.height - Constant.heightAddNoteView - height,
+//                                   width: self.view.frame.width - Constant.totalBesidesArea,
+//                                   height: vDropDown.getHeightDropdown())
+//            vDropDown.frame = f
+//            vDropDown.isHidden = true
+//            vDropDown.delegate = self
+//            var framwShow = self.vDropDown.frame
+//            framwShow.origin.y -= self.vDropDown.getHeightDropdown()
+//            vDropDown.updateValueFrame(statusNote: .open, frame: framwShow)
+//            let framwHide = self.vDropDown.frame
+//            vDropDown.updateValueFrame(statusNote: .remove, frame: framwHide)
+//            self.view.addSubview(vDropDown)
+//        }
+//
+//    }
     
     private func setupRX() {
         // Add here the setup for the RX
@@ -130,7 +132,7 @@ extension HomeVC {
                 }
                 cell.layoutIfNeeded()
                 cell.updateValue(note: note)
-                cell.imgSelect.isHidden = (self.navigationItemView.actionStatus == .normal) ? true : false
+                cell.imgSelect.isHidden = true
                 let hasSelect = self.selectIndexs.contains(indexPath)
                 let img = (hasSelect) ? Asset.icCheckbox.image : Asset.icUncheck.image
                 cell.imgSelect.image = img
@@ -142,7 +144,7 @@ extension HomeVC {
                 }
                 cell.layoutIfNeeded()
                 cell.updateValue(note: note)
-                cell.imgSelect.isHidden = (self.navigationItemView.actionStatus == .normal) ? true : false
+                cell.imgSelect.isHidden = true
                 
                 let hasSelect = self.selectIndexs.contains(indexPath)
                 let img = (hasSelect) ? Asset.icCheckbox.image : Asset.icUncheck.image
@@ -162,7 +164,7 @@ extension HomeVC {
                     cell.img.isHidden = true
                 }
                 
-                cell.imgSelect.isHidden = (self.navigationItemView.actionStatus == .normal) ? true : false
+                cell.imgSelect.isHidden = true
                 let hasSelect = self.selectIndexs.contains(indexPath)
                 let img = (hasSelect) ? Asset.icCheckbox.image : Asset.icUncheck.image
                 cell.imgSelect.image = img
@@ -179,7 +181,7 @@ extension HomeVC {
                 
                 cell.layoutIfNeeded()
                 cell.updateValue(note: note)
-                cell.imgSelect.isHidden = (self.navigationItemView.actionStatus == .normal) ? true : false
+                cell.imgSelect.isHidden = true
                 
                 let hasSelect = self.selectIndexs.contains(indexPath)
                 let img = (hasSelect) ? Asset.icCheckbox.image : Asset.icUncheck.image
@@ -197,12 +199,13 @@ extension HomeVC {
         
         self.collectionView.rx.itemSelected.bind { [weak self] idx in
             guard let wSelf = self else { return }
-            switch wSelf.navigationItemView.actionStatus {
-            case .normal:
-                wSelf.moveToNote(idx: idx)
-            case .edit:
-                wSelf.addOrRemoveNote(idx: idx)
-            }
+//            switch wSelf.navigationItemView.actionStatus {
+//            case .normal:
+//                wSelf.moveToNote(idx: idx)
+//            case .edit:
+//                wSelf.addOrRemoveNote(idx: idx)
+//            }
+            wSelf.moveToNote(idx: idx)
         }.disposed(by: disposeBag)
         
         self.eventStatusDropDown.asObservable().bind { [weak self] status in
@@ -212,9 +215,9 @@ extension HomeVC {
             case .open:
                 wSelf.eventStatusDropdown = .hide
                 wSelf.playAudio()
-                wSelf.vDropDown.isHidden = false
+//                wSelf.vDropDown.isHidden = false
                 UIView.animate(withDuration: ConstantApp.shared.timeAnimation) {
-                    wSelf.vDropDown.frame = wSelf.vDropDown.getFrawm(statusNote: .open)
+//                    wSelf.vDropDown.frame = wSelf.vDropDown.getFrawm(statusNote: .open)
                 } completion: { _ in
                     wSelf.audio.stop()
                 }
@@ -222,88 +225,88 @@ extension HomeVC {
             default:
                 wSelf.playAudio()
                 UIView.animate(withDuration: ConstantApp.shared.timeAnimation) {
-                    wSelf.vDropDown.frame = wSelf.vDropDown.getFrawm(statusNote: .remove)
+//                    wSelf.vDropDown.frame = wSelf.vDropDown.getFrawm(statusNote: .remove)
                 } completion: { _ in
-                    wSelf.vDropDown.isHidden = true
+//                    wSelf.vDropDown.isHidden = true
                     wSelf.audio.stop()
                 }
 
             }
         }.disposed(by: disposeBag)
         
-        self.navigationItemView.$actionStatus.asObservable().bind { [weak self] stt in
-            guard let wSelf = self else { return }
-            wSelf.collectionView.reloadData()
-        }.disposed(by: disposeBag)
+//        self.navigationItemView.$actionStatus.asObservable().bind { [weak self] stt in
+//            guard let wSelf = self else { return }
+//            wSelf.collectionView.reloadData()
+//        }.disposed(by: disposeBag)
         
-        Observable.merge(self.eventActionDropdown.asObservable(), Observable.just(AppSettings.sortModel.type))
-            .bind { [weak self] tap in
-            guard let wSelf = self else { return }
-            
-            switch tap {
-            case .sort:
-                if DropdownActionView.Action.sortStatus == .orderedDescending {
-                    wSelf.listNote = wSelf.listNote.sorted(by: { $0.updateDate?.compare($1.updateDate ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedDescending } )
-                    AppSettings.sortModel = SortModel(type: .sort, isAscending: false, viewStatus: AppSettings.sortModel.viewStatus)
-                } else {
-                    wSelf.listNote = wSelf.listNote.sorted(by: { $0.updateDate?.compare($1.updateDate ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedAscending } )
-                    AppSettings.sortModel = SortModel(type: .sort, isAscending: true, viewStatus: AppSettings.sortModel.viewStatus)
-                }
-                wSelf.resetStatus()
-                wSelf.navigationItemView.enableButtonMoreAction()
-                wSelf.collectionView.reloadData()
-            case .pin:
-                wSelf.listNote = wSelf.listNote.sorted(by: { ($0.isPin ?? false) && !($1.isPin ?? false) })
-                AppSettings.sortModel = SortModel(type: .pin, isAscending: true, viewStatus: AppSettings.sortModel.viewStatus)
-            case .reminder:
-                wSelf.listNote = wSelf.listNote.sorted(by: { $0.reminder?.day.date.compare($1.reminder?.day.date ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedAscending } )
-                AppSettings.sortModel = SortModel(type: .reminder, isAscending: true, viewStatus: AppSettings.sortModel.viewStatus)
-            case .reset:
-                wSelf.listNote = wSelf.listNote.sorted(by: { $0.updateDate?.compare($1.updateDate ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedDescending } )
-                wSelf.resetStatus()
-                wSelf.eventNumberOfCell.onNext(.three)
-                wSelf.navigationItemView.enableButtonMoreAction()
-                AppSettings.sortModel = SortModel(type: .reset, isAscending: true, viewStatus: AppSettings.sortModel.viewStatus)
-            default: break
-            }
-            
-        }.disposed(by: disposeBag)
+//        Observable.merge(self.eventActionDropdown.asObservable(), Observable.just(AppSettings.sortModel.type))
+//            .bind { [weak self] tap in
+//            guard let wSelf = self else { return }
+//
+//            switch tap {
+//            case .sort:
+//                if DropdownActionView.Action.sortStatus == .orderedDescending {
+//                    wSelf.listNote = wSelf.listNote.sorted(by: { $0.updateDate?.compare($1.updateDate ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedDescending } )
+//                    AppSettings.sortModel = SortModel(type: .sort, isAscending: false, viewStatus: AppSettings.sortModel.viewStatus)
+//                } else {
+//                    wSelf.listNote = wSelf.listNote.sorted(by: { $0.updateDate?.compare($1.updateDate ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedAscending } )
+//                    AppSettings.sortModel = SortModel(type: .sort, isAscending: true, viewStatus: AppSettings.sortModel.viewStatus)
+//                }
+//                wSelf.resetStatus()
+//                wSelf.navigationItemView.enableButtonMoreAction()
+//                wSelf.collectionView.reloadData()
+//            case .pin:
+//                wSelf.listNote = wSelf.listNote.sorted(by: { ($0.isPin ?? false) && !($1.isPin ?? false) })
+//                AppSettings.sortModel = SortModel(type: .pin, isAscending: true, viewStatus: AppSettings.sortModel.viewStatus)
+//            case .reminder:
+//                wSelf.listNote = wSelf.listNote.sorted(by: { $0.reminder?.day.date.compare($1.reminder?.day.date ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedAscending } )
+//                AppSettings.sortModel = SortModel(type: .reminder, isAscending: true, viewStatus: AppSettings.sortModel.viewStatus)
+//            case .reset:
+//                wSelf.listNote = wSelf.listNote.sorted(by: { $0.updateDate?.compare($1.updateDate ?? Date.convertDateToLocalTime()) == ComparisonResult.orderedDescending } )
+//                wSelf.resetStatus()
+//                wSelf.eventNumberOfCell.onNext(.three)
+//                wSelf.navigationItemView.enableButtonMoreAction()
+//                AppSettings.sortModel = SortModel(type: .reset, isAscending: true, viewStatus: AppSettings.sortModel.viewStatus)
+//            default: break
+//            }
+//
+//        }.disposed(by: disposeBag)
         
-        self.navigationItemView.$tapAction.asObservable().bind { [weak self] tap in
-            guard let wSelf = self else { return }
-            
-            switch tap {
-            case .selectAll:
-                if NavigationItemHome.Action.statusSelectAll == .selectAll {
-                    wSelf.collectionView.selectAll(animated: true)
-                    wSelf.selectIndexs = wSelf.collectionView.getIndexPaths()
-                } else {
-                    wSelf.collectionView.deselectAll(animated: true)
-                    wSelf.selectIndexs = []
-                }
-                
-                wSelf.collectionView.reloadData()
-            case .trash:
-                if wSelf.selectIndexs.count == wSelf.listNote.count {
-                    NoteManage.shared.removeAllNote()
-                } else {
-                    wSelf.selectIndexs.forEach({ idx in
-                        let note = wSelf.listNote[idx.row]
-                        NoteManage.shared.deleteNote(note: note)
-                    })
-                }
-                wSelf.selectIndexs = []
-                wSelf.navigationItemView.resetSelectAll()
-            case .cancelEdit:
-                wSelf.collectionView.deselectAll(animated: true)
-                wSelf.selectIndexs = []
-                wSelf.navigationItemView.resetSelectAll()
-                wSelf.collectionView.reloadData()
-            case .moreAction:
-                wSelf.vAddNote.updateStatus(status: .remove)
-            }
-            
-        }.disposed(by: disposeBag)
+//        self.navigationItemView.$tapAction.asObservable().bind { [weak self] tap in
+//            guard let wSelf = self else { return }
+//
+//            switch tap {
+//            case .selectAll:
+//                if NavigationItemHome.Action.statusSelectAll == .selectAll {
+//                    wSelf.collectionView.selectAll(animated: true)
+//                    wSelf.selectIndexs = wSelf.collectionView.getIndexPaths()
+//                } else {
+//                    wSelf.collectionView.deselectAll(animated: true)
+//                    wSelf.selectIndexs = []
+//                }
+//
+//                wSelf.collectionView.reloadData()
+//            case .trash:
+//                if wSelf.selectIndexs.count == wSelf.listNote.count {
+//                    NoteManage.shared.removeAllNote()
+//                } else {
+//                    wSelf.selectIndexs.forEach({ idx in
+//                        let note = wSelf.listNote[idx.row]
+//                        NoteManage.shared.deleteNote(note: note)
+//                    })
+//                }
+//                wSelf.selectIndexs = []
+//                wSelf.navigationItemView.resetSelectAll()
+//            case .cancelEdit:
+//                wSelf.collectionView.deselectAll(animated: true)
+//                wSelf.selectIndexs = []
+//                wSelf.navigationItemView.resetSelectAll()
+//                wSelf.collectionView.reloadData()
+//            case .moreAction:
+//                wSelf.vAddNote.updateStatus(status: .remove)
+//            }
+//
+//        }.disposed(by: disposeBag)
         
         self.eventPickerUrl.asObservable().debounce(.milliseconds(200), scheduler: MainScheduler.asyncInstance)
             .bind { [weak self] url in
@@ -314,20 +317,25 @@ extension HomeVC {
                 wSelf.navigationController?.pushViewController(vc, animated: true)
             }.disposed(by: disposeBag)
         
-        self.navigationItemView.$actionStatus.asObservable().bind { [weak self] stt in
-            guard let wSelf = self else { return }
-            switch stt {
-            case .normal:
-                wSelf.resetStatus()
-            case .edit: break
-            }
-        }.disposed(by: disposeBag)
+//        self.navigationItemView.$actionStatus.asObservable().bind { [weak self] stt in
+//            guard let wSelf = self else { return }
+//            switch stt {
+//            case .normal:
+//                wSelf.resetStatus()
+//            case .edit: break
+//            }
+//        }.disposed(by: disposeBag)
         
         Observable.merge(Observable.just(AppSettings.sortModel.viewStatus), self.eventNumberOfCell.asObservable())
             .bind { [weak self] status in
             guard let wSelf = self else { return }
             wSelf.calculateSizeCell(numberOfCell: status)
         }.disposed(by: disposeBag)
+        
+        self.buttonLeft.rx.tap.bind { [weak self] _ in
+            guard let wSelf = self else { return }
+            wSelf.navigationController?.popViewController(animated: true, nil)
+        }.disposed(by: self.disposeBag)
 
     }
     
@@ -337,9 +345,9 @@ extension HomeVC {
         if let index = self.selectIndexs.firstIndex(where: { $0 == idx }) {
             self.selectIndexs.remove(at: index)
             
-            if self.selectIndexs.count <= 0 {
-                self.navigationItemView.resetSelectAll()
-            }
+//            if self.selectIndexs.count <= 0 {
+//                self.navigationItemView.resetSelectAll()
+//            }
             
         } else {
             self.selectIndexs.append(idx)
@@ -381,7 +389,7 @@ extension HomeVC {
     private func resetStatus() {
         self.collectionView.deselectAll(animated: true)
         self.selectIndexs = []
-        self.navigationItemView.resetSelectAll()
+//        self.navigationItemView.resetSelectAll()
         self.collectionView.reloadData()
     }
     

@@ -34,6 +34,7 @@ class ProjectCell: UITableViewCell {
 extension ProjectCell {
     
     private func setupUI() {
+        self.selectionStyle = .none
         self.collectionView.delegate = self
         self.collectionView.register(HomeTextCell.nib, forCellWithReuseIdentifier: HomeTextCell.identifier)
         self.collectionView.register(CheckListCell.nib, forCellWithReuseIdentifier: CheckListCell.identifier)

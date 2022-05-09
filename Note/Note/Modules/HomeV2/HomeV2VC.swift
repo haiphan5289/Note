@@ -40,12 +40,12 @@ class HomeV2VC: UIViewController {
         
         var img: UIImage {
             switch self {
-            case .text: return Asset.icTextDD.image
-            case .checkList: return Asset.icTextDD.image
-            case .draw: return Asset.icTextDD.image
-            case .photo: return Asset.icTextDD.image
-            case .video: return Asset.icTextDD.image
-            case .project: return Asset.icTextDD.image
+            case .text: return Asset.icText64DD.image
+            case .checkList: return Asset.icCheckList64.image
+            case .draw: return Asset.icDraw64.image
+            case .photo: return Asset.icPhoto64.image
+            case .video: return Asset.icVideo64.image
+            case .project: return Asset.icProjectsDD.image
             }
         }
     }
@@ -55,6 +55,7 @@ class HomeV2VC: UIViewController {
     
     // Add here your view model
     private var viewModel: HomeV2VM = HomeV2VM()
+    private let eventPickerUrl: PublishSubject<UIImage> = PublishSubject.init()
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -91,8 +92,64 @@ extension HomeV2VC {
                 return cell
             }
         }.disposed(by: disposeBag)
+        
+        self.tableView.rx.itemSelected.bind { [weak self] idx in
+            guard let wSelf = self, let noteType = NoteStatus(rawValue: idx.row) else { return }
+            switch noteType {
+            case .text:
+                let vc = TextVC.createVC()
+                wSelf.navigationController?.pushViewController(vc, animated: true)
+            case .checkList:
+                let vc = CheckListVC.createVC()
+                wSelf.navigationController?.pushViewController(vc, animated: true)
+            case .draw:
+                let vc = DrawVC.createVC()
+                wSelf.navigationController?.pushViewController(vc, animated: true)
+            case .video:
+                let vc = QRCodeVC.createVC()
+                wSelf.navigationController?.pushViewController(vc, animated: true)
+            case .photo:
+                wSelf.presentImagePicker()
+            case .project:
+                let project = HomeVC.createVC()
+                wSelf.navigationController?.pushViewController(project, animated: true)
+            }
+        }.disposed(by: disposeBag)
+        
+        self.eventPickerUrl.asObservable().debounce(.milliseconds(200), scheduler: MainScheduler.asyncInstance)
+            .bind { [weak self] url in
+                guard let wSelf = self else { return }
+                let vc = PhotoVC.createVC()
+                vc.imagePhotoLibrary = url
+                vc.hidePickCOlor()
+                wSelf.navigationController?.pushViewController(vc, animated: true)
+            }.disposed(by: disposeBag)
+    }
+    
+    private func presentImagePicker() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.mediaTypes = UIImagePickerController.availableMediaTypes(for:.photoLibrary)!
+        self.present(imagePickerController, animated: true, completion: nil)
     }
 }
+extension HomeV2VC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        defer {
+//             picker.dismiss(animated: true)
+//         }
+         
+         // get the image
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+             return
+         }
+        picker.dismiss(animated: true) {
+            self.eventPickerUrl.onNext(image)
+        }
+    }
+}
+
 extension HomeV2VC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.1

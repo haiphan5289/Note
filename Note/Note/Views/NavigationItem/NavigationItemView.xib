@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NavigationItemView" customModule="Note" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NavigationItemView" customModule="Easy_Note" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -29,18 +29,18 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="oZj-8o-PH8">
                             <rect key="frame" x="50" y="0.0" width="314" height="50"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLw-4j-ccB">
-                                    <rect key="frame" x="0.0" y="0.0" width="104.5" height="50"/>
+                                <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLw-4j-ccB">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="24"/>
                                     <color key="tintColor" name="ColorApp"/>
                                     <state key="normal" image="ic_reminder"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkQ-Uf-1hA">
-                                    <rect key="frame" x="104.5" y="0.0" width="105" height="50"/>
+                                <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkQ-Uf-1hA">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="24"/>
                                     <color key="tintColor" name="ColorApp"/>
                                     <state key="normal" image="ic_pin"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqh-Il-b5f">
-                                    <rect key="frame" x="209.5" y="0.0" width="104.5" height="50"/>
+                                <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqh-Il-b5f">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="24"/>
                                     <color key="tintColor" name="ColorApp"/>
                                     <state key="normal" image="ic_export"/>
                                 </button>

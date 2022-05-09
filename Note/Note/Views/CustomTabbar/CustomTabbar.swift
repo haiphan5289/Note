@@ -18,9 +18,9 @@ class CustomTabbar: UITabBar {
         var viewController: UIViewController {
             switch self {
             case .home:
-                return HomeVC.createVC()
-            case .menu:
                 return HomeV2VC.createVC()
+            case .menu:
+                return MenuVC.createVC()
             }
         }
         
